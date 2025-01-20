@@ -76,3 +76,7 @@ gem "rotp"
 gem "rqrcode"
 # roles
 gem "rolify"
+# authorization
+gem "pundit", "~> 2.4"
+# country-select
+gem "country_select", "~> 8.0"

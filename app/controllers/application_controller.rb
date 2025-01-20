@@ -5,6 +5,10 @@ class ApplicationController < ActionController::Base
   before_action :set_current_request_details
   before_action :authenticate
 
+  include Pundit::Authorization
+
+  rescue_from Pundit::NotAuthorizedError, with: :user_not_authorized
+
   private
     def authenticate
       if session_record = Session.find_by_id(cookies.signed[:session_token])
@@ -23,5 +27,14 @@ class ApplicationController < ActionController::Base
       unless Current.session.sudo?
         redirect_to new_sessions_sudo_path(proceed_to_url: request.original_url)
       end
+    end
+
+    def current_user
+      Current.session.user
+    end
+
+    def user_not_authorized
+      flash[:alert] = "You are not allowed to perform this action"
+      redirect_back_or_to(root_path)
     end
 end

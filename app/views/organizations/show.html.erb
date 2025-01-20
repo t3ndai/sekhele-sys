@@ -1,0 +1,7 @@
+<%= render @organization %>
+<div>
+  <%= link_to "Edit this organization", edit_organization_path(@organization) %> |
+  <%= link_to "Back to organizations", organizations_path %>
+  <%= link_to "Add Employee", new_organization_employee_path(@organization) %>
+  <%= button_to "Destroy this organization", @organization, method: :delete %>
+</div>

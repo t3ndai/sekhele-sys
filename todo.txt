@@ -1,0 +1,11 @@
+#TODO 
+
+- Add Employee to organization x
+- Add Department to organization x
+- Assign Employee as admin role to Department
+- Add Location 
+- Country Dropdown for Nationality x 
+- Loation dropdown for location 
+- Invite user to organization after creation
+
+

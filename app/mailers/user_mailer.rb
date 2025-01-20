@@ -19,4 +19,13 @@ class UserMailer < ApplicationMailer
 
     mail to: @user.email, subject: "Invitation instructions"
   end
+
+  def invite_to_org
+    @user = params[:user]
+    @name = params[:name]
+    @organization = params[:organization]
+    @signed_id = @user.generate_token_for(:password_reset)
+
+    mail to: @user.email, subject: "Invitation to join #{@organization.name}"
+  end
 end

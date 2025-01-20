@@ -1,0 +1,91 @@
+<%= form_with(model: [local_assigns[:organization], employee]) do |form| %>
+  <% if employee.errors.any? %>
+    <div style="color: red">
+      <h2><%= pluralize(employee.errors.count, "error") %> prohibited this employee from being saved:</h2>
+      <ul>
+        <% employee.errors.each do |error| %>
+          <li><%= error.full_message %></li>
+        <% end %>
+      </ul>
+    </div>
+  <% end %>
+  <div>
+    <%= form.label :first_name, style: "display: block" %>
+    <%= form.text_field :first_name %>
+  </div>
+  <div>
+    <%= form.label :last_name, style: "display: block" %>
+    <%= form.text_field :last_name %>
+  </div>
+  <div>
+    <%= form.label :dob, style: "display: block" %>
+    <%= form.date_field :dob %>
+  </div>
+  <div>
+    <%= form.label :addr_line1, style: "display: block" %>
+    <%= form.text_field :addr_line1 %>
+  </div>
+  <div>
+    <%= form.label :addr_line2, style: "display: block" %>
+    <%= form.text_field :addr_line2 %>
+  </div>
+  <div>
+    <%= form.label :addr_line3, style: "display: block" %>
+    <%= form.text_field :addr_line3 %>
+  </div>
+  <div>
+    <%= form.label :addr_postcode, style: "display: block" %>
+    <%= form.text_field :addr_postcode %>
+  </div>
+  <div>
+    <%= form.label :city, style: "display: block" %>
+    <%= form.text_field :city %>
+  </div>
+  <div>
+    <%= form.label :country, style: "display: block" %>
+    <%= form.text_field :country %>
+  </div>
+  <div>
+    <%= form.label :phone1, style: "display: block" %>
+    <%= form.text_field :phone1 %>
+  </div>
+  <div>
+    <%= form.label :phone2, style: "display: block" %>
+    <%= form.text_field :phone2 %>
+  </div>
+  <div>
+    <%= form.label :personal_email, style: "display: block" %>
+    <%= form.text_field :personal_email %>
+  </div>
+  <div>
+    <%= form.label :work_email, style: "display: block" %>
+    <%= form.text_field :work_email %>
+  </div>
+  <div>
+    <%= form.label :id_number, style: "display: block" %>
+    <%= form.text_field :id_number %>
+  </div>
+  <div>
+    <%= form.label :nationality, style: "display: block" %>
+    <%= form.country_select :nationality, { priority_countries: ["ZW", "ZA", "ZM", "KE", "MW", "TZ"] }, class: 'required-field', required: true %>
+  </div>
+  <div>
+    <%= form.label :passport_number, style: "display: block" %>
+    <%= form.text_field :passport_number %>
+  </div>
+  <div>
+    <%= form.label :hire_date, style: "display: block" %>
+    <%= form.date_field :hire_date %>
+  </div>
+  <div>
+    <%= form.label "Employment Id", style: "display: block" %>
+    <%= form.text_field :employement_id %>
+  </div>
+  <div>
+    <%= form.label :preferred_name, style: "display: block" %>
+    <%= form.text_field :preferred_name %>
+  </div>
+  <div>
+    <%= form.submit %>
+  </div>
+<% end %>

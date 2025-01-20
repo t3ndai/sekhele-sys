@@ -10,7 +10,41 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema[8.0].define(version: 2025_01_07_132553) do
+ActiveRecord::Schema[8.0].define(version: 2025_01_20_122012) do
+  create_table "departments", force: :cascade do |t|
+    t.string "name", null: false
+    t.integer "organization_id", null: false
+    t.datetime "created_at", null: false
+    t.datetime "updated_at", null: false
+    t.index ["organization_id"], name: "index_departments_on_organization_id"
+  end
+
+  create_table "employees", force: :cascade do |t|
+    t.string "first_name", null: false
+    t.string "last_name", null: false
+    t.date "dob", null: false
+    t.string "addr_line1"
+    t.string "addr_line2"
+    t.string "addr_line3"
+    t.string "addr_postcode"
+    t.string "city", null: false
+    t.string "country", null: false
+    t.string "phone1", null: false
+    t.string "phone2"
+    t.string "personal_email", null: false
+    t.string "work_email", null: false
+    t.string "id_number", null: false
+    t.string "nationality", null: false
+    t.string "passport_number"
+    t.date "hire_date", null: false
+    t.string "employement_id"
+    t.string "preferred_name"
+    t.integer "organization_id", null: false
+    t.datetime "created_at", null: false
+    t.datetime "updated_at", null: false
+    t.index ["organization_id"], name: "index_employees_on_organization_id"
+  end
+
   create_table "events", force: :cascade do |t|
     t.integer "user_id", null: false
     t.string "action", null: false
@@ -19,6 +53,12 @@ ActiveRecord::Schema[8.0].define(version: 2025_01_07_132553) do
     t.datetime "created_at", null: false
     t.datetime "updated_at", null: false
     t.index ["user_id"], name: "index_events_on_user_id"
+  end
+
+  create_table "organizations", force: :cascade do |t|
+    t.string "name", null: false
+    t.datetime "created_at", null: false
+    t.datetime "updated_at", null: false
   end
 
   create_table "recovery_codes", force: :cascade do |t|
@@ -57,11 +97,11 @@ ActiveRecord::Schema[8.0].define(version: 2025_01_07_132553) do
     t.boolean "verified", default: false, null: false
     t.boolean "otp_required_for_sign_in", default: false, null: false
     t.string "otp_secret", null: false
-    t.string "first_name", null: false
-    t.string "last_name", null: false
     t.datetime "created_at", null: false
     t.datetime "updated_at", null: false
+    t.integer "employee_id"
     t.index ["email"], name: "index_users_on_email", unique: true
+    t.index ["employee_id"], name: "index_users_on_employee_id"
   end
 
   create_table "users_roles", id: false, force: :cascade do |t|
@@ -72,7 +112,10 @@ ActiveRecord::Schema[8.0].define(version: 2025_01_07_132553) do
     t.index ["user_id"], name: "index_users_roles_on_user_id"
   end
 
+  add_foreign_key "departments", "organizations"
+  add_foreign_key "employees", "organizations"
   add_foreign_key "events", "users"
   add_foreign_key "recovery_codes", "users"
   add_foreign_key "sessions", "users"
+  add_foreign_key "users", "employees"
 end

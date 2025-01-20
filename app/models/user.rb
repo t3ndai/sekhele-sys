@@ -16,12 +16,11 @@ class User < ApplicationRecord
   has_many :sessions, dependent: :destroy
   has_many :recovery_codes, dependent: :destroy
   has_many :events, dependent: :destroy
+  belongs_to :employee
 
   validates :email, presence: true, uniqueness: true, format: { with: URI::MailTo::EMAIL_REGEXP }
   validates :password, allow_nil: true, length: { minimum: 12 }
   validates :password, not_pwned: { message: "might easily be guessed" }
-  validates :first_name, presence: true
-  validates :last_name, presence: true
 
   normalizes :email, with: -> { _1.strip.downcase }
 

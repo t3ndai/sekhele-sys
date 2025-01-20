@@ -1,0 +1,8 @@
+<p style="color: green"><%= notice %></p>
+<%= render @department %>
+<div>
+  <%#= link_to "Add New Admin", %>
+  <%= link_to "Edit this department", edit_department_path(@department) %> |
+  <%= link_to "Back to departments", organization_departments_path(@department) %>
+  <%= button_to "Destroy this department", @department, method: :delete %>
+</div>
