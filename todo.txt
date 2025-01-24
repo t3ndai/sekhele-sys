@@ -6,6 +6,14 @@
 - Add Location 
 - Country Dropdown for Nationality x 
 - Loation dropdown for location 
-- Invite user to organization after creation
+- Invite user to organization after creation x
+- Add gender to employee 
+- Link Compensation to employee 
+- Assign manager to employee 
+- Add docs to employee 
+- Approve employee docs 
+- Add Emergency Contact employee 
+- Add Employee beneficiaries 
+- Add cost center 
 
 

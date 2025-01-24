@@ -2,6 +2,10 @@ Rails.application.routes.draw do
   resources :organizations, shallow: true do
     resources :departments
     resources :employees
+    resources :locations
+  end
+  namespace :app_admin do
+    resources :users
   end
   get  "sign_in", to: "sessions#new"
   post "sign_in", to: "sessions#create"

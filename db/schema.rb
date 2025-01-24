@@ -10,7 +10,7 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema[8.0].define(version: 2025_01_20_122012) do
+ActiveRecord::Schema[8.0].define(version: 2025_01_20_161022) do
   create_table "departments", force: :cascade do |t|
     t.string "name", null: false
     t.integer "organization_id", null: false
@@ -53,6 +53,19 @@ ActiveRecord::Schema[8.0].define(version: 2025_01_20_122012) do
     t.datetime "created_at", null: false
     t.datetime "updated_at", null: false
     t.index ["user_id"], name: "index_events_on_user_id"
+  end
+
+  create_table "locations", force: :cascade do |t|
+    t.string "name"
+    t.integer "organization_id", null: false
+    t.string "addr_line1"
+    t.string "addr_line2"
+    t.string "addr_line3"
+    t.string "city"
+    t.string "country"
+    t.datetime "created_at", null: false
+    t.datetime "updated_at", null: false
+    t.index ["organization_id"], name: "index_locations_on_organization_id"
   end
 
   create_table "organizations", force: :cascade do |t|
@@ -115,6 +128,7 @@ ActiveRecord::Schema[8.0].define(version: 2025_01_20_122012) do
   add_foreign_key "departments", "organizations"
   add_foreign_key "employees", "organizations"
   add_foreign_key "events", "users"
+  add_foreign_key "locations", "organizations"
   add_foreign_key "recovery_codes", "users"
   add_foreign_key "sessions", "users"
   add_foreign_key "users", "employees"

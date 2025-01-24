@@ -7,3 +7,12 @@
 #   ["Action", "Comedy", "Drama", "Horror"].each do |genre_name|
 #     MovieGenre.find_or_create_by!(name: genre_name)
 #   end
+
+
+p "Creating roles"
+p "Removing initial roles - #{Role.all.count}"
+Role.destroy_all
+[ "superadmin", "org_admin", "hr_admin", "payroll_admin", "it_admin", "manager", "dept_head" ].each do |role|
+  Role.create!(name: role)
+end
+p "Created #{Role.all.count} roles"

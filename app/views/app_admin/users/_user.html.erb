@@ -1,0 +1,5 @@
+<div>
+  <p><%= user.email%></p>
+  <p><%= user.employee&.organization&.name %> </p>
+  <%= link_to "Edit User Roles", edit_app_admin_user_path(user) %>
+</div>

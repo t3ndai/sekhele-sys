@@ -1,0 +1,6 @@
+<p> Edit Roles </p>
+<%= form_with(model: [:app_admin, @user]) do |form| %>
+  <%= form.collection_checkboxes :role_ids, Role.all, :id, :name %>
+  <%= @user.errors[:roles] %>
+  <%= form.button :submit %>
+<% end %>
