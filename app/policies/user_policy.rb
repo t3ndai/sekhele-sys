@@ -1,4 +1,4 @@
-class OrganizationPolicy < ApplicationPolicy
+class UserPolicy < ApplicationPolicy
   # NOTE: Up to Pundit v2.3.1, the inheritance was declared as
   # `Scope < Scope` rather than `Scope < ApplicationPolicy::Scope`.
   # In most cases the behavior will be identical, but if updating existing
@@ -16,11 +16,11 @@ class OrganizationPolicy < ApplicationPolicy
     user.has_role? :superadmin
   end
 
-  def new?
-    create?
+  def edit?
+    update?
   end
 
-  def create?
+  def update?
     user.has_role? :superadmin
   end
 end

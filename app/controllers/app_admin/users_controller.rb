@@ -3,12 +3,15 @@ class AppAdmin::UsersController < ApplicationController
 
   def index
     @users = User.all
+    authorize @users
   end
 
   def edit
+    authorize @user
   end
 
   def update
+    authorize @user
     if @user.update(user_params)
       redirect_to app_admin_users_url, notice: "User Role succesfully updated"
     else

@@ -1,5 +1,6 @@
 class LocationsController < ApplicationController
   before_action :set_location, only: %i[ show edit update destroy ]
+  before_action :set_organization
 
   # GET /locations or /locations.json
   def index
@@ -61,6 +62,10 @@ class LocationsController < ApplicationController
     # Use callbacks to share common setup or constraints between actions.
     def set_location
       @location = Location.find(params.expect(:id))
+    end
+
+    def set_organization
+      @organization = Organization.find(params[:organization_id])
     end
 
     # Only allow a list of trusted parameters through.
