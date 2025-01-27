@@ -1,0 +1,27 @@
+<%= form_with(model: [local_assigns[:organization], cost_center]) do |form| %>
+  <% if cost_center.errors.any? %>
+    <div style="color: red">
+      <h2><%= pluralize(cost_center.errors.count, "error") %> prohibited this cost_center from being saved:</h2>
+      <ul>
+        <% cost_center.errors.each do |error| %>
+          <li><%= error.full_message %></li>
+        <% end %>
+      </ul>
+    </div>
+  <% end %>
+  <div>
+    <%= form.label :name, style: "display: block" %>
+    <%= form.text_field :name %>
+  </div>
+  <div>
+    <%= form.label :description, style: "display: block" %>
+    <%= form.text_field :description %>
+  </div>
+  <div>
+    <%= form.label :code, style: "display: block" %>
+    <%= form.text_field :code %>
+  </div>
+  <div>
+    <%= form.submit %>
+  </div>
+<% end %>

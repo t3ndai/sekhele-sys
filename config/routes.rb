@@ -3,6 +3,7 @@ Rails.application.routes.draw do
     resources :departments
     resources :employees
     resources :locations
+    resources :cost_centers
   end
   namespace :app_admin do
     resources :users

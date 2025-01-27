@@ -3,7 +3,7 @@
 - Add Employee to organization x
 - Add Department to organization x
 - Assign Employee as admin role to Department
-- Add Location 
+- Add Location x
 - Country Dropdown for Nationality x 
 - Loation dropdown for location 
 - Invite user to organization after creation x
@@ -14,6 +14,6 @@
 - Approve employee docs 
 - Add Emergency Contact employee 
 - Add Employee beneficiaries 
-- Add cost center 
+- Add cost center x
 
 

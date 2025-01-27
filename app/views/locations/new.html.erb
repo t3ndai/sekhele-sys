@@ -3,5 +3,5 @@
 <%= render "form", organization: @organization, location: @location %>
 <br>
 <div>
-  <%= link_to "Back to locations", organization_locations_path %>
+  <%= link_to "Back to locations", organization_locations_path(@location) %>
 </div>

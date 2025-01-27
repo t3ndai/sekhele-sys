@@ -10,7 +10,17 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema[8.0].define(version: 2025_01_20_161022) do
+ActiveRecord::Schema[8.0].define(version: 2025_01_27_201015) do
+  create_table "cost_centers", force: :cascade do |t|
+    t.string "name"
+    t.string "description"
+    t.string "code"
+    t.integer "organization_id", null: false
+    t.datetime "created_at", null: false
+    t.datetime "updated_at", null: false
+    t.index ["organization_id"], name: "index_cost_centers_on_organization_id"
+  end
+
   create_table "departments", force: :cascade do |t|
     t.string "name", null: false
     t.integer "organization_id", null: false
@@ -125,6 +135,7 @@ ActiveRecord::Schema[8.0].define(version: 2025_01_20_161022) do
     t.index ["user_id"], name: "index_users_roles_on_user_id"
   end
 
+  add_foreign_key "cost_centers", "organizations"
   add_foreign_key "departments", "organizations"
   add_foreign_key "employees", "organizations"
   add_foreign_key "events", "users"

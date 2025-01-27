@@ -1,0 +1,7 @@
+<% content_for :title, "New cost center" %>
+<h1>New cost center</h1>
+<%= render "form", organization: @organization, cost_center: @cost_center %>
+<br>
+<div>
+  <%= link_to "Back to cost centers", organization_cost_centers_path %>
+</div>
