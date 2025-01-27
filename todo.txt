@@ -7,7 +7,7 @@
 - Country Dropdown for Nationality x 
 - Loation dropdown for location 
 - Invite user to organization after creation x
-- Add gender to employee 
+- Add gender to employee x
 - Link Compensation to employee 
 - Assign manager to employee 
 - Add docs to employee 
