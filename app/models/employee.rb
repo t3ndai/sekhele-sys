@@ -1,5 +1,5 @@
 class Employee < ApplicationRecord
-  enum gender: [ :male, :female ]
+  enum :gender,  { male: 0, female: 1 }, validate: { allow_nil: false }
 
   belongs_to :organization
   has_one :user, dependent: :destroy
@@ -15,7 +15,7 @@ class Employee < ApplicationRecord
   validates :id_number, presence: true
   validates :nationality, presence: true
   validates :hire_date, presence: true
-  validates :gender, presence: true
+
 
   private
   def create_user

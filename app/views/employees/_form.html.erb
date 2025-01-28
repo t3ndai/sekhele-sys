@@ -22,6 +22,10 @@
     <%= form.date_field :dob %>
   </div>
   <div>
+    <%= form.label :gender %>
+    <%= form.select :gender, options_for_select(Employee.genders.map { |k,v| [k.humanize, k]}, form.object.gender) %>
+  </div>
+  <div>
     <%= form.label :addr_line1, style: "display: block" %>
     <%= form.text_field :addr_line1 %>
   </div>
