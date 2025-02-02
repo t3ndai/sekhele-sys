@@ -10,7 +10,10 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema[8.0].define(version: 2025_01_27_212644) do
+ActiveRecord::Schema[8.0].define(version: 2025_01_31_111825) do
+  # These are extensions that must be enabled in order to support this database
+  enable_extension "pg_catalog.plpgsql"
+
   create_table "cost_centers", force: :cascade do |t|
     t.string "name"
     t.string "description"
@@ -64,6 +67,25 @@ ActiveRecord::Schema[8.0].define(version: 2025_01_27_212644) do
     t.datetime "created_at", null: false
     t.datetime "updated_at", null: false
     t.index ["user_id"], name: "index_events_on_user_id"
+  end
+
+  create_table "job_functions", force: :cascade do |t|
+    t.string "title"
+    t.bigint "department_id"
+    t.bigint "organization_id", null: false
+    t.numrange "salary_range"
+    t.datetime "created_at", null: false
+    t.datetime "updated_at", null: false
+    t.index ["department_id"], name: "index_job_functions_on_department_id"
+    t.index ["organization_id"], name: "index_job_functions_on_organization_id"
+  end
+
+  create_table "job_levels", force: :cascade do |t|
+    t.bigint "job_function_id", null: false
+    t.string "name"
+    t.datetime "created_at", null: false
+    t.datetime "updated_at", null: false
+    t.index ["job_function_id"], name: "index_job_levels_on_job_function_id"
   end
 
   create_table "locations", force: :cascade do |t|
@@ -140,8 +162,10 @@ ActiveRecord::Schema[8.0].define(version: 2025_01_27_212644) do
   add_foreign_key "departments", "organizations"
   add_foreign_key "employees", "organizations"
   add_foreign_key "events", "users"
+  add_foreign_key "job_functions", "departments"
+  add_foreign_key "job_functions", "organizations"
+  add_foreign_key "job_levels", "job_functions"
   add_foreign_key "locations", "organizations"
   add_foreign_key "recovery_codes", "users"
   add_foreign_key "sessions", "users"
-  add_foreign_key "users", "employees"
 end

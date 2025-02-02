@@ -4,6 +4,9 @@ Rails.application.routes.draw do
     resources :employees
     resources :locations
     resources :cost_centers
+    resources :job_functions do
+      resources :job_levels
+    end
   end
   namespace :app_admin do
     resources :users

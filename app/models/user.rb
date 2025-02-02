@@ -16,7 +16,7 @@ class User < ApplicationRecord
   has_many :sessions, dependent: :destroy
   has_many :recovery_codes, dependent: :destroy
   has_many :events, dependent: :destroy
-  belongs_to :employee
+  belongs_to :employee, optional: true
 
   validates :email, presence: true, uniqueness: true, format: { with: URI::MailTo::EMAIL_REGEXP }
   validates :password, allow_nil: true, length: { minimum: 12 }

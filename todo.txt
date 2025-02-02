@@ -15,5 +15,7 @@
 - Add Emergency Contact employee 
 - Add Employee beneficiaries 
 - Add cost center x
+- Add Job Functions x 
+- Add Job levels x 
 
 

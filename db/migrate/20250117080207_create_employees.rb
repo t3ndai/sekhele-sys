@@ -1,6 +1,6 @@
 class CreateEmployees < ActiveRecord::Migration[8.0]
   def change
-    create_table :employees do |t|
+    create_table :employees, id: :uuid do |t|
       t.string :first_name, null: false
       t.string :last_name, null: false
       t.date :dob, null: false

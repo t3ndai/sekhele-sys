@@ -1,0 +1,7 @@
+<% content_for :title, "New job level" %>
+<h1>New job level</h1>
+<%= render "form", job_function: @job_function, job_level: @job_level %>
+<br>
+<div>
+  <%= link_to "Back to job levels", job_function_job_levels_path(@job_function) %>
+</div>

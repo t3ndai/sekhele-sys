@@ -1,0 +1,8 @@
+<p style="color: green"><%= notice %></p>
+<%= render @job_function %>
+<div>
+  <%= link_to "Edit this job function", edit_job_function_path(@job_function) %> |
+  <%= link_to "Back to job functions", organization_job_functions_path(@job_function.organization) %>
+  <%= link_to "Add Job Level", new_job_function_job_level_path(@job_function) %>
+  <%= button_to "Destroy this job function", @job_function, method: :delete %>
+</div>
