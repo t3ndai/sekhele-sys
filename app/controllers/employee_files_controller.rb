@@ -24,6 +24,8 @@ class EmployeeFilesController < ApplicationController
   def create
     @employee_file = EmployeeFile.new(employee_file_params)
     @employee_file.employee = @employee
+    document = Document.find(employee_file_params[:document_id])
+    @employee_file.name = document.name
 
     respond_to do |format|
       if @employee_file.save
@@ -51,10 +53,11 @@ class EmployeeFilesController < ApplicationController
 
   # DELETE /employee_files/1 or /employee_files/1.json
   def destroy
+    @employee = @employee_file.employee
     @employee_file.destroy!
 
     respond_to do |format|
-      format.html { redirect_to employee_files_path, status: :see_other, notice: "Employee file was successfully destroyed." }
+      format.html { redirect_to employee_employee_files_path(@employee), status: :see_other, notice: "Employee file was successfully destroyed." }
       format.json { head :no_content }
     end
   end
