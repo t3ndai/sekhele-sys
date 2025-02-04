@@ -1,0 +1,12 @@
+<p style="color: green"><%= notice %></p>
+<% content_for :title, "Employee files" %>
+<h1>Employee files</h1>
+<div id="employee_files">
+  <% @employee_files.each do |employee_file| %>
+    <%= render employee_file %>
+    <p>
+      <%= link_to "Show this employee file", employee_file %>
+    </p>
+  <% end %>
+</div>
+<%= link_to "New employee file", new_employee_employee_file_path(@employee) %>

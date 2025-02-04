@@ -1,0 +1,17 @@
+<div id="<%= dom_id employee_file %>">
+  <p>
+    <strong>File:</strong>
+    <%= link_to employee_file.file.filename, employee_file.file if employee_file.file.attached? %>
+  </p>
+
+  <p>
+    <strong>Document:</strong>
+    <%= employee_file.document_id %>
+  </p>
+
+  <p>
+    <strong>Employee:</strong>
+    <%= employee_file.employee_id %>
+  </p>
+
+</div>

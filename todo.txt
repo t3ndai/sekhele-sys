@@ -9,6 +9,7 @@
 - Invite user to organization after creation x
 - Add gender to employee x
 - Link Compensation to employee 
+- Pay Grades 
 - Assign manager to employee 
 - Add docs to employee 
 - Approve employee docs 
@@ -17,5 +18,9 @@
 - Add cost center x
 - Add Job Functions x 
 - Add Job levels x 
+- Add pay-bands to job-levels 
+- Use Cloudflare r2 with active storage 
+
+
 
 

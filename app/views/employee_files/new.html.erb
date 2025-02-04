@@ -1,0 +1,7 @@
+<% content_for :title, "New employee file" %>
+<h1>New employee file</h1>
+<%= render "form", employee: @employee, employee_file: @employee_file %>
+<br>
+<div>
+  <%= link_to "Back to employee files", employee_employee_files_path(@employee) %>
+</div>

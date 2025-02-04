@@ -1,12 +1,15 @@
 Rails.application.routes.draw do
   resources :organizations, shallow: true do
     resources :departments
-    resources :employees
+    resources :employees do
+      resources :employee_files
+    end
     resources :locations
     resources :cost_centers
     resources :job_functions do
       resources :job_levels
     end
+    resources :documents
   end
   namespace :app_admin do
     resources :users

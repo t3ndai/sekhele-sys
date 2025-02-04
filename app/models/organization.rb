@@ -6,6 +6,7 @@ class Organization < ApplicationRecord
   has_many :cost_centers
   has_many :job_functions
   has_many :job_levels, through: :job_functions
+  has_many :documents
 
   validates :name, presence: true, uniqueness: true
 end

@@ -1,6 +1,9 @@
 <p style="color: green"><%= notice %></p>
 <%= render @employee %>
 <div>
+  <%= link_to "Add Employee File(s)", new_employee_employee_file_path(@employee)  %>
+</div>
+<div>
   <%= link_to "Edit this employee", edit_employee_path(@employee) %> |
   <%= link_to "Back to employees", organization_employees_path(@organization) %>
   <%= button_to "Destroy this employee", @employee, method: :delete %>

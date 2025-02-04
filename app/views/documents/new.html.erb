@@ -1,0 +1,7 @@
+<% content_for :title, "New document" %>
+<h1>New document</h1>
+<%= render "form", organization: @organization, document: @document %>
+<br>
+<div>
+  <%= link_to "Back to documents", organization_documents_path(@organization) %>
+</div>

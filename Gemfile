@@ -82,3 +82,6 @@ gem "rolify"
 gem "pundit", "~> 2.4"
 # country-select
 gem "country_select", "~> 8.0"
+# s3 - object storage
+gem "aws-sdk-s3", "1.170", require: false
+gem "aws-sdk-core", "3.211"
