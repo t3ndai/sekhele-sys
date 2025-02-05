@@ -1,0 +1,12 @@
+<p style="color: green"><%= notice %></p>
+<% content_for :title, "Company files" %>
+<h1>Company files</h1>
+<div id="company_files">
+  <% @company_files.each do |company_file| %>
+    <%= render company_file %>
+    <p>
+      <%= link_to "Show this company file", company_file %>
+    </p>
+  <% end %>
+</div>
+<%= link_to "New company file", new_organization_company_file_path(@organization) %>

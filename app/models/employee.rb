@@ -3,6 +3,7 @@ class Employee < ApplicationRecord
 
   belongs_to :organization
   has_one :user, dependent: :destroy
+  has_many :employee_files
 
   after_create :create_user
 

@@ -6,4 +6,6 @@ class Document < ApplicationRecord
 
 
   validates :name, presence: true, uniqueness: { scope: :organization_id }
+
+  scope :company_docs, -> { where(document_type: :company) }
 end

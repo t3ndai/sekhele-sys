@@ -7,6 +7,7 @@ class Organization < ApplicationRecord
   has_many :job_functions
   has_many :job_levels, through: :job_functions
   has_many :documents
+  has_many :company_files
 
   validates :name, presence: true, uniqueness: true
 end

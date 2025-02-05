@@ -10,6 +10,7 @@ Rails.application.routes.draw do
       resources :job_levels
     end
     resources :documents
+    resources :company_files
   end
   namespace :app_admin do
     resources :users

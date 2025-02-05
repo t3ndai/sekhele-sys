@@ -1,0 +1,22 @@
+<div id="<%= dom_id company_file %>">
+  <p>
+    <strong>Name:</strong>
+    <%= company_file.name %>
+  </p>
+
+  <p>
+    <strong>Document:</strong>
+    <%= company_file.document_id %>
+  </p>
+
+  <p>
+    <strong>Organization:</strong>
+    <%= company_file.organization_id %>
+  </p>
+
+  <p>
+    <strong>File:</strong>
+    <%= link_to company_file.file.filename, company_file.file if company_file.file.attached? %>
+  </p>
+
+</div>
