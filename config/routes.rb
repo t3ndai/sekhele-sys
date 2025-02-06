@@ -3,6 +3,7 @@ Rails.application.routes.draw do
     resources :departments
     resources :employees do
       resources :employee_files
+      resources :employee_managers
     end
     resources :locations
     resources :cost_centers

@@ -1,0 +1,7 @@
+<% content_for :title, "New employee manager" %>
+<h1>New employee manager</h1>
+<%= render "form", employee: @employee, employee_manager: @employee_manager, managers: @employees %>
+<br>
+<div>
+  <%= link_to "Back to employee", employee_path(@employee) %>
+</div>

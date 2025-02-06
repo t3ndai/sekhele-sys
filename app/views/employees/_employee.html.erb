@@ -79,4 +79,14 @@
     <strong>Preferred name:</strong>
     <%= employee.preferred_name %>
   </p>
+  <section>
+    <h4> Manager </h4>
+    <% if employee.manager %>
+      <div> <%= employee&.manager&.full_name %>
+        <%= link_to "View Manager's Profile", employee_path(employee.manager) %>
+      </div>
+    <% else %>
+      <%= link_to "Assign Manager", new_employee_employee_manager_path(employee)%>
+    <% end %>
+  </section>
 </div>

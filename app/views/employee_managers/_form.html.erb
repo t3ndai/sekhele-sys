@@ -1,0 +1,39 @@
+<%= form_with(model: [employee, employee_manager], url: employee_employee_managers_path(employee), local: true ) do |form| %>
+  <% if employee_manager.errors.any? %>
+    <div style="color: red">
+      <h2><%= pluralize(employee_manager.errors.count, "error") %> prohibited this employee_manager from being saved:</h2>
+      <ul>
+        <% employee_manager.errors.each do |error| %>
+          <li><%= error.full_message %></li>
+        <% end %>
+      </ul>
+    </div>
+  <% end %>
+  <table>
+    <thead>
+      <tr>
+        <th> Select Manager </th>
+        <th> Manager First Name </th>
+        <th> Manager Last Name </th>
+      </tr>
+    </thead>
+    <tbody>
+      <% @managers.each do |manager| %>
+        <tr>
+          <td>
+            <%= check_box_tag 'selected_manager', manager.id %>
+          </td>
+          <td>
+            <%= manager.first_name %>
+          </td>
+          <td>
+            <%= manager.last_name %>
+          </td>
+        </tr>
+      <% end %>
+    </tbody>
+  </table>
+  <div>
+    <%= form.submit "Submit Manager" %>
+  </div>
+<% end %>

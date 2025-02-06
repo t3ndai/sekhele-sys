@@ -10,8 +10,8 @@
 - Add gender to employee x
 - Link Compensation to employee 
 - Pay Grades 
-- Assign manager to employee 
-- Add docs to employee 
+- Assign manager to employee x
+- Add docs to employee x
 - Approve employee docs 
 - Add Emergency Contact employee 
 - Add Employee beneficiaries 
@@ -19,7 +19,14 @@
 - Add Job Functions x 
 - Add Job levels x 
 - Add pay-bands to job-levels 
-- Use Cloudflare r2 with active storage 
+- Use Cloudflare r2 with active storage x 
+- Holidays 
+- Employee Profiles 
+- Employee Onboarding Forms 
+- Public Holidays 
+- Company Events 
+- Assign Manager role to employee by people admin
+
 
 
 

@@ -2,6 +2,9 @@ class Employee < ApplicationRecord
   enum :gender,  { male: 0, female: 1 }, validate: { allow_nil: false }
 
   belongs_to :organization
+  belongs_to :manager, class_name: "Employee", optional: true
+
+  has_many :reports, class_name: "Employee", foreign_key: "manager_id"
   has_one :user, dependent: :destroy
   has_many :employee_files
 
@@ -17,6 +20,11 @@ class Employee < ApplicationRecord
   validates :nationality, presence: true
   validates :hire_date, presence: true
 
+  scope :same_organization, ->(organization) { where(organization: organization) }
+
+  def full_name
+    self.first_name + " " + self.last_name
+  end
 
   private
   def create_user

@@ -10,7 +10,7 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema[8.0].define(version: 2025_02_05_150509) do
+ActiveRecord::Schema[8.0].define(version: 2025_02_06_073128) do
   # These are extensions that must be enabled in order to support this database
   enable_extension "pg_catalog.plpgsql"
 
@@ -114,6 +114,8 @@ ActiveRecord::Schema[8.0].define(version: 2025_02_05_150509) do
     t.datetime "created_at", null: false
     t.datetime "updated_at", null: false
     t.integer "gender"
+    t.bigint "manager_id"
+    t.index ["manager_id"], name: "index_employees_on_manager_id"
     t.index ["organization_id"], name: "index_employees_on_organization_id"
   end
 
@@ -225,6 +227,7 @@ ActiveRecord::Schema[8.0].define(version: 2025_02_05_150509) do
   add_foreign_key "documents", "organizations"
   add_foreign_key "employee_files", "documents"
   add_foreign_key "employee_files", "employees"
+  add_foreign_key "employees", "employees", column: "manager_id"
   add_foreign_key "employees", "organizations"
   add_foreign_key "events", "users"
   add_foreign_key "job_functions", "departments"
