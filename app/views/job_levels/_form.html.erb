@@ -14,6 +14,18 @@
     <%= form.text_field :name %>
   </div>
   <div>
+    <%= form.label :salary_range_min, style: "display: block" %>
+    <%= form.number_field :salary_range_min %>
+  </div>
+  <div>
+    <%= form.label :salary_range_max, style: "display: block" %>
+    <%= form.number_field :salary_range_max %>
+  </div>
+  <div>
+    <%= form.label :range_percentile, style: "display: block" %>
+    <%= form.number_field :range_percentile %>
+  </div>
+  <div>
     <%= form.submit %>
   </div>
 <% end %>

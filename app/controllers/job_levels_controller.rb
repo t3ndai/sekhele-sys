@@ -22,7 +22,15 @@ class JobLevelsController < ApplicationController
 
   # POST /job_levels or /job_levels.json
   def create
-    @job_level = JobLevel.new(job_level_params)
+    min_salary = job_level_params[:salary_range_min]
+    max_salary = job_level_params[:salary_range_max]
+    job_level_opts = {
+      name: job_level_params[:name],
+      salary_range: (min_salary..max_salary),
+      range_percentile: job_level_params[:range_percentile]
+
+    }
+    @job_level = JobLevel.new(job_level_opts)
     @job_level.job_function = @job_function
 
     respond_to do |format|
@@ -71,6 +79,6 @@ class JobLevelsController < ApplicationController
 
     # Only allow a list of trusted parameters through.
     def job_level_params
-      params.expect(job_level: [ :name ])
+      params.expect(job_level: [ :name, :salary_range_min, :salary_range_max, :range_percentile ])
     end
 end
