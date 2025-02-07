@@ -1,0 +1,16 @@
+<p style="color: green"><%= notice %></p>
+
+<% content_for :title, "Emergency contacts" %>
+
+<h1>Emergency contacts</h1>
+
+<div id="emergency_contacts">
+  <% @emergency_contacts.each do |emergency_contact| %>
+    <%= render emergency_contact %>
+    <p>
+      <%= link_to "Show this emergency contact", emergency_contact %>
+    </p>
+  <% end %>
+</div>
+
+<%= link_to "New emergency contact", new_emergency_contact_path %>

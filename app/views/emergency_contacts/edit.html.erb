@@ -1,0 +1,12 @@
+<% content_for :title, "Editing emergency contact" %>
+
+<h1>Editing emergency contact</h1>
+
+<%= render "form", emergency_contact: @emergency_contact %>
+
+<br>
+
+<div>
+  <%= link_to "Show this emergency contact", @emergency_contact %> |
+  <%= link_to "Back to emergency contacts", emergency_contacts_path %>
+</div>

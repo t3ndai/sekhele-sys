@@ -1,0 +1,55 @@
+<%= form_with(model: [local_assigns[:employee], emergency_contact]) do |form| %>
+  <% if emergency_contact.errors.any? %>
+    <div style="color: red">
+      <h2><%= pluralize(emergency_contact.errors.count, "error") %> prohibited this emergency_contact from being saved:</h2>
+      <ul>
+        <% emergency_contact.errors.each do |error| %>
+          <li><%= error.full_message %></li>
+        <% end %>
+      </ul>
+    </div>
+  <% end %>
+  <div>
+    <%= form.label :first_name, style: "display: block" %>
+    <%= form.text_field :first_name %>
+  </div>
+  <div>
+    <%= form.label :last_name, style: "display: block" %>
+    <%= form.text_field :last_name %>
+  </div>
+  <div>
+    <%= form.label :phone1, style: "display: block" %>
+    <%= form.text_field :phone1 %>
+  </div>
+  <div>
+    <%= form.label :phone2, style: "display: block" %>
+    <%= form.text_field :phone2 %>
+  </div>
+  <div>
+    <%= form.label :addr_line1, style: "display: block" %>
+    <%= form.text_field :addr_line1 %>
+  </div>
+  <div>
+    <%= form.label :addr_line2, style: "display: block" %>
+    <%= form.text_field :addr_line2 %>
+  </div>
+  <div>
+    <%= form.label :addr_lin3, style: "display: block" %>
+    <%= form.text_field :addr_lin3 %>
+  </div>
+  <div>
+    <%= form.label :city, style: "display: block" %>
+    <%= form.text_field :city %>
+  </div>
+  <div>
+    <%= form.label :postcode, style: "display: block" %>
+    <%= form.text_field :postcode %>
+  </div>
+  <div>
+    <%= form.label :country, style: "display: block" %>
+    <%= form.country_select :country, { priority_countries: ["ZW", "ZA", "ZM", "KE", "MW", "TZ"] }, class: 'required-field', required: true %>
+  </div>
+  <div>
+    <%= form.submit %>
+  </div>
+<% end %>

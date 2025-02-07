@@ -10,7 +10,7 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema[8.0].define(version: 2025_02_06_073128) do
+ActiveRecord::Schema[8.0].define(version: 2025_02_07_100731) do
   # These are extensions that must be enabled in order to support this database
   enable_extension "pg_catalog.plpgsql"
 
@@ -78,6 +78,23 @@ ActiveRecord::Schema[8.0].define(version: 2025_02_06_073128) do
     t.datetime "created_at", null: false
     t.datetime "updated_at", null: false
     t.index ["organization_id"], name: "index_documents_on_organization_id"
+  end
+
+  create_table "emergency_contacts", force: :cascade do |t|
+    t.bigint "employee_id", null: false
+    t.string "first_name"
+    t.string "last_name"
+    t.string "phone1"
+    t.string "phone2"
+    t.string "addr_line1"
+    t.string "addr_line2"
+    t.string "addr_lin3"
+    t.string "city"
+    t.string "postcode"
+    t.string "country"
+    t.datetime "created_at", null: false
+    t.datetime "updated_at", null: false
+    t.index ["employee_id"], name: "index_emergency_contacts_on_employee_id"
   end
 
   create_table "employee_files", force: :cascade do |t|
@@ -225,6 +242,7 @@ ActiveRecord::Schema[8.0].define(version: 2025_02_06_073128) do
   add_foreign_key "cost_centers", "organizations"
   add_foreign_key "departments", "organizations"
   add_foreign_key "documents", "organizations"
+  add_foreign_key "emergency_contacts", "employees"
   add_foreign_key "employee_files", "documents"
   add_foreign_key "employee_files", "employees"
   add_foreign_key "employees", "employees", column: "manager_id"

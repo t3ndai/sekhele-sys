@@ -1,0 +1,10 @@
+<p style="color: green"><%= notice %></p>
+
+<%= render @emergency_contact %>
+
+<div>
+  <%= link_to "Edit this emergency contact", edit_emergency_contact_path(@emergency_contact) %> |
+  <%= link_to "Back to emergency contacts", emergency_contacts_path %>
+
+  <%= button_to "Destroy this emergency contact", @emergency_contact, method: :delete %>
+</div>

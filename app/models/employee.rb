@@ -6,6 +6,7 @@ class Employee < ApplicationRecord
 
   has_many :reports, class_name: "Employee", foreign_key: "manager_id"
   has_one :user, dependent: :destroy
+  has_one :emergency_contact, dependent: :destroy
   has_many :employee_files
 
   after_create :create_user
