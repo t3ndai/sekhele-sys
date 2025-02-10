@@ -9,5 +9,10 @@
   <%= link_to "Add Job", new_organization_job_function_path(@organization) %>
   <%= link_to "Add Document Policy", new_organization_document_path(@organization) %>
   <%= link_to "Add Company File(s)", new_organization_company_file_path(@organization)  %>
+</div>
+<div>
+  <%= link_to "Add Asset Categories", new_organization_asset_category_path(@organization) %>
+</div>
+<div>
   <%= button_to "Destroy this organization", @organization, method: :delete %>
 </div>

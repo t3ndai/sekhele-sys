@@ -1,0 +1,7 @@
+<p style="color: green"><%= notice %></p>
+<%= render @asset_category %>
+<div>
+  <%= link_to "Edit this asset category", edit_asset_category_path(@asset_category) %> |
+  <%= link_to "Back to asset categories", organization_asset_categories_path(@asset_category.organization) %>
+  <%= button_to "Destroy this asset category", @asset_category, method: :delete %>
+</div>

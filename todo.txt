@@ -13,7 +13,7 @@
 - Assign manager to employee x
 - Add docs to employee x
 - Approve employee docs 
-- Add Emergency Contact employee 
+- Add Emergency Contact employee x
 - Add Employee beneficiaries 
 - Add cost center x
 - Add Job Functions x 
@@ -26,6 +26,12 @@
 - Public Holidays 
 - Company Events 
 - Assign Manager role to employee by people admin
+- Employee Assets (track assets given to employees)
+    - date_given 
+    - date_returned 
+    - asset_name 
+    - asset_serial_number 
+- Authorize each route 
 
 
 

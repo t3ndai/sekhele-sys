@@ -6,6 +6,7 @@ Rails.application.routes.draw do
       resources :employee_managers
       resources :emergency_contacts
     end
+    resources :asset_categories
     resources :locations
     resources :cost_centers
     resources :job_functions do
