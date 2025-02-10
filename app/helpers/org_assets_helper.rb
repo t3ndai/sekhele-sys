@@ -1,0 +1,2 @@
+module OrgAssetsHelper
+end

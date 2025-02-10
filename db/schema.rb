@@ -10,7 +10,7 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema[8.0].define(version: 2025_02_07_185420) do
+ActiveRecord::Schema[8.0].define(version: 2025_02_10_135037) do
   # These are extensions that must be enabled in order to support this database
   enable_extension "pg_catalog.plpgsql"
 
@@ -188,6 +188,19 @@ ActiveRecord::Schema[8.0].define(version: 2025_02_07_185420) do
     t.index ["organization_id"], name: "index_locations_on_organization_id"
   end
 
+  create_table "org_assets", force: :cascade do |t|
+    t.bigint "employee_id", null: false
+    t.bigint "asset_category_id", null: false
+    t.date "date_given"
+    t.date "date_returned"
+    t.string "asset_name"
+    t.string "asset_serial_number"
+    t.datetime "created_at", null: false
+    t.datetime "updated_at", null: false
+    t.index ["asset_category_id"], name: "index_org_assets_on_asset_category_id"
+    t.index ["employee_id"], name: "index_org_assets_on_employee_id"
+  end
+
   create_table "organizations", force: :cascade do |t|
     t.string "name", null: false
     t.datetime "created_at", null: false
@@ -263,6 +276,8 @@ ActiveRecord::Schema[8.0].define(version: 2025_02_07_185420) do
   add_foreign_key "job_functions", "organizations"
   add_foreign_key "job_levels", "job_functions"
   add_foreign_key "locations", "organizations"
+  add_foreign_key "org_assets", "asset_categories"
+  add_foreign_key "org_assets", "employees"
   add_foreign_key "recovery_codes", "users"
   add_foreign_key "sessions", "users"
 end

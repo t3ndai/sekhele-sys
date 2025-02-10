@@ -1,9 +1,6 @@
 <p style="color: green"><%= notice %></p>
-
 <% content_for :title, "Asset categories" %>
-
 <h1>Asset categories</h1>
-
 <div id="asset_categories">
   <% @asset_categories.each do |asset_category| %>
     <%= render asset_category %>
@@ -12,5 +9,4 @@
     </p>
   <% end %>
 </div>
-
-<%= link_to "New asset category", new_asset_category_path %>
+<%= link_to "New asset category", new_organization_asset_category_path(@organization) %>

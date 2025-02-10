@@ -1,0 +1,12 @@
+<p style="color: green"><%= notice %></p>
+<% content_for :title, "Org assets" %>
+<h1>Org assets</h1>
+<div id="org_assets">
+  <% @org_assets.each do |org_asset| %>
+    <%= render org_asset %>
+    <p>
+      <%= link_to "Show this org asset", org_asset %>
+    </p>
+  <% end %>
+</div>
+<%= link_to "New org asset", new_employee_org_asset_path(@employee) %>

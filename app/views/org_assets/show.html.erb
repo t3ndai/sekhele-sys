@@ -1,0 +1,7 @@
+<p style="color: green"><%= notice %></p>
+<%= render @org_asset %>
+<div>
+  <%= link_to "Edit this org asset", edit_org_asset_path(@org_asset) %> |
+  <%= link_to "Back to org assets", employee_org_assets_path(@org_asset.employee) %>
+  <%= button_to "Destroy this org asset", @org_asset, method: :delete %>
+</div>

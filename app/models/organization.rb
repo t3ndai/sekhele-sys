@@ -9,6 +9,7 @@ class Organization < ApplicationRecord
   has_many :documents
   has_many :company_files
   has_many :asset_categories
+  has_many :org_assets, through: :asset_categories
 
   validates :name, presence: true, uniqueness: true
 end

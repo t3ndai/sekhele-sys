@@ -1,0 +1,17 @@
+# Read about fixtures at https://api.rubyonrails.org/classes/ActiveRecord/FixtureSet.html
+
+one:
+  employee: one
+  asset_category: one
+  date_given: 2025-02-10
+  date_returned: 2025-02-10
+  asset_name: MyString
+  asset_serial_number: MyString
+
+two:
+  employee: two
+  asset_category: two
+  date_given: 2025-02-10
+  date_returned: 2025-02-10
+  asset_name: MyString
+  asset_serial_number: MyString

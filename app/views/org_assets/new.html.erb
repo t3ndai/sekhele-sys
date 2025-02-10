@@ -1,0 +1,7 @@
+<% content_for :title, "New org asset" %>
+<h1>New org asset</h1>
+<%= render "form", employee: @employee, org_asset: @org_asset %>
+<br>
+<div>
+  <%= link_to "Back to org assets", employee_org_assets_path(@employee) %>
+</div>
