@@ -11,6 +11,9 @@
   <%= link_to "Add Asset", new_employee_org_asset_path(@employee) %>
 </div>
 <div>
+  <%= link_to "Add Leave Policy", new_employee_leave_balance_path(@employee) %>
+</div>
+<div>
   <%= link_to "Edit this employee", edit_employee_path(@employee) %> |
   <%= link_to "Back to employees", organization_employees_path(@organization) %>
   <%= button_to "Destroy this employee", @employee, method: :delete %>

@@ -1,0 +1,12 @@
+<p style="color: green"><%= notice %></p>
+<% content_for :title, "Leave balances" %>
+<h1>Leave balances</h1>
+<div id="leave_balances">
+  <% @leave_balances.each do |leave_balance| %>
+    <%= render leave_balance %>
+    <p>
+      <%= link_to "Show this leave balance", leave_balance %>
+    </p>
+  <% end %>
+</div>
+<%= link_to "New leave balance", new_employee_leave_balance_path(@employee) %>

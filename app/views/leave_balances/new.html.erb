@@ -1,0 +1,7 @@
+<% content_for :title, "New leave balance" %>
+<h1>New leave balance</h1>
+<%= render "form", employee: @employee, leave_balance: @leave_balance %>
+<br>
+<div>
+  <%= link_to "Back to leave balances", employee_leave_balances_path %>
+</div>

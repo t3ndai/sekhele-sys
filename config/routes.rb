@@ -6,6 +6,7 @@ Rails.application.routes.draw do
       resources :employee_managers
       resources :emergency_contacts
       resources :org_assets
+      resources :leave_balances
     end
     resources :asset_categories
     resources :locations
