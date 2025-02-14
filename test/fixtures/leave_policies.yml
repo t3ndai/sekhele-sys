@@ -1,0 +1,17 @@
+# Read about fixtures at https://api.rubyonrails.org/classes/ActiveRecord/FixtureSet.html
+
+one:
+  leave_category: one
+  start_balance: 1
+  balance_starts: 2025-02-14
+  balance_expires: 2025-02-14
+  organization: one
+  name: MyString
+
+two:
+  leave_category: two
+  start_balance: 1
+  balance_starts: 2025-02-14
+  balance_expires: 2025-02-14
+  organization: two
+  name: MyString

@@ -1,0 +1,12 @@
+<p style="color: green"><%= notice %></p>
+<% content_for :title, "Leave categories" %>
+<h1>Leave categories</h1>
+<div id="leave_categories">
+  <% @leave_categories.each do |leave_category| %>
+    <%= render leave_category %>
+    <p>
+      <%= link_to "Show this leave category", leave_category %>
+    </p>
+  <% end %>
+</div>
+<%= link_to "New leave category", new_organization_leave_category_path(@organization) %>

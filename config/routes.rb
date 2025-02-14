@@ -15,6 +15,8 @@ Rails.application.routes.draw do
     end
     resources :documents
     resources :company_files
+    resources :leave_categories
+    resources :leave_policies
   end
   namespace :app_admin do
     resources :users

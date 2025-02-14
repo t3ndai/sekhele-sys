@@ -1,0 +1,7 @@
+<p style="color: green"><%= notice %></p>
+<%= render @leave_category %>
+<div>
+  <%= link_to "Edit this leave category", edit_leave_category_path(@leave_category) %> |
+  <%= link_to "Back to Organization leave categories", organization_leave_categories_path(@leave_category.organization) %>
+  <%= button_to "Destroy this leave category", @leave_category, method: :delete %>
+</div>

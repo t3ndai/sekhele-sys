@@ -32,6 +32,17 @@
     - asset_name 
     - asset_serial_number 
 - Authorize each route 
+- Leave Policy
+    - Leave Categories 
+    -- sick | vacation | personal (bereavment, child-sick)
+    - start_balance 
+    - balance_expires (valid_from)
+    - balance_starts (valid_to)
+- Leave Request 
+    - approver (manager)
+    - date_from 
+    - date_to 
+    - approved -> true | false 
 
 
 

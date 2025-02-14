@@ -1,0 +1,7 @@
+<p style="color: green"><%= notice %></p>
+<%= render @leave_policy %>
+<div>
+  <%= link_to "Edit this leave policy", edit_leave_policy_path(@leave_policy) %> |
+  <%= link_to "Back to leave policies", organization_leave_policies_path(@leave_policy.organization) %>
+  <%= button_to "Destroy this leave policy", @leave_policy, method: :delete %>
+</div>

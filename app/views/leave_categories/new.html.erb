@@ -1,0 +1,7 @@
+<% content_for :title, "New leave category" %>
+<h1>New leave category</h1>
+<%= render "form", organization: @organization, leave_category: @leave_category %>
+<br>
+<div>
+  <%= link_to "Back to Organization leave categories", organization_leave_categories_path(@organization) %>
+</div>

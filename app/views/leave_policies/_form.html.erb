@@ -1,0 +1,35 @@
+<%= form_with(model: [organization, leave_policy]) do |form| %>
+  <% if leave_policy.errors.any? %>
+    <div style="color: red">
+      <h2><%= pluralize(leave_policy.errors.count, "error") %> prohibited this leave_policy from being saved:</h2>
+      <ul>
+        <% leave_policy.errors.each do |error| %>
+          <li><%= error.full_message %></li>
+        <% end %>
+      </ul>
+    </div>
+  <% end %>
+  <div>
+    <%= form.label :leave_category_id, style: "display: block" %>
+    <%= form.select :leave_category_id, @organization.leave_categories.map  { |leave_category| [leave_category.name, leave_category.id]} %>
+  </div>
+  <div>
+    <%= form.label :start_balance, style: "display: block" %>
+    <%= form.number_field :start_balance %>
+  </div>
+  <div>
+    <%= form.label :balance_starts, style: "display: block" %>
+    <%= form.date_field :valid_from %>
+  </div>
+  <div>
+    <%= form.label :balance_expires, style: "display: block" %>
+    <%= form.date_field :valid_to %>
+  </div>
+  <div>
+    <%= form.label :name, style: "display: block" %>
+    <%= form.text_field :name %>
+  </div>
+  <div>
+    <%= form.submit %>
+  </div>
+<% end %>

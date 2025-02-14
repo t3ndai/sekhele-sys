@@ -1,0 +1,8 @@
+<% content_for :title, "Editing leave policy" %>
+<h1>Editing leave policy</h1>
+<%= render "form", leave_policy: @leave_policy %>
+<br>
+<div>
+  <%= link_to "Show this leave policy", @leave_policy %> |
+  <%= link_to "Back to Organization leave policies", organization_leave_policies_path(@leave_policy.organization) %>
+</div>

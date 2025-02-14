@@ -1,0 +1,12 @@
+<p style="color: green"><%= notice %></p>
+<% content_for :title, "Leave policies" %>
+<h1>Leave policies</h1>
+<div id="leave_policies">
+  <% @leave_policies.each do |leave_policy| %>
+    <%= render leave_policy %>
+    <p>
+      <%= link_to "Show this leave policy", leave_policy %>
+    </p>
+  <% end %>
+</div>
+<%= link_to "New leave policy", new_organization_leave_policy_path(@organization) %>
