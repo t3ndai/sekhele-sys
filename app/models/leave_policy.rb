@@ -2,6 +2,8 @@ class LeavePolicy < ApplicationRecord
   belongs_to :leave_category
   belongs_to :organization
 
+  has_many :leave_requests
+
   validate :validate_balance_expires_after_starts
 
   validates :name, presence: true, uniqueness: { scope: :leave_category }

@@ -1,0 +1,15 @@
+# Read about fixtures at https://api.rubyonrails.org/classes/ActiveRecord/FixtureSet.html
+
+one:
+  employee: one
+  status: MyString
+  approver: one
+  date_from: 2025-02-14
+  date_to: 2025-02-14
+
+two:
+  employee: two
+  status: MyString
+  approver: two
+  date_from: 2025-02-14
+  date_to: 2025-02-14

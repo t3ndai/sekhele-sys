@@ -88,3 +88,6 @@ gem "aws-sdk-core", "3.211"
 
 # faker to seed data
 gem "faker"
+
+# support for business days
+gem "business_time"

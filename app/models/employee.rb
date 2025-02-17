@@ -9,6 +9,9 @@ class Employee < ApplicationRecord
   has_one :emergency_contact, dependent: :destroy
   has_many :employee_files
   has_many :org_assets
+  has_many :leave_balances
+  has_many :leave_policies, through: :leave_balances
+  has_many :leave_requests
 
   after_create :create_user
 

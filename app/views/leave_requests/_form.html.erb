@@ -1,0 +1,31 @@
+<%= form_with(model: [employee, leave_request]) do |form| %>
+  <% if leave_request.errors.any? %>
+    <div style="color: red">
+      <h2><%= pluralize(leave_request.errors.count, "error") %> prohibited this leave_request from being saved:</h2>
+      <ul>
+        <% leave_request.errors.each do |error| %>
+          <li><%= error.full_message %></li>
+        <% end %>
+      </ul>
+    </div>
+  <% end %>
+  <div>
+    <%= form.label :leave_type, style: "display: block" %>
+    <%= form.select :leave_policy_id, @employee.leave_policies.map {|leave_policy| [leave_policy.name, leave_policy.id]} %>
+  </div>
+  <div>
+    <%= form.label :date_from, style: "display: block" %>
+    <%= form.date_field :date_from %>
+  </div>
+  <div>
+    <%= form.label :date_to, style: "display: block" %>
+    <%= form.date_field :date_to %>
+  </div>
+  <div>
+    <%= form.label :reason, style: "display: block" %>
+    <%= form.text_area :reason, size: "40x2" %>
+  </div>
+  <div>
+    <%= form.submit %>
+  </div>
+<% end %>

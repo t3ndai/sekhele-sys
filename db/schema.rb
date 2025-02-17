@@ -10,7 +10,7 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema[8.0].define(version: 2025_02_14_092247) do
+ActiveRecord::Schema[8.0].define(version: 2025_02_14_152832) do
   # These are extensions that must be enabled in order to support this database
   enable_extension "pg_catalog.plpgsql"
 
@@ -206,6 +206,19 @@ ActiveRecord::Schema[8.0].define(version: 2025_02_14_092247) do
     t.index ["organization_id"], name: "index_leave_policies_on_organization_id"
   end
 
+  create_table "leave_requests", force: :cascade do |t|
+    t.bigint "employee_id", null: false
+    t.bigint "leave_policy_id", null: false
+    t.string "status"
+    t.date "date_from"
+    t.date "date_to"
+    t.text "reason"
+    t.datetime "created_at", null: false
+    t.datetime "updated_at", null: false
+    t.index ["employee_id"], name: "index_leave_requests_on_employee_id"
+    t.index ["leave_policy_id"], name: "index_leave_requests_on_leave_policy_id"
+  end
+
   create_table "locations", force: :cascade do |t|
     t.string "name"
     t.integer "organization_id", null: false
@@ -311,6 +324,8 @@ ActiveRecord::Schema[8.0].define(version: 2025_02_14_092247) do
   add_foreign_key "leave_categories", "organizations"
   add_foreign_key "leave_policies", "leave_categories"
   add_foreign_key "leave_policies", "organizations"
+  add_foreign_key "leave_requests", "employees"
+  add_foreign_key "leave_requests", "leave_policies"
   add_foreign_key "locations", "organizations"
   add_foreign_key "org_assets", "asset_categories"
   add_foreign_key "org_assets", "employees"

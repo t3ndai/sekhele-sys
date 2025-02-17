@@ -1,0 +1,12 @@
+<% content_for :title, "Editing leave request" %>
+
+<h1>Editing leave request</h1>
+
+<%= render "form", leave_request: @leave_request %>
+
+<br>
+
+<div>
+  <%= link_to "Show this leave request", @leave_request %> |
+  <%= link_to "Back to leave requests", leave_requests_path %>
+</div>

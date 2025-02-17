@@ -25,8 +25,8 @@
 - Employee Onboarding Forms 
 - Public Holidays 
 - Company Events 
-- Assign Manager role to employee by people admin
-- Employee Assets (track assets given to employees)
+- Assign Manager role to employee by people admin x
+- Employee Assets (track assets given to employees) x
     - date_given 
     - date_returned 
     - asset_name 
@@ -38,6 +38,7 @@
     - start_balance 
     - balance_expires (valid_from)
     - balance_starts (valid_to)
+    - approval_required -> boolean 
 - Leave Request 
     - approver (manager)
     - date_from 
@@ -49,8 +50,11 @@
     - time_remaining (calculated)
 - Mass Actions 
     - assign employees leave balance_starts
-    
-
+- Leave Request Approval Flow 
+    - notify approver 
+    - approve request 
+    - notify requester 
+- validate leave request required if policy requires approves
 
 
 

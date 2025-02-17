@@ -7,6 +7,7 @@ Rails.application.routes.draw do
       resources :emergency_contacts
       resources :org_assets
       resources :leave_balances
+      resources :leave_requests
     end
     resources :asset_categories
     resources :locations

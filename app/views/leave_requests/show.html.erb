@@ -1,0 +1,6 @@
+<%= render @leave_request %>
+<div>
+  <%= link_to "Edit this leave request", edit_leave_request_path(@leave_request) %> |
+  <%= link_to "Back to leave requests", employee_leave_requests_path(@leave_request.employee) %>
+  <%= button_to "Destroy this leave request", @leave_request, method: :delete %>
+</div>
