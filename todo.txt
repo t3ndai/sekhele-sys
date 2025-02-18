@@ -39,12 +39,12 @@
     - balance_expires (valid_from)
     - balance_starts (valid_to)
     - approval_required -> boolean 
-- Leave Request 
+- Leave Request x
     - approver (manager)
     - date_from 
     - date_to 
     - approved -> true | false 
-- Leave Balance 
+- Leave Balance  x
     - belongs to employee 
     - time_taken 
     - time_remaining (calculated)
@@ -55,7 +55,14 @@
     - approve request 
     - notify requester 
 - validate leave request required if policy requires approves
-
+- TimeWorked x
+    - clock_in | clock_out 
+    - date 
+    - hours worked 
+    - active time tracking - use clock in/out method 
+    - retro time tracking - pick date, add hours worked x
+    - approvals 
+- show weekly hours for employee 
 
 
 

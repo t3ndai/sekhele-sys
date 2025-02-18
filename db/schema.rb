@@ -10,7 +10,7 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema[8.0].define(version: 2025_02_14_152832) do
+ActiveRecord::Schema[8.0].define(version: 2025_02_18_191223) do
   # These are extensions that must be enabled in order to support this database
   enable_extension "pg_catalog.plpgsql"
 
@@ -281,6 +281,17 @@ ActiveRecord::Schema[8.0].define(version: 2025_02_14_152832) do
     t.index ["user_id"], name: "index_sessions_on_user_id"
   end
 
+  create_table "time_workeds", force: :cascade do |t|
+    t.time "start_time"
+    t.time "end_time"
+    t.text "note"
+    t.date "day"
+    t.bigint "employee_id", null: false
+    t.datetime "created_at", null: false
+    t.datetime "updated_at", null: false
+    t.index ["employee_id"], name: "index_time_workeds_on_employee_id"
+  end
+
   create_table "users", force: :cascade do |t|
     t.string "email", null: false
     t.string "password_digest", null: false
@@ -331,4 +342,5 @@ ActiveRecord::Schema[8.0].define(version: 2025_02_14_152832) do
   add_foreign_key "org_assets", "employees"
   add_foreign_key "recovery_codes", "users"
   add_foreign_key "sessions", "users"
+  add_foreign_key "time_workeds", "employees"
 end

@@ -8,6 +8,7 @@ Rails.application.routes.draw do
       resources :org_assets
       resources :leave_balances
       resources :leave_requests
+      resources :time_workeds
     end
     resources :asset_categories
     resources :locations

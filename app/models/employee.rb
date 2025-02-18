@@ -12,6 +12,7 @@ class Employee < ApplicationRecord
   has_many :leave_balances
   has_many :leave_policies, through: :leave_balances
   has_many :leave_requests
+  has_many :time_workeds
 
   after_create :create_user
 

@@ -1,0 +1,7 @@
+<% content_for :title, "New time worked" %>
+<h1>New time worked</h1>
+<%= render "form", employee: @employee, time_worked: @time_worked %>
+<br>
+<div>
+  <%= link_to "Back to Employee Logged Hours", employee_time_workeds_path(@employee) %>
+</div>

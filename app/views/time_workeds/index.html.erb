@@ -1,0 +1,12 @@
+<p style="color: green"><%= notice %></p>
+<% content_for :title, "Time workeds" %>
+<h1>Time workeds</h1>
+<div id="time_workeds">
+  <% @time_workeds.each do |time_worked| %>
+    <%= render time_worked %>
+    <p>
+      <%= link_to "Show this time worked", time_worked %>
+    </p>
+  <% end %>
+</div>
+<%= link_to "New time Log", new_employee_time_worked_path(@employee) %>

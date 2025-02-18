@@ -1,0 +1,6 @@
+<%= render @time_worked %>
+<div>
+  <%= link_to "Edit this time worked", edit_time_worked_path(@time_worked) %> |
+  <%= link_to "Back to Logged Time", employee_time_workeds_path(@time_worked.employee) %>
+  <%= button_to "Destroy this time worked", @time_worked, method: :delete %>
+</div>
