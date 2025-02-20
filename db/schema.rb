@@ -10,7 +10,7 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema[8.0].define(version: 2025_02_18_191223) do
+ActiveRecord::Schema[8.0].define(version: 2025_02_20_150539) do
   # These are extensions that must be enabled in order to support this database
   enable_extension "pg_catalog.plpgsql"
 
@@ -48,6 +48,25 @@ ActiveRecord::Schema[8.0].define(version: 2025_02_18_191223) do
     t.datetime "created_at", null: false
     t.datetime "updated_at", null: false
     t.index ["organization_id"], name: "index_asset_categories_on_organization_id"
+  end
+
+  create_table "benefit_types", force: :cascade do |t|
+    t.string "name"
+    t.bigint "organization_id", null: false
+    t.datetime "created_at", null: false
+    t.datetime "updated_at", null: false
+    t.index ["organization_id"], name: "index_benefit_types_on_organization_id"
+  end
+
+  create_table "benefits", force: :cascade do |t|
+    t.bigint "organization_id", null: false
+    t.bigint "benefit_type_id", null: false
+    t.string "name"
+    t.string "valuation_type"
+    t.datetime "created_at", null: false
+    t.datetime "updated_at", null: false
+    t.index ["benefit_type_id"], name: "index_benefits_on_benefit_type_id"
+    t.index ["organization_id"], name: "index_benefits_on_organization_id"
   end
 
   create_table "company_files", force: :cascade do |t|
@@ -316,6 +335,9 @@ ActiveRecord::Schema[8.0].define(version: 2025_02_18_191223) do
   add_foreign_key "active_storage_attachments", "active_storage_blobs", column: "blob_id"
   add_foreign_key "active_storage_variant_records", "active_storage_blobs", column: "blob_id"
   add_foreign_key "asset_categories", "organizations"
+  add_foreign_key "benefit_types", "organizations"
+  add_foreign_key "benefits", "benefit_types"
+  add_foreign_key "benefits", "organizations"
   add_foreign_key "company_files", "documents"
   add_foreign_key "company_files", "organizations"
   add_foreign_key "cost_centers", "organizations"

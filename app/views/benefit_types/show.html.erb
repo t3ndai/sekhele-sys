@@ -1,0 +1,6 @@
+<%= render @benefit_type %>
+<div>
+  <%= link_to "Edit this benefit type", edit_benefit_type_path(@benefit_type) %> |
+  <%= link_to "Back to benefit types", organization_benefit_types_path(@benefit_type.organization) %>
+  <%= button_to "Destroy this benefit type", @benefit_type, method: :delete %>
+</div>

@@ -13,6 +13,8 @@ class Organization < ApplicationRecord
   has_many :leave_categories
   has_many :leave_policies
   has_many :time_workeds, through: :employees
+  has_many :benefit_types
+  has_many :benefits
 
   validates :name, presence: true, uniqueness: true
 end

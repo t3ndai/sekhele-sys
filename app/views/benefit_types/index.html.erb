@@ -1,0 +1,12 @@
+<p style="color: green"><%= notice %></p>
+<% content_for :title, "Benefit types" %>
+<h1>Benefit types</h1>
+<div id="benefit_types">
+  <% @benefit_types.each do |benefit_type| %>
+    <%= render benefit_type %>
+    <p>
+      <%= link_to "Show this benefit type", benefit_type %>
+    </p>
+  <% end %>
+</div>
+<%= link_to "New benefit type", new_organization_benefit_type_path(@organization) %>

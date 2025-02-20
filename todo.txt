@@ -63,7 +63,18 @@
     - retro time tracking - pick date, add hours worked x
     - approvals 
 - show weekly hours for employee 
+- Benefit x
+    - name 
+    - valuation_type 
+    - belongs_to org 
+    - docs attached (not done yet)
+    -- Benefit Plan 
+        - belongs_to Benefit 
+        - name 
+        - amount to employee 
+        - value 
+    - BenefitType x
+        - name 
 
-
-
-
+# test user details 
+user1@testorg.com 

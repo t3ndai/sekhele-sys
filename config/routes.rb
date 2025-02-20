@@ -20,6 +20,8 @@ Rails.application.routes.draw do
     resources :company_files
     resources :leave_categories
     resources :leave_policies
+    resources :benefit_types
+    resources :benefits
   end
   namespace :app_admin do
     resources :users
