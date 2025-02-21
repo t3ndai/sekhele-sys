@@ -10,7 +10,7 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema[8.0].define(version: 2025_02_20_150539) do
+ActiveRecord::Schema[8.0].define(version: 2025_02_21_084447) do
   # These are extensions that must be enabled in order to support this database
   enable_extension "pg_catalog.plpgsql"
 
@@ -48,6 +48,17 @@ ActiveRecord::Schema[8.0].define(version: 2025_02_20_150539) do
     t.datetime "created_at", null: false
     t.datetime "updated_at", null: false
     t.index ["organization_id"], name: "index_asset_categories_on_organization_id"
+  end
+
+  create_table "benefit_plans", force: :cascade do |t|
+    t.bigint "benefit_id", null: false
+    t.string "name"
+    t.decimal "employer_contribution"
+    t.decimal "employee_contribution"
+    t.string "cover"
+    t.datetime "created_at", null: false
+    t.datetime "updated_at", null: false
+    t.index ["benefit_id"], name: "index_benefit_plans_on_benefit_id"
   end
 
   create_table "benefit_types", force: :cascade do |t|
@@ -335,6 +346,7 @@ ActiveRecord::Schema[8.0].define(version: 2025_02_20_150539) do
   add_foreign_key "active_storage_attachments", "active_storage_blobs", column: "blob_id"
   add_foreign_key "active_storage_variant_records", "active_storage_blobs", column: "blob_id"
   add_foreign_key "asset_categories", "organizations"
+  add_foreign_key "benefit_plans", "benefits"
   add_foreign_key "benefit_types", "organizations"
   add_foreign_key "benefits", "benefit_types"
   add_foreign_key "benefits", "organizations"

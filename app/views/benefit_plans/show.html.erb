@@ -1,0 +1,7 @@
+<p style="color: green"><%= notice %></p>
+<%= render @benefit_plan %>
+<div>
+  <%= link_to "Edit this benefit plan", edit_benefit_plan_path(@benefit_plan) %> |
+  <%= link_to "Back to benefit plans", benefit_benefit_plans_path(@benefit_plan.benefit) %>
+  <%= button_to "Destroy this benefit plan", @benefit_plan, method: :delete %>
+</div>

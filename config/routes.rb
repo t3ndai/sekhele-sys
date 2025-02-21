@@ -21,7 +21,9 @@ Rails.application.routes.draw do
     resources :leave_categories
     resources :leave_policies
     resources :benefit_types
-    resources :benefits
+    resources :benefits do
+      resources :benefit_plans
+    end
   end
   namespace :app_admin do
     resources :users

@@ -1,0 +1,15 @@
+# Read about fixtures at https://api.rubyonrails.org/classes/ActiveRecord/FixtureSet.html
+
+one:
+  benefit: one
+  name: MyString
+  employer_contribution: 9.99
+  employee_contribution: 9.99
+  cover: MyString
+
+two:
+  benefit: two
+  name: MyString
+  employer_contribution: 9.99
+  employee_contribution: 9.99
+  cover: MyString

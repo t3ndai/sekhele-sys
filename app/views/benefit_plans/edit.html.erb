@@ -1,0 +1,12 @@
+<% content_for :title, "Editing benefit plan" %>
+
+<h1>Editing benefit plan</h1>
+
+<%= render "form", benefit_plan: @benefit_plan %>
+
+<br>
+
+<div>
+  <%= link_to "Show this benefit plan", @benefit_plan %> |
+  <%= link_to "Back to benefit plans", benefit_plans_path %>
+</div>

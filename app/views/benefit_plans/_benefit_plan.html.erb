@@ -1,0 +1,34 @@
+<div id="<%= dom_id benefit_plan %>">
+  <p>
+    <strong>Benefit:</strong>
+    <%= benefit_plan.benefit_id %>
+  </p>
+
+  <p>
+    <strong>Name:</strong>
+    <%= benefit_plan.name %>
+  </p>
+
+  <p>
+    <strong>Employer contribution:</strong>
+    <%= benefit_plan.employer_contribution %>
+  </p>
+
+  <p>
+    <strong>Employee contribution:</strong>
+    <%= benefit_plan.employee_contribution %>
+  </p>
+
+  <p>
+    <strong>Cover:</strong>
+    <%= benefit_plan.cover %>
+  </p>
+
+  <p>
+    <strong>Documents:</strong>
+    <% benefit_plan.documents.each do |document| %>
+      <div><%= link_to document.filename, document %></div>
+    <% end %>
+  </p>
+
+</div>
