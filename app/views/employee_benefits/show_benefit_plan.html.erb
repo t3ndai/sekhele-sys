@@ -1,0 +1,21 @@
+<%= tag.div dom_id(@benefit_plan) do%>
+  <p>
+    <strong>Benefit Plan Name:</strong>
+    <%= @benefit_plan.name %>
+  </p>
+  <p>
+    <strong>Benefit Plan Covers:</strong>
+    <%= @benefit_plan.cover.humanize %>
+  </p>
+  <p>
+    <strong>Benefit Plan Cost:</strong>
+    <%= @benefit_plan.employee_contribution %>
+  </p>
+  <p>
+    <strong>Documents:</strong>
+    <% @benefit_plan.documents.each do |document| %>
+      <div><%= link_to document.filename, document %></div>
+    <% end %>
+  </p>
+  <%= render "form" %>
+<% end %>

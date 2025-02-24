@@ -1,0 +1,14 @@
+<%= tag.div dom_id(employee_benefit_plan) do%>
+  <p>
+    <strong>Benefit Plan Name:</strong>
+    <%= employee_benefit_plan.name %>
+  </p>
+  <p>
+    <strong>Benefit Plan Covers:</strong>
+    <%= employee_benefit_plan.cover.humanize %>
+  </p>
+  <p>
+    <strong>Benefit Plan Cost:</strong>
+    <%= employee_benefit_plan.employee_contribution %>
+  </p>
+<% end %>

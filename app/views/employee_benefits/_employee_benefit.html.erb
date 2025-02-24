@@ -1,0 +1,28 @@
+<div id="employee_benefit">
+  <p>
+    <strong>Benefit Name </strong>
+    <%= employee_benefit.name %>
+  </p>
+  <p>
+    <strong>Benefit Type:</strong>
+    <%= employee_benefit.benefit_type.name %>
+  </p>
+  <% if false %>
+    <p>
+      <strong>Benefit Start Date:</strong>
+      <%= employee_benefit.benefit_start_date %>
+    </p>
+    <p>
+      <strong>Benefit End Date:</strong>
+      <%= employee_benefit.benefit_end_date %>
+    </p>
+    <p>
+      <strong>Benefit Description:</strong>
+      <%= employee_benefit.benefit_description %>
+    </p>
+  <% end %>
+  <div>
+    <%= link_to "View Benefit Plans", employee_benefit_benefit_plans_path(@employee, employee_benefit) %> |
+    <%= link_to "Back to Employee", employee_path(@employee) %>
+  </div>
+</div>

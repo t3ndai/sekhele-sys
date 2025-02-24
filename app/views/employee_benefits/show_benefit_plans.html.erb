@@ -1,0 +1,14 @@
+<%= tag.div  id: "#{dom_id(@benefit)}_benefit_plans" do %>
+  <h1><%= @benefit.name %> Plans</h1>
+  <div id="employee_benefit_plans">
+    <% @benefit_plans.each do |employee_benefit_plan| %>
+      <%= render partial: "employee_benefit_plan", locals: {employee_benefit_plan: employee_benefit_plan} %>
+      <div>
+        <%= link_to "View Benefit Plan", employee_benefit_benefit_plan_path(@employee, @benefit, employee_benefit_plan) %>
+      </div>
+    <% end %>
+  </div>
+  <div>
+    <%= link_to "Back to Employee Benefit", employee_benefit_path(@employee, @benefit) %>
+  </div>
+<% end %>

@@ -65,6 +65,11 @@
 - show weekly hours for employee 
 - Benefit x
     - name 
+    - consider 
+        - benefit start_date 
+        - benefit effective_date  (immediately, 90 days, 60days etc)
+        - benefit end_date 
+        - approval flow 
     - valuation_type 
     - belongs_to org 
     - docs attached (not done yet)
@@ -75,6 +80,14 @@
         - value 
     - BenefitType x
         - name 
+    -- BenefitElection 
+        - employee belongs_to
+        - benefit_plan belongs_to
+        - election_date 
+        - documents (e.g contract)
+        - show on Employee Benefits Plans if selected 
+- Employment History 
+
 
 # test user details 
 user1@testorg.com 

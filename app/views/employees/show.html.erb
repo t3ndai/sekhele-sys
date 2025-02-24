@@ -20,6 +20,9 @@
   <%= link_to "Log Hours Worked", new_employee_time_worked_path(@employee) %>
 </div>
 <div>
+  <%= link_to "View Benefits", employee_benefits_path(@employee) %>
+</div>
+<div>
   <%= link_to "Edit this employee", edit_employee_path(@employee) %> |
   <%= link_to "Back to employees", organization_employees_path(@organization) %>
   <%= button_to "Destroy this employee", @employee, method: :delete %>

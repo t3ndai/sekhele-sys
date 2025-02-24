@@ -7,4 +7,6 @@ class Benefit < ApplicationRecord
   validates :name, presence: true, uniqueness: { scope: [ :organization_id, :benefit_type_id ] }
 
   enum :valuation_type, { taxable: "taxable", non_taxable: "non_taxable" }
+
+  scope :org_benefits, ->(org_id) { where(organization_id: org_id) }
 end

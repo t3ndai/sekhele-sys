@@ -1,0 +1,24 @@
+<div id="<%= dom_id benefit_election %>">
+  <p>
+    <strong>Employee:</strong>
+    <%= benefit_election.employee_id %>
+  </p>
+
+  <p>
+    <strong>Benefit plan:</strong>
+    <%= benefit_election.benefit_plan_id %>
+  </p>
+
+  <p>
+    <strong>Selected on:</strong>
+    <%= benefit_election.selected_on %>
+  </p>
+
+  <p>
+    <strong>Documents:</strong>
+    <% benefit_election.documents.each do |document| %>
+      <div><%= link_to document.filename, document %></div>
+    <% end %>
+  </p>
+
+</div>

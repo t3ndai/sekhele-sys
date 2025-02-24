@@ -1,0 +1,10 @@
+<p style="color: green"><%= notice %></p>
+
+<%= render @benefit_election %>
+
+<div>
+  <%= link_to "Edit this benefit election", edit_benefit_election_path(@benefit_election) %> |
+  <%= link_to "Back to benefit elections", benefit_elections_path %>
+
+  <%= button_to "Destroy this benefit election", @benefit_election, method: :delete %>
+</div>
