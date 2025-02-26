@@ -87,7 +87,8 @@
         - documents (e.g contract)
         - show on Employee Benefits Plans if selected 
 - Employment History 
-
+- convertkit (now kit) for design inspiration 
+- contextual data related to business events 
 
 # test user details 
 user1@testorg.com 
