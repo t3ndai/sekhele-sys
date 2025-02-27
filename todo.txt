@@ -89,6 +89,16 @@
 - Employment History 
 - convertkit (now kit) for design inspiration 
 - contextual data related to business events 
+-- ATS 
+    - JobPosting 
+        - positions_open 
+        - date_open 
+        - date_close 
+        - location ? 
+        - salary_range ?
+        - link to JobRequisition ?
+
+
 
 # test user details 
 user1@testorg.com 

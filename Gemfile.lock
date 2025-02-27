@@ -423,6 +423,7 @@ GEM
     thruster (0.1.10-arm64-darwin)
     thruster (0.1.10-x86_64-darwin)
     thruster (0.1.10-x86_64-linux)
+    timeliness (0.5.2)
     timeout (0.4.3)
     turbo-rails (2.0.11)
       actionpack (>= 6.0.0)
@@ -435,6 +436,9 @@ GEM
     unicode-emoji (4.0.4)
     uri (1.0.2)
     useragent (0.16.11)
+    validates_timeliness (8.0.0)
+      activemodel (>= 8.0.0, < 9)
+      timeliness (>= 0.3.10, < 1)
     web-console (4.2.1)
       actionview (>= 6.0.0)
       activemodel (>= 6.0.0)
@@ -498,6 +502,7 @@ DEPENDENCIES
   thruster
   turbo-rails
   tzinfo-data
+  validates_timeliness (~> 8.0.0.beta1)
   web-console
 
 BUNDLED WITH

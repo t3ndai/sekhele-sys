@@ -1,0 +1,13 @@
+# Read about fixtures at https://api.rubyonrails.org/classes/ActiveRecord/FixtureSet.html
+
+one:
+  organization: one
+  num_positions: 1
+  date_open: 2025-02-26
+  date_close: 2025-02-26
+
+two:
+  organization: two
+  num_positions: 1
+  date_open: 2025-02-26
+  date_close: 2025-02-26

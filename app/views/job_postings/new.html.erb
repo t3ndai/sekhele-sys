@@ -1,0 +1,7 @@
+<% content_for :title, "New job posting" %>
+<h1>New job posting</h1>
+<%= render "form", organization: @organization, job_posting: @job_posting %>
+<br>
+<div>
+  <%= link_to "Back to job postings", organization_job_postings_path(@organization) %>
+</div>

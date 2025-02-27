@@ -91,3 +91,5 @@ gem "faker"
 
 # support for business days
 gem "business_time"
+# timeliness validations
+gem "validates_timeliness", "~> 8.0.0.beta1"

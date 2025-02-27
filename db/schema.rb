@@ -10,7 +10,7 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema[8.0].define(version: 2025_02_26_150416) do
+ActiveRecord::Schema[8.0].define(version: 2025_02_26_155213) do
   # These are extensions that must be enabled in order to support this database
   enable_extension "pg_catalog.plpgsql"
 
@@ -225,6 +225,17 @@ ActiveRecord::Schema[8.0].define(version: 2025_02_26_150416) do
     t.index ["job_function_id"], name: "index_job_levels_on_job_function_id"
   end
 
+  create_table "job_postings", force: :cascade do |t|
+    t.bigint "organization_id", null: false
+    t.integer "num_positions"
+    t.string "title"
+    t.date "date_open"
+    t.date "date_close"
+    t.datetime "created_at", null: false
+    t.datetime "updated_at", null: false
+    t.index ["organization_id"], name: "index_job_postings_on_organization_id"
+  end
+
   create_table "leave_balances", force: :cascade do |t|
     t.bigint "employee_id", null: false
     t.bigint "leave_policy_id", null: false
@@ -386,6 +397,7 @@ ActiveRecord::Schema[8.0].define(version: 2025_02_26_150416) do
   add_foreign_key "job_functions", "departments"
   add_foreign_key "job_functions", "organizations"
   add_foreign_key "job_levels", "job_functions"
+  add_foreign_key "job_postings", "organizations"
   add_foreign_key "leave_balances", "employees"
   add_foreign_key "leave_balances", "leave_policies"
   add_foreign_key "leave_categories", "organizations"

@@ -30,6 +30,7 @@ Rails.application.routes.draw do
     resources :benefits do
       resources :benefit_plans
     end
+    resources :job_postings
   end
   namespace :app_admin do
     resources :users
