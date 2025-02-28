@@ -111,6 +111,7 @@
         - name 
         - mandatory -> yes | no 
         - links to Interview 
+        - belongs_to organization
     - Interview 
         - links to InterView feedback 
         - location -> onsite | virtual 

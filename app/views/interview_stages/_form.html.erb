@@ -1,0 +1,27 @@
+<%= form_with(model: [organization, interview_stage]) do |form| %>
+  <% if interview_stage.errors.any? %>
+    <div style="color: red">
+      <h2><%= pluralize(interview_stage.errors.count, "error") %> prohibited this interview_stage from being saved:</h2>
+      <ul>
+        <% interview_stage.errors.each do |error| %>
+          <li><%= error.full_message %></li>
+        <% end %>
+      </ul>
+    </div>
+  <% end %>
+  <div>
+    <%= form.label :name, style: "display: block" %>
+    <%= form.text_field :name %>
+  </div>
+  <div>
+    <%= form.label :stage_type, style: "display: block" %>
+    <%= form.collection_radio_buttons :stage_type, InterviewStage.stage_types.keys, :to_s, :humanize %>
+  </div>
+  <div>
+    <%= form.label :mandatory, style: "display: block" %>
+    <%= form.collection_radio_buttons :mandatory, InterviewStage.mandatories.keys, :to_s, :humanize %>
+  </div>
+  <div>
+    <%= form.submit %>
+  </div>
+<% end %>

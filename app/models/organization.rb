@@ -17,6 +17,7 @@ class Organization < ApplicationRecord
   has_many :benefits
   has_many :job_postings
   has_many :job_applicants, through: :job_postings
+  has_many :interview_stages
 
   validates :name, presence: true, uniqueness: true
 end

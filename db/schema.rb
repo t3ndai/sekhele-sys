@@ -10,7 +10,7 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema[8.0].define(version: 2025_02_27_113505) do
+ActiveRecord::Schema[8.0].define(version: 2025_02_28_124131) do
   # These are extensions that must be enabled in order to support this database
   enable_extension "pg_catalog.plpgsql"
 
@@ -202,6 +202,16 @@ ActiveRecord::Schema[8.0].define(version: 2025_02_27_113505) do
     t.datetime "created_at", null: false
     t.datetime "updated_at", null: false
     t.index ["user_id"], name: "index_events_on_user_id"
+  end
+
+  create_table "interview_stages", force: :cascade do |t|
+    t.bigint "organization_id", null: false
+    t.string "name"
+    t.string "mandatory"
+    t.string "stage_type"
+    t.datetime "created_at", null: false
+    t.datetime "updated_at", null: false
+    t.index ["organization_id"], name: "index_interview_stages_on_organization_id"
   end
 
   create_table "job_applicants", force: :cascade do |t|
@@ -407,6 +417,7 @@ ActiveRecord::Schema[8.0].define(version: 2025_02_27_113505) do
   add_foreign_key "employees", "employees", column: "manager_id"
   add_foreign_key "employees", "organizations"
   add_foreign_key "events", "users"
+  add_foreign_key "interview_stages", "organizations"
   add_foreign_key "job_applicants", "job_postings"
   add_foreign_key "job_functions", "departments"
   add_foreign_key "job_functions", "organizations"

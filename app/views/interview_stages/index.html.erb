@@ -1,0 +1,12 @@
+<p style="color: green"><%= notice %></p>
+<% content_for :title, "Interview stages" %>
+<h1>Interview stages</h1>
+<div id="interview_stages">
+  <% @interview_stages.each do |interview_stage| %>
+    <%= render interview_stage %>
+    <p>
+      <%= link_to "Show this interview stage", interview_stage %>
+    </p>
+  <% end %>
+</div>
+<%= link_to "New interview stage", new_organization_interview_stage_path(@organization) %>
