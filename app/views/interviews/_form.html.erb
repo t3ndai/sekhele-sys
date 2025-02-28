@@ -1,0 +1,47 @@
+<%= form_with(model: [job_applicant, interview]) do |form| %>
+  <% if interview.errors.any? %>
+    <div style="color: red">
+      <h2><%= pluralize(interview.errors.count, "error") %> prohibited this interview from being saved:</h2>
+      <ul>
+        <% interview.errors.each do |error| %>
+          <li><%= error.full_message %></li>
+        <% end %>
+      </ul>
+    </div>
+  <% end %>
+  <div>
+    <%= form.label :interview_stage_id, style: "display: block" %>
+    <%= form.collection_radio_buttons :interview_stage_id, @job_applicant.job_posting.organization.interview_stages, :id, :name   %>
+  </div>
+  <div>
+    <%= form.label :interview_on, style: "display: block" %>
+    <%= form.date_field :interview_on %>
+  </div>
+  <div>
+    <%= form.label :interview_at, style: "display: block" %>
+    <%= form.time_field :interview_at %>
+  </div>
+  <div>
+    <%= form.label :meeting_link, style: "display: block" %>
+    <%= form.text_field :meeting_link %>
+  </div>
+  <div>
+    <%= form.label :room, style: "display: block" %>
+    <%= form.text_field :room %>
+  </div>
+  <div>
+    <%= form.label :location, style: "display: block" %>
+    <%= form.text_field :location %>
+  </div>
+  <div>
+    <%= form.label :job_applicant_id, style: "display: block" %>
+    <%= form.text_field :job_applicant_id %>
+  </div>
+  <div>
+    <%= form.label :note, style: "display: block" %>
+    <%= form.text_area :note %>
+  </div>
+  <div>
+    <%= form.submit %>
+  </div>
+<% end %>

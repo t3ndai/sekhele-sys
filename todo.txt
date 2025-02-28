@@ -90,33 +90,43 @@
 - convertkit (now kit) for design inspiration 
 - contextual data related to business events 
 -- ATS 
-    - JobPosting 
+    - JobPosting x
         - positions_open 
         - date_open 
         - date_close 
         - location ? 
         - salary_range ?
         - link to JobRequisition ?
-    - JobApplicant 
+    - JobApplicant x
         - first_name 
         - last_name 
         - cv (required)
         - other_docs 
         - belongs JobPosting
         - status -> rejected | ongoing | offer . default ongoing 
-    - Org Jobs (public)
+    - Org Jobs (public) x
         - link to JobPosting 
         - link to JobApplicant
-    - InterviewStage 
+    - InterviewStage x
         - name 
         - mandatory -> yes | no 
+        - stage_type 
         - links to Interview 
         - belongs_to organization
     - Interview 
+        - note 
+        - date 
+        - time 
+        - meeting link 
+        - room 
         - links to InterView feedback 
         - location -> onsite | virtual 
         - interviewee (links to applicatant)
         - interviewers (links to employees)
+    - Inteviewer 
+        - belongs_to employee 
+        - belongs_to InterView 
+        - assigned_on 
     - InterviewFeedback  
         - links to Interview 
         - notes 

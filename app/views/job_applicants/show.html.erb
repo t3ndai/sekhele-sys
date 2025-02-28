@@ -1,10 +1,9 @@
 <p style="color: green"><%= notice %></p>
-
 <%= render @job_applicant %>
-
 <div>
-  <%= link_to "Edit this job applicant", edit_job_applicant_path(@job_applicant) %> |
-  <%= link_to "Back to job applicants", job_applicants_path %>
-
+  <%= link_to "Setup Interview", new_job_applicant_interview_path(@job_applicant) %>
+</div>
+<div>
+  <%= link_to "Back to job applicants", organization_job_applicants_path(@job_applicant.job_posting.organization) %>
   <%= button_to "Destroy this job applicant", @job_applicant, method: :delete %>
 </div>

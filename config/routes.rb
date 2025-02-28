@@ -35,7 +35,9 @@ Rails.application.routes.draw do
     get "jobs/:job_posting_id", to: "jobs#show", as: "job"
     get "jobs/:job_posting_id/apply", to: "job_applicants#new", as: "job_apply"
     post "jobs/:job_posting_id/apply", to: "job_applicants#create"
-    resources :job_applicants, only: [ :index, :show, :destroy ]
+    resources :job_applicants, only: [ :index, :show, :destroy ] do
+      resources :interviews
+    end
     resources :interview_stages
   end
   namespace :app_admin do

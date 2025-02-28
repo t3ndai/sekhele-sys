@@ -1,9 +1,6 @@
 <p style="color: green"><%= notice %></p>
-
 <% content_for :title, "Job applicants" %>
-
 <h1>Job applicants</h1>
-
 <div id="job_applicants">
   <% @job_applicants.each do |job_applicant| %>
     <%= render job_applicant %>
@@ -12,5 +9,3 @@
     </p>
   <% end %>
 </div>
-
-<%= link_to "New job applicant", new_job_applicant_path %>
