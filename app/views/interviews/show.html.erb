@@ -1,5 +1,7 @@
-<p style="color: green"><%= notice %></p>
 <%= render @interview %>
+<div>
+  <%= link_to "Assign Interviewer(s)", new_interview_interviewer_path(@interview) %>
+</div>
 <div>
   <%= link_to "Edit this interview", edit_interview_path(@interview) %> |
   <%= link_to "Back to interviews", job_applicant_interviews_path(@interview.job_applicant) %>

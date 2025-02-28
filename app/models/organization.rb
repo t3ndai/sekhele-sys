@@ -18,6 +18,12 @@ class Organization < ApplicationRecord
   has_many :job_postings
   has_many :job_applicants, through: :job_postings
   has_many :interview_stages
+  has_many :interviews, through: :interview_stages
+  has_many :interviewers, through: :employees
+  has_many :leave_requests, through: :employees
+  has_many :leave_balances, through: :employees
+  has_many :benefit_elections, through: :employees
+  has_many :benefit_plans, through: :benefit_elections
 
   validates :name, presence: true, uniqueness: true
 end

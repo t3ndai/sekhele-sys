@@ -1,0 +1,6 @@
+<%= render @interviewer %>
+<div>
+  <%= link_to "Edit this interviewer", edit_interviewer_path(@interviewer) %> |
+  <%= link_to "Back to interviewers", interview_interviewers_path(@interviewer.interview) %>
+  <%= button_to "Destroy this interviewer", @interviewer, method: :delete %>
+</div>

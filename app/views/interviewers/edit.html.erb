@@ -1,0 +1,12 @@
+<% content_for :title, "Editing interviewer" %>
+
+<h1>Editing interviewer</h1>
+
+<%= render "form", interviewer: @interviewer %>
+
+<br>
+
+<div>
+  <%= link_to "Show this interviewer", @interviewer %> |
+  <%= link_to "Back to interviewers", interviewers_path %>
+</div>

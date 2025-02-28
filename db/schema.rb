@@ -10,7 +10,7 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema[8.0].define(version: 2025_02_28_144520) do
+ActiveRecord::Schema[8.0].define(version: 2025_02_28_184943) do
   # These are extensions that must be enabled in order to support this database
   enable_extension "pg_catalog.plpgsql"
 
@@ -212,6 +212,16 @@ ActiveRecord::Schema[8.0].define(version: 2025_02_28_144520) do
     t.datetime "created_at", null: false
     t.datetime "updated_at", null: false
     t.index ["organization_id"], name: "index_interview_stages_on_organization_id"
+  end
+
+  create_table "interviewers", force: :cascade do |t|
+    t.bigint "interview_id", null: false
+    t.bigint "employee_id", null: false
+    t.date "assigned_on"
+    t.datetime "created_at", null: false
+    t.datetime "updated_at", null: false
+    t.index ["employee_id"], name: "index_interviewers_on_employee_id"
+    t.index ["interview_id"], name: "index_interviewers_on_interview_id"
   end
 
   create_table "interviews", force: :cascade do |t|
@@ -433,6 +443,8 @@ ActiveRecord::Schema[8.0].define(version: 2025_02_28_144520) do
   add_foreign_key "employees", "organizations"
   add_foreign_key "events", "users"
   add_foreign_key "interview_stages", "organizations"
+  add_foreign_key "interviewers", "employees"
+  add_foreign_key "interviewers", "interviews"
   add_foreign_key "interviews", "interview_stages"
   add_foreign_key "interviews", "job_applicants"
   add_foreign_key "job_applicants", "job_postings"

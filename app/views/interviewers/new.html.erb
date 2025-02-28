@@ -1,0 +1,7 @@
+<% content_for :title, "New interviewer" %>
+<h1>New interviewer</h1>
+<%= render "form", interview: @interview, interviewer: @interviewer %>
+<br>
+<div>
+  <%= link_to "Back to interviewers", interview_interviewers_path(@interview) %>
+</div>
