@@ -6,4 +6,7 @@ class JobPosting < ApplicationRecord
   validates :num_positions, numericality: { only_integer: true, greater_than: 0 }
   validates :date_open, :date_close, timeliness: { on_or_after: Date.current }
   validates :date_close, timeliness: { on_or_after: :date_open }
+
+  scope :active, -> { where("date_open <= ? AND date_close >= ?", Date.current, Date.current) }
+  scope :org_jobs, ->(organization) { where(organization: organization) }
 end

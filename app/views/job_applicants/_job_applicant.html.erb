@@ -1,0 +1,49 @@
+<div id="<%= dom_id job_applicant %>">
+  <p>
+    <strong>Job posting:</strong>
+    <%= job_applicant.job_posting_id %>
+  </p>
+
+  <p>
+    <strong>Applied on:</strong>
+    <%= job_applicant.applied_on %>
+  </p>
+
+  <p>
+    <strong>First name:</strong>
+    <%= job_applicant.first_name %>
+  </p>
+
+  <p>
+    <strong>Last name:</strong>
+    <%= job_applicant.last_name %>
+  </p>
+
+  <p>
+    <strong>Middle name:</strong>
+    <%= job_applicant.middle_name %>
+  </p>
+
+  <p>
+    <strong>Email:</strong>
+    <%= job_applicant.email %>
+  </p>
+
+  <p>
+    <strong>Phone:</strong>
+    <%= job_applicant.phone %>
+  </p>
+
+  <p>
+    <strong>Cv:</strong>
+    <%= link_to job_applicant.cv.filename, job_applicant.cv if job_applicant.cv.attached? %>
+  </p>
+
+  <p>
+    <strong>Other docs:</strong>
+    <% job_applicant.other_docs.each do |other_doc| %>
+      <div><%= link_to other_doc.filename, other_doc %></div>
+    <% end %>
+  </p>
+
+</div>

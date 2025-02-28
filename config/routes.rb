@@ -31,6 +31,11 @@ Rails.application.routes.draw do
       resources :benefit_plans
     end
     resources :job_postings
+    get "jobs/", to: "jobs#index"
+    get "jobs/:job_posting_id", to: "jobs#show", as: "job"
+    get "jobs/:job_posting_id/apply", to: "job_applicants#new", as: "job_apply"
+    post "jobs/:job_posting_id/apply", to: "job_applicants#create"
+    resources :job_applicants, only: [ :index, :show, :destroy ]
   end
   namespace :app_admin do
     resources :users

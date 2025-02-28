@@ -1,0 +1,10 @@
+<h1><%= @job_posting.title %></h1>
+<p>
+  <strong>Closes:</strong>
+  <%= @job_posting.date_close %>
+</p>
+<p>
+  <strong>Description</strong>
+  <%= @job_posting.description %>
+</p>
+<%= link_to "Apply", organization_job_apply_path(@job_posting) %>

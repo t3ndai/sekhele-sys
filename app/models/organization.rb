@@ -15,6 +15,8 @@ class Organization < ApplicationRecord
   has_many :time_workeds, through: :employees
   has_many :benefit_types
   has_many :benefits
+  has_many :job_postings
+  has_many :job_applicants, through: :job_postings
 
   validates :name, presence: true, uniqueness: true
 end

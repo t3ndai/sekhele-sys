@@ -97,7 +97,33 @@
         - location ? 
         - salary_range ?
         - link to JobRequisition ?
-
+    - JobApplicant 
+        - first_name 
+        - last_name 
+        - cv (required)
+        - other_docs 
+        - belongs JobPosting
+        - status -> rejected | ongoing | offer . default ongoing 
+    - Org Jobs (public)
+        - link to JobPosting 
+        - link to JobApplicant
+    - InterviewStage 
+        - name 
+        - mandatory -> yes | no 
+        - links to Interview 
+    - Interview 
+        - links to InterView feedback 
+        - location -> onsite | virtual 
+        - interviewee (links to applicatant)
+        - interviewers (links to employees)
+    - InterviewFeedback  
+        - links to Interview 
+        - notes 
+        - status -> strong no | no | yes | strong yes 
+    - CandidateNote 
+        - created after creating JobApplicant
+        - notes 
+               
 
 
 # test user details 

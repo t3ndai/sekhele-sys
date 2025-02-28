@@ -10,7 +10,7 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema[8.0].define(version: 2025_02_26_155213) do
+ActiveRecord::Schema[8.0].define(version: 2025_02_27_113505) do
   # These are extensions that must be enabled in order to support this database
   enable_extension "pg_catalog.plpgsql"
 
@@ -204,6 +204,19 @@ ActiveRecord::Schema[8.0].define(version: 2025_02_26_155213) do
     t.index ["user_id"], name: "index_events_on_user_id"
   end
 
+  create_table "job_applicants", force: :cascade do |t|
+    t.bigint "job_posting_id", null: false
+    t.date "applied_on"
+    t.string "first_name"
+    t.string "last_name"
+    t.string "middle_name"
+    t.string "email"
+    t.string "phone"
+    t.datetime "created_at", null: false
+    t.datetime "updated_at", null: false
+    t.index ["job_posting_id"], name: "index_job_applicants_on_job_posting_id"
+  end
+
   create_table "job_functions", force: :cascade do |t|
     t.string "title"
     t.bigint "department_id"
@@ -394,6 +407,7 @@ ActiveRecord::Schema[8.0].define(version: 2025_02_26_155213) do
   add_foreign_key "employees", "employees", column: "manager_id"
   add_foreign_key "employees", "organizations"
   add_foreign_key "events", "users"
+  add_foreign_key "job_applicants", "job_postings"
   add_foreign_key "job_functions", "departments"
   add_foreign_key "job_functions", "organizations"
   add_foreign_key "job_levels", "job_functions"

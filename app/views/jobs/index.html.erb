@@ -1,0 +1,12 @@
+<% content_for :title, "Open Jobs" %>
+<h1>Open Jobs</h1>
+<div id="open_jobs">
+  <% @job_postings.each do |job_posting| %>
+    <strong>
+      <%= job_posting.title %>
+    </strong>
+    <p>
+      <%= link_to "View Job", organization_job_path(@organization, job_posting) %>
+    </p>
+  <% end %>
+</div>
