@@ -1,0 +1,19 @@
+<%= form_with(model: [job_applicant, candidate_note]) do |form| %>
+  <% if candidate_note.errors.any? %>
+    <div style="color: red">
+      <h2><%= pluralize(candidate_note.errors.count, "error") %> prohibited this candidate_note from being saved:</h2>
+      <ul>
+        <% candidate_note.errors.each do |error| %>
+          <li><%= error.full_message %></li>
+        <% end %>
+      </ul>
+    </div>
+  <% end %>
+  <div>
+    <%= form.label :note, style: "display: block" %>
+    <%= form.text_area :note %>
+  </div>
+  <div>
+    <%= form.submit %>
+  </div>
+<% end %>

@@ -37,6 +37,7 @@ Rails.application.routes.draw do
     post "jobs/:job_posting_id/apply", to: "job_applicants#create"
     resources :job_applicants, only: [ :index, :show, :destroy ] do
       resources :interviews
+      resources :candidate_notes, only: [ :index, :new, :show, :create, :destroy ]
     end
     resources :interview_stages
     resources :interviews do

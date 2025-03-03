@@ -1,0 +1,12 @@
+<% content_for :title, "Editing candidate note" %>
+
+<h1>Editing candidate note</h1>
+
+<%= render "form", candidate_note: @candidate_note %>
+
+<br>
+
+<div>
+  <%= link_to "Show this candidate note", @candidate_note %> |
+  <%= link_to "Back to candidate notes", candidate_notes_path %>
+</div>

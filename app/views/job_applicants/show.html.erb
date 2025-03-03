@@ -1,7 +1,30 @@
 <p style="color: green"><%= notice %></p>
 <%= render @job_applicant %>
+<h2>Notes</h2>
+<% if @job_applicant.candidate_notes.any? %>
+  <ul>
+    <% @job_applicant.candidate_notes.each do |note| %>
+      <li><%= note.note %></li>
+    <% end %>
+  </ul>
+<% else %>
+  <p>No notes yet.</p>
+<% end %>
+<h2>Interviews</h2>
+<% if @job_applicant.interviews.any? %>
+  <ul>
+    <% @job_applicant.interviews.each do |interview| %>
+      <li><%= interview.interview_on %></li>
+    <% end %>
+  </ul>
+<% else %>
+  <p>No interviews yet.</p>
+<% end %>
 <div>
   <%= link_to "Setup Interview", new_job_applicant_interview_path(@job_applicant) %>
+</div>
+<div>
+  <%= link_to "Add Note", new_job_applicant_candidate_note_path(@job_applicant) %>
 </div>
 <div>
   <%= link_to "Back to job applicants", organization_job_applicants_path(@job_applicant.job_posting.organization) %>

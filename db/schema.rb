@@ -10,7 +10,7 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema[8.0].define(version: 2025_02_28_201215) do
+ActiveRecord::Schema[8.0].define(version: 2025_03_03_092710) do
   # These are extensions that must be enabled in order to support this database
   enable_extension "pg_catalog.plpgsql"
 
@@ -98,6 +98,16 @@ ActiveRecord::Schema[8.0].define(version: 2025_02_28_201215) do
     t.datetime "updated_at", null: false
     t.index ["benefit_type_id"], name: "index_benefits_on_benefit_type_id"
     t.index ["organization_id"], name: "index_benefits_on_organization_id"
+  end
+
+  create_table "candidate_notes", force: :cascade do |t|
+    t.bigint "job_applicant_id", null: false
+    t.bigint "employee_id", null: false
+    t.text "note"
+    t.datetime "created_at", null: false
+    t.datetime "updated_at", null: false
+    t.index ["employee_id"], name: "index_candidate_notes_on_employee_id"
+    t.index ["job_applicant_id"], name: "index_candidate_notes_on_job_applicant_id"
   end
 
   create_table "company_files", force: :cascade do |t|
@@ -441,6 +451,8 @@ ActiveRecord::Schema[8.0].define(version: 2025_02_28_201215) do
   add_foreign_key "benefit_types", "organizations"
   add_foreign_key "benefits", "benefit_types"
   add_foreign_key "benefits", "organizations"
+  add_foreign_key "candidate_notes", "employees"
+  add_foreign_key "candidate_notes", "job_applicants"
   add_foreign_key "company_files", "documents"
   add_foreign_key "company_files", "organizations"
   add_foreign_key "cost_centers", "organizations"

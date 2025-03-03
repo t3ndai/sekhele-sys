@@ -7,6 +7,7 @@ class ApplicationController < ActionController::Base
   before_action :set_current_request_details
   before_action :authenticate
   before_action :pundit_user
+  before_action :current_employee
 
   rescue_from Pundit::NotAuthorizedError, with: :user_not_authorized
 
@@ -32,6 +33,10 @@ class ApplicationController < ActionController::Base
 
     def pundit_user
       @current_user = Current.user
+    end
+
+    def current_employee
+      @current_employee ||= Current.user.employee
     end
 
     def user_not_authorized
