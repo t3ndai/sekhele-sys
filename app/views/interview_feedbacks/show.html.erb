@@ -1,0 +1,7 @@
+<p style="color: green"><%= notice %></p>
+<%= render @interview_feedback %>
+<div>
+  <%= link_to "Edit this interview feedback", edit_interview_feedback_path(@interview_feedback) %> |
+  <%= link_to "Back to interview feedbacks", interview_interview_feedbacks_path(@interview_feedback.interview) %>
+  <%= button_to "Destroy this interview feedback", @interview_feedback, method: :delete %>
+</div>

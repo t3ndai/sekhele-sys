@@ -123,15 +123,16 @@
         - location -> onsite | virtual 
         - interviewee (links to applicatant)
         - interviewers (links to employees)
-    - Inteviewer 
+    - Inteviewer x
         - belongs_to employee 
         - belongs_to InterView 
         - assigned_on 
     - InterviewFeedback  
-        - belongs_to Inteviewer
+        - belongs_to Inteviewer (current user)
         - links to Interview 
         - notes 
         - status -> strong no | no | yes | strong yes 
+        - give feedback if current_user is interviewer
     - CandidateNote 
         - created after creating JobApplicant
         - notes 

@@ -16,7 +16,7 @@ class Employee < ApplicationRecord
   has_many :benefit_elections
   has_many :benefit_plans, through: :benefit_elections
   has_many :benefits, through: :benefit_plans # this needs checking
-  has_many :interviewers
+  has_one :interviewers
   has_many :interviews, through: :interviewers
 
   after_create :create_user

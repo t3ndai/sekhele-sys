@@ -1,0 +1,12 @@
+<% content_for :title, "Editing interview feedback" %>
+
+<h1>Editing interview feedback</h1>
+
+<%= render "form", interview_feedback: @interview_feedback %>
+
+<br>
+
+<div>
+  <%= link_to "Show this interview feedback", @interview_feedback %> |
+  <%= link_to "Back to interview feedbacks", interview_feedbacks_path %>
+</div>

@@ -1,0 +1,23 @@
+<%= form_with(model: [interview, interview_feedback]) do |form| %>
+  <% if interview_feedback.errors.any? %>
+    <div style="color: red">
+      <h2><%= pluralize(interview_feedback.errors.count, "error") %> prohibited this interview_feedback from being saved:</h2>
+      <ul>
+        <% interview_feedback.errors.each do |error| %>
+          <li><%= error.full_message %></li>
+        <% end %>
+      </ul>
+    </div>
+  <% end %>
+  <div>
+    <%= form.label :notes, style: "display: block" %>
+    <%= form.rich_textarea :notes %>
+  </div>
+  <div>
+    <%= form.label :status, style: "display: block" %>
+    <%= form.collection_radio_buttons :status, InterviewFeedback.statuses.keys, :to_s, :humanize %>
+  </div>
+  <div>
+    <%= form.submit %>
+  </div>
+<% end %>

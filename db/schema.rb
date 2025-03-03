@@ -10,7 +10,7 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema[8.0].define(version: 2025_02_28_184943) do
+ActiveRecord::Schema[8.0].define(version: 2025_02_28_201215) do
   # These are extensions that must be enabled in order to support this database
   enable_extension "pg_catalog.plpgsql"
 
@@ -202,6 +202,16 @@ ActiveRecord::Schema[8.0].define(version: 2025_02_28_184943) do
     t.datetime "created_at", null: false
     t.datetime "updated_at", null: false
     t.index ["user_id"], name: "index_events_on_user_id"
+  end
+
+  create_table "interview_feedbacks", force: :cascade do |t|
+    t.bigint "interview_id", null: false
+    t.bigint "interviewer_id", null: false
+    t.string "status"
+    t.datetime "created_at", null: false
+    t.datetime "updated_at", null: false
+    t.index ["interview_id"], name: "index_interview_feedbacks_on_interview_id"
+    t.index ["interviewer_id"], name: "index_interview_feedbacks_on_interviewer_id"
   end
 
   create_table "interview_stages", force: :cascade do |t|
@@ -442,6 +452,8 @@ ActiveRecord::Schema[8.0].define(version: 2025_02_28_184943) do
   add_foreign_key "employees", "employees", column: "manager_id"
   add_foreign_key "employees", "organizations"
   add_foreign_key "events", "users"
+  add_foreign_key "interview_feedbacks", "interviewers"
+  add_foreign_key "interview_feedbacks", "interviews"
   add_foreign_key "interview_stages", "organizations"
   add_foreign_key "interviewers", "employees"
   add_foreign_key "interviewers", "interviews"

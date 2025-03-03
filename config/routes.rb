@@ -41,6 +41,7 @@ Rails.application.routes.draw do
     resources :interview_stages
     resources :interviews do
       resources :interviewers
+      resources :interview_feedbacks
     end
   end
   namespace :app_admin do

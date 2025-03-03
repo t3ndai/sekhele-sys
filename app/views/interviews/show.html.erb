@@ -2,6 +2,11 @@
 <div>
   <%= link_to "Assign Interviewer(s)", new_interview_interviewer_path(@interview) %>
 </div>
+<% if @interview.interviewers.exists?(Current.user&.employee.id) %>
+  <div>
+    <%= link_to "New interview feedback", new_interview_interview_feedback_path(@interview) %>
+  </div>
+<% end %>
 <div>
   <%= link_to "Edit this interview", edit_interview_path(@interview) %> |
   <%= link_to "Back to interviews", job_applicant_interviews_path(@interview.job_applicant) %>
