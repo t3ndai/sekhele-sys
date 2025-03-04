@@ -1,0 +1,7 @@
+<p style="color: green"><%= notice %></p>
+<%= render @milestone %>
+<div>
+  <%= link_to "Complete this milestone", edit_milestone_path(@milestone) %> |
+  <%= link_to "Back to Goal", goal_path(@milestone.goal) %>
+  <%= button_to "Destroy this milestone", @milestone, method: :delete %>
+</div>

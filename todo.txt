@@ -162,15 +162,10 @@
         - have targets (OKRs)
         - have end_date 
         - belong to employee 
-        -- Targets 
-            - name 
-            - tied to goal 
-            - have Milestones 
-            - have end_date 
-            - have start_date 
+        - can only be viewed by employee & their manager 
         -- Milestones 
             - name 
-            - tied to target 
+            - tied to goal 
             - have evidence attached 
             - end_date 
             - have start_date 

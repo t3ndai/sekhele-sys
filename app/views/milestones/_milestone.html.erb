@@ -1,0 +1,34 @@
+<div id="<%= dom_id milestone %>">
+  <p>
+    <strong>Goal:</strong>
+    <%= milestone.goal_id %>
+  </p>
+
+  <p>
+    <strong>Name:</strong>
+    <%= milestone.name %>
+  </p>
+
+  <p>
+    <strong>Description:</strong>
+    <%= milestone.description %>
+  </p>
+
+  <p>
+    <strong>Completed on:</strong>
+    <%= milestone.completed_on %>
+  </p>
+
+  <p>
+    <strong>Evidence:</strong>
+    <% milestone.evidence.each do |evidence| %>
+      <div><%= link_to evidence.filename, evidence %></div>
+    <% end %>
+  </p>
+
+  <p>
+    <strong>Started on:</strong>
+    <%= milestone.started_on %>
+  </p>
+
+</div>
