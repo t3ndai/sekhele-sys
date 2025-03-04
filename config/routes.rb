@@ -15,6 +15,7 @@ Rails.application.routes.draw do
       get "benefits/:benefit_id/benefit_plans", to: "employee_benefits#show_benefit_plans", as: "benefit_benefit_plans"
       get "benefits/:benefit_id/benefit_plans/:benefit_plan_id", to: "employee_benefits#show_benefit_plan", as: "benefit_benefit_plan"
       post "benefits/:benefit_id/benefit_plans/:benefit_plan_id", to: "employee_benefits#elect_benefit_plan"
+      resources :goals
     end
     resources :asset_categories
     resources :locations

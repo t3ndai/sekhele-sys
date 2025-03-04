@@ -127,15 +127,54 @@
         - belongs_to employee 
         - belongs_to InterView 
         - assigned_on 
-    - InterviewFeedback  
+    - InterviewFeedback  x
         - belongs_to Inteviewer (current user)
         - links to Interview 
         - notes 
         - status -> strong no | no | yes | strong yes 
         - give feedback if current_user is interviewer
-    - CandidateNote 
-        - created after creating JobApplicant
+    - CandidateNote  x
+        - added manually as simple notes 
         - notes 
+-- Performance 
+    - 1_1 Meetings
+        - has notes 
+        - belongs to manager | employee 
+        - has frequency 
+        - has meeting date 
+    - Reviews (Assessments)
+        - types DownwardReview | UpwardReview | SelfReview | PeerReview 
+        - has frequency 
+        - due_date 
+        - completion_date 
+        - linked to Review Question 
+    - Calibration 
+        - calibration_date 
+        - ranking -> needs_improvement | meets_expectations | exceeds_expectations 
+    - Performance_Rating 
+        - name 
+        - score 
+        - description 
+    - Goals 
+        - have end Date 
+        - have name 
+        - description   
+        - have targets (OKRs)
+        - have end_date 
+        - belong to employee 
+        -- Targets 
+            - name 
+            - tied to goal 
+            - have Milestones 
+            - have end_date 
+            - have start_date 
+        -- Milestones 
+            - name 
+            - tied to target 
+            - have evidence attached 
+            - end_date 
+            - have start_date 
+            - created by manager (same as targets)
                
 
 
