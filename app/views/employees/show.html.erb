@@ -26,6 +26,9 @@
   <%= link_to "Add Goal", new_employee_goal_path(@employee) %>
 </div>
 <div>
+  <%= link_to "New 1-1 Meeting", new_employee_one_to_one_path(@employee) %>
+</div>
+<div>
   <%= link_to "Edit this employee", edit_employee_path(@employee) %> |
   <%= link_to "Back to employees", organization_employees_path(@organization) %>
   <%= button_to "Destroy this employee", @employee, method: :delete %>

@@ -1,0 +1,12 @@
+<% content_for :title, "Editing one to one" %>
+
+<h1>Editing one to one</h1>
+
+<%= render "form", one_to_one: @one_to_one %>
+
+<br>
+
+<div>
+  <%= link_to "Show this one to one", @one_to_one %> |
+  <%= link_to "Back to one to ones", one_to_ones_path %>
+</div>

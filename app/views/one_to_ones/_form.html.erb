@@ -1,0 +1,19 @@
+<%= form_with(model: [employee, one_to_one]) do |form| %>
+  <% if one_to_one.errors.any? %>
+    <div style="color: red">
+      <h2><%= pluralize(one_to_one.errors.count, "error") %> prohibited this one_to_one from being saved:</h2>
+      <ul>
+        <% one_to_one.errors.each do |error| %>
+          <li><%= error.full_message %></li>
+        <% end %>
+      </ul>
+    </div>
+  <% end %>
+  <div>
+    <%= form.label :note, style: "display: block" %>
+    <%= form.rich_textarea :note %>
+  </div>
+  <div>
+    <%= form.submit "Save 1-on-1" %>
+  </div>
+<% end %>

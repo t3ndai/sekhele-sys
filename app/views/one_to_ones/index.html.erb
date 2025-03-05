@@ -1,0 +1,12 @@
+<p style="color: green"><%= notice %></p>
+<% content_for :title, "One to ones" %>
+<h1>One to ones</h1>
+<div id="one_to_ones">
+  <% @one_to_ones.each do |one_to_one| %>
+    <%= render one_to_one %>
+    <p>
+      <%= link_to "Show this one to one", one_to_one %>
+    </p>
+  <% end %>
+</div>
+<%= link_to "New one to one", new_employee_one_to_one_path(@employee) %>

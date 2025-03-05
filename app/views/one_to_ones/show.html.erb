@@ -1,0 +1,7 @@
+<p style="color: green"><%= notice %></p>
+<%= render @one_to_one %>
+<div>
+  <%= link_to "Edit this one to one", edit_one_to_one_path(@one_to_one) %> |
+  <%= link_to "Back to one to ones", employee_one_to_ones_path(@one_to_one.employee) %>
+  <%= button_to "Destroy this one to one", @one_to_one, method: :delete %>
+</div>

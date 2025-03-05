@@ -24,7 +24,7 @@ class GoalsController < ApplicationController
   def create
     @goal = Goal.new(goal_params)
     @goal.employee = @employee
-    @goal.manager = @employee.manager
+    @goal.manager = @current_employee
 
     respond_to do |format|
       if @goal.save

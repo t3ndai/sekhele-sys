@@ -10,7 +10,7 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema[8.0].define(version: 2025_03_04_140032) do
+ActiveRecord::Schema[8.0].define(version: 2025_03_05_134209) do
   # These are extensions that must be enabled in order to support this database
   enable_extension "pg_catalog.plpgsql"
 
@@ -383,6 +383,15 @@ ActiveRecord::Schema[8.0].define(version: 2025_03_04_140032) do
     t.index ["goal_id"], name: "index_milestones_on_goal_id"
   end
 
+  create_table "one_to_ones", force: :cascade do |t|
+    t.bigint "employee_id", null: false
+    t.bigint "manager_id", null: false
+    t.datetime "created_at", null: false
+    t.datetime "updated_at", null: false
+    t.index ["employee_id"], name: "index_one_to_ones_on_employee_id"
+    t.index ["manager_id"], name: "index_one_to_ones_on_manager_id"
+  end
+
   create_table "org_assets", force: :cascade do |t|
     t.bigint "employee_id", null: false
     t.bigint "asset_category_id", null: false
@@ -509,6 +518,8 @@ ActiveRecord::Schema[8.0].define(version: 2025_03_04_140032) do
   add_foreign_key "leave_requests", "leave_policies"
   add_foreign_key "locations", "organizations"
   add_foreign_key "milestones", "goals"
+  add_foreign_key "one_to_ones", "employees"
+  add_foreign_key "one_to_ones", "employees", column: "manager_id"
   add_foreign_key "org_assets", "asset_categories"
   add_foreign_key "org_assets", "employees"
   add_foreign_key "recovery_codes", "users"

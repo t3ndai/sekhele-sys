@@ -1,0 +1,7 @@
+<% content_for :title, "New 1-on-1" %>
+<h1>New 1-on-1</h1>
+<%= render "form", employee: @employee, one_to_one: @one_to_one %>
+<br>
+<div>
+  <%= link_to "Back to one to ones", employee_one_to_ones_path(@employee) %>
+</div>

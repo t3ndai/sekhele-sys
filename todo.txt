@@ -142,6 +142,10 @@
         - belongs to manager | employee 
         - has frequency 
         - has meeting date 
+        - have tasks 
+    - Tasks (1-1) 
+        - belong to 1_1 Meetings 
+        - actionable items from meeting to be tracked 
     - Reviews (Assessments)
         - types DownwardReview | UpwardReview | SelfReview | PeerReview 
         - has frequency 
@@ -155,7 +159,7 @@
         - name 
         - score 
         - description 
-    - Goals 
+    - Goals x
         - have end Date 
         - have name 
         - description   
