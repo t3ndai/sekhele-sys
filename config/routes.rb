@@ -18,7 +18,9 @@ Rails.application.routes.draw do
       resources :goals do
         resources :milestones
       end
-      resources :one_to_ones
+      resources :one_to_ones do
+        resources :action_items
+      end
     end
     resources :asset_categories
     resources :locations

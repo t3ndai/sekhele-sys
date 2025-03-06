@@ -10,9 +10,18 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema[8.0].define(version: 2025_03_05_134209) do
+ActiveRecord::Schema[8.0].define(version: 2025_03_06_102141) do
   # These are extensions that must be enabled in order to support this database
   enable_extension "pg_catalog.plpgsql"
+
+  create_table "action_items", force: :cascade do |t|
+    t.string "name"
+    t.boolean "completed"
+    t.bigint "one_to_one_id", null: false
+    t.datetime "created_at", null: false
+    t.datetime "updated_at", null: false
+    t.index ["one_to_one_id"], name: "index_action_items_on_one_to_one_id"
+  end
 
   create_table "action_text_rich_texts", force: :cascade do |t|
     t.string "name", null: false
@@ -473,6 +482,7 @@ ActiveRecord::Schema[8.0].define(version: 2025_03_05_134209) do
     t.index ["user_id"], name: "index_users_roles_on_user_id"
   end
 
+  add_foreign_key "action_items", "one_to_ones"
   add_foreign_key "active_storage_attachments", "active_storage_blobs", column: "blob_id"
   add_foreign_key "active_storage_variant_records", "active_storage_blobs", column: "blob_id"
   add_foreign_key "asset_categories", "organizations"
