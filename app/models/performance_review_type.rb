@@ -1,0 +1,2 @@
+class PerformanceReviewType < ApplicationRecord
+end

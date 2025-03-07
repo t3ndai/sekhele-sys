@@ -152,9 +152,13 @@
         - due_date 
         - completion_date 
         - linked to Review Question 
+    - Review Questions 
+        -  
+        - set by hr professional (also can edit)
     - Calibration 
         - calibration_date 
         - ranking -> needs_improvement | meets_expectations | exceeds_expectations 
+        - calibrator 
     - Performance_Rating 
         - name 
         - score 
@@ -167,7 +171,7 @@
         - have end_date 
         - belong to employee 
         - can only be viewed by employee & their manager 
-        -- Milestones 
+        -- Milestones x
             - name 
             - tied to goal 
             - have evidence attached 
