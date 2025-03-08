@@ -1,0 +1,11 @@
+<% content_for :title, "New performance review question" %>
+
+<h1>New performance review question</h1>
+
+<%= render "form", performance_review_question: @performance_review_question %>
+
+<br>
+
+<div>
+  <%= link_to "Back to performance review questions", performance_review_questions_path %>
+</div>

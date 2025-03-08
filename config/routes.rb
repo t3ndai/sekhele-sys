@@ -1,4 +1,5 @@
 Rails.application.routes.draw do
+  resources :performance_review_questions
   resources :performance_review_types
   resources :organizations, shallow: true do
     resources :departments

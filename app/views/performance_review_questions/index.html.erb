@@ -1,0 +1,16 @@
+<p style="color: green"><%= notice %></p>
+
+<% content_for :title, "Performance review questions" %>
+
+<h1>Performance review questions</h1>
+
+<div id="performance_review_questions">
+  <% @performance_review_questions.each do |performance_review_question| %>
+    <%= render performance_review_question %>
+    <p>
+      <%= link_to "Show this performance review question", performance_review_question %>
+    </p>
+  <% end %>
+</div>
+
+<%= link_to "New performance review question", new_performance_review_question_path %>

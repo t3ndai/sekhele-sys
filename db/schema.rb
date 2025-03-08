@@ -10,7 +10,7 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema[8.0].define(version: 2025_03_07_084433) do
+ActiveRecord::Schema[8.0].define(version: 2025_03_07_092749) do
   # These are extensions that must be enabled in order to support this database
   enable_extension "pg_catalog.plpgsql"
 
@@ -420,6 +420,14 @@ ActiveRecord::Schema[8.0].define(version: 2025_03_07_084433) do
     t.datetime "updated_at", null: false
   end
 
+  create_table "performance_review_questions", force: :cascade do |t|
+    t.bigint "performance_review_type_id", null: false
+    t.string "title"
+    t.datetime "created_at", null: false
+    t.datetime "updated_at", null: false
+    t.index ["performance_review_type_id"], name: "idx_on_performance_review_type_id_bfd408f188"
+  end
+
   create_table "performance_review_types", force: :cascade do |t|
     t.string "name"
     t.datetime "created_at", null: false
@@ -538,6 +546,7 @@ ActiveRecord::Schema[8.0].define(version: 2025_03_07_084433) do
   add_foreign_key "one_to_ones", "employees", column: "manager_id"
   add_foreign_key "org_assets", "asset_categories"
   add_foreign_key "org_assets", "employees"
+  add_foreign_key "performance_review_questions", "performance_review_types"
   add_foreign_key "recovery_codes", "users"
   add_foreign_key "sessions", "users"
   add_foreign_key "time_workeds", "employees"
