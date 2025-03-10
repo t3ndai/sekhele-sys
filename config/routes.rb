@@ -1,6 +1,4 @@
 Rails.application.routes.draw do
-  resources :performance_review_questions
-  resources :performance_review_types
   resources :organizations, shallow: true do
     resources :departments
     resources :employees do
@@ -52,6 +50,7 @@ Rails.application.routes.draw do
       resources :interviewers
       resources :interview_feedbacks
     end
+    resources :performance_reviews
   end
   namespace :app_admin do
     resources :users
@@ -84,6 +83,8 @@ Rails.application.routes.draw do
   namespace :sessions do
     resource :sudo, only: [ :new, :create ]
   end
+  resources :performance_review_questions
+  resources :performance_review_types
   root "home#index"
   # Define your application routes per the DSL in https://guides.rubyonrails.org/routing.html
 

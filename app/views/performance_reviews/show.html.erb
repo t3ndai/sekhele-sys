@@ -1,0 +1,7 @@
+<p style="color: green"><%= notice %></p>
+<%= render @performance_review %>
+<div>
+  <%= link_to "Edit this performance review", edit_performance_review_path(@performance_review) %> |
+  <%= link_to "Back to performance reviews", organization_performance_reviews_path(@performance_review.organization) %>
+  <%= button_to "Destroy this performance review", @performance_review, method: :delete %>
+</div>

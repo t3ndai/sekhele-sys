@@ -10,7 +10,7 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema[8.0].define(version: 2025_03_07_092749) do
+ActiveRecord::Schema[8.0].define(version: 2025_03_10_204812) do
   # These are extensions that must be enabled in order to support this database
   enable_extension "pg_catalog.plpgsql"
 
@@ -434,6 +434,18 @@ ActiveRecord::Schema[8.0].define(version: 2025_03_07_092749) do
     t.datetime "updated_at", null: false
   end
 
+  create_table "performance_reviews", force: :cascade do |t|
+    t.bigint "performance_review_type_id", null: false
+    t.date "opens_on"
+    t.date "closes_on"
+    t.string "name"
+    t.bigint "organization_id", null: false
+    t.datetime "created_at", null: false
+    t.datetime "updated_at", null: false
+    t.index ["organization_id"], name: "index_performance_reviews_on_organization_id"
+    t.index ["performance_review_type_id"], name: "index_performance_reviews_on_performance_review_type_id"
+  end
+
   create_table "recovery_codes", force: :cascade do |t|
     t.integer "user_id", null: false
     t.string "code", null: false
@@ -547,6 +559,8 @@ ActiveRecord::Schema[8.0].define(version: 2025_03_07_092749) do
   add_foreign_key "org_assets", "asset_categories"
   add_foreign_key "org_assets", "employees"
   add_foreign_key "performance_review_questions", "performance_review_types"
+  add_foreign_key "performance_reviews", "organizations"
+  add_foreign_key "performance_reviews", "performance_review_types"
   add_foreign_key "recovery_codes", "users"
   add_foreign_key "sessions", "users"
   add_foreign_key "time_workeds", "employees"

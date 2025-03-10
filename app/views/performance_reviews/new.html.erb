@@ -1,0 +1,7 @@
+<% content_for :title, "New performance review" %>
+<h1>New performance review</h1>
+<%= render "form", organization: @organization, performance_review: @performance_review %>
+<br>
+<div>
+  <%= link_to "Back to performance reviews", organization_performance_reviews_path(@organization) %>
+</div>

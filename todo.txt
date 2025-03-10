@@ -153,8 +153,15 @@
         - completion_date 
         - linked to Review Question 
     - Review Questions 
-        -  
         - set by hr professional (also can edit)
+    - ReviewResponse 
+        - created by background jobs after creating job 
+        - can be updated 
+        - have draft status 
+        - submitted only once - i.e status submitted 
+        - have a submission date 
+        - linked to PerformanceReview 
+        - Review Question based on type of PerformanceReview 
     - Calibration 
         - calibration_date 
         - ranking -> needs_improvement | meets_expectations | exceeds_expectations 
@@ -178,7 +185,13 @@
             - end_date 
             - have start_date 
             - created by manager (same as targets)
-               
+- Manager | Employee 
+    - record date when employee was assigned manager 
+    - record date when employee-manager relationship ended 
+- Employee | Job (Position)
+    - record date when employee was assigned to position 
+    - record date when employee ended position
+
 
 
 # test user details 

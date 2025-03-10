@@ -24,6 +24,7 @@ class Organization < ApplicationRecord
   has_many :leave_balances, through: :employees
   has_many :benefit_elections, through: :employees
   has_many :benefit_plans, through: :benefit_elections
+  has_many :performance_reviews
 
   validates :name, presence: true, uniqueness: true
 end

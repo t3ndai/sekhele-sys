@@ -1,0 +1,15 @@
+# Read about fixtures at https://api.rubyonrails.org/classes/ActiveRecord/FixtureSet.html
+
+one:
+  performance_review_type: one
+  opens_on: 2025-03-10
+  closes_on: 2025-03-10
+  name: MyString
+  organization: one
+
+two:
+  performance_review_type: two
+  opens_on: 2025-03-10
+  closes_on: 2025-03-10
+  name: MyString
+  organization: two

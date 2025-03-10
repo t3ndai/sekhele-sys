@@ -36,7 +36,7 @@ class ApplicationController < ActionController::Base
     end
 
     def current_employee
-      @current_employee ||= Current.user.employee
+      @current_employee ||= Current.user&.employee
     end
 
     def user_not_authorized
