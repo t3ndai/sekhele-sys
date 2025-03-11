@@ -1,0 +1,31 @@
+<%= form_with(model: [local_assigns[:reviewer], performance_review_response]) do |form| %>
+  <% if performance_review_response.errors.any? %>
+    <div style="color: red">
+      <h2><%= pluralize(performance_review_response.errors.count, "error") %> prohibited this performance_review_response from being saved:</h2>
+      <ul>
+        <% performance_review_response.errors.each do |error| %>
+          <li><%= error.full_message %></li>
+        <% end %>
+      </ul>
+    </div>
+  <% end %>
+  <div>
+    <%= performance_review_response.reviewee.full_name %>
+  </div>
+  <div>
+    <%= form.label :status, style: "display: block" %>
+    <%= form.text_field :status %>
+  </div>
+  <%= performance_review_response.performance_review.performance_review_questions.each do |question| %>
+    <div>
+      <p> <%= question.title %>
+        <%= form.fields_for :response, index: question.id do |question_form| %>
+          <%= question_form.textarea :answer %>
+        <% end %>
+      </div>
+    </div>
+  <% end %>
+  <div>
+    <%= form.submit %>
+  </div>
+<% end %>

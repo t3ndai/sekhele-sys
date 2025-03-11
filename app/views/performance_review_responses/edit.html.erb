@@ -1,0 +1,8 @@
+<% content_for :title, "Editing performance review response" %>
+<h1>Editing performance review response</h1>
+<%= render "form", performance_review_response: @performance_review_response %>
+<br>
+<div>
+  <%= link_to "Show this performance review response", @performance_review_response %> |
+  <%= link_to "Back to performance review responses", employee_performance_review_responses_path(@performance_review_response.reviewer) %>
+</div>

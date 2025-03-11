@@ -10,7 +10,7 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema[8.0].define(version: 2025_03_10_204812) do
+ActiveRecord::Schema[8.0].define(version: 2025_03_10_213221) do
   # These are extensions that must be enabled in order to support this database
   enable_extension "pg_catalog.plpgsql"
 
@@ -428,6 +428,20 @@ ActiveRecord::Schema[8.0].define(version: 2025_03_10_204812) do
     t.index ["performance_review_type_id"], name: "idx_on_performance_review_type_id_bfd408f188"
   end
 
+  create_table "performance_review_responses", force: :cascade do |t|
+    t.bigint "reviewer_id", null: false
+    t.bigint "reviewee_id", null: false
+    t.string "status"
+    t.jsonb "response"
+    t.date "submitted_on"
+    t.bigint "performance_review_id", null: false
+    t.datetime "created_at", null: false
+    t.datetime "updated_at", null: false
+    t.index ["performance_review_id"], name: "index_performance_review_responses_on_performance_review_id"
+    t.index ["reviewee_id"], name: "index_performance_review_responses_on_reviewee_id"
+    t.index ["reviewer_id"], name: "index_performance_review_responses_on_reviewer_id"
+  end
+
   create_table "performance_review_types", force: :cascade do |t|
     t.string "name"
     t.datetime "created_at", null: false
@@ -559,6 +573,9 @@ ActiveRecord::Schema[8.0].define(version: 2025_03_10_204812) do
   add_foreign_key "org_assets", "asset_categories"
   add_foreign_key "org_assets", "employees"
   add_foreign_key "performance_review_questions", "performance_review_types"
+  add_foreign_key "performance_review_responses", "employees", column: "reviewee_id"
+  add_foreign_key "performance_review_responses", "employees", column: "reviewer_id"
+  add_foreign_key "performance_review_responses", "performance_reviews"
   add_foreign_key "performance_reviews", "organizations"
   add_foreign_key "performance_reviews", "performance_review_types"
   add_foreign_key "recovery_codes", "users"

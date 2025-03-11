@@ -33,6 +33,10 @@ class Employee < ApplicationRecord
 
   scope :same_organization, ->(organization) { where(organization: organization) }
 
+  def is_manager?
+    self.reports.any?
+  end
+
   def full_name
     self.first_name + " " + self.last_name
   end

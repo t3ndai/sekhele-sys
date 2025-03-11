@@ -1,0 +1,1 @@
+json.partial! "performance_review_responses/performance_review_response", performance_review_response: @performance_review_response
