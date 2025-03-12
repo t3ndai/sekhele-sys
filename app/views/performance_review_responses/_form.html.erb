@@ -13,19 +13,21 @@
     <%= performance_review_response.reviewee.full_name %>
   </div>
   <div>
-    <%= form.label :status, style: "display: block" %>
-    <%= form.text_field :status %>
+    <%= performance_review_response.status.titlecase %>
   </div>
-  <%= performance_review_response.performance_review.performance_review_questions.each do |question| %>
+  <% performance_review_response.performance_review.performance_review_questions.each do |question| %>
     <div>
       <p> <%= question.title %>
-        <%= form.fields_for :response, index: question.id do |question_form| %>
-          <%= question_form.textarea :answer %>
+        <%= form.fields_for :performance_review_answers, performance_review_response.performance_review_answers.find_or_initialize_by(performance_review_question: question) do |question_form| %>
+          <%= question_form.text_area :answer %>
         <% end %>
       </div>
     </div>
   <% end %>
   <div>
-    <%= form.submit %>
+    <%= form.submit "Save as Draft" %>
+  </div>
+  <div>
+    <%= form.submit "Submit" %>
   </div>
 <% end %>

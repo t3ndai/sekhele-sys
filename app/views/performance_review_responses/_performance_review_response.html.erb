@@ -3,30 +3,37 @@
     <strong>Reviewer:</strong>
     <%= performance_review_response.reviewer_id %>
   </p>
-
   <p>
     <strong>Reviewee:</strong>
     <%= performance_review_response.reviewee_id %>
   </p>
-
   <p>
     <strong>Status:</strong>
     <%= performance_review_response.status %>
   </p>
-
-  <p>
-    <strong>Response:</strong>
-    <%= performance_review_response.response %>
-  </p>
-
-  <p>
-    <strong>Submitted on:</strong>
-    <%= performance_review_response.submitted_on %>
-  </p>
-
-  <p>
-    <strong>Performance review:</strong>
-    <%= performance_review_response.performance_review_id %>
-  </p>
-
-</div>
+  <div>
+    <% if performance_review_response.performance_review_answers.present? %>
+      <% performance_review_response.performance_review_answers.each do |answer| %>
+        <p>
+          <strong>Question:</strong>
+          <%= answer.performance_review_question.title %>
+        </p>
+        <p>
+          <strong>Answer:</strong>
+          <%= answer.answer %>
+        </p>
+      <% end %>
+    <% else %>
+      <p>No answers available.</p>
+    <% end %>
+  </div>
+  <div>
+    <p>
+      <strong>Submitted on:</strong>
+      <%= performance_review_response.submitted_on %>
+    </p>
+    <p>
+      <strong>Performance review:</strong>
+      <%= performance_review_response.performance_review_id %>
+    </p>
+  </div>

@@ -10,7 +10,7 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema[8.0].define(version: 2025_03_10_213221) do
+ActiveRecord::Schema[8.0].define(version: 2025_03_12_141428) do
   # These are extensions that must be enabled in order to support this database
   enable_extension "pg_catalog.plpgsql"
 
@@ -420,6 +420,16 @@ ActiveRecord::Schema[8.0].define(version: 2025_03_10_213221) do
     t.datetime "updated_at", null: false
   end
 
+  create_table "performance_review_answers", force: :cascade do |t|
+    t.bigint "performance_review_response_id", null: false
+    t.bigint "performance_review_question_id", null: false
+    t.text "answer"
+    t.datetime "created_at", null: false
+    t.datetime "updated_at", null: false
+    t.index ["performance_review_question_id"], name: "idx_on_performance_review_question_id_23a567a59b"
+    t.index ["performance_review_response_id"], name: "idx_on_performance_review_response_id_e91ff09fa5"
+  end
+
   create_table "performance_review_questions", force: :cascade do |t|
     t.bigint "performance_review_type_id", null: false
     t.string "title"
@@ -572,6 +582,8 @@ ActiveRecord::Schema[8.0].define(version: 2025_03_10_213221) do
   add_foreign_key "one_to_ones", "employees", column: "manager_id"
   add_foreign_key "org_assets", "asset_categories"
   add_foreign_key "org_assets", "employees"
+  add_foreign_key "performance_review_answers", "performance_review_questions"
+  add_foreign_key "performance_review_answers", "performance_review_responses"
   add_foreign_key "performance_review_questions", "performance_review_types"
   add_foreign_key "performance_review_responses", "employees", column: "reviewee_id"
   add_foreign_key "performance_review_responses", "employees", column: "reviewer_id"

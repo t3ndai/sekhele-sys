@@ -174,7 +174,7 @@ GEM
     google-protobuf (4.29.2-x86_64-linux)
       bigdecimal
       rake (>= 13)
-    hotwire-spark (0.1.12)
+    hotwire-spark (0.1.13)
       listen
       rails (>= 7.0.0)
       zeitwerk

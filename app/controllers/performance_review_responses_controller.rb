@@ -18,6 +18,7 @@ class PerformanceReviewResponsesController < ApplicationController
 
   # GET /performance_review_responses/1/edit
   def edit
+    # @performance_review_response.performance_review_answers.build if @performance_review_response.performance_review_answers.empty?
   end
 
   # POST /performance_review_responses or /performance_review_responses.json
@@ -37,13 +38,20 @@ class PerformanceReviewResponsesController < ApplicationController
 
   # PATCH/PUT /performance_review_responses/1 or /performance_review_responses/1.json
   def update
-    respond_to do |format|
-      if @performance_review_response.update(performance_review_response_params)
-        format.html { redirect_to @performance_review_response, notice: "Performance review response was successfully updated." }
-        format.json { render :show, status: :ok, location: @performance_review_response }
+    puts params.inspect
+
+    if params[:commit] == "Save as Draft"
+      if @performance_review_response.update(performance_review_response_params.merge(status: "draft"))
+        flash[:notice] = "Performance review draft was successfully saved."
+        redirect_to @performance_review_response
       else
-        format.html { render :edit, status: :unprocessable_entity }
-        format.json { render json: @performance_review_response.errors, status: :unprocessable_entity }
+        render :edit, status: :unprocessable_entity
+      end
+    elsif params[:commit] == "Submit"
+      if @performance_review_response.update(performance_review_response_params.merge(status: "submitted", submitted_on: Date.current))
+        redirect_to @performance_review_response, notice: "Performance review was successfully submitted."
+      else
+        render :edit, status: :unprocessable_entity
       end
     end
   end
@@ -70,6 +78,6 @@ class PerformanceReviewResponsesController < ApplicationController
 
     # Only allow a list of trusted parameters through.
     def performance_review_response_params
-      params.expect(performance_review_response: [ :reviewer_id, :reviewee_id, :status, :response, :submitted_on, :performance_review_id ])
+      params.expect(performance_review_response: [ :reviewer_id, :reviewee_id, :status, :response, :submitted_on, :performance_review_id, performance_review_answers_attributes: [ :id, :performance_review_question_id, :performance_review_response_id,  :answer ] ])
     end
 end
