@@ -38,20 +38,17 @@ class PerformanceReviewResponsesController < ApplicationController
 
   # PATCH/PUT /performance_review_responses/1 or /performance_review_responses/1.json
   def update
-    puts params.inspect
     if params[:commit] == "Save as Draft"
       if @performance_review_response.update(performance_review_response_params.merge(status: "draft"))
         flash[:notice] = "Performance review draft was successfully saved."
         redirect_to @performance_review_response
       else
-        puts @performance_review_response.errors.full_messages
         render :edit, status: :unprocessable_entity
       end
     elsif params[:commit] == "Submit"
       if @performance_review_response.update(performance_review_response_params.merge(status: "submitted", submitted_on: Date.current))
         redirect_to @performance_review_response, notice: "Performance review was successfully submitted."
       else
-        puts @performance_review_response.errors.full_messages
         render :edit, status: :unprocessable_entity
       end
     end
@@ -80,7 +77,7 @@ class PerformanceReviewResponsesController < ApplicationController
     # Only allow a list of trusted parameters through.
     def performance_review_response_params
       params.expect(performance_review_response: [ :reviewer_id, :reviewee_id, :status, :response, :submitted_on, :performance_review_id,
-        performance_review_answers_attributes: [ :id, :performance_review_question_id, :answer ]
+        performance_review_answers_attributes: [ [ :id, :answer ] ]
     ])
     end
 end
