@@ -1,4 +1,4 @@
-<%= form_with(model: [local_assigns[:reviewer], performance_review_response]) do |form| %>
+<%= form_with(model: [local_assigns[:reviewer], performance_review_response], data: {turbo: false}) do |form| %>
   <% if performance_review_response.errors.any? %>
     <div style="color: red">
       <h2><%= pluralize(performance_review_response.errors.count, "error") %> prohibited this performance_review_response from being saved:</h2>
@@ -18,8 +18,8 @@
   <% performance_review_response.performance_review.performance_review_questions.each do |question| %>
     <div>
       <p> <%= question.title %>
-        <%= form.fields_for :performance_review_answers, performance_review_response.performance_review_answers.find_or_initialize_by(performance_review_question: question) do |question_form| %>
-          <%= question_form.text_area :answer %>
+        <%= form.fields_for :performance_review_answers, performance_review_response.performance_review_answers.find_or_create_by(performance_review_question: question) do |review_answer| %>
+          <%= review_answer.text_area :answer %> <br>
         <% end %>
       </div>
     </div>
