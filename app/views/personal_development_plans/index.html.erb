@@ -1,0 +1,16 @@
+<p style="color: green"><%= notice %></p>
+
+<% content_for :title, "Personal development plans" %>
+
+<h1>Personal development plans</h1>
+
+<div id="personal_development_plans">
+  <% @personal_development_plans.each do |personal_development_plan| %>
+    <%= render personal_development_plan %>
+    <p>
+      <%= link_to "Show this personal development plan", personal_development_plan %>
+    </p>
+  <% end %>
+</div>
+
+<%= link_to "New personal development plan", new_personal_development_plan_path %>

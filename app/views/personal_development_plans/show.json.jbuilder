@@ -1,0 +1,1 @@
+json.partial! "personal_development_plans/personal_development_plan", personal_development_plan: @personal_development_plan

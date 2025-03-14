@@ -1,4 +1,6 @@
 Rails.application.routes.draw do
+
+
   resources :organizations, shallow: true do
     resources :departments
     resources :employees do
@@ -22,6 +24,12 @@ Rails.application.routes.draw do
         resources :action_items
       end
       resources :performance_review_responses
+      resources :personal_development_plans do
+        resources :talents
+        resources :motivations
+        resources :career_visions
+        resources :growth_areas
+      end
     end
     resources :asset_categories
     resources :locations

@@ -191,7 +191,14 @@
 - Employee | Job (Position)
     - record date when employee was assigned to position 
     - record date when employee ended position
-
+- Growth
+    - PersonalDevelopmentPlan 
+        - has name 
+        - belongs to employee 
+        - has Growth Areas 
+        - has Career Vision 
+        - has motivations 
+        - has Talents 
 
 
 # test user details 

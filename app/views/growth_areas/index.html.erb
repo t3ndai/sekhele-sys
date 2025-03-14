@@ -1,0 +1,16 @@
+<p style="color: green"><%= notice %></p>
+
+<% content_for :title, "Growth areas" %>
+
+<h1>Growth areas</h1>
+
+<div id="growth_areas">
+  <% @growth_areas.each do |growth_area| %>
+    <%= render growth_area %>
+    <p>
+      <%= link_to "Show this growth area", growth_area %>
+    </p>
+  <% end %>
+</div>
+
+<%= link_to "New growth area", new_growth_area_path %>

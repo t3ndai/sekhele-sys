@@ -1,0 +1,12 @@
+<% content_for :title, "Editing personal development plan" %>
+
+<h1>Editing personal development plan</h1>
+
+<%= render "form", personal_development_plan: @personal_development_plan %>
+
+<br>
+
+<div>
+  <%= link_to "Show this personal development plan", @personal_development_plan %> |
+  <%= link_to "Back to personal development plans", personal_development_plans_path %>
+</div>
