@@ -1,11 +1,4 @@
 <% content_for :title, "New career vision" %>
-
 <h1>New career vision</h1>
-
-<%= render "form", career_vision: @career_vision %>
-
+<%= render "form", personal_development_plan: @personal_development_plan, career_vision: @career_vision %>
 <br>
-
-<div>
-  <%= link_to "Back to career visions", career_visions_path %>
-</div>

@@ -1,5 +1,6 @@
 class TalentsController < ApplicationController
   before_action :set_talent, only: %i[ show edit update destroy ]
+  before_action :set_personal_development_plan, only: %i[ index new create]
 
   # GET /talents or /talents.json
   def index
@@ -22,6 +23,7 @@ class TalentsController < ApplicationController
   # POST /talents or /talents.json
   def create
     @talent = Talent.new(talent_params)
+    @talent.personal_development_plan = @personal_development_plan
 
     respond_to do |format|
       if @talent.save
@@ -61,6 +63,10 @@ class TalentsController < ApplicationController
     # Use callbacks to share common setup or constraints between actions.
     def set_talent
       @talent = Talent.find(params.expect(:id))
+    end
+
+    def set_personal_development_plan
+      @personal_development_plan = PersonalDevelopmentPlan.find(params.expect(:personal_development_plan_id))
     end
 
     # Only allow a list of trusted parameters through.

@@ -1,11 +1,4 @@
 <% content_for :title, "New motivation" %>
-
 <h1>New motivation</h1>
-
-<%= render "form", motivation: @motivation %>
-
+<%= render "form", personal_development_plan: @personal_development_plan, motivation: @motivation %>
 <br>
-
-<div>
-  <%= link_to "Back to motivations", motivations_path %>
-</div>

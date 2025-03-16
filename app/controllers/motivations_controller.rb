@@ -1,5 +1,6 @@
 class MotivationsController < ApplicationController
   before_action :set_motivation, only: %i[ show edit update destroy ]
+  before_action :set_personal_development_plan, only: %i[ index new create ]
 
   # GET /motivations or /motivations.json
   def index
@@ -22,6 +23,7 @@ class MotivationsController < ApplicationController
   # POST /motivations or /motivations.json
   def create
     @motivation = Motivation.new(motivation_params)
+    @motivation.personal_development_plan = @personal_development_plan
 
     respond_to do |format|
       if @motivation.save
@@ -61,6 +63,10 @@ class MotivationsController < ApplicationController
     # Use callbacks to share common setup or constraints between actions.
     def set_motivation
       @motivation = Motivation.find(params.expect(:id))
+    end
+
+    def set_personal_development_plan
+      @personal_development_plan = PersonalDevelopmentPlan.find(params.expect(:personal_development_plan_id))
     end
 
     # Only allow a list of trusted parameters through.

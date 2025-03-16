@@ -1,8 +1,7 @@
-<%= form_with(model: motivation) do |form| %>
+<%= form_with(model: [personal_development_plan, motivation]) do |form| %>
   <% if motivation.errors.any? %>
     <div style="color: red">
       <h2><%= pluralize(motivation.errors.count, "error") %> prohibited this motivation from being saved:</h2>
-
       <ul>
         <% motivation.errors.each do |error| %>
           <li><%= error.full_message %></li>
@@ -10,22 +9,14 @@
       </ul>
     </div>
   <% end %>
-
-  <div>
-    <%= form.label :personal_development_plan_id, style: "display: block" %>
-    <%= form.text_field :personal_development_plan_id %>
-  </div>
-
   <div>
     <%= form.label :name, style: "display: block" %>
     <%= form.text_field :name %>
   </div>
-
   <div>
     <%= form.label :description, style: "display: block" %>
     <%= form.textarea :description %>
   </div>
-
   <div>
     <%= form.submit %>
   </div>

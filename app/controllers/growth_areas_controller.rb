@@ -1,5 +1,6 @@
 class GrowthAreasController < ApplicationController
   before_action :set_growth_area, only: %i[ show edit update destroy ]
+  before_action :set_personal_development_plan, only: %i[ index new create ]
 
   # GET /growth_areas or /growth_areas.json
   def index
@@ -22,6 +23,7 @@ class GrowthAreasController < ApplicationController
   # POST /growth_areas or /growth_areas.json
   def create
     @growth_area = GrowthArea.new(growth_area_params)
+    @growth_area.personal_development_plan = @personal_development_plan
 
     respond_to do |format|
       if @growth_area.save
@@ -61,6 +63,10 @@ class GrowthAreasController < ApplicationController
     # Use callbacks to share common setup or constraints between actions.
     def set_growth_area
       @growth_area = GrowthArea.find(params.expect(:id))
+    end
+
+    def set_personal_development_plan
+      @personal_development_plan = PersonalDevelopmentPlan.find(params.expect(:personal_development_plan_id))
     end
 
     # Only allow a list of trusted parameters through.

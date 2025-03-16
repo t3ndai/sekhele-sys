@@ -1,11 +1,7 @@
 <% content_for :title, "New personal development plan" %>
-
 <h1>New personal development plan</h1>
-
-<%= render "form", personal_development_plan: @personal_development_plan %>
-
+<%= render "form", employee: @employee, personal_development_plan: @personal_development_plan %>
 <br>
-
 <div>
-  <%= link_to "Back to personal development plans", personal_development_plans_path %>
+  <%= link_to "Back to personal development plans", employee_personal_development_plans_path(@employee) %>
 </div>

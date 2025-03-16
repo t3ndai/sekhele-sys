@@ -1,10 +1,35 @@
 <p style="color: green"><%= notice %></p>
-
 <%= render @personal_development_plan %>
-
+<div>
+  <h2>Career Vision</h2>
+  <%= render @personal_development_plan.career_visions %>
+</div>
+<div>
+  <h2>Growth Areas</h2>
+  <%= render @personal_development_plan.growth_areas %>
+</div>
+<div>
+  <h2>Motivations</h2>
+  <%= render @personal_development_plan.motivations %>
+</div>
+<div>
+  <h2>Talents / Skills</h2>
+  <%= render @personal_development_plan.talents %>
+</div>
+<div>
+  <%= link_to "Add Career Vision", new_personal_development_plan_career_vision_path(@personal_development_plan) %>
+</div>
+<div>
+  <%= link_to "Add Growth Areas", new_personal_development_plan_growth_area_path(@personal_development_plan) %>
+</div>
+<div>
+  <%= link_to "Add Motivations", new_personal_development_plan_motivation_path(@personal_development_plan) %>
+</div>
+<div>
+  <%= link_to "Add Talents / Skills", new_personal_development_plan_talent_path(@personal_development_plan) %>
+</div>
 <div>
   <%= link_to "Edit this personal development plan", edit_personal_development_plan_path(@personal_development_plan) %> |
-  <%= link_to "Back to personal development plans", personal_development_plans_path %>
-
+  <%= link_to "Back to personal development plans", employee_personal_development_plans_path(@personal_development_plan.employee) %>
   <%= button_to "Destroy this personal development plan", @personal_development_plan, method: :delete %>
 </div>

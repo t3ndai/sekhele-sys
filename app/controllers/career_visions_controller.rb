@@ -1,5 +1,6 @@
 class CareerVisionsController < ApplicationController
   before_action :set_career_vision, only: %i[ show edit update destroy ]
+  before_action :set_personal_development_plan, only: %i[ index new create ]
 
   # GET /career_visions or /career_visions.json
   def index
@@ -22,6 +23,7 @@ class CareerVisionsController < ApplicationController
   # POST /career_visions or /career_visions.json
   def create
     @career_vision = CareerVision.new(career_vision_params)
+    @career_vision.personal_development_plan = @personal_development_plan
 
     respond_to do |format|
       if @career_vision.save
@@ -61,6 +63,10 @@ class CareerVisionsController < ApplicationController
     # Use callbacks to share common setup or constraints between actions.
     def set_career_vision
       @career_vision = CareerVision.find(params.expect(:id))
+    end
+
+    def set_personal_development_plan
+      @personal_development_plan = PersonalDevelopmentPlan.find(params.expect(:personal_development_plan_id))
     end
 
     # Only allow a list of trusted parameters through.

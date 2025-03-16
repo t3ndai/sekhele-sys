@@ -1,10 +1,6 @@
 <p style="color: green"><%= notice %></p>
-
 <%= render @motivation %>
-
 <div>
   <%= link_to "Edit this motivation", edit_motivation_path(@motivation) %> |
-  <%= link_to "Back to motivations", motivations_path %>
-
   <%= button_to "Destroy this motivation", @motivation, method: :delete %>
 </div>

@@ -1,11 +1,4 @@
 <% content_for :title, "New talent" %>
-
 <h1>New talent</h1>
-
-<%= render "form", talent: @talent %>
-
+<%= render "form", personal_development_plan: @personal_development_plan, talent: @talent %>
 <br>
-
-<div>
-  <%= link_to "Back to talents", talents_path %>
-</div>

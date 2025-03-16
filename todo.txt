@@ -162,9 +162,12 @@
         - have a submission date 
         - linked to PerformanceReview 
         - Review Question based on type of PerformanceReview 
+        - add logic to prevent edits of submitted reviews 
+        - add logic to prevent edits of reviews after due date 
     - Calibration 
+        - description 
         - calibration_date 
-        - ranking -> needs_improvement | meets_expectations | exceeds_expectations 
+        - ranking -> below_expectatons| needs_improvement | meets_expectations | exceeds_expectations 
         - calibrator 
     - Performance_Rating 
         - name 
@@ -199,6 +202,8 @@
         - has Career Vision 
         - has motivations 
         - has Talents 
+        - accessible by employee & manager 
+
 
 
 # test user details 

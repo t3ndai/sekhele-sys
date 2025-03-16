@@ -1,10 +1,6 @@
 <p style="color: green"><%= notice %></p>
-
 <%= render @career_vision %>
-
 <div>
   <%= link_to "Edit this career vision", edit_career_vision_path(@career_vision) %> |
-  <%= link_to "Back to career visions", career_visions_path %>
-
   <%= button_to "Destroy this career vision", @career_vision, method: :delete %>
 </div>

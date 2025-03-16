@@ -1,10 +1,6 @@
 <p style="color: green"><%= notice %></p>
-
 <%= render @growth_area %>
-
 <div>
   <%= link_to "Edit this growth area", edit_growth_area_path(@growth_area) %> |
-  <%= link_to "Back to growth areas", growth_areas_path %>
-
   <%= button_to "Destroy this growth area", @growth_area, method: :delete %>
 </div>
