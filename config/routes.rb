@@ -1,6 +1,4 @@
 Rails.application.routes.draw do
-
-
   resources :organizations, shallow: true do
     resources :departments
     resources :employees do
@@ -60,6 +58,7 @@ Rails.application.routes.draw do
       resources :interview_feedbacks
     end
     resources :performance_reviews
+    resources :channels
   end
   namespace :app_admin do
     resources :users

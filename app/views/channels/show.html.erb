@@ -1,0 +1,6 @@
+<p style="color: green"><%= notice %></p>
+<%= render @channel %>
+<div>
+  <%= link_to "Edit this channel", edit_channel_path(@channel) %> |
+  <%= button_to "Destroy this channel", @channel, method: :delete %>
+</div>

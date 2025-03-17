@@ -203,6 +203,30 @@
         - has motivations 
         - has Talents 
         - accessible by employee & manager 
+-- Engagement 
+    - Channels 
+        - created when org is created default (All Company)
+        - channels contain Posts 
+        - have events 
+        - have members 
+        - have restrictions on who can post
+    - Announcements 
+        - post to whole Company
+        - has comments 
+        - has likes 
+        - belong to channel 
+    - Pulse Surveys 
+    - Q&A 
+    - Executive AMA 
+    - Praise Posts 
+        - praise colleugue 
+        - praise type 
+        - birthday celebrations | anniversary celebrations 
+        - belong to Channel 
+-- Headcount Planning 
+-- TaskBox 
+
+
 
 
 
