@@ -1,0 +1,19 @@
+<%= form_with(model: [channel, channel_post]) do |form| %>
+  <% if channel_post.errors.any? %>
+    <div style="color: red">
+      <h2><%= pluralize(channel_post.errors.count, "error") %> prohibited this channel_post from being saved:</h2>
+      <ul>
+        <% channel_post.errors.each do |error| %>
+          <li><%= error.full_message %></li>
+        <% end %>
+      </ul>
+    </div>
+  <% end %>
+  <div>
+    <%= form.label :new_post, style: "display: block" %>
+    <%= form.rich_textarea :content %>
+  </div>
+  <div>
+    <%= form.submit %>
+  </div>
+<% end %>

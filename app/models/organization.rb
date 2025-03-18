@@ -25,6 +25,8 @@ class Organization < ApplicationRecord
   has_many :benefit_elections, through: :employees
   has_many :benefit_plans, through: :benefit_elections
   has_many :performance_reviews
+  has_many :channels
+  has_many :channel_posts, through: :channels
 
   validates :name, presence: true, uniqueness: true
 end

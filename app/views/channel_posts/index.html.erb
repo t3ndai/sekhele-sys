@@ -1,0 +1,16 @@
+<p style="color: green"><%= notice %></p>
+
+<% content_for :title, "Channel posts" %>
+
+<h1>Channel posts</h1>
+
+<div id="channel_posts">
+  <% @channel_posts.each do |channel_post| %>
+    <%= render channel_post %>
+    <p>
+      <%= link_to "Show this channel post", channel_post %>
+    </p>
+  <% end %>
+</div>
+
+<%= link_to "New channel post", new_channel_post_path %>

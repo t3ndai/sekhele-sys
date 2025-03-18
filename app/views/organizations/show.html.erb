@@ -42,6 +42,7 @@
 </div>
 <div>
   <%= link_to "New Channel", new_organization_channel_path(@organization) %>
+  <%= link_to "View Channels", organization_channels_path(@organization) %>
 </div>
 <div>
   <%= button_to "Destroy this organization", @organization, method: :delete %>

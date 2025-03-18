@@ -58,7 +58,9 @@ Rails.application.routes.draw do
       resources :interview_feedbacks
     end
     resources :performance_reviews
-    resources :channels
+    resources :channels do
+      resources :channel_posts
+    end
   end
   namespace :app_admin do
     resources :users

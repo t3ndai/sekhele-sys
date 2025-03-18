@@ -1,0 +1,12 @@
+<% content_for :title, "Editing channel post" %>
+
+<h1>Editing channel post</h1>
+
+<%= render "form", channel_post: @channel_post %>
+
+<br>
+
+<div>
+  <%= link_to "Show this channel post", @channel_post %> |
+  <%= link_to "Back to channel posts", channel_posts_path %>
+</div>

@@ -1,0 +1,6 @@
+<p style="color: green"><%= notice %></p>
+<%= render @channel_post %>
+<div>
+  <%= link_to "Edit this channel post", edit_channel_post_path(@channel_post) %> |
+  <%= button_to "Destroy this channel post", @channel_post, method: :delete %>
+</div>

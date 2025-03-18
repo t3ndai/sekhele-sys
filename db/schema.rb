@@ -10,7 +10,7 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema[8.0].define(version: 2025_03_17_184131) do
+ActiveRecord::Schema[8.0].define(version: 2025_03_17_202100) do
   # These are extensions that must be enabled in order to support this database
   enable_extension "pg_catalog.plpgsql"
 
@@ -126,6 +126,16 @@ ActiveRecord::Schema[8.0].define(version: 2025_03_17_184131) do
     t.datetime "created_at", null: false
     t.datetime "updated_at", null: false
     t.index ["personal_development_plan_id"], name: "index_career_visions_on_personal_development_plan_id"
+  end
+
+  create_table "channel_posts", force: :cascade do |t|
+    t.bigint "creator_id", null: false
+    t.integer "likes"
+    t.bigint "channel_id", null: false
+    t.datetime "created_at", null: false
+    t.datetime "updated_at", null: false
+    t.index ["channel_id"], name: "index_channel_posts_on_channel_id"
+    t.index ["creator_id"], name: "index_channel_posts_on_creator_id"
   end
 
   create_table "channels", force: :cascade do |t|
@@ -597,6 +607,8 @@ ActiveRecord::Schema[8.0].define(version: 2025_03_17_184131) do
   add_foreign_key "candidate_notes", "employees"
   add_foreign_key "candidate_notes", "job_applicants"
   add_foreign_key "career_visions", "personal_development_plans"
+  add_foreign_key "channel_posts", "channels"
+  add_foreign_key "channel_posts", "employees", column: "creator_id"
   add_foreign_key "channels", "organizations"
   add_foreign_key "company_files", "documents"
   add_foreign_key "company_files", "organizations"
