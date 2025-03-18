@@ -59,6 +59,9 @@ Rails.application.routes.draw do
     end
     resources :performance_reviews
     resources :channels do
+      member do
+        post "join", as: :join
+      end
       resources :channel_posts
     end
   end

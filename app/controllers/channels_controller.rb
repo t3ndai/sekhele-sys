@@ -1,5 +1,5 @@
 class ChannelsController < ApplicationController
-  before_action :set_channel, only: %i[ show edit update destroy ]
+  before_action :set_channel, only: %i[ show edit update destroy join ]
   before_action :set_organization, only: %i[ index new create ]
 
   # GET /channels or /channels.json
@@ -56,6 +56,16 @@ class ChannelsController < ApplicationController
     respond_to do |format|
       format.html { redirect_to channels_path, status: :see_other, notice: "Channel was successfully destroyed." }
       format.json { head :no_content }
+    end
+  end
+
+  def join
+    @channel_membership = ChannelMembership.new(member: @current_employee, channel: @channel)
+
+    if @channel_membership.save
+      redirect_to @channel, notice: "You've successfully joined the channel"
+    else
+      redirect_to @channel, notice: "Sorry, not able to join channel"
     end
   end
 

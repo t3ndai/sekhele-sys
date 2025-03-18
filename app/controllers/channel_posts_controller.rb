@@ -52,10 +52,11 @@ class ChannelPostsController < ApplicationController
 
   # DELETE /channel_posts/1 or /channel_posts/1.json
   def destroy
+    @channel = channel_post.channel
     @channel_post.destroy!
 
     respond_to do |format|
-      format.html { redirect_to channel_posts_path, status: :see_other, notice: "Channel post was successfully destroyed." }
+      format.html { redirect_to channel_channel_posts_path(@channel), status: :see_other, notice: "Channel post was successfully destroyed." }
       format.json { head :no_content }
     end
   end

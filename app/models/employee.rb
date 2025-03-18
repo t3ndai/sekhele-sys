@@ -23,6 +23,9 @@ class Employee < ApplicationRecord
   has_many :growth_areas, through: :personal_development_plans
   has_many :motivations, through: :personal_development_plans
   has_many :career_visions, through: :personal_development_plans
+  has_many :channel_memberships
+  has_many :channels, through: :channel_memberships
+
 
 
   after_create :create_user

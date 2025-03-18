@@ -10,7 +10,7 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema[8.0].define(version: 2025_03_17_202100) do
+ActiveRecord::Schema[8.0].define(version: 2025_03_18_160021) do
   # These are extensions that must be enabled in order to support this database
   enable_extension "pg_catalog.plpgsql"
 
@@ -126,6 +126,15 @@ ActiveRecord::Schema[8.0].define(version: 2025_03_17_202100) do
     t.datetime "created_at", null: false
     t.datetime "updated_at", null: false
     t.index ["personal_development_plan_id"], name: "index_career_visions_on_personal_development_plan_id"
+  end
+
+  create_table "channel_memberships", force: :cascade do |t|
+    t.bigint "channel_id", null: false
+    t.bigint "member_id", null: false
+    t.datetime "created_at", null: false
+    t.datetime "updated_at", null: false
+    t.index ["channel_id"], name: "index_channel_memberships_on_channel_id"
+    t.index ["member_id"], name: "index_channel_memberships_on_member_id"
   end
 
   create_table "channel_posts", force: :cascade do |t|
@@ -607,6 +616,8 @@ ActiveRecord::Schema[8.0].define(version: 2025_03_17_202100) do
   add_foreign_key "candidate_notes", "employees"
   add_foreign_key "candidate_notes", "job_applicants"
   add_foreign_key "career_visions", "personal_development_plans"
+  add_foreign_key "channel_memberships", "channels"
+  add_foreign_key "channel_memberships", "employees", column: "member_id"
   add_foreign_key "channel_posts", "channels"
   add_foreign_key "channel_posts", "employees", column: "creator_id"
   add_foreign_key "channels", "organizations"
