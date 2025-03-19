@@ -225,6 +225,10 @@
         - belong to Channel 
 -- Headcount Planning 
 -- TaskBox 
+-- Payroll
+    - Deductible
+        - type mandatory | optional 
+        
 
 
 

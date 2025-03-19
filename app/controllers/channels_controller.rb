@@ -65,7 +65,7 @@ class ChannelsController < ApplicationController
     if @channel_membership.save
       redirect_to @channel, notice: "You've successfully joined the channel"
     else
-      redirect_to @channel, notice: "Sorry, not able to join channel"
+      redirect_to @channel, alert: "Sorry, not able to join channel"
     end
   end
 

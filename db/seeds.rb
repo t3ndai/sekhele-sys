@@ -90,3 +90,15 @@ p "Creating Questions - peer PerformanceReview"
   PerformanceReviewQuestion.find_or_create_by(title: question, performance_review_type: peer_review)
 end
 p "Created #{PerformanceReviewQuestion.all.count} PerformanceReviewQuestions"
+
+
+p "Creating Praise Types"
+[ { name: "Helping Hand", description: "Thanks for the help and being someone to lean on" },
+{ name: "North Star", description: "Thanks for displaying values we all aspire to" },
+{ name: "Thank You", description: "Thank you for being Awesome" },
+{ name: "Good Job", description: "Thanks for doing a good job" },
+{ name: "Above and Beyond", description: "Thank you for going Above and Beyond" }
+].each do |value|
+  praise_type = PraiseType.find_or_create_by(name: value[:name], description: value[:description])
+end
+p "Created #{PraiseType.all.count} PraiseTypes"
