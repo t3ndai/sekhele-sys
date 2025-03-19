@@ -1,0 +1,15 @@
+# Read about fixtures at https://api.rubyonrails.org/classes/ActiveRecord/FixtureSet.html
+
+one:
+  nominee: one
+  nominator: one
+  praise_type: one
+  message: MyText
+  channel: one
+
+two:
+  nominee: two
+  nominator: two
+  praise_type: two
+  message: MyText
+  channel: two

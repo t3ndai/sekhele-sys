@@ -1,0 +1,6 @@
+<p style="color: green"><%= notice %></p>
+<%= render @praise_post %>
+<div>
+  <%= link_to "Edit this praise post", edit_praise_post_path(@praise_post) %> |
+  <%= button_to "Destroy this praise post", @praise_post, method: :delete %>
+</div>

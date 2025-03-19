@@ -1,0 +1,11 @@
+<p style="color: green"><%= notice %></p>
+<% content_for :title, "Praise posts" %>
+<h1>Praise posts</h1>
+<div id="praise_posts">
+  <% @praise_posts.each do |praise_post| %>
+    <%= render praise_post %>
+    <p>
+      <%= link_to "Show this praise post", praise_post %>
+    </p>
+  <% end %>
+</div>

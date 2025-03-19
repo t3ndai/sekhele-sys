@@ -10,7 +10,7 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema[8.0].define(version: 2025_03_19_122036) do
+ActiveRecord::Schema[8.0].define(version: 2025_03_19_150256) do
   # These are extensions that must be enabled in order to support this database
   enable_extension "pg_catalog.plpgsql"
 
@@ -532,6 +532,20 @@ ActiveRecord::Schema[8.0].define(version: 2025_03_19_122036) do
     t.index ["employee_id"], name: "index_personal_development_plans_on_employee_id"
   end
 
+  create_table "praise_posts", force: :cascade do |t|
+    t.bigint "nominee_id", null: false
+    t.bigint "nominator_id", null: false
+    t.bigint "praise_type_id", null: false
+    t.text "message"
+    t.bigint "channel_id", null: false
+    t.datetime "created_at", null: false
+    t.datetime "updated_at", null: false
+    t.index ["channel_id"], name: "index_praise_posts_on_channel_id"
+    t.index ["nominator_id"], name: "index_praise_posts_on_nominator_id"
+    t.index ["nominee_id"], name: "index_praise_posts_on_nominee_id"
+    t.index ["praise_type_id"], name: "index_praise_posts_on_praise_type_id"
+  end
+
   create_table "praise_types", force: :cascade do |t|
     t.string "name"
     t.text "description"
@@ -677,6 +691,10 @@ ActiveRecord::Schema[8.0].define(version: 2025_03_19_122036) do
   add_foreign_key "performance_reviews", "organizations"
   add_foreign_key "performance_reviews", "performance_review_types"
   add_foreign_key "personal_development_plans", "employees"
+  add_foreign_key "praise_posts", "channels"
+  add_foreign_key "praise_posts", "employees", column: "nominator_id"
+  add_foreign_key "praise_posts", "employees", column: "nominee_id"
+  add_foreign_key "praise_posts", "praise_types"
   add_foreign_key "recovery_codes", "users"
   add_foreign_key "sessions", "users"
   add_foreign_key "talents", "personal_development_plans"

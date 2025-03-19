@@ -63,6 +63,7 @@ Rails.application.routes.draw do
         post "join", as: :join
       end
       resources :channel_posts
+      resources :praise_posts
     end
   end
   namespace :app_admin do
