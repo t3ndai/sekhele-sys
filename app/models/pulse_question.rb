@@ -1,0 +1,2 @@
+class PulseQuestion < ApplicationRecord
+end

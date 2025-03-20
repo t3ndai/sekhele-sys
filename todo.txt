@@ -204,13 +204,13 @@
         - has Talents 
         - accessible by employee & manager 
 -- Engagement 
-    - Channels 
+    - Channels x
         - created when org is created default (All Company)
         - channels contain Posts 
         - have events 
         - have members 
         - have restrictions on who can post
-    - Announcements 
+    - Announcements x
         - post to whole Company
         - has comments 
         - has likes 
@@ -218,7 +218,7 @@
     - Pulse Surveys 
     - Q&A 
     - Executive AMA 
-    - Praise Posts 
+    - Praise Posts x
         - praise colleugue 
         - praise type 
         - birthday celebrations | anniversary celebrations 

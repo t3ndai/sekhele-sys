@@ -102,3 +102,18 @@ p "Creating Praise Types"
   praise_type = PraiseType.find_or_create_by(name: value[:name], description: value[:description])
 end
 p "Created #{PraiseType.all.count} PraiseTypes"
+
+
+p "Creating Pulse Questions"
+[
+  "How meaningful do you find your work?",
+  "Do you feel your work contributes to the organization's goals?",
+  "Do you feel comfortable being yourself at work?",
+  "Do you feel supported by your manager?",
+  "Are you satisfied with work-life balance?",
+  "Does your current role align with your long-term career goals?",
+  "Do you feel adequately compensated for the work you do?"
+  ].each do |question|
+    PulseQuestion.find_or_create_by(title: question)
+  end
+  p "Created #{PulseQuestion.all.count} PulseQuestions"
