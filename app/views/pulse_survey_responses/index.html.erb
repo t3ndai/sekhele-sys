@@ -1,0 +1,11 @@
+<p style="color: green"><%= notice %></p>
+<% content_for :title, "Pulse survey responses" %>
+<h1>Pulse survey responses</h1>
+<div id="pulse_survey_responses">
+  <% @pulse_survey_responses.each do |pulse_survey_response| %>
+    <%= render pulse_survey_response %>
+    <p>
+      <%= link_to "Show this pulse survey response", pulse_survey_response %>
+    </p>
+  <% end %>
+</div>

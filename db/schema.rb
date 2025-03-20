@@ -10,7 +10,7 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema[8.0].define(version: 2025_03_20_095135) do
+ActiveRecord::Schema[8.0].define(version: 2025_03_20_152344) do
   # These are extensions that must be enabled in order to support this database
   enable_extension "pg_catalog.plpgsql"
 
@@ -559,6 +559,38 @@ ActiveRecord::Schema[8.0].define(version: 2025_03_20_095135) do
     t.datetime "updated_at", null: false
   end
 
+  create_table "pulse_survey_answers", force: :cascade do |t|
+    t.bigint "pulse_question_id", null: false
+    t.bigint "pulse_survey_response_id", null: false
+    t.integer "sentiment"
+    t.text "answer"
+    t.datetime "created_at", null: false
+    t.datetime "updated_at", null: false
+    t.index ["pulse_question_id"], name: "index_pulse_survey_answers_on_pulse_question_id"
+    t.index ["pulse_survey_response_id"], name: "index_pulse_survey_answers_on_pulse_survey_response_id"
+  end
+
+  create_table "pulse_survey_responses", force: :cascade do |t|
+    t.bigint "pulse_survey_id", null: false
+    t.bigint "responder_id"
+    t.uuid "annon_id"
+    t.date "submitted_on"
+    t.datetime "created_at", null: false
+    t.datetime "updated_at", null: false
+    t.index ["pulse_survey_id"], name: "index_pulse_survey_responses_on_pulse_survey_id"
+    t.index ["responder_id"], name: "index_pulse_survey_responses_on_responder_id"
+  end
+
+  create_table "pulse_surveys", force: :cascade do |t|
+    t.date "date_open"
+    t.date "date_close"
+    t.string "name"
+    t.bigint "organization_id", null: false
+    t.datetime "created_at", null: false
+    t.datetime "updated_at", null: false
+    t.index ["organization_id"], name: "index_pulse_surveys_on_organization_id"
+  end
+
   create_table "recovery_codes", force: :cascade do |t|
     t.integer "user_id", null: false
     t.string "code", null: false
@@ -701,6 +733,11 @@ ActiveRecord::Schema[8.0].define(version: 2025_03_20_095135) do
   add_foreign_key "praise_posts", "employees", column: "nominator_id"
   add_foreign_key "praise_posts", "employees", column: "nominee_id"
   add_foreign_key "praise_posts", "praise_types"
+  add_foreign_key "pulse_survey_answers", "pulse_questions"
+  add_foreign_key "pulse_survey_answers", "pulse_survey_responses"
+  add_foreign_key "pulse_survey_responses", "employees", column: "responder_id"
+  add_foreign_key "pulse_survey_responses", "pulse_surveys"
+  add_foreign_key "pulse_surveys", "organizations"
   add_foreign_key "recovery_codes", "users"
   add_foreign_key "sessions", "users"
   add_foreign_key "talents", "personal_development_plans"

@@ -1,0 +1,13 @@
+# Read about fixtures at https://api.rubyonrails.org/classes/ActiveRecord/FixtureSet.html
+
+one:
+  pulse_survey: one
+  responder: one
+  annon_id: 
+  submitted_on: 2025-03-20
+
+two:
+  pulse_survey: two
+  responder: two
+  annon_id: 
+  submitted_on: 2025-03-20

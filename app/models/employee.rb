@@ -25,6 +25,7 @@ class Employee < ApplicationRecord
   has_many :career_visions, through: :personal_development_plans
   has_many :channel_memberships
   has_many :channels, through: :channel_memberships
+  has_one :pulse_survey_response
 
 
 

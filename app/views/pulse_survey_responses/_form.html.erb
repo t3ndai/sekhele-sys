@@ -1,0 +1,26 @@
+<%= form_with(model: pulse_survey_response) do |form| %>
+  <% if pulse_survey_response.errors.any? %>
+    <div style="color: red">
+      <h2><%= pluralize(pulse_survey_response.errors.count, "error") %> prohibited this pulse_survey_response from being saved:</h2>
+      <ul>
+        <% pulse_survey_response.errors.each do |error| %>
+          <li><%= error.full_message %></li>
+        <% end %>
+      </ul>
+    </div>
+  <% end %>
+  <% PulseQuestion.all.each do |question| %>
+    <div><%= question.title %></div>
+    <%= form.fields_for :pulse_survey_answer, PulseSurveyAnswer.find_or_create_by(pulse_question: question, pulse_survey_response: pulse_survey_response) do |answer| %>
+      <div>
+        <%= answer.collection_radio_buttons :sentiment, PulseSurveyAnswer.sentiments, :second, :first %>
+      </div>
+      <div>
+        <%= answer.textarea :answer %>
+      </div>
+    <% end %>
+  <% end %>
+  <div>
+    <%= form.submit "Submit" %>
+  </div>
+<% end %>

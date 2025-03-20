@@ -216,6 +216,17 @@
         - has likes 
         - belong to channel 
     - Pulse Surveys 
+        - PulseSurvey 
+            - date_open
+            - date_close 
+            - name 
+            - belongs_to org  
+        - PulseSurveyResponse 
+            - annon_id 
+            - has PulseAnswer 
+        - PulseAnswer 
+            - belongs to PulseSurveyResponse
+            - belongs to PulseQuestion 
     - Q&A 
     - Executive AMA 
     - Praise Posts x

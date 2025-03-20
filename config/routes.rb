@@ -28,6 +28,7 @@ Rails.application.routes.draw do
         resources :career_visions
         resources :growth_areas
       end
+      resources :pulse_survey_responses,  only: [ :index, :edit, :update ]
     end
     resources :asset_categories
     resources :locations
@@ -65,6 +66,7 @@ Rails.application.routes.draw do
       resources :channel_posts
       resources :praise_posts
     end
+    resources :pulse_surveys
   end
   namespace :app_admin do
     resources :users

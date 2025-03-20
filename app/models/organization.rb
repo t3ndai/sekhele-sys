@@ -27,6 +27,8 @@ class Organization < ApplicationRecord
   has_many :performance_reviews
   has_many :channels
   has_many :channel_posts, through: :channels
+  has_many :praise_posts, through: :channels
+  has_many :pulse_surveys
 
   validates :name, presence: true, uniqueness: true
 end

@@ -1,0 +1,6 @@
+<p style="color: green"><%= notice %></p>
+<%= render @pulse_survey %>
+<div>
+  <%= link_to "Edit this pulse survey", edit_pulse_survey_path(@pulse_survey) %> |
+  <%= button_to "Destroy this pulse survey", @pulse_survey, method: :delete %>
+</div>

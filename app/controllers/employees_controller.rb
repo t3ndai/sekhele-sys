@@ -9,6 +9,7 @@ class EmployeesController < ApplicationController
 
   # GET /employees/1 or /employees/1.json
   def show
+    @pulse_survey_response = PulseSurveyResponse.find_by(responder: @employee)
     @organization = @employee.organization
   end
 

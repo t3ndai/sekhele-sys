@@ -1,0 +1,12 @@
+<% content_for :title, "Editing pulse survey" %>
+
+<h1>Editing pulse survey</h1>
+
+<%= render "form", pulse_survey: @pulse_survey %>
+
+<br>
+
+<div>
+  <%= link_to "Show this pulse survey", @pulse_survey %> |
+  <%= link_to "Back to pulse surveys", pulse_surveys_path %>
+</div>

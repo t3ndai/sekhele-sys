@@ -35,6 +35,9 @@
   <%= link_to "Add Development Plan", new_employee_personal_development_plan_path(@employee) %>
 </div>
 <div>
+  <%= link_to "View Pulse Survey", edit_pulse_survey_response_path(@pulse_survey_response) %>
+</div>
+<div>
   <%= link_to "Edit this employee", edit_employee_path(@employee) %> |
   <%= link_to "Back to employees", organization_employees_path(@organization) %>
   <%= button_to "Destroy this employee", @employee, method: :delete %>
