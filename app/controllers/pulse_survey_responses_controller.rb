@@ -38,7 +38,7 @@ class PulseSurveyResponsesController < ApplicationController
   # PATCH/PUT /pulse_survey_responses/1 or /pulse_survey_responses/1.json
   def update
     respond_to do |format|
-      if @pulse_survey_response.update(pulse_survey_response_params)
+      if @pulse_survey_response.update(pulse_survey_response_params.merge(submitted_on: Time.now))
         format.html { redirect_to @pulse_survey_response, notice: "Pulse survey response was successfully submitted" }
         format.json { render :show, status: :ok, location: @pulse_survey_response }
       else
