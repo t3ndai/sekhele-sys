@@ -1,3 +1,19 @@
+# == Schema Information
+#
+# Table name: action_items
+#
+#  id            :integer          not null, primary key
+#  name          :string
+#  completed     :boolean
+#  one_to_one_id :integer          not null
+#  created_at    :datetime         not null
+#  updated_at    :datetime         not null
+#
+# Indexes
+#
+#  index_action_items_on_one_to_one_id  (one_to_one_id)
+#
+
 class ActionItem < ApplicationRecord
   belongs_to :one_to_one
 

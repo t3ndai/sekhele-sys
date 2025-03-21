@@ -39,7 +39,7 @@ class PulseSurveyResponsesController < ApplicationController
   def update
     respond_to do |format|
       if @pulse_survey_response.update(pulse_survey_response_params)
-        format.html { redirect_to @pulse_survey_response, notice: "Pulse survey response was successfully updated." }
+        format.html { redirect_to @pulse_survey_response, notice: "Pulse survey response was successfully submitted" }
         format.json { render :show, status: :ok, location: @pulse_survey_response }
       else
         format.html { render :edit, status: :unprocessable_entity }
@@ -70,6 +70,6 @@ class PulseSurveyResponsesController < ApplicationController
 
     # Only allow a list of trusted parameters through.
     def pulse_survey_response_params
-      params.expect(pulse_survey_response: [ :pulse_survey_id, :responder_id, :annon_id, :submitted_on ])
+      params.expect(pulse_survey_response: [ :pulse_survey_id, :responder_id, :annon_id, :submitted_on, pulse_survey_answer_attributes: [ :sentiment, :answer ] ])
     end
 end

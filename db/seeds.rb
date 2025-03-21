@@ -99,7 +99,7 @@ p "Creating Praise Types"
 { name: "Good Job", description: "Thanks for doing a good job" },
 { name: "Above and Beyond", description: "Thank you for going Above and Beyond" }
 ].each do |value|
-  praise_type = PraiseType.find_or_create_by(name: value[:name], description: value[:description])
+  PraiseType.find_or_create_by(name: value[:name], description: value[:description])
 end
 p "Created #{PraiseType.all.count} PraiseTypes"
 
