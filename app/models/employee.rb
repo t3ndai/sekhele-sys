@@ -62,9 +62,7 @@ class Employee < ApplicationRecord
   has_many :channel_memberships
   has_many :channels, through: :channel_memberships
   has_one :pulse_survey_response
-  has_many :tasks
-
-
+  has_many :tasks, inverse_of: :assignee
 
   after_create :create_user
 
@@ -79,6 +77,8 @@ class Employee < ApplicationRecord
   validates :hire_date, presence: true
 
   scope :same_organization, ->(organization) { where(organization: organization) }
+
+  # scope :tasks, -> { Task.where(assignee: self) }
 
   def is_manager?
     self.reports.any?

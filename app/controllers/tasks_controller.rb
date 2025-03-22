@@ -1,5 +1,6 @@
 class TasksController < ApplicationController
   before_action :set_task, only: %i[ show edit update destroy ]
+  before_action :set_assignee, only: %i[ index new create ]
 
   # GET /tasks or /tasks.json
   def index
@@ -22,6 +23,8 @@ class TasksController < ApplicationController
   # POST /tasks or /tasks.json
   def create
     @task = Task.new(task_params)
+    @task.assigned_by = @current_employee
+    @task.assignee = @assignee
 
     respond_to do |format|
       if @task.save
@@ -63,8 +66,12 @@ class TasksController < ApplicationController
       @task = Task.find(params.expect(:id))
     end
 
+    def set_assignee
+      @assignee = Employee.find(params.expect(:employee_id))
+    end
+
     # Only allow a list of trusted parameters through.
     def task_params
-      params.expect(task: [ :assigned_by_id, :assignee_id, :due_on, :status, :notes, files: [] ])
+      params.expect(task: [ :title, :assigned_by_id, :assignee_id, :due_on, :status, :notes, files: [] ])
     end
 end

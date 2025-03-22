@@ -35,7 +35,14 @@
   <%= link_to "Add Development Plan", new_employee_personal_development_plan_path(@employee) %>
 </div>
 <div>
-  <%= link_to "View Pulse Survey", edit_pulse_survey_response_path(@pulse_survey_response) %>
+  <% if @pulse_survey_response %>
+    <%= link_to "View Pulse Survey", edit_pulse_survey_response_path(@pulse_survey_response) %>
+  <% end %>
+</div>
+<div>
+  <h4> TaskBox </h4>
+  <%= render @employee.tasks %>
+  <%= link_to "New Task", new_employee_task_path(@employee) %>
 </div>
 <div>
   <%= link_to "Edit this employee", edit_employee_path(@employee) %> |

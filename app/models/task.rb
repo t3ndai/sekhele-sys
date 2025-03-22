@@ -20,11 +20,11 @@
 
 class Task < ApplicationRecord
   belongs_to :assigned_by, class_name: "Employee"
-  belongs_to :assignee, class_name: "Employee"
+  belongs_to :assignee, class_name: "Employee", foreign_key: "assignee_id"
   has_many_attached :files
 
   validates :due_on, presence: true, timeliness: { on_or_after: -> { Date.current }, type: :date }
   validates :notes, :title, presence: true
 
-  enum status: { up_next: "up_next", in_progress: "in_progress", completed: "completed" }
+  enum :status, { up_next: "up_next", in_progress: "in_progress", completed: "completed" }, default: :up_next
 end
