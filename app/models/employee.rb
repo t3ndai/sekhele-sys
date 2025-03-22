@@ -62,6 +62,7 @@ class Employee < ApplicationRecord
   has_many :channel_memberships
   has_many :channels, through: :channel_memberships
   has_one :pulse_survey_response
+  has_many :tasks
 
 
 

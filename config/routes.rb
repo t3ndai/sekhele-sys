@@ -1,5 +1,4 @@
 Rails.application.routes.draw do
-  resources :tasks
   resources :organizations, shallow: true do
     resources :departments
     resources :employees do
@@ -30,6 +29,7 @@ Rails.application.routes.draw do
         resources :growth_areas
       end
       resources :pulse_survey_responses,  only: [ :index, :edit, :update, :show ]
+      resources :tasks
     end
     resources :asset_categories
     resources :locations

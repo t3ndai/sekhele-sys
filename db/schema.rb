@@ -10,7 +10,7 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema[8.0].define(version: 2025_03_21_112430) do
+ActiveRecord::Schema[8.0].define(version: 2025_03_22_155735) do
   # These are extensions that must be enabled in order to support this database
   enable_extension "pg_catalog.plpgsql"
 
@@ -630,6 +630,19 @@ ActiveRecord::Schema[8.0].define(version: 2025_03_21_112430) do
     t.index ["personal_development_plan_id"], name: "index_talents_on_personal_development_plan_id"
   end
 
+  create_table "tasks", force: :cascade do |t|
+    t.bigint "assigned_by_id", null: false
+    t.bigint "assignee_id", null: false
+    t.string "title"
+    t.date "due_on"
+    t.string "status"
+    t.text "notes"
+    t.datetime "created_at", null: false
+    t.datetime "updated_at", null: false
+    t.index ["assigned_by_id"], name: "index_tasks_on_assigned_by_id"
+    t.index ["assignee_id"], name: "index_tasks_on_assignee_id"
+  end
+
   create_table "time_workeds", force: :cascade do |t|
     t.time "start_time"
     t.time "end_time"
@@ -741,5 +754,7 @@ ActiveRecord::Schema[8.0].define(version: 2025_03_21_112430) do
   add_foreign_key "recovery_codes", "users"
   add_foreign_key "sessions", "users"
   add_foreign_key "talents", "personal_development_plans"
+  add_foreign_key "tasks", "employees", column: "assigned_by_id"
+  add_foreign_key "tasks", "employees", column: "assignee_id"
   add_foreign_key "time_workeds", "employees"
 end
