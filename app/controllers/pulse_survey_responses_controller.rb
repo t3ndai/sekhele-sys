@@ -18,6 +18,7 @@ class PulseSurveyResponsesController < ApplicationController
 
   # GET /pulse_survey_responses/1/edit
   def edit
+    @pulse_survey_response.pulse_survey_answers.build if @pulse_survey_response.pulse_survey_answers.empty?
   end
 
   # POST /pulse_survey_responses or /pulse_survey_responses.json
@@ -38,10 +39,11 @@ class PulseSurveyResponsesController < ApplicationController
   # PATCH/PUT /pulse_survey_responses/1 or /pulse_survey_responses/1.json
   def update
     respond_to do |format|
-      if @pulse_survey_response.update(pulse_survey_response_params.merge(submitted_on: Time.now))
+      if @pulse_survey_response.update(pulse_survey_response_params.merge(submitted_on: Time.now, annon_id: SecureRandom.uuid, responder_id: nil))
         format.html { redirect_to @pulse_survey_response, notice: "Pulse survey response was successfully submitted" }
         format.json { render :show, status: :ok, location: @pulse_survey_response }
       else
+        p @pulse_survey_response.errors.messages
         format.html { render :edit, status: :unprocessable_entity }
         format.json { render json: @pulse_survey_response.errors, status: :unprocessable_entity }
       end
@@ -70,6 +72,8 @@ class PulseSurveyResponsesController < ApplicationController
 
     # Only allow a list of trusted parameters through.
     def pulse_survey_response_params
-      params.expect(pulse_survey_response: [ :pulse_survey_id, :responder_id, :annon_id, :submitted_on, pulse_survey_answer_attributes: [ :sentiment, :answer ] ])
+      params.expect(pulse_survey_response: [ :pulse_survey_id, :responder_id, :annon_id, :submitted_on,
+       pulse_survey_answers_attributes: [ [ :id, :sentiment, :answer ] ]
+      ])
     end
 end

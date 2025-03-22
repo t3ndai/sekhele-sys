@@ -28,7 +28,7 @@ Rails.application.routes.draw do
         resources :career_visions
         resources :growth_areas
       end
-      resources :pulse_survey_responses,  only: [ :index, :edit, :update ]
+      resources :pulse_survey_responses,  only: [ :index, :edit, :update, :show ]
     end
     resources :asset_categories
     resources :locations

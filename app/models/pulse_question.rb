@@ -9,4 +9,5 @@
 #
 
 class PulseQuestion < ApplicationRecord
+  has_many :pulse_survey_answers
 end

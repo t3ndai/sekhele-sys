@@ -11,12 +11,12 @@
   <% end %>
   <% PulseQuestion.all.each do |question| %>
     <div><%= question.title %></div>
-    <%= form.fields_for :pulse_survey_answer, PulseSurveyAnswer.find_or_create_by(pulse_question: question, pulse_survey_response: pulse_survey_response) do |answer| %>
+    <%= form.fields_for :pulse_survey_answers, PulseSurveyAnswer.find_or_create_by(pulse_question: question, pulse_survey_response: pulse_survey_response) do |pulse_answer| %>
       <div>
-        <%= answer.collection_radio_buttons :sentiment, PulseSurveyAnswer.sentiments, :second, :first %>
+        <%= pulse_answer.collection_radio_buttons :sentiment, PulseSurveyAnswer.sentiments.keys, :to_s, :humanize %>
       </div>
       <div>
-        <%= answer.textarea :answer %>
+        <%= pulse_answer.text_area :answer %>
       </div>
     <% end %>
   <% end %>
