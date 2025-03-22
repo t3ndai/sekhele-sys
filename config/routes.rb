@@ -1,4 +1,5 @@
 Rails.application.routes.draw do
+  resources :tasks
   resources :organizations, shallow: true do
     resources :departments
     resources :employees do

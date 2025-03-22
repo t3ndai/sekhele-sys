@@ -1,0 +1,34 @@
+<div id="<%= dom_id task %>">
+  <p>
+    <strong>Assigned by:</strong>
+    <%= task.assigned_by_id %>
+  </p>
+
+  <p>
+    <strong>Assignee:</strong>
+    <%= task.assignee_id %>
+  </p>
+
+  <p>
+    <strong>Due on:</strong>
+    <%= task.due_on %>
+  </p>
+
+  <p>
+    <strong>Status:</strong>
+    <%= task.status %>
+  </p>
+
+  <p>
+    <strong>Notes:</strong>
+    <%= task.notes %>
+  </p>
+
+  <p>
+    <strong>Files:</strong>
+    <% task.files.each do |file| %>
+      <div><%= link_to file.filename, file %></div>
+    <% end %>
+  </p>
+
+</div>

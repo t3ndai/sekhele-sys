@@ -236,6 +236,17 @@
         - belong to Channel 
 -- Headcount Planning 
 -- TaskBox 
+    - Task 
+        - assigned_by 
+        - assigned_on 
+        - due_on 
+        - status -> up_next | in_progress | done 
+        - notes 
+        - has_attachments 
+        - has comments 
+    - TaskComment 
+        - by 
+        - belongs to Task 
 -- Payroll
     - Deductible
         - type mandatory | optional 
