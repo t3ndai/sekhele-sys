@@ -94,3 +94,7 @@ gem "faker"
 gem "business_time"
 # timeliness validations
 gem "validates_timeliness", "~> 8.0.0.beta1"
+
+gem "inertia_rails", "~> 3.7"
+
+gem "vite_rails", "~> 3.0"

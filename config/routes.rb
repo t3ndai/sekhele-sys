@@ -1,4 +1,5 @@
 Rails.application.routes.draw do
+  get 'inertia-example', to: 'inertia_example#index'
   resources :organizations, shallow: true do
     resources :departments
     resources :employees do
