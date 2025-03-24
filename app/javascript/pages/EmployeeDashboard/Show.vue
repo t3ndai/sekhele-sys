@@ -15,6 +15,9 @@ defineProps({
       <div>
         Expires: {{ leaveBalance.expires }}
       </div>
+      <div>
+        {{ leaveBalance.category }}
+      </div>
     </li>
   </ul>
 </template>
