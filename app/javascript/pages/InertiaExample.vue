@@ -1,4 +1,5 @@
 <template>
+
   <Head title="Inertia + Vite Ruby + Vue Example" />
 
   <div class="root">
@@ -53,8 +54,8 @@ const count = ref(0)
   font-family: Inter, system-ui, Avenir, Helvetica, Arial, sans-serif;
   line-height: 1.5;
   font-weight: 400;
-  color: #213547;
-  background-color: #ffffff;
+  color: #f5f8f8;
+  background-color: #ffeccc;
   max-width: 1280px;
   margin: 0 auto;
   padding: 2rem;
@@ -78,13 +79,15 @@ const count = ref(0)
   font-size: 1em;
   font-weight: 500;
   font-family: inherit;
-  background-color: #f9f9f9;
+  background-color: #044d4d;
   cursor: pointer;
   transition: border-color 0.25s;
 }
+
 .button:hover {
   border-color: #646cff;
 }
+
 .button:focus,
 .button:focus-visible {
   outline: 4px auto -webkit-focus-ring-color;
@@ -97,12 +100,15 @@ const count = ref(0)
   will-change: filter;
   transition: filter 300ms;
 }
+
 .logo:hover {
   filter: drop-shadow(0 0 2em #646cffaa);
 }
+
 .logo.vite:hover {
   filter: drop-shadow(0 0 2em #e4023baa);
 }
+
 .logo.vue:hover {
   filter: drop-shadow(0 0 2em #41b883aa);
 }

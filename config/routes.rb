@@ -1,5 +1,5 @@
 Rails.application.routes.draw do
-  get 'inertia-example', to: 'inertia_example#index'
+  get "inertia-example", to: "inertia_example#index"
   resources :organizations, shallow: true do
     resources :departments
     resources :employees do
@@ -31,6 +31,7 @@ Rails.application.routes.draw do
       end
       resources :pulse_survey_responses,  only: [ :index, :edit, :update, :show ]
       resources :tasks
+      get "employee_dashboard/show"
     end
     resources :asset_categories
     resources :locations
