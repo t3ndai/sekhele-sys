@@ -31,6 +31,10 @@ class JobApplicant < ApplicationRecord
   validates :email, format: { with: URI::MailTo::EMAIL_REGEXP }
   validates_uniqueness_of :email, scope: :job_posting_id
 
+  def full_name
+    "#{first_name} #{last_name}"
+  end
+
   # TODO
   # craete a method to send email to the job_applicant owner
 end

@@ -15,8 +15,15 @@ class EmployeeDashboardController < ApplicationController
       status: task.status.humanize
       }
     end
-    puts @tasks
+    @interviews = current_employee.interviews.map do |interview|
+      { interviewee: interview.job_applicant.full_name,
+      position: interview.job_applicant.job_posting.title,
+      stage: interview.interview_stage.stage_type.humanize,
+      scheduled_on: interview.interview_on.strftime("%e %b %Y"),
+      scheduled_at: interview.interview_at.strftime("%l:%M %p")
+      }
+    end
     render inertia: "EmployeeDashboard/Show", props: {
-      leave_balances: @leave_balances, tasks: @tasks }
+      leave_balances: @leave_balances, tasks: @tasks, interviews: @interviews }
   end
 end
