@@ -20,4 +20,10 @@ defineProps({
       </div>
     </li>
   </ul>
+  <div>
+    <h2> TaskBox </h2>
+    <div>
+
+    </div>
+  </div>
 </template>
