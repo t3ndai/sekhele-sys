@@ -3,7 +3,8 @@
 import DataTable from 'primevue/datatable';
 import Column from 'primevue/column';
 import ColumnGroup from 'primevue/columngroup';   // optional
-import Row from 'primevue/row';                   // optional
+import Row from 'primevue/row';
+import Button from 'primevue/button'            // optional
 
 defineProps({
   leave_balances: Array,
@@ -28,6 +29,9 @@ defineProps({
   </ul>
   <div>
     <h2> TaskBox </h2>
+    <div>
+      <Button label="New Task" icon="pi pi-plus" @click="createTask" />
+    </div>
     <div>
       <DataTable :value="tasks" tableStyle="min-width: 50rem">
         <Column field="title" header="Title"></Column>
