@@ -2,14 +2,17 @@
 
 import DataTable from 'primevue/datatable';
 import Column from 'primevue/column';
-import ColumnGroup from 'primevue/columngroup';   // optional
+import ColumnGroup from 'primevue/columngroup';
 import Row from 'primevue/row';
-import Button from 'primevue/button'            // optional
+import Button from 'primevue/button'
+import NewTask from './NewTask.vue';
+
 
 defineProps({
   leave_balances: Array,
   tasks: Array,
-  interviews: Array
+  interviews: Array,
+  employees: Array
 })
 </script>
 
@@ -30,7 +33,7 @@ defineProps({
   <div>
     <h2> TaskBox </h2>
     <div>
-      <Button label="New Task" icon="pi pi-plus" @click="createTask" />
+      <NewTask :employees />
     </div>
     <div>
       <DataTable :value="tasks" tableStyle="min-width: 50rem">

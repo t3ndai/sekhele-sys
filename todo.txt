@@ -244,6 +244,8 @@
         - notes 
         - has_attachments 
         - has comments 
+        - priority -> low | medium | high 
+        - has tags 
     - TaskComment 
         - by 
         - belongs to Task 

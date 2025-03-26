@@ -23,7 +23,13 @@ class EmployeeDashboardController < ApplicationController
       scheduled_at: interview.interview_at.strftime("%l:%M %p")
       }
     end
+
+    employees = current_employee.organization.employees
+    employees = employees.map do |employee|
+      { name: employee.full_name, id: employee.id }
+    end
+
     render inertia: "EmployeeDashboard/Show", props: {
-      leave_balances: @leave_balances, tasks: @tasks, interviews: @interviews }
+      leave_balances: @leave_balances, tasks: @tasks, interviews: @interviews, employees: }
   end
 end

@@ -30,7 +30,6 @@ Rails.application.routes.draw do
         resources :growth_areas
       end
       resources :pulse_survey_responses,  only: [ :index, :edit, :update, :show ]
-      resources :tasks
       get "employee_dashboard/show"
     end
     resources :asset_categories
@@ -71,6 +70,7 @@ Rails.application.routes.draw do
     end
     resources :pulse_surveys
   end
+  resources :tasks, only: [ :create, :update, :destroy ]
   namespace :app_admin do
     resources :users
   end
