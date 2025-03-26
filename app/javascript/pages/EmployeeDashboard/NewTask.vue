@@ -5,7 +5,7 @@
             <Button label="New Task" icon="pi pi-plus" @click="visible = true" />
         </div>
         <Dialog v-model="visible" header="New Task" :visible="visible" @update:visible="visible = $event">
-            <form class="space-y-4" @submit.prevent="form.post('/tasks')">
+            <form class="space-y-4" @submit.prevent="saveTask">
                 <h4>Task Details</h4>
                 <div>
                     <FloatLabel>
@@ -67,10 +67,14 @@ const form = useForm({
     notes: '',
     due_on: '',
     assignee: '',
-    status: '',
-    priority: '',
     assigned_by: ''
 })
+
+function saveTask() {
+    form.post('/tasks')
+    visible.value = false
+    form.reset()
+}
 
 const visible = ref(false)
 
