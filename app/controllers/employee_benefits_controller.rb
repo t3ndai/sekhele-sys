@@ -9,6 +9,11 @@ class EmployeeBenefitsController < ApplicationController
 
   def show_benefit
     @benefit = Benefit.find(params[:benefit_id])
+    @benefit_plans = @benefit.benefit_plans
+    render inertia: "EmployeeBenefits/Show", props: {
+      benefit: @benefit,
+      benefit_plans: @benefit_plans
+    }
   end
 
   def show_benefit_plans

@@ -15,12 +15,12 @@ const employee = computed(() => page.props.employee)
             Home
             </Link>
         </div>
-        <div>
-            <Link :href="`/employees/${employee.id}/benefits`" class="flex items-baseline">
+        <div class="flex items-center">
+            <Link :href="`/employees/${employee.id}/benefits`">
             <span class="material-symbols-outlined">
                 shopping_basket
             </span>
-            Benefits
+            <div>Benefits</div>
             </Link>
         </div>
         <div>
@@ -28,7 +28,7 @@ const employee = computed(() => page.props.employee)
             <span class="material-symbols-outlined">
                 communication
             </span>
-            1-1s
+            <span>1-1s </span>
             </Link>
         </div>
     </header>
