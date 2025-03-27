@@ -1,6 +1,5 @@
 <template>
     <div>
-        <h2>New Task</h2>
         <div>
             <Button label="New Task" icon="pi pi-plus" @click="visible = true" />
         </div>

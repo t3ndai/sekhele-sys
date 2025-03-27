@@ -1,11 +1,25 @@
 <script setup>
+import { Link } from '@inertiajs/vue3'
+import { computed } from 'vue'
+import { usePage } from '@inertiajs/vue3'
 
 import DataTable from 'primevue/datatable';
 import Column from 'primevue/column';
 import ColumnGroup from 'primevue/columngroup';
 import Row from 'primevue/row';
 import Button from 'primevue/button'
+
+import Tabs from 'primevue/tabs';
+import TabList from 'primevue/tablist';
+import Tab from 'primevue/tab';
+import TabPanels from 'primevue/tabpanels';
+import TabPanel from 'primevue/tabpanel';
+
+
 import NewTask from './NewTask.vue';
+
+const page = usePage()
+const employee = computed(() => page.props.employee)
 
 
 defineProps({
@@ -17,7 +31,8 @@ defineProps({
 </script>
 
 <template>
-  <h2>I'm an Employee</h2>
+  <h1>Employee ID: {{ employee.id }}</h1>
+  <h2>Employee QuickView </h2>
   <p>My leave balances are:</p>
   <ul>
     <li v-for="leaveBalance in leave_balances" :key="leaveBalance.name">

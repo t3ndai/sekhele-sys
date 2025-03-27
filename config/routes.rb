@@ -30,7 +30,7 @@ Rails.application.routes.draw do
         resources :growth_areas
       end
       resources :pulse_survey_responses,  only: [ :index, :edit, :update, :show ]
-      get "employee_dashboard/show"
+      get "home", to:  "employee_dashboard#show"
     end
     resources :asset_categories
     resources :locations

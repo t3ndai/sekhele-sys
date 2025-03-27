@@ -4,6 +4,12 @@ class ApplicationController < ActionController::Base
 
   include Pundit::Authorization
 
+  inertia_share do
+    {
+      employee: current_employee&.as_json(only: %i[id full_name work_email])
+    } if current_employee
+  end
+
   before_action :set_current_request_details
   before_action :authenticate
   before_action :pundit_user

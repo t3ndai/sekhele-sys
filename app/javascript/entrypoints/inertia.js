@@ -3,6 +3,7 @@ import { createApp, h } from 'vue'
 import PrimeVue from 'primevue/config';
 import { definePreset } from '@primeuix/themes';
 import Aura from '@primeuix/themes/aura';
+import Layout from '../components/Layout.vue';
 
 
 const Noir = definePreset(Aura, {
@@ -69,7 +70,9 @@ createInertiaApp({
     const pages = import.meta.glob('../pages/**/*.vue', {
       eager: true,
     })
-    return pages[`../pages/${name}.vue`]
+    let page = pages[`../pages/${name}.vue`]
+    page.default.layout = page.default.layout || Layout
+    return page
 
     // To use a default layout, import the Layout component
     // and use the following lines.

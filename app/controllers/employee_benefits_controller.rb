@@ -2,6 +2,9 @@ class EmployeeBenefitsController < ApplicationController
   before_action :set_employee
   def index
     @employee_benefits = Benefit.org_benefits(@employee.organization_id)
+    render inertia: "EmployeeBenefits/Index", props: {
+      employee_benefits: @employee_benefits
+    }
   end
 
   def show_benefit
