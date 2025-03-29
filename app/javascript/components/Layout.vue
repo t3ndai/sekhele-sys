@@ -1,38 +1,44 @@
 <script setup>
+import Menu from 'primevue/menu';
 import { Link } from '@inertiajs/vue3'
 import { usePage } from '@inertiajs/vue3'
-import { computed } from 'vue'
+import { computed, ref } from 'vue'
 
 const page = usePage()
 const employee = computed(() => page.props.employee)
 </script>
 
 <template>
-    <header class="flex justify-between items-center p-4 bg-gray-100">
-        <div>
-            <Link :href="`/employees/${employee.id}/home`" class="flex items-baseline">
-            <i class="pi pi-home"></i>
-            Home
-            </Link>
-        </div>
-        <div class="flex items-center">
-            <Link :href="`/employees/${employee.id}/benefits`">
-            <span class="material-symbols-outlined">
-                shopping_basket
-            </span>
-            <div>Benefits</div>
-            </Link>
-        </div>
-        <div>
-            <Link href="">
-            <span class="material-symbols-outlined">
-                communication
-            </span>
-            <span>1-1s </span>
-            </Link>
-        </div>
-    </header>
-    <main>
-        <slot></slot>
-    </main>
+    <div class="flex gap-x-4">
+
+        <nav class="flex flex-col insert-y-0 left-0 gap-y-4 items-center bg-gray-100 w-20 min-h-screen">
+            <div>
+                <Link :href="`/employees/${employee.id}/home`" class="mt-4 flex items-baseline justify-center"
+                    :class="{ 'text-orange-500': $page.component === 'EmployeeDashboard/Show' }" as="button">
+                <span class="material-symbols-outlined nav-icon">
+                    home
+                </span>
+                </Link>
+            </div>
+            <div>
+                <Link :href="`/employees/${employee.id}/benefits`"
+                    class="flex justify-center items-center align-text-bottom"
+                    :class="{ 'text-orange-500': $page.component === 'EmployeeBenefits/Index' }" as="button">
+                <i class="material-symbols-outlined font-thin nav-icon">
+                    shopping_basket
+                </i>
+                </Link>
+            </div>
+            <div>
+                <Link href="" class="flex justify-center items-baseline" as="button">
+                <i class="material-symbols-outlined font-thin nav-icon">
+                    communication
+                </i>
+                </Link>
+            </div>
+        </nav>
+        <main>
+            <slot></slot>
+        </main>
+    </div>
 </template>

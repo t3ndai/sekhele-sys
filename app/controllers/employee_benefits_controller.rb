@@ -1,7 +1,14 @@
 class EmployeeBenefitsController < ApplicationController
   before_action :set_employee
   def index
-    @employee_benefits = Benefit.org_benefits(@employee.organization_id)
+    @employee_benefits = Benefit.org_benefits(@employee.organization_id).map do |benefit|
+      {
+        id: benefit.id,
+        name: benefit.name,
+        type: benefit.benefit_type.name.humanize,
+        valuation_type: benefit.valuation_type.humanize
+      }
+    end
     render inertia: "EmployeeBenefits/Index", props: {
       employee_benefits: @employee_benefits
     }

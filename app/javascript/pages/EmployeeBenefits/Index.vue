@@ -1,11 +1,32 @@
 <template>
-    <h2>Employee Benefits</h2>
+    <div>
+        <h2>Current Benefits Selected </h2>
+        <div>
 
-    <div v-for="benefit in employee_benefits" :key="benefit.id">
-        <Link :href="`/employees/${employee.id}/benefits/${benefit.id}`">
-        <div>{{ benefit.name }}</div>
-        </Link>
-        <div>{{ benefit.valuation_type }}</div>
+        </div>
+    </div>
+    <div>
+        <h2>Benefits on Offer</h2>
+
+        <DataTable :value="employee_benefits" tableStyle="min-width: 50rem">
+            <Column field="name" header="Name"></Column>
+            <Column field="type" header="Type"></Column>
+            <Column field="valuation_type" header="Valuation Type"></Column>
+            <Column>
+                <template #body="{ data }, empoloyee">
+
+                    <Button severity="secondary">
+                        <Link :href="`/employees/${employee.id}/benefits/${data.id}`" as="button">
+
+                        View Plans
+                        </Link>
+                    </Button>
+
+
+                </template>
+            </Column>
+        </DataTable>
+
 
     </div>
 </template>

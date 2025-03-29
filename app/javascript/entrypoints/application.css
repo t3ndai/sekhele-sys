@@ -9,3 +9,8 @@
 body {
     background-color: #f2efe9;
 }
+
+.nav-icon {
+    font-size: 40px;
+    font-weight: 200;
+}
