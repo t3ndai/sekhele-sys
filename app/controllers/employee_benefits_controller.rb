@@ -9,15 +9,29 @@ class EmployeeBenefitsController < ApplicationController
         valuation_type: benefit.valuation_type.humanize
       }
     end
-    render inertia: "EmployeeBenefits/Index", props: {
+    render inertia: 'EmployeeBenefits/Index', props: {
       employee_benefits: @employee_benefits
     }
   end
 
   def show_benefit
     @benefit = Benefit.find(params[:benefit_id])
-    @benefit_plans = @benefit.benefit_plans
-    render inertia: "EmployeeBenefits/Show", props: {
+    @benefit_plans = @benefit.benefit_plans.map do |benefit_plan|
+      {
+        id: benefit_plan.id,
+        name: benefit_plan.name,
+        employee_contribution: benefit_plan.employee_contribution,
+        cover: benefit_plan.cover.humanize,
+        documents: benefit_plan.documents.map do |document|
+          {
+            id: document.id,
+            name: document.filename,
+            url: rails_blob_url(document, only_path: true)
+          }
+        end
+      }
+    end
+    render inertia: 'EmployeeBenefits/Show', props: {
       benefit: @benefit,
       benefit_plans: @benefit_plans
     }
@@ -38,13 +52,15 @@ class EmployeeBenefitsController < ApplicationController
     @benefit_election.employee_id = @employee.id
     @benefit_election.benefit_plan_id = @benefit_plan.id
     if @benefit_election.save
-      redirect_to employee_benefit_path(@employee, @benefit_election.benefit_plan.benefit), notice: "Benefit Plan was successfully elected."
+      redirect_to employee_benefit_path(@employee, @benefit_election.benefit_plan.benefit),
+                  notice: 'Benefit Plan was successfully elected.'
     else
       render :show_benefit_plan, status: :unprocessable_entity
     end
   end
 
   private
+
   def set_employee
     @employee = Employee.find(params[:employee_id])
   end

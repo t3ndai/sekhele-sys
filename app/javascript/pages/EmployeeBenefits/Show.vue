@@ -9,9 +9,7 @@
             <Column header="Actions">
                 <template #body="slotProps">
                     <div class="flex gap-x-2">
-                        <Button severity="secondary">
-                            Details
-                        </Button>
+                        <BenefitPlan :plan="slotProps.data" />
                         <Button>
                             Select Plan
                         </Button>
@@ -30,6 +28,7 @@ import Column from 'primevue/column';
 import ColumnGroup from 'primevue/columngroup';
 import Row from 'primevue/row';
 import Button from 'primevue/button'
+import BenefitPlan from './BenefitPlan.vue';
 
 defineProps({
     benefit: Object,
