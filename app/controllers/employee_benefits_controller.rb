@@ -52,8 +52,8 @@ class EmployeeBenefitsController < ApplicationController
     @benefit_election.employee_id = @employee.id
     @benefit_election.benefit_plan_id = @benefit_plan.id
     if @benefit_election.save
-      redirect_to employee_benefit_path(@employee, @benefit_election.benefit_plan.benefit),
-                  notice: 'Benefit Plan was successfully elected.'
+      redirect_to employee_benefits_path(@employee), flash: { notice: 'Benefit Plan was successfully elected.' }
+
     else
       render :show_benefit_plan, status: :unprocessable_entity
     end
