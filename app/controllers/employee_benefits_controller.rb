@@ -9,8 +9,18 @@ class EmployeeBenefitsController < ApplicationController
         valuation_type: benefit.valuation_type.humanize
       }
     end
+    @benefit_elections = @employee.benefit_elections.map do |benefit_election|
+      {
+        id: benefit_election.id,
+        benefit_plan: benefit_election.benefit_plan.name,
+        benefit: benefit_election.benefit_plan.benefit.name,
+        cost: benefit_election.benefit_plan.employee_contribution,
+        cover: benefit_election.benefit_plan.cover.humanize
+      }
+    end
     render inertia: 'EmployeeBenefits/Index', props: {
-      employee_benefits: @employee_benefits
+      employee_benefits: @employee_benefits,
+      benefit_elections: @benefit_elections
     }
   end
 

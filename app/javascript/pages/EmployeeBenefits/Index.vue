@@ -2,7 +2,12 @@
     <div>
         <h2>Current Benefits Selected </h2>
         <div>
-
+            <DataTable :value="benefit_elections" tableStyle="min-width: 50rem">
+                <Column field="benefit" header="Benefit"></Column>
+                <Column field="benefit_plan" header="Benefit Plan"></Column>
+                <Column field="cover" header="Covers"></Column>
+                <Column field="cost" header="Cost"></Column>
+            </DataTable>
         </div>
     </div>
     <div>
@@ -46,7 +51,8 @@ const page = usePage()
 const employee = computed(() => page.props.employee)
 
 defineProps({
-    employee_benefits: Array
+    employee_benefits: Array,
+    benefit_elections: Array
 })
 
 
