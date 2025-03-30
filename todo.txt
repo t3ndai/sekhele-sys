@@ -256,6 +256,13 @@
     - bookings should be already integrated with TimeOff 
     - easy win to handle appointments 
 
+-- Color Palette --- 
+
+background #f8f1ea 
+font color #1a202c
+other contrast background #f0e2d2
+
+navbar bg-color #f5e5d3
 
 
 # test user details 

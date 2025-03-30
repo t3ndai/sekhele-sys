@@ -1,6 +1,6 @@
 <template>
     <div>
-        <h2> {{ benefit.name }} Plans</h2>
+        <h2 class="belgrano-regular"> {{ benefit.name }} Plans</h2>
 
         <DataTable :value="benefit_plans" tableStyle="min-width: 50rem">
             <Column field="name" header="Name"></Column>
@@ -10,9 +10,7 @@
                 <template #body="slotProps">
                     <div class="flex gap-x-2">
                         <BenefitPlan :plan="slotProps.data" />
-                        <Button>
-                            Select Plan
-                        </Button>
+                        <ElectBenefit :benefit="benefit" :plan="slotProps.data" />
                     </div>
                 </template>
             </Column>
@@ -29,6 +27,7 @@ import ColumnGroup from 'primevue/columngroup';
 import Row from 'primevue/row';
 import Button from 'primevue/button'
 import BenefitPlan from './BenefitPlan.vue';
+import ElectBenefit from './ElectBenefit.vue';
 
 defineProps({
     benefit: Object,
