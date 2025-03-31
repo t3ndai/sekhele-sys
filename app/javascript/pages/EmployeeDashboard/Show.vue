@@ -17,6 +17,7 @@ import TabPanel from 'primevue/tabpanel';
 
 
 import NewTask from './NewTask.vue';
+import RequestLeave from './RequestLeave.vue';
 
 const page = usePage()
 const employee = computed(() => page.props.employee)
@@ -26,25 +27,28 @@ defineProps({
   leave_balances: Array,
   tasks: Array,
   interviews: Array,
-  employees: Array
+  employees: Array,
+  leave_policies: Array,
 })
 </script>
 
 <template>
   <h1>Employee ID: {{ employee.id }}</h1>
   <h2>Employee QuickView </h2>
-  <p>My leave balances are:</p>
-  <ul>
-    <li v-for="leaveBalance in leave_balances" :key="leaveBalance.name">
-      {{ leaveBalance.name }}: {{ leaveBalance.balance }}
-      <div>
-        Expires: {{ leaveBalance.expires }}
-      </div>
-      <div>
-        {{ leaveBalance.category }}
-      </div>
-    </li>
-  </ul>
+  <div>
+    <div>
+      <h2>Leave Balances</h2>
+      <RequestLeave :leave_policies />
+    </div>
+
+    <DataTable :value="leave_balances" tableStyle="min-width: 50rem">
+      <Column field="name" header="Leave Type"></Column>
+      <Column field="expires" header="Expires"></Column>
+      <Column field="balance" header="Balance"></Column>
+      <Column field="category" header="Category"></Column>
+    </DataTable>
+  </div>
+
   <div>
     <h2> TaskBox </h2>
     <div>

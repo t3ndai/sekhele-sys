@@ -29,7 +29,15 @@ class EmployeeDashboardController < ApplicationController
       { name: employee.full_name, id: employee.id }
     end
 
+    leave_policies = current_employee.leave_policies.map do |leave_policy|
+      {
+        id: leave_policy.id,
+        name: leave_policy.name,
+      }
+    end
+
     render inertia: "EmployeeDashboard/Show", props: {
-      leave_balances: @leave_balances, tasks: @tasks, interviews: @interviews, employees: }
+      leave_balances: @leave_balances, tasks: @tasks,
+      interviews: @interviews, employees:, leave_policies: }
   end
 end

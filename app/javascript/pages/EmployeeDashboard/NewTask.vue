@@ -1,7 +1,7 @@
 <template>
     <div>
         <div>
-            <Button label="New Task" icon="pi pi-plus" @click="visible = true" />
+            <Button label="New Task" icon="pi pi-plus" @click="visible = true" class="task-btn" />
         </div>
         <Dialog v-model="visible" header="New Task" :visible="visible" @update:visible="visible = $event">
             <form class="space-y-4" @submit.prevent="saveTask">
@@ -78,3 +78,14 @@ function saveTask() {
 const visible = ref(false)
 
 </script>
+
+<style scoped>
+.task-btn {
+    background-color: orangered;
+    border: none;
+
+    :hover {
+        background-color: #ffb59a;
+    }
+}
+</style>

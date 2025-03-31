@@ -24,7 +24,8 @@ class LeaveRequestsController < ApplicationController
   def create
     @leave_request = LeaveRequest.new(leave_request_params)
     @leave_request.employee = @employee
-    leave_policy = LeavePolicy.find(leave_request_params[:leave_policy_id])
+    leave_policy_id = params.dig(:leave_policy,:id)
+    leave_policy = LeavePolicy.find(leave_policy_id)
     @leave_request.leave_policy = leave_policy
 
     respond_to do |format|

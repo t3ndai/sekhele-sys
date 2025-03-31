@@ -1,6 +1,6 @@
 <template>
     <div>
-        <h2>Current Benefits Selected </h2>
+        <h2 class="heading belgrano-regular">Current Benefits Selected </h2>
         <div>
             <DataTable :value="benefit_elections" tableStyle="min-width: 50rem">
                 <Column field="benefit" header="Benefit"></Column>
@@ -11,7 +11,7 @@
         </div>
     </div>
     <div>
-        <h2>Benefits on Offer</h2>
+        <h2 class="heading belgrano-regular">Benefits on Offer</h2>
 
         <DataTable :value="employee_benefits" tableStyle="min-width: 50rem">
             <Column field="name" header="Name"></Column>
@@ -57,3 +57,11 @@ defineProps({
 
 
 </script>
+
+<style scoped>
+.heading {
+    font-size: 2rem;
+    font-weight: 400;
+    color: #111509
+}
+</style>
