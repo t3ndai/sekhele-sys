@@ -30,7 +30,7 @@ class LeaveRequestsController < ApplicationController
 
     respond_to do |format|
       if @leave_request.save
-        format.html { redirect_to @leave_request, notice: "Leave request was successfully created." }
+        format.html { redirect_to employee_home_path(@employee), notice: "Leave request was successfully created." }
         format.json { render :show, status: :created, location: @leave_request }
       else
         format.html { render :new, status: :unprocessable_entity }
