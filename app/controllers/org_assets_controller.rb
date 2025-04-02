@@ -4,7 +4,19 @@ class OrgAssetsController < ApplicationController
 
   # GET /org_assets or /org_assets.json
   def index
-    @org_assets = OrgAsset.all
+    assets = @employee.org_assets.map do |asset|
+      {
+        id: asset.id,
+        name: asset.asset_name,
+        category: asset.asset_category.name,
+        serial_number: asset.asset_serial_number,
+        assigned_on: asset.date_given,
+        returned_on: asset.date_returned
+      }
+    end
+    render inertia: "EmployeeAssets/Index", props: {
+      assets:
+    }
   end
 
   # GET /org_assets/1 or /org_assets/1.json
