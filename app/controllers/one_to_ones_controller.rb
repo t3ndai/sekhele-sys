@@ -23,10 +23,18 @@ class OneToOnesController < ApplicationController
   def new
     date = DateTime.now.strftime("%a-%b-%d")
     @one_to_one = OneToOne.new
+    agenda_items = @employee.agenda_items.map do |agenda_item|
+      {
+        id: agenda_item.id,
+        name: agenda_item.name
+      }
+    end
+
     render inertia: "OneToOnes/New", props: {
       one_to_one: @one_to_one,
       date:,
-      report_id: @employee.id
+      report_id: @employee.id,
+      agenda_items:
     }
   end
 

@@ -18,6 +18,21 @@
                 </div>
             </form>
         </div>
+
+        <div>
+            <div v-for="item in agenda_items" :key="item.id">
+                <Checkbox v-model="item.completed" />
+                <p>{{ item.name }}</p>
+            </div>
+        </div>
+
+        <div>
+            <form v-if="showAgendaForm" @submit.prevent="agendaForm.post('/employees/${employee.id}/one_to_ones/')">
+                <Checkbox v-model="agendaForm.completed" />
+                <InputText v-model="agendaForm.name" placeholder="Agenda Item" @keyup.enter="saveAgendaItem" />
+            </form>
+            <Button label="Add Agenda Item" icon="pi pi-plus" @click="toggleAgendaForm" />
+        </div>
     </div>
 </template>
 
@@ -27,14 +42,16 @@ import { computed } from 'vue'
 import { usePage, useForm } from '@inertiajs/vue3'
 import Editor from 'primevue/editor'
 import Button from 'primevue/button'
-
+import InputText from 'primevue/inputtext';
+import Checkbox from 'primevue/checkbox';
 
 const page = usePage()
 const employee = computed(() => page.props.employee)
 
 const props = defineProps({
     date: String,
-    report_id: String,
+    report_id: Number,
+    agenda_items: Array,
 })
 
 const form = useForm({
@@ -43,10 +60,29 @@ const form = useForm({
     }
 })
 
+const agendaForm = useForm({
+    name: '',
+    completed: false,
+})
+
+const showAgendaForm = defineModel({ default: false })
+
 function save() {
     const { report_id } = props
     form.post(`/employees/${report_id}/one_to_ones/`)
 }
+
+function saveAgendaItem() {
+    const { report_id } = props
+    agendaForm.post(`/employees/${report_id}/agenda_items/`)
+    agendaForm.reset()
+}
+
+function toggleAgendaForm() {
+    console.log('clicked')
+    showAgendaForm.value = !showAgendaForm.value
+}
+
 
 
 </script>

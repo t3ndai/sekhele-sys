@@ -63,6 +63,7 @@ class Employee < ApplicationRecord
   has_many :channels, through: :channel_memberships
   has_one :pulse_survey_response
   has_many :tasks, inverse_of: :assignee
+  has_many :agenda_items
 
   after_create :create_user
 

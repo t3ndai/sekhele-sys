@@ -31,9 +31,10 @@ Rails.application.routes.draw do
       end
       resources :pulse_survey_responses, only: %i[index edit update show]
       get "home", to: "employee_dashboard#show"
-      get "agenda_items/index"
-      post "agenda_items/create"
-      put "agenda_items/update"
+      # get "agenda_items/index"
+      # post "agenda_items/create"
+      # put "agenda_items/update"
+      resources :agenda_items, only: %i[index create update]
     end
     resources :asset_categories
     resources :locations
