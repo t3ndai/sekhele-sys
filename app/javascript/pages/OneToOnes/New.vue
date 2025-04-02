@@ -19,6 +19,7 @@
             </form>
         </div>
 
+        <!--
         <div>
             <div v-for="item in agenda_items" :key="item.id">
                 <Checkbox v-model="item.completed" />
@@ -33,6 +34,7 @@
             </form>
             <Button label="Add Agenda Item" icon="pi pi-plus" @click="toggleAgendaForm" />
         </div>
+    -->
     </div>
 </template>
 
