@@ -1,6 +1,6 @@
 <template>
     <div>
-        <h2>My Reports 1-1s</h2>
+        <h2 class="heading belgrano-regular">My Reports 1-1s</h2>
 
         <DataTable :value="reports" tableStyle="min-width: 50rem">
             <Column field="name" header="Report"></Column>
@@ -36,3 +36,5 @@ defineProps({
 })
 
 </script>
+
+<style scoped></style>

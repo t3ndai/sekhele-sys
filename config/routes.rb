@@ -1,5 +1,5 @@
 Rails.application.routes.draw do
-  get 'inertia-example', to: 'inertia_example#index'
+  get "inertia-example", to: "inertia_example#index"
   resources :organizations, shallow: true do
     resources :departments
     resources :employees do
@@ -11,18 +11,17 @@ Rails.application.routes.draw do
       resources :leave_requests
       resources :time_workeds
       resources :benefit_elections, only: %i[index show destroy]
-      get 'benefits', to: 'employee_benefits#index'
-      get 'benefits/:benefit_id', to: 'employee_benefits#show_benefit', as: 'benefit'
-      get 'benefits/:benefit_id/benefit_plans', to: 'employee_benefits#show_benefit_plans', as: 'benefit_benefit_plans'
-      get 'benefits/:benefit_id/benefit_plans/:benefit_plan_id', to: 'employee_benefits#show_benefit_plan',
-                                                                 as: 'benefit_benefit_plan'
-      post 'benefits/:benefit_id/benefit_plans/:benefit_plan_id', to: 'employee_benefits#elect_benefit_plan'
+      get "benefits", to: "employee_benefits#index"
+      get "benefits/:benefit_id", to: "employee_benefits#show_benefit", as: "benefit"
+      get "benefits/:benefit_id/benefit_plans", to: "employee_benefits#show_benefit_plans", as: "benefit_benefit_plans"
+      get "benefits/:benefit_id/benefit_plans/:benefit_plan_id", to: "employee_benefits#show_benefit_plan",
+                                                                 as: "benefit_benefit_plan"
+      post "benefits/:benefit_id/benefit_plans/:benefit_plan_id", to: "employee_benefits#elect_benefit_plan"
       resources :goals do
         resources :milestones
       end
       resources :one_to_ones do
-        resources :action_items
-      end
+            end
       resources :performance_review_responses
       resources :personal_development_plans do
         resources :talents
@@ -31,7 +30,10 @@ Rails.application.routes.draw do
         resources :growth_areas
       end
       resources :pulse_survey_responses, only: %i[index edit update show]
-      get 'home', to: 'employee_dashboard#show'
+      get "home", to: "employee_dashboard#show"
+      get "agenda_items/index"
+      post "agenda_items/create"
+      put "agenda_items/update"
     end
     resources :asset_categories
     resources :locations
@@ -48,10 +50,10 @@ Rails.application.routes.draw do
       resources :benefit_plans
     end
     resources :job_postings
-    get 'jobs/', to: 'jobs#index'
-    get 'jobs/:job_posting_id', to: 'jobs#show', as: 'job'
-    get 'jobs/:job_posting_id/apply', to: 'job_applicants#new', as: 'job_apply'
-    post 'jobs/:job_posting_id/apply', to: 'job_applicants#create'
+    get "jobs/", to: "jobs#index"
+    get "jobs/:job_posting_id", to: "jobs#show", as: "job"
+    get "jobs/:job_posting_id/apply", to: "job_applicants#new", as: "job_apply"
+    post "jobs/:job_posting_id/apply", to: "job_applicants#create"
     resources :job_applicants, only: %i[index show destroy] do
       resources :interviews
       resources :candidate_notes, only: %i[index new show create destroy]
@@ -64,7 +66,7 @@ Rails.application.routes.draw do
     resources :performance_reviews
     resources :channels do
       member do
-        post 'join', as: :join
+        post "join", as: :join
       end
       resources :channel_posts
       resources :praise_posts
@@ -75,10 +77,10 @@ Rails.application.routes.draw do
   namespace :app_admin do
     resources :users
   end
-  get  'sign_in', to: 'sessions#new'
-  post 'sign_in', to: 'sessions#create'
-  get  'sign_up', to: 'registrations#new'
-  post 'sign_up', to: 'registrations#create'
+  get  "sign_in", to: "sessions#new"
+  post "sign_in", to: "sessions#create"
+  get  "sign_up", to: "registrations#new"
+  post "sign_up", to: "registrations#create"
   resources :sessions, only: %i[index show destroy]
   resource  :password, only: %i[edit update]
   namespace :identity do
@@ -105,12 +107,12 @@ Rails.application.routes.draw do
   end
   resources :performance_review_questions
   resources :performance_review_types
-  root 'home#index'
+  root "home#index"
   # Define your application routes per the DSL in https://guides.rubyonrails.org/routing.html
 
   # Reveal health status on /up that returns 200 if the app boots with no exceptions, otherwise 500.
   # Can be used by load balancers and uptime monitors to verify that the app is live.
-  get 'up' => 'rails/health#show', as: :rails_health_check
+  get "up" => "rails/health#show", as: :rails_health_check
 
   # Render dynamic PWA files from app/views/pwa/* (remember to link manifest in application.html.erb)
   # get "manifest" => "rails/pwa#manifest", as: :pwa_manifest

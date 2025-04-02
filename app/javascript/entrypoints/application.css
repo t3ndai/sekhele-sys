@@ -1,5 +1,6 @@
 @import 'primeicons/primeicons.css';
 @import "tailwindcss";
+@import "trix";
 
 
 @plugin "@tailwindcss/typography";
@@ -20,4 +21,10 @@ body {
 .nav-icon {
     font-size: 40px;
     font-weight: 200;
+}
+
+.heading {
+    font-size: 2rem;
+    font-weight: 400;
+    color: #111509
 }

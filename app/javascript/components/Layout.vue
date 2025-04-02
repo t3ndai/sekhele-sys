@@ -62,3 +62,16 @@ const employee = computed(() => page.props.employee)
         </main>
     </div>
 </template>
+
+<style scoped>
+nav {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    width: 7rem;
+    padding-left: 0.5rem;
+    font-size: 0.875rem;
+    background-color: ivory;
+
+}
+</style>

@@ -10,6 +10,7 @@ class OneToOnesController < ApplicationController
         name: report.full_name
       }
     end if @current_employee.is_manager?
+
     render inertia: "OneToOnes/Index", props: {
       reports: }
   end
@@ -20,7 +21,13 @@ class OneToOnesController < ApplicationController
 
   # GET /one_to_ones/new
   def new
+    date = DateTime.now.strftime("%a-%b-%d")
     @one_to_one = OneToOne.new
+    render inertia: "OneToOnes/New", props: {
+      one_to_one: @one_to_one,
+      date:,
+      report_id: @employee.id
+    }
   end
 
   # GET /one_to_ones/1/edit

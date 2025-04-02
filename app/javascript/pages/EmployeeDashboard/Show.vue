@@ -37,7 +37,7 @@ defineProps({
   <h2>Employee QuickView </h2>
   <div>
     <div>
-      <h2>Leave Balances</h2>
+      <h2 class="heading belgrano-regular">Leave Balances</h2>
       <RequestLeave :leave_policies />
     </div>
 
@@ -50,7 +50,7 @@ defineProps({
   </div>
 
   <div>
-    <h2> TaskBox </h2>
+    <h2 class="heading belgrano-regular"> TaskBox </h2>
     <div>
       <NewTask :employees />
     </div>
@@ -65,7 +65,7 @@ defineProps({
     </div>
   </div>
   <div class="mt-4">
-    <h2>Interviews</h2>
+    <h2 class="heading belgrano-regular">Interviews</h2>
     <div>
       <DataTable :value="interviews" tableStyle="min-width: 50rem">
         <Column field="position" header="Job Position"></Column>

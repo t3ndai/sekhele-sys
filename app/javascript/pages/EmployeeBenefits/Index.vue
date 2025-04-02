@@ -20,12 +20,12 @@
             <Column>
                 <template #body="{ data }, empoloyee">
 
-                    <Button severity="secondary">
-                        <Link :href="`/employees/${employee.id}/benefits/${data.id}`" as="button">
 
-                        View Plans
-                        </Link>
-                    </Button>
+                    <Link :href="`/employees/${employee.id}/benefits/${data.id}`" as="button" class="btn">
+
+                    View Plans
+                    </Link>
+
 
 
                 </template>

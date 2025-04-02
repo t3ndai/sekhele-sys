@@ -266,4 +266,4 @@ navbar bg-color #f5e5d3
 
 
 # test user details 
-user1@testorg.com 
+user1@testorg.com
