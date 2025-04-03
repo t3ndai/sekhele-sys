@@ -7,6 +7,7 @@
 #  manager_id  :integer          not null
 #  created_at  :datetime         not null
 #  updated_at  :datetime         not null
+#  note        :text
 #
 # Indexes
 #
@@ -17,5 +18,6 @@
 class OneToOne < ApplicationRecord
   belongs_to :employee
   belongs_to :manager, class_name: "Employee"
-  has_rich_text :note
+
+  validates :note, presence: true
 end

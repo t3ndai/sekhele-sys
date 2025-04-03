@@ -49,7 +49,7 @@ const employee = computed(() => page.props.employee)
             </div>
             <div>
                 <Link href="" class="flex justify-center items-baseline" as="button">
-                MY DOCUMENTS
+                MY STUFF
                 </Link>
             </div>
             <div>

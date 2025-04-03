@@ -11,9 +11,20 @@ class OneToOnesController < ApplicationController
       }
     end if @current_employee.is_manager?
 
+    # my one_on_ones
+    one_to_ones = @employee.one_to_ones.map do |one_to_one|
+      {
+        id: one_to_one.id,
+        note: one_to_one.note,
+        meeting_on: one_to_one.created_at.strftime("%d-%b")
+      }
+    end
+
     render inertia: "OneToOnes/Index", props: {
-      reports: }
+      reports:, one_to_ones: }
   end
+
+
 
   # GET /one_to_ones/1 or /one_to_ones/1.json
   def show
