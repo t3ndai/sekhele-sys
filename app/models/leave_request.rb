@@ -30,14 +30,37 @@ class LeaveRequest < ApplicationRecord
 
   after_create :reduce_leave_balance
 
+  scope :past_leave, -> {
+    where("date_to < ?", Date.today)
+  }
 
-  def reduce_leave_balance
-    @leave_balance.time_taken += time_requested
-    @leave_balance.save!
+  scope :future_leave, -> {
+    where("date_from > ?", Date.today)
+  }
+
+
+  def leave_balance
+    LeaveBalance.employee_balance(employee: employee, leave_policy: leave_policy)
+  end
+
+  def approver_name
+    approver&.full_name
+  end
+
+  def approver_email
+    approver&.email
   end
 
   def time_requested
     date_from.business_days_until(date_to)
+  end
+
+  private
+
+
+  def reduce_leave_balance
+    @leave_balance.time_taken += time_requested
+    @leave_balance.save!
   end
 
   def validate_enough_leave

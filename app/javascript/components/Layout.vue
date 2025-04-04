@@ -19,6 +19,12 @@ const employee = computed(() => page.props.employee)
                 </Link>
             </div>
             <div>
+                <Link :href="`/employees/${employee.id}/my_stuff`" class="flex justify-center items-baseline"
+                    as="button" :class="{ 'text-orange-500': $page.component === 'MyStuff/Index' }">
+                MY STUFF
+                </Link>
+            </div>
+            <div>
                 <Link :href="`/employees/${employee.id}/benefits`"
                     class="flex justify-center items-center align-text-bottom"
                     :class="{ 'text-orange-500': $page.component === 'EmployeeBenefits/Index' }" as="button">
@@ -32,27 +38,17 @@ const employee = computed(() => page.props.employee)
                 </Link>
             </div>
             <div>
-                <Link :href="`/employees/${employee.id}/org_assets`" class="flex justify-center items-baseline"
-                    as="button" :class="{ 'text-orange-500': $page.component === 'EmployeeAssets/Index' }">
-                ASSETS
-                </Link>
-            </div>
-            <div>
                 <Link href="" class="flex justify-center items-baseline" as="button">
                 PAY
                 </Link>
             </div>
             <div>
-                <Link href="" class="flex justify-center items-baseline" as="button">
+                <Link :href="`/employees/${employee.id}/leave`" class="flex justify-center items-baseline" as="button"
+                    :class="{ 'text-orange-500': $page.component === 'Leave/Index' }">
                 LEAVE
                 </Link>
             </div>
-            <div>
-                <Link :href="`/employees/${employee.id}/my_stuff`" class="flex justify-center items-baseline"
-                    as="button" :class="{ 'text-orange-500': $page.component === 'MyStuff/Index' }">
-                MY STUFF
-                </Link>
-            </div>
+
             <div>
                 <Link href="" class="flex justify-center items-baseline" as="button">
                 MY CAREER
