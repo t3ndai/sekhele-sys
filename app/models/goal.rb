@@ -21,6 +21,8 @@ class Goal < ApplicationRecord
   belongs_to :employee
   belongs_to :manager, class_name: "Employee"
 
+  has_many :milestones, dependent: :destroy
+
 
   validates_uniqueness_of :name, scope: :employee_id
   validates_presence_of :name, :employee_id, :manager_id, :starts_on, :ends_on

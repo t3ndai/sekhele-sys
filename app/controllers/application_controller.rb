@@ -6,7 +6,12 @@ class ApplicationController < ActionController::Base
 
   inertia_share do
     {
-      employee: current_employee&.as_json(only: %i[id full_name work_email])
+      employee: current_employee&.as_json(only: %i[id work_email]).merge(
+        is_manager: current_employee&.is_manager?,
+        # is_admin: current_employee&.is_admin?,
+        # is_super_admin: current_employee&.is_super_admin?,
+        full_name: current_employee&.full_name,
+      )
     } if current_employee
   end
 

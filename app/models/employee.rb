@@ -55,6 +55,8 @@ class Employee < ApplicationRecord
   has_one  :interviewer, class_name: "Interviewer"
   has_many :interviews, through: :interviewer
   has_many :one_to_ones
+  has_many :goals
+  has_many :milestones, through: :goals
   has_many :personal_development_plans
   has_many :talents, through: :personal_development_plans
   has_many :growth_areas, through: :personal_development_plans

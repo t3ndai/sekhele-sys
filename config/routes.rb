@@ -37,6 +37,7 @@ Rails.application.routes.draw do
       resources :agenda_items, only: %i[index create update]
       get "my_stuff", to: "my_stuff#index"
       get "leave", to: "leave#index"
+      get "reports", to: "reports#index"
     end
     resources :asset_categories
     resources :locations

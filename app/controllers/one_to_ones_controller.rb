@@ -4,13 +4,6 @@ class OneToOnesController < ApplicationController
 
   # GET /one_to_ones or /one_to_ones.json
   def index
-    reports = @current_employee.reports.map do |report|
-      {
-        id: report.id,
-        name: report.full_name
-      }
-    end if @current_employee.is_manager?
-
     # my one_on_ones
     one_to_ones = @employee.one_to_ones.map do |one_to_one|
       {
@@ -21,7 +14,7 @@ class OneToOnesController < ApplicationController
     end
 
     render inertia: "OneToOnes/Index", props: {
-      reports:, one_to_ones: }
+      one_to_ones: }
   end
 
 

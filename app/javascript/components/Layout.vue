@@ -54,6 +54,13 @@ const employee = computed(() => page.props.employee)
                 MY CAREER
                 </Link>
             </div>
+
+            <div v-if="employee.is_manager">
+                <Link :href="`/employees/${employee.id}/reports`" class="flex justify-center items-baseline"
+                    as="button">
+                REPORTS
+                </Link>
+            </div>
         </nav>
         <main>
             <slot></slot>

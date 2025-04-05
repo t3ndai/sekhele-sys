@@ -259,6 +259,9 @@
     - Customer 
     - Deal 
         - 
+-- Business Goals 
+    - link to individual goals 
+    - 
 
 
 -- Color Palette --- 
