@@ -23,22 +23,18 @@ Rails.application.routes.draw do
       resources :one_to_ones do
             end
       resources :performance_review_responses
-      resources :personal_development_plans do
-        resources :talents
-        resources :motivations
-        resources :career_visions
-        resources :growth_areas
-      end
+      resources :motivations
+      resources :career_visions
+      resources :talents
+      resources :growth_areas
       resources :pulse_survey_responses, only: %i[index edit update show]
       get "home", to: "employee_dashboard#show"
-      # get "agenda_items/index"
-      # post "agenda_items/create"
-      # put "agenda_items/update"
       resources :agenda_items, only: %i[index create update]
       get "my_stuff", to: "my_stuff#index"
       get "leave", to: "leave#index"
       get "reports", to: "reports#index"
       get "reports/:report_id/goals", to: "reports#goals"
+      get "reports/:report_id/career", to: "reports#career"
     end
     resources :asset_categories
     resources :locations

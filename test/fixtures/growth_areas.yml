@@ -2,16 +2,16 @@
 #
 # Table name: growth_areas
 #
-#  id                           :integer          not null, primary key
-#  personal_development_plan_id :integer          not null
-#  name                         :string
-#  description                  :text
-#  created_at                   :datetime         not null
-#  updated_at                   :datetime         not null
+#  id          :integer          not null, primary key
+#  name        :string
+#  description :text
+#  created_at  :datetime         not null
+#  updated_at  :datetime         not null
+#  employee_id :integer
 #
 # Indexes
 #
-#  index_growth_areas_on_personal_development_plan_id  (personal_development_plan_id)
+#  index_growth_areas_on_employee_id  (employee_id)
 #
 
 # Read about fixtures at https://api.rubyonrails.org/classes/ActiveRecord/FixtureSet.html

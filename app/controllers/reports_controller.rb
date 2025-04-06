@@ -39,4 +39,28 @@ class ReportsController < ApplicationController
       goals:
     }
   end
+
+  def career
+    report = Employee.find(params[:report_id])
+    career_vision = report.career_vision
+    motivations = report.motivations.map do |motivation|
+      {
+        id: motivation.id,
+        name: motivation.name,
+        description: motivation.description.body.to_plain_text
+      }
+    end
+
+    render inertia: "Reports/Career", props: {
+      report: {
+        id: report.id,
+        name: report.full_name
+      },
+      career_vision: {
+        id: career_vision.id,
+        vision: career_vision.vision.body.to_plain_text
+      },
+      motivations:
+    }
+  end
 end

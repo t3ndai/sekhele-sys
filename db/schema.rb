@@ -10,7 +10,7 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema[8.0].define(version: 2025_04_03_094914) do
+ActiveRecord::Schema[8.0].define(version: 2025_04_06_155245) do
   # These are extensions that must be enabled in order to support this database
   enable_extension "pg_catalog.plpgsql"
 
@@ -129,12 +129,12 @@ ActiveRecord::Schema[8.0].define(version: 2025_04_03_094914) do
   end
 
   create_table "career_visions", force: :cascade do |t|
-    t.bigint "personal_development_plan_id", null: false
     t.string "name"
     t.text "description"
     t.datetime "created_at", null: false
     t.datetime "updated_at", null: false
-    t.index ["personal_development_plan_id"], name: "index_career_visions_on_personal_development_plan_id"
+    t.bigint "employee_id"
+    t.index ["employee_id"], name: "index_career_visions_on_employee_id"
   end
 
   create_table "channel_memberships", force: :cascade do |t|
@@ -281,12 +281,12 @@ ActiveRecord::Schema[8.0].define(version: 2025_04_03_094914) do
   end
 
   create_table "growth_areas", force: :cascade do |t|
-    t.bigint "personal_development_plan_id", null: false
     t.string "name"
     t.text "description"
     t.datetime "created_at", null: false
     t.datetime "updated_at", null: false
-    t.index ["personal_development_plan_id"], name: "index_growth_areas_on_personal_development_plan_id"
+    t.bigint "employee_id"
+    t.index ["employee_id"], name: "index_growth_areas_on_employee_id"
   end
 
   create_table "interview_feedbacks", force: :cascade do |t|
@@ -447,12 +447,12 @@ ActiveRecord::Schema[8.0].define(version: 2025_04_03_094914) do
   end
 
   create_table "motivations", force: :cascade do |t|
-    t.bigint "personal_development_plan_id", null: false
     t.string "name"
     t.text "description"
     t.datetime "created_at", null: false
     t.datetime "updated_at", null: false
-    t.index ["personal_development_plan_id"], name: "index_motivations_on_personal_development_plan_id"
+    t.bigint "employee_id"
+    t.index ["employee_id"], name: "index_motivations_on_employee_id"
   end
 
   create_table "one_to_ones", force: :cascade do |t|
@@ -632,12 +632,12 @@ ActiveRecord::Schema[8.0].define(version: 2025_04_03_094914) do
   end
 
   create_table "talents", force: :cascade do |t|
-    t.bigint "personal_development_plan_id", null: false
     t.string "name"
     t.text "description"
     t.datetime "created_at", null: false
     t.datetime "updated_at", null: false
-    t.index ["personal_development_plan_id"], name: "index_talents_on_personal_development_plan_id"
+    t.bigint "employee_id"
+    t.index ["employee_id"], name: "index_talents_on_employee_id"
   end
 
   create_table "tasks", force: :cascade do |t|
@@ -698,7 +698,7 @@ ActiveRecord::Schema[8.0].define(version: 2025_04_03_094914) do
   add_foreign_key "benefits", "organizations"
   add_foreign_key "candidate_notes", "employees"
   add_foreign_key "candidate_notes", "job_applicants"
-  add_foreign_key "career_visions", "personal_development_plans"
+  add_foreign_key "career_visions", "employees"
   add_foreign_key "channel_memberships", "channels"
   add_foreign_key "channel_memberships", "employees", column: "member_id"
   add_foreign_key "channel_posts", "channels"
@@ -717,7 +717,7 @@ ActiveRecord::Schema[8.0].define(version: 2025_04_03_094914) do
   add_foreign_key "events", "users"
   add_foreign_key "goals", "employees"
   add_foreign_key "goals", "employees", column: "manager_id"
-  add_foreign_key "growth_areas", "personal_development_plans"
+  add_foreign_key "growth_areas", "employees"
   add_foreign_key "interview_feedbacks", "interviewers"
   add_foreign_key "interview_feedbacks", "interviews"
   add_foreign_key "interview_stages", "organizations"
@@ -739,7 +739,7 @@ ActiveRecord::Schema[8.0].define(version: 2025_04_03_094914) do
   add_foreign_key "leave_requests", "leave_policies"
   add_foreign_key "locations", "organizations"
   add_foreign_key "milestones", "goals"
-  add_foreign_key "motivations", "personal_development_plans"
+  add_foreign_key "motivations", "employees"
   add_foreign_key "one_to_ones", "employees"
   add_foreign_key "one_to_ones", "employees", column: "manager_id"
   add_foreign_key "org_assets", "asset_categories"
@@ -764,7 +764,7 @@ ActiveRecord::Schema[8.0].define(version: 2025_04_03_094914) do
   add_foreign_key "pulse_surveys", "organizations"
   add_foreign_key "recovery_codes", "users"
   add_foreign_key "sessions", "users"
-  add_foreign_key "talents", "personal_development_plans"
+  add_foreign_key "talents", "employees"
   add_foreign_key "tasks", "employees", column: "assigned_by_id"
   add_foreign_key "tasks", "employees", column: "assignee_id"
   add_foreign_key "time_workeds", "employees"

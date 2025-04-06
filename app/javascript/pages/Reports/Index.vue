@@ -21,6 +21,11 @@
           View Goals
           </Link>
         </div>
+        <div>
+          <Link :href="`/employees/${employee.id}/reports/${report.id}/career`">
+          Career
+          </Link>
+        </div>
       </div>
     </div>
   </div>
