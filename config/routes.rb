@@ -38,6 +38,7 @@ Rails.application.routes.draw do
       get "my_stuff", to: "my_stuff#index"
       get "leave", to: "leave#index"
       get "reports", to: "reports#index"
+      get "reports/:report_id/goals", to: "reports#goals"
     end
     resources :asset_categories
     resources :locations

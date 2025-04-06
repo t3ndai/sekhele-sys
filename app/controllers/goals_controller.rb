@@ -4,7 +4,25 @@ class GoalsController < ApplicationController
 
   # GET /goals or /goals.json
   def index
-    @goals = Goal.all
+    goals = @employee.goals.map do |goal|
+      {
+        id: goal.id,
+        name: goal.name,
+        starts_on: goal.starts_on.strftime("%d-%b"),
+        ends_on: goal.ends_on.strftime("%d-%b"),
+        milestones: goal.milestones.map do |milestone|
+          {
+            id: milestone.id,
+            name: milestone.name,
+            completed_on: milestone.completed_on&.strftime("%d-%b"),
+            started_on: milestone.started_on&.strftime("%d-%b"),
+            description: milestone.description.body.to_plain_text
+          }
+        end
+      }
+    end
+
+    render inertia: "Goals/Index", props: { goals: }
   end
 
   # GET /goals/1 or /goals/1.json

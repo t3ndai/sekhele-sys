@@ -56,8 +56,8 @@ const employee = computed(() => page.props.employee)
             </div>
 
             <div v-if="employee.is_manager">
-                <Link :href="`/employees/${employee.id}/reports`" class="flex justify-center items-baseline"
-                    as="button">
+                <Link :href="`/employees/${employee.id}/reports`" class="flex justify-center items-baseline" as="button"
+                    :class="{ 'text-orange-500': $page.component === 'Reports/Index' }">
                 REPORTS
                 </Link>
             </div>
@@ -78,5 +78,10 @@ nav {
     font-size: 0.875rem;
     background-color: ivory;
 
+}
+
+main {
+    flex: 1;
+    padding: 1rem;
 }
 </style>
