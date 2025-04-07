@@ -1,9 +1,9 @@
 <template>
-    <div class="motivation-row">
-        <div v-for="motivation in motivations" :key="motivation.id">
-            <div class="motivation-card">
-                <div class="name">{{ motivation.name }}</div>
-                <div class="description"> {{ motivation.description }}</div>
+    <div class="growth-area-row">
+        <div v-for="growth_area in growth_areas" :key="growth_area.id">
+            <div class="growth-area-card">
+                <div class="name">{{ growth_area.name }}</div>
+                <div class="description"> {{ growth_area.description }}</div>
 
             </div>
         </div>
@@ -13,19 +13,19 @@
 <script setup>
 
 defineProps({
-    motivations: Array
+    growth_areas: Array
 })
 
 </script>
 
 <style scoped>
-.motivation-row {
+.growth-area-row {
     display: flex;
     flex-wrap: wrap;
     gap: 2rem
 }
 
-.motivation-card {
+.growth-area-card {
     border: 1px solid #ccc;
     border-radius: 8px;
     padding: 16px;

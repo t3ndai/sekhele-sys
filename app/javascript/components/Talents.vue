@@ -1,5 +1,5 @@
 <template>
-    <div>
+    <div class="talent-row">
         <div v-for="talent in talents" :key="talent.id">
             <div class="talent-pill">
                 <div class='name'> {{ talent.name }} </div>
@@ -18,6 +18,12 @@ defineProps({
 </script>
 
 <style scoped>
+.talent-row {
+    display: flex;
+    flex-wrap: wrap;
+    gap: 2rem
+}
+
 .talent-pill {
     border: 1px solid #ccc;
     border-radius: 8px;

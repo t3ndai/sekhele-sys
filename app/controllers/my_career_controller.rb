@@ -16,7 +16,15 @@ class MyCareerController < ApplicationController
       }
     end
 
+    growth_areas = @current_employee.growth_areas.map do |growth_area|
+      {
+        id: growth_area.id,
+        name: growth_area.name,
+        description: growth_area.description
+      }
+    end
 
-    render inertia: "MyCareer/Index", props: { motivations:, talents: }
+
+    render inertia: "MyCareer/Index", props: { motivations:, talents:, growth_areas: }
   end
 end
