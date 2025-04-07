@@ -15,7 +15,7 @@
 #
 
 class Talent < ApplicationRecord
-  belongs_to :personal_development_plan
+  belongs_to :employee
 
-  validates :name, :description, presence: true
+  validates :name, :description, presence: true, uniqueness: { scope: :employee_id }
 end

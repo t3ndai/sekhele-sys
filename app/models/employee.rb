@@ -57,11 +57,10 @@ class Employee < ApplicationRecord
   has_many :one_to_ones
   has_many :goals
   has_many :milestones, through: :goals
-  has_many :personal_development_plans
-  has_many :talents, through: :personal_development_plans
-  has_many :growth_areas, through: :personal_development_plans
-  has_many :motivations, through: :personal_development_plans
-  has_many :career_visions, through: :personal_development_plans
+  has_many :talents
+  has_many :growth_areas
+  has_many :motivations
+  has_many :career_visions
   has_many :channel_memberships
   has_many :channels, through: :channel_memberships
   has_one :pulse_survey_response

@@ -1,6 +1,5 @@
 class MotivationsController < ApplicationController
   before_action :set_motivation, only: %i[ show edit update destroy ]
-  before_action :set_personal_development_plan, only: %i[ index new create ]
 
   # GET /motivations or /motivations.json
   def index
@@ -23,11 +22,11 @@ class MotivationsController < ApplicationController
   # POST /motivations or /motivations.json
   def create
     @motivation = Motivation.new(motivation_params)
-    @motivation.personal_development_plan = @personal_development_plan
+    @motivation.employee = @current_employee
 
     respond_to do |format|
       if @motivation.save
-        format.html { redirect_to @motivation, notice: "Motivation was successfully created." }
+        format.html { redirect_to employee_my_career_path(@current_employee), notice: "Motivation was successfully created." }
         format.json { render :show, status: :created, location: @motivation }
       else
         format.html { render :new, status: :unprocessable_entity }
@@ -65,12 +64,8 @@ class MotivationsController < ApplicationController
       @motivation = Motivation.find(params.expect(:id))
     end
 
-    def set_personal_development_plan
-      @personal_development_plan = PersonalDevelopmentPlan.find(params.expect(:personal_development_plan_id))
-    end
-
     # Only allow a list of trusted parameters through.
     def motivation_params
-      params.expect(motivation: [ :personal_development_plan_id, :name, :description ])
+      params.expect(motivation: [ :name, :description ])
     end
 end

@@ -15,7 +15,7 @@
 #
 
 class Motivation < ApplicationRecord
-  belongs_to :personal_development_plan
+  belongs_to :employee
 
   validates :name, :description, presence: true
 end

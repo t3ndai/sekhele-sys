@@ -31,6 +31,7 @@ Rails.application.routes.draw do
       get "home", to: "employee_dashboard#show"
       resources :agenda_items, only: %i[index create update]
       get "my_stuff", to: "my_stuff#index"
+      get "my_career", to: "my_career#index"
       get "leave", to: "leave#index"
       get "reports", to: "reports#index"
       get "reports/:report_id/goals", to: "reports#goals"
