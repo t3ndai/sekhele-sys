@@ -1,6 +1,6 @@
 <template>
     <div>
-        <Button label="New Growth Area" icon="pi pi-plus" @click="visible = true" />
+        <Button label="New Growth Area" icon="pi pi-plus" @click="visible = true" class="new-btn" />
     </div>
 
     <div>
@@ -53,3 +53,14 @@ function saveGrowthArea() {
 }
 
 </script>
+
+<style scoped>
+.new-btn {
+    background-color: orangered;
+    border: none;
+
+    :hover {
+        background-color: #ffb59a;
+    }
+}
+</style>

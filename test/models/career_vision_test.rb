@@ -8,6 +8,7 @@
 #  created_at  :datetime         not null
 #  updated_at  :datetime         not null
 #  employee_id :integer
+#  outline     :string
 #
 # Indexes
 #

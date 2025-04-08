@@ -1,6 +1,5 @@
 class CareerVisionsController < ApplicationController
   before_action :set_career_vision, only: %i[ show edit update destroy ]
-  before_action :set_personal_development_plan, only: %i[ index new create ]
 
   # GET /career_visions or /career_visions.json
   def index
@@ -23,11 +22,11 @@ class CareerVisionsController < ApplicationController
   # POST /career_visions or /career_visions.json
   def create
     @career_vision = CareerVision.new(career_vision_params)
-    @career_vision.personal_development_plan = @personal_development_plan
+    @career_vision.employee = @current_employee
 
     respond_to do |format|
       if @career_vision.save
-        format.html { redirect_to @career_vision, notice: "Career vision was successfully created." }
+        format.html { redirect_to employee_my_career_path(@current_employee), notice: "Career vision was successfully created." }
         format.json { render :show, status: :created, location: @career_vision }
       else
         format.html { render :new, status: :unprocessable_entity }
@@ -65,12 +64,8 @@ class CareerVisionsController < ApplicationController
       @career_vision = CareerVision.find(params.expect(:id))
     end
 
-    def set_personal_development_plan
-      @personal_development_plan = PersonalDevelopmentPlan.find(params.expect(:personal_development_plan_id))
-    end
-
     # Only allow a list of trusted parameters through.
     def career_vision_params
-      params.expect(career_vision: [ :personal_development_plan_id, :name, :description ])
+      params.expect(career_vision: [ :name, :description, :outline ])
     end
 end

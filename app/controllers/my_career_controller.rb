@@ -24,7 +24,23 @@ class MyCareerController < ApplicationController
       }
     end
 
+    career_outlines = CareerVision.outlines.keys.map do |outline|
+      {
+        name: outline.humanize,
+        value: outline
+      }
+    end
 
-    render inertia: "MyCareer/Index", props: { motivations:, talents:, growth_areas: }
+    career_visions = @current_employee.career_visions.map do |vision|
+      {
+        id: vision.id,
+        name: vision.name,
+        description: vision.description,
+        outline: vision.outline.humanize
+      }
+    end
+
+
+    render inertia: "MyCareer/Index", props: { motivations:, talents:, growth_areas:, career_outlines:, career_visions: }
   end
 end

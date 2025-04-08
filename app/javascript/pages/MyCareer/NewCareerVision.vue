@@ -1,15 +1,14 @@
 <template>
     <div>
-        <Button label="New Motivation" icon="pi pi-plus" @click="visible = true" class="new-btn" />
+        <Button label="New Talent" icon="pi pi-plus" @click="visible = true" class="new-btn" />
     </div>
 
     <div>
-        <Dialog v-model="visible" :visible="visible" header="New Motivation" @update:visible="visible = $event">
-            <form class="space-y-4" @submit.prevent="saveMotivation">
-                <h4>Motivation Details</h4>
+        <Dialog v-model="visible" :visible="visible" header="New Career Vision" @update:visible="visible = $event">
+            <form class="space-y-4" @submit.prevent="saveCareerVision">
                 <div>
                     <FloatLabel>
-                        <label for="title">Title</label>
+                        <label for="title">Name</label>
                         <InputText id="title" v-model="form.name" />
                     </FloatLabel>
                 </div>
@@ -19,14 +18,21 @@
                         <Textarea id="notes" v-model="form.description" rows="5" cols="30" />
                     </FloatLabel>
                 </div>
+                <div>
+                    <label for="outline">Vision For</label>
 
+                    <div v-for="outline in outlines" :key="outline.value">
+                        <RadioButton v-model="form.outline" :inputId="outline.value" :name="dynamic"
+                            :value="outline.value" />
+                        <label :for="outline.value" class="ml-2">{{ outline.name }}</label>
+                    </div>
+                </div>
                 <div>
                     <Button label="Save" icon="pi pi-save" type="submit" :disabled="form.processing" />
                 </div>
             </form>
         </Dialog>
     </div>
-
 </template>
 
 <script setup>
@@ -36,6 +42,7 @@ import Dialog from 'primevue/dialog'
 import Textarea from 'primevue/textarea'
 import FloatLabel from 'primevue/floatlabel'
 import InputText from 'primevue/inputtext';
+import RadioButton from 'primevue/radiobutton';
 import { useForm, usePage } from '@inertiajs/vue3'
 import { ref, computed } from 'vue'
 
@@ -44,23 +51,22 @@ const employee = computed(() => page.props.employee)
 
 const visible = ref(false)
 
-const form = useForm({
-    name: '',
-    description: ''
+defineProps({
+    outlines: Array,
 })
 
-function toggleDialog() {
-    console.log('clicked')
-    visible.value = !visible.value
-}
+const form = useForm({
+    name: '',
+    description: '',
+    outline: ''
+})
 
-function saveMotivation() {
-    // /employees/:employee_id/motivations
-    form.post(`/employees/${employee.value.id}/motivations`)
+
+function saveCareerVision() {
+    form.post(`/employees/${employee.value.id}/career_visions`)
     visible.value = false
     form.reset()
 }
-
 
 </script>
 
