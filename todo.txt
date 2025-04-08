@@ -20,6 +20,12 @@
 - Add Job levels x 
 - Add pay-bands to job-levels 
 - Use Cloudflare r2 with active storage x 
+-- EmployeeJob 
+    - belongs to JobFunction 
+    - belongs to Employee 
+    - belongs to Job Level 
+    - assigned_on 
+    - retired_on 
 - Holidays 
 - Employee Profiles 
 - Employee Onboarding Forms 
