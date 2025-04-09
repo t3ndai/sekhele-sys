@@ -1,5 +1,4 @@
 Rails.application.routes.draw do
-  resources :employee_jobs
   get "inertia-example", to: "inertia_example#index"
   resources :organizations, shallow: true do
     resources :departments
@@ -38,6 +37,7 @@ Rails.application.routes.draw do
       get "reports/:report_id/goals", to: "reports#goals"
       get "reports/:report_id/career", to: "reports#career"
       get "people", to: "people#index"
+      resources :employee_jobs
     end
     resources :asset_categories
     resources :locations

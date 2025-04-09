@@ -22,4 +22,6 @@ class EmployeeJob < ApplicationRecord
   belongs_to :job_function
   belongs_to :employee
   belongs_to :job_level
+
+  scope :active_jobs, -> { where(ended_on: nil) }
 end

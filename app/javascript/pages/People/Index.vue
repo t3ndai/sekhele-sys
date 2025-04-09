@@ -3,14 +3,19 @@
   <div>
     <h2 class="heading belgrano-regular">People</h2>
 
-    <DataTable :value="people" tableStyle="min-width: 50rem">
+    <DataTable :value="people" paginator :rows="10" tableStyle="min-width: 50rem">
       <Column field="full_name" header="Full Name" />
       <Column field="tenure" header="Tenure" />
-      <Column field="job_function" header="Job Function" />
+      <Column field="job_title" header="Job Title" />
       <Column field="job_level" header="Job Level" />
       <Column field="department" header="Department" />
       <Column field="location" header="Location" />
       <Column field="manager" header="Manager" />
+      <Column>
+        <template #body="">
+
+        </template>
+      </Column>
     </DataTable>
   </div>
 

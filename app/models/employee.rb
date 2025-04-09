@@ -66,6 +66,9 @@ class Employee < ApplicationRecord
   has_one :pulse_survey_response
   has_many :tasks, inverse_of: :assignee
   has_many :agenda_items
+  has_many :employee_jobs
+  has_many :job_functions, through: :employee_jobs
+  has_many :job_levels, through: :employee_jobs
 
   after_create :create_user
 
@@ -80,7 +83,6 @@ class Employee < ApplicationRecord
   validates :hire_date, presence: true
 
   scope :same_organization, ->(organization) { where(organization: organization) }
-
   # scope :tasks, -> { Task.where(assignee: self) }
 
   def is_manager?

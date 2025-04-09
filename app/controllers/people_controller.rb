@@ -7,9 +7,12 @@ class PeopleController < ApplicationController
         full_name: employee.full_name,
         tenure: time_ago_in_words(employee.hire_date),
         manager: employee.manager&.full_name,
+        job_title: employee.employee_jobs.active_jobs.first.job_function.title,
+        job_level: employee.job_levels.first.name,
+        department: employee.employee_jobs.active_jobs.first.job_function.department&.name
       }
     end
-    render inertia: 'People/Index', props: {
+    render inertia: "People/Index", props: {
       people:
     }
   end
