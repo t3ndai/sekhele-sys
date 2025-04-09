@@ -33,11 +33,10 @@ defineProps({
 </script>
 
 <template>
-  <h1>Employee ID: {{ employee.id }}</h1>
-  <h2>Employee QuickView </h2>
+  <h2>{{ employee.full_name }} QuickView </h2>
   <div>
     <div>
-      <h2 class="heading belgrano-regular">Leave Balances</h2>
+      <h3 class="heading belgrano-regular">Leave Balances</h3>
       <RequestLeave :leave_policies />
     </div>
 

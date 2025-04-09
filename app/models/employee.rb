@@ -69,6 +69,8 @@ class Employee < ApplicationRecord
   has_many :employee_jobs
   has_many :job_functions, through: :employee_jobs
   has_many :job_levels, through: :employee_jobs
+  has_many :employee_locations
+  has_many :locations, through: :employee_locations
 
   after_create :create_user
 

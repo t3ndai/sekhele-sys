@@ -45,7 +45,7 @@ const employee = computed(() => page.props.employee)
             </div>
             <div>
                 <Link href="" class="flex justify-center items-baseline" as="button">
-                PAY
+                RECRUITMENT
                 </Link>
             </div>
             <div>

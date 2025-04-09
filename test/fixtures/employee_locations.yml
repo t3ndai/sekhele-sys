@@ -1,0 +1,31 @@
+# == Schema Information
+#
+# Table name: employee_locations
+#
+#  id          :integer          not null, primary key
+#  employee_id :integer          not null
+#  location_id :integer          not null
+#  date_from   :date
+#  date_to     :date
+#  created_at  :datetime         not null
+#  updated_at  :datetime         not null
+#
+# Indexes
+#
+#  index_employee_locations_on_employee_id  (employee_id)
+#  index_employee_locations_on_location_id  (location_id)
+#
+
+# Read about fixtures at https://api.rubyonrails.org/classes/ActiveRecord/FixtureSet.html
+
+one:
+  employee: one
+  location: one
+  date_from: 2025-04-09
+  date_to: 2025-04-09
+
+two:
+  employee: two
+  location: two
+  date_from: 2025-04-09
+  date_to: 2025-04-09

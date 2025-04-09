@@ -10,7 +10,7 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema[8.0].define(version: 2025_04_08_214013) do
+ActiveRecord::Schema[8.0].define(version: 2025_04_09_203321) do
   # These are extensions that must be enabled in order to support this database
   enable_extension "pg_catalog.plpgsql"
 
@@ -241,6 +241,17 @@ ActiveRecord::Schema[8.0].define(version: 2025_04_08_214013) do
     t.index ["employee_id"], name: "index_employee_jobs_on_employee_id"
     t.index ["job_function_id"], name: "index_employee_jobs_on_job_function_id"
     t.index ["job_level_id"], name: "index_employee_jobs_on_job_level_id"
+  end
+
+  create_table "employee_locations", force: :cascade do |t|
+    t.bigint "employee_id", null: false
+    t.bigint "location_id", null: false
+    t.date "date_from"
+    t.date "date_to"
+    t.datetime "created_at", null: false
+    t.datetime "updated_at", null: false
+    t.index ["employee_id"], name: "index_employee_locations_on_employee_id"
+    t.index ["location_id"], name: "index_employee_locations_on_location_id"
   end
 
   create_table "employees", force: :cascade do |t|
@@ -729,6 +740,8 @@ ActiveRecord::Schema[8.0].define(version: 2025_04_08_214013) do
   add_foreign_key "employee_jobs", "employees"
   add_foreign_key "employee_jobs", "job_functions"
   add_foreign_key "employee_jobs", "job_levels"
+  add_foreign_key "employee_locations", "employees"
+  add_foreign_key "employee_locations", "locations"
   add_foreign_key "employees", "employees", column: "manager_id"
   add_foreign_key "employees", "organizations"
   add_foreign_key "events", "users"

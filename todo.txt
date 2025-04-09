@@ -6,6 +6,11 @@
 - Add Location x
 - Country Dropdown for Nationality x 
 - Loation dropdown for location 
+-- EmployeeLocation
+    - belongs_to Employee 
+    - belongs_to Location 
+    - date_from 
+    - date_to 
 - Invite user to organization after creation x
 - Add gender to employee x
 - Link Compensation to employee 
