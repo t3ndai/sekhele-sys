@@ -21,7 +21,7 @@ const employee = computed(() => page.props.employee)
             <div>
                 <Link :href="`/employees/${employee.id}/people`" class="flex justify-center items-baseline"
                     :class="{ 'text-orange-500': $page.component === 'People/Index' }" as="button">
-                PEOPLE
+                DIRECTORY
                 </Link>
             </div>
             <div>

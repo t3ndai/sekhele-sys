@@ -1,7 +1,7 @@
 <template>
 
   <div>
-    <h2 class="page-heading">People</h2>
+    <h2 class="page-heading">Directory</h2>
 
     <div>
 
