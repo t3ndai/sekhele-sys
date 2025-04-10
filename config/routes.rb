@@ -38,6 +38,7 @@ Rails.application.routes.draw do
       get "reports/:report_id/career", to: "reports#career"
       get "people", to: "people#index"
       resources :employee_jobs
+      get "recruitment", to: "recruitment#index"
     end
     resources :asset_categories
     resources :locations

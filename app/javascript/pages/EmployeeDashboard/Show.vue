@@ -35,9 +35,12 @@ defineProps({
 <template>
   <h2>{{ employee.full_name }} QuickView </h2>
   <div>
-    <div>
+    <div class="subsection">
       <h3 class="heading belgrano-regular">Leave Balances</h3>
-      <RequestLeave :leave_policies />
+      <div>
+        <RequestLeave :leave_policies />
+      </div>
+
     </div>
 
     <DataTable :value="leave_balances" tableStyle="min-width: 50rem">
@@ -49,10 +52,13 @@ defineProps({
   </div>
 
   <div>
-    <h2 class="heading belgrano-regular"> TaskBox </h2>
-    <div>
-      <NewTask :employees />
+    <div class="subsection">
+      <h2 class="heading belgrano-regular"> TaskBox </h2>
+      <div>
+        <NewTask :employees />
+      </div>
     </div>
+
     <div>
       <DataTable :value="tasks" tableStyle="min-width: 50rem">
         <Column field="title" header="Title"></Column>
@@ -76,3 +82,12 @@ defineProps({
     </div>
   </div>
 </template>
+
+<style scoped>
+.subsection {
+  display: flex;
+  justify-content: space-between;
+  align-items: baseline;
+  padding: 12px;
+}
+</style>
