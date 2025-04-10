@@ -1,6 +1,7 @@
 <template>
-    <div>
-        <h2 class="heading belgrano-regular">Current Benefits Selected </h2>
+    <h2 class="page-heading">Benefits</h2>
+    <div class="page-section">
+        <h3 class="heading belgrano-regular">Current Benefits Selected </h3>
         <div>
             <DataTable :value="benefit_elections" tableStyle="min-width: 50rem">
                 <Column field="benefit" header="Benefit"></Column>
@@ -10,29 +11,22 @@
             </DataTable>
         </div>
     </div>
-    <div>
-        <h2 class="heading belgrano-regular">Benefits on Offer</h2>
-
-        <DataTable :value="employee_benefits" tableStyle="min-width: 50rem">
-            <Column field="name" header="Name"></Column>
-            <Column field="type" header="Type"></Column>
-            <Column field="valuation_type" header="Valuation Type"></Column>
-            <Column>
-                <template #body="{ data }, empoloyee">
-
-
-                    <Link :href="`/employees/${employee.id}/benefits/${data.id}`" as="button" class="btn">
-
-                    View Plans
-                    </Link>
-
-
-
-                </template>
-            </Column>
-        </DataTable>
-
-
+    <div class="page-section">
+        <h3 class="heading belgrano-regular">Benefits on Offer</h3>
+        <div>
+            <DataTable :value="employee_benefits" tableStyle="min-width: 50rem">
+                <Column field="name" header="Name"></Column>
+                <Column field="type" header="Type"></Column>
+                <Column field="valuation_type" header="Valuation Type"></Column>
+                <Column>
+                    <template #body="{ data }, empoloyee">
+                        <Link :href="`/employees/${employee.id}/benefits/${data.id}`">
+                        View Plans
+                        </Link>
+                    </template>
+                </Column>
+            </DataTable>
+        </div>
     </div>
 </template>
 

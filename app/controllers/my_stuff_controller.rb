@@ -29,14 +29,15 @@ class MyStuffController < ApplicationController
       work_email: @current_employee.work_email,
       id_number: @current_employee.id_number,
       phone1: @current_employee.phone1,
-      hire_date: @current_employee.hire_date,
-      tenure: time_ago_in_words(@current_employee.hire_date),
+      hire_date: @current_employee.hire_date.strftime("%Y-%b-%d"),
+      tenure: time_ago_in_words(@current_employee.hire_date, only: [ :years, :months, :days ]),
       addr_line1: @current_employee.addr_line1,
       addr_line2: @current_employee.addr_line2,
       addr_line3: @current_employee.addr_line3,
       addr_postcode: @current_employee.addr_postcode,
       nationality: @current_employee.nationality,
-      manager: @current_employee.manager&.full_name
+      manager: @current_employee.manager&.full_name,
+      position: @current_employee.employee_jobs.active_jobs.first.job_function.title
     }
 
     render inertia: "MyStuff/Index", props: {

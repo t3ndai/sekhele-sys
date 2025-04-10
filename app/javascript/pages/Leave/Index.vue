@@ -1,6 +1,10 @@
 <template>
-  <RequestLeave :leave_policies />
-  <div>
+  <h2 class="page-heading">Leave</h2>
+  <div class="actions">
+    <RequestLeave :leave_policies />
+  </div>
+
+  <div class="page-section">
     <h2 class="heading belgrano-regular">Upcoming Leave</h2>
     <DataTable :value="future_leaves" tableStyle="min-width: 50rem">
       <Column field="leave_type" header="Leave Type" />
@@ -11,7 +15,7 @@
     </DataTable>
   </div>
 
-  <div>
+  <div class="page-section">
     <h2 class="heading belgrano-regular">Past Leave</h2>
     <DataTable :value="past_leaves" tableStyle="min-width: 50rem">
       <Column field="leave_type" header="Leave Type" />
@@ -48,3 +52,11 @@ defineProps({
 })
 
 </script>
+
+<style scoped>
+.actions {
+  display: flex;
+  flex-direction: column;
+  margin-bottom: 2.5rem;
+}
+</style>

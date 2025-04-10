@@ -11,6 +11,26 @@ class RecruitmentController < ApplicationController
 
       }
     end
-    render inertia: "Recruitment/Index", props: { listed_jobs: }
+
+    job_applicants = @current_employee.organization.job_applicants.map do |job_applicant|
+      {
+        id: job_applicant.id,
+        name: job_applicant.full_name,
+        position: job_applicant.job_posting.title,
+        applied_on: job_applicant.applied_on
+
+      }
+    end
+
+    interviews = @current_employee.organization.interviews.map do |interview|
+      {
+        id: interview.id,
+        stage: interview.interview_stage.name,
+        candidate: interview.job_applicant.full_name,
+        interview_on: interview.interview_on.strftime("%e %b %Y"),
+        interview_at: interview.interview_at.strftime("%l:%M %p")
+      }
+    end
+    render inertia: "Recruitment/Index", props: { listed_jobs:, job_applicants:, interviews: }
   end
 end

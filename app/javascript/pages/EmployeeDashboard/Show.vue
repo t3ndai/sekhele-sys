@@ -33,8 +33,8 @@ defineProps({
 </script>
 
 <template>
-  <h2>{{ employee.full_name }} QuickView </h2>
-  <div>
+  <h2 class="page-heading">QuickView </h2>
+  <div class="page-section">
     <div class="subsection">
       <h3 class="heading belgrano-regular">Leave Balances</h3>
       <div>
@@ -51,7 +51,7 @@ defineProps({
     </DataTable>
   </div>
 
-  <div>
+  <div class="page-section">
     <div class="subsection">
       <h2 class="heading belgrano-regular"> TaskBox </h2>
       <div>
@@ -69,7 +69,7 @@ defineProps({
       </DataTable>
     </div>
   </div>
-  <div class="mt-4">
+  <div class="page-section">
     <h2 class="heading belgrano-regular">Interviews</h2>
     <div>
       <DataTable :value="interviews" tableStyle="min-width: 50rem">

@@ -32,9 +32,6 @@
   <%= link_to "Performance Reviews", employee_performance_review_responses_path(@employee) %>
 </div>
 <div>
-  <%= link_to "Add Development Plan", new_employee_personal_development_plan_path(@employee) %>
-</div>
-<div>
   <% if @pulse_survey_response %>
     <%= link_to "View Pulse Survey", edit_pulse_survey_response_path(@pulse_survey_response) %>
   <% end %>

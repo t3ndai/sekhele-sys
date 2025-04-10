@@ -273,6 +273,10 @@
 -- Business Goals 
     - link to individual goals 
     - 
+- tenure might be limited to certain level 
+
+-- Other Notes 
+- Talk to Alan Choruma (office of the VP )
 
 
 -- Color Palette --- 

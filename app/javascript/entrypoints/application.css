@@ -28,3 +28,20 @@ body {
     font-weight: 400;
     color: #111509
 }
+
+.page-heading {
+    margin-bottom: 2rem;
+    margin-top: 2rem;
+    text-align: center;
+    font-size: 2rem;
+    font-weight: lighter;
+    font-family: 'Jura', sans-serif;
+    color: #111509;
+}
+
+.page-section {
+    display: flex;
+    flex-direction: column;
+    gap: 0.5rem;
+    margin-bottom: 2.5rem;
+}
