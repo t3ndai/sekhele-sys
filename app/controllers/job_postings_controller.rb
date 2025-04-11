@@ -9,6 +9,7 @@ class JobPostingsController < ApplicationController
 
   # GET /job_postings/1 or /job_postings/1.json
   def show
+    render inertia: "Recruitment/ShowJob", props: { job_posting: serialize_job_posting(@job_posting) }
   end
 
   # GET /job_postings/new
@@ -72,5 +73,9 @@ class JobPostingsController < ApplicationController
     # Only allow a list of trusted parameters through.
     def job_posting_params
       params.expect(job_posting: [ :organization_id, :num_positions, :date_open, :date_close, :description, :title ])
+    end
+
+    def serialize_job_posting(job_posting)
+      job_posting.as_json(only: [ :id, :title, :date_open, :date_close, :num_positions ]).merge({ description: job_posting.description.body })
     end
 end

@@ -18,6 +18,13 @@
                 <Column field="date_open" header="Date Open" />
                 <Column field="date_close" header="Date Close" />
                 <Column field="created" header="Created on" />
+                <Column>
+                    <template #body="{ data }">
+
+                        <Link :href="`/job_postings/${data.id}`">Details</Link>
+
+                    </template>
+                </Column>
             </DataTable>
         </div>
     </div>
