@@ -31,6 +31,10 @@ class JobApplicant < ApplicationRecord
   validates :email, format: { with: URI::MailTo::EMAIL_REGEXP }
   validates_uniqueness_of :email, scope: :job_posting_id
 
+  def is_org_candidate?(employee)
+    true if employee.organization == job_posting.organization
+  end
+
   def full_name
     "#{first_name} #{last_name}"
   end

@@ -1,0 +1,2 @@
+module HrAdminHelper
+end

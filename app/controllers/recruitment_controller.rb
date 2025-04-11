@@ -1,4 +1,5 @@
 class RecruitmentController < ApplicationController
+  before_action :set_candidate, only: %i[candidate]
   def index
     listed_jobs = @current_employee.organization.job_postings.map do |job_posting|
       {
@@ -39,8 +40,16 @@ class RecruitmentController < ApplicationController
     render inertia: "Recruitment/NewJobPosting", props: { job_posting: serialize_job_posting(@job_posting) }
   end
 
+  def candidate
+    render inertia: "Recruitment/Candidate" if @candidate.is_org_candidate?(@current_employee)
+  end
+
   private
   def serialize_job_posting(job_posting)
     job_posting.as_json(only: [ :id, :title, :date_open, :date_close, :description ])
+  end
+
+  def set_candidate
+    @candidate = JobApplicant.find(params[:candidate_id])
   end
 end

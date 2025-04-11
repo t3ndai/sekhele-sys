@@ -38,6 +38,11 @@
                 <Column field="name" header="Name" />
                 <Column field="position" header="Position" />
                 <Column field="applied_on" header="Applied On" />
+                <Column>
+                    <template #body="{ data }">
+                        <Link :href="`/employees/${employee.id}/recruitment/candidate/${data.id}`">Details</Link>
+                    </template>
+                </Column>
             </DataTable>
         </div>
     </div>
