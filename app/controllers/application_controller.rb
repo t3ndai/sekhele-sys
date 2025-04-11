@@ -11,7 +11,8 @@ class ApplicationController < ActionController::Base
         # is_admin: current_employee&.is_admin?,
         # is_super_admin: current_employee&.is_super_admin?,
         full_name: current_employee&.full_name,
-      )
+      ),
+      org_id: current_employee.organization.id
     } if current_employee
   end
 

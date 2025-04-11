@@ -5,7 +5,9 @@
         <div class="subsection">
             <h3 class="heading belgrano-regular">Listed Jobs</h3>
             <div>
-                <!---<RequestLeave :leave_policies />-->
+                <Link :href="`/employees/${employee.id}/recruitment/new_job`">
+                New Job Post
+                </Link>
             </div>
         </div>
 

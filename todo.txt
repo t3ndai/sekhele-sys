@@ -108,6 +108,7 @@
         - location ? 
         - salary_range ?
         - link to JobRequisition ?
+        - link to who posted Job (employee)
     - JobApplicant x
         - first_name 
         - last_name 

@@ -39,6 +39,7 @@ Rails.application.routes.draw do
       get "people", to: "people#index"
       resources :employee_jobs
       get "recruitment", to: "recruitment#index"
+      get "recruitment/new_job", to: "recruitment#newjob"
     end
     resources :asset_categories
     resources :locations

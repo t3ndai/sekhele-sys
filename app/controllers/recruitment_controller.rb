@@ -33,4 +33,14 @@ class RecruitmentController < ApplicationController
     end
     render inertia: "Recruitment/Index", props: { listed_jobs:, job_applicants:, interviews: }
   end
+
+  def newjob
+    @job_posting = JobPosting.new
+    render inertia: "Recruitment/NewJobPosting", props: { job_posting: serialize_job_posting(@job_posting) }
+  end
+
+  private
+  def serialize_job_posting(job_posting)
+    job_posting.as_json(only: [ :id, :title, :date_open, :date_close, :description ])
+  end
 end
