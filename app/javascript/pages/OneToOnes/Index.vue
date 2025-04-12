@@ -11,9 +11,8 @@
 
 <script setup>
 
-import { Link } from '@inertiajs/vue3'
+import { Link, usePage } from '@inertiajs/vue3'
 import { computed } from 'vue'
-import { usePage } from '@inertiajs/vue3'
 import DataTable from 'primevue/datatable';
 import Column from 'primevue/column';
 

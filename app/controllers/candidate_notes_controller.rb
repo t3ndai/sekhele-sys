@@ -28,7 +28,7 @@ class CandidateNotesController < ApplicationController
 
     respond_to do |format|
       if @candidate_note.save
-        format.html { redirect_to @job_applicant, notice: "Candidate note was successfully created." }
+        format.html { redirect_to employee_recruitment_candidate_path(@current_employee, @job_applicant), notice: "Candidate note was successfully created." }
         format.json { render :show, status: :created, location: @candidate_note }
       else
         format.html { render :new, status: :unprocessable_entity }

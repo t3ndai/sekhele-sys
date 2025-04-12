@@ -41,7 +41,36 @@ class RecruitmentController < ApplicationController
   end
 
   def candidate
-    render inertia: "Recruitment/Candidate" if @candidate.is_org_candidate?(@current_employee)
+    candidate = {
+      id: @candidate.id,
+      name: @candidate.full_name,
+      applied_on: @candidate.applied_on.strftime("%e %b %Y"),
+      phone: @candidate.phone,
+      email: @candidate.email,
+      notes: @candidate.candidate_notes.map do |note|
+        {
+          note: note.note,
+          by: note.employee.full_name
+        }
+      end,
+      interviews: @candidate.interviews.map do |interview|
+        {
+          id: interview.id,
+          interview_on: interview.interview_on.strftime("%e %b %Y"),
+          interview_at: interview.interview_at.strftime("%l:%M %p"),
+          feedbacks: interview.interview_feedbacks.map do |feedback|
+            {
+              id: feedback.id,
+              notes: feedback.notes.to_s,
+              status: feedback.status
+            }
+          end
+        }
+      end,
+      cv: rails_blob_url(@candidate.cv, only_path: true)
+
+    }
+    render inertia: "Recruitment/Candidate", props: { candidate: } if @candidate.is_org_candidate?(@current_employee)
   end
 
   private

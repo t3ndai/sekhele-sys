@@ -40,7 +40,7 @@ Rails.application.routes.draw do
       resources :employee_jobs
       get "recruitment", to: "recruitment#index"
       get "recruitment/new_job", to: "recruitment#newjob"
-      get "recruitment/candidate/:candidate_id", to: "recruitment#candidate"
+      get "recruitment/candidate/:candidate_id", to: "recruitment#candidate", as: "recruitment_candidate"
       get "hr_admin", to: "hr_admin#index"
     end
     resources :asset_categories

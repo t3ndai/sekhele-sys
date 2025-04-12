@@ -1,11 +1,9 @@
-@import 'primeicons/primeicons.css';
+@import "primeicons/primeicons.css";
 @import "tailwindcss";
 @import "trix";
 
-
 @plugin "@tailwindcss/typography";
 @plugin "@tailwindcss/forms";
-
 
 body {
     background-color: #f2efe9;
@@ -15,8 +13,7 @@ body {
     font-family: "Belgrano", serif;
     font-weight: 400;
     font-style: normal;
-  }
-  
+}
 
 .nav-icon {
     font-size: 40px;
@@ -26,7 +23,7 @@ body {
 .heading {
     font-size: 2rem;
     font-weight: 400;
-    color: #111509
+    color: #111509;
 }
 
 .page-heading {
@@ -35,7 +32,7 @@ body {
     text-align: center;
     font-size: 2rem;
     font-weight: lighter;
-    font-family: 'Jura', sans-serif;
+    font-family: "Jura", sans-serif;
     color: #111509;
 }
 
@@ -44,4 +41,9 @@ body {
     flex-direction: column;
     gap: 0.5rem;
     margin-bottom: 2.5rem;
+}
+
+.action-btn {
+    background-color: orangered;
+    border: none;
 }
