@@ -62,7 +62,7 @@ class RecruitmentController < ApplicationController
             {
               id: feedback.id,
               notes: feedback.notes.to_s,
-              status: feedback.status
+              status: feedback.status.humanize
             }
           end
         }

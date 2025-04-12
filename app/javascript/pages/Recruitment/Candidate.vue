@@ -7,9 +7,9 @@
         </Link>
     </div>
 
-    <div>
+    <div class="mt-2 mb-6">
         <h3 class="heading belgrano-regular">Candidate Details</h3>
-        <div class="details-card">
+        <div class="details-card place-self-center">
             <div class="value">
                 <span class="label">Name:</span> {{ candidate.name }}
             </div>
@@ -28,7 +28,7 @@
             </div>
         </div>
     </div>
-    <div>
+    <div class="mb-6">
         <div class="subsection">
             <h3 class="heading belgrano-regular">Candidate Notes</h3>
             <Button
@@ -67,29 +67,62 @@
                 </form>
             </Dialog>
         </div>
-    </div>
-
-    <div class="flex gap-x-4">
-        <div v-for="note in candidate.notes" class="note-card">
-            <div class="note">
-                {{ note.note }}
-            </div>
-            <div class="author">
-                {{ note.by }}
+        <div class="flex gap-x-4">
+            <div v-for="note in candidate.notes" class="note-card">
+                <div class="note">
+                    {{ note.note }}
+                </div>
+                <div class="author">
+                    {{ note.by }}
+                </div>
             </div>
         </div>
     </div>
+
     <div>
-        <h3>Interviews</h3>
-        <div v-for="interview in candidate.interviews" :key="interview.id">
-            <div>
-                {{ interview.interview_on }} | {{ interview.interview_at }}
-            </div>
-            <div>
-                <h4>Feedback</h4>
-                <div v-for="feedback in interview.feedbacks">
-                    <div v-html="feedback.notes"></div>
-                    <div>{{ feedback.status }}</div>
+        <div class="subsection">
+            <h3 class="heading belgrano-regular">Interviews</h3>
+        </div>
+        <div class="interview-card">
+            <div v-for="interview in candidate.interviews" :key="interview.id">
+                <div class="time-header">
+                    {{ interview.interview_on }} | {{ interview.interview_at }}
+                </div>
+                <div>
+                    <div class="feedback-header">Feedback</div>
+                    <div v-for="feedback in interview.feedbacks">
+                        <div v-html="feedback.notes"></div>
+                        <div
+                            class="feedback-status bg-amber-500"
+                            v-if="feedback.status === 'Maybe'"
+                        >
+                            {{ feedback.status }}
+                        </div>
+                        <div
+                            class="feedback-status bg-red-600"
+                            v-if="feedback.status === 'Strong No'"
+                        >
+                            {{ feedback.status }}
+                        </div>
+                        <div
+                            class="feedback-status bg-red-400"
+                            v-if="feedback.status === 'No'"
+                        >
+                            {{ feedback.status }}
+                        </div>
+                        <div
+                            class="feedback-status bg-green-400"
+                            v-if="feedback.status === 'Yes'"
+                        >
+                            {{ feedback.status }}
+                        </div>
+                        <div
+                            class="feedback-status bg-green-600"
+                            v-if="feedback.status === 'Strong Yes'"
+                        >
+                            {{ feedback.status }}
+                        </div>
+                    </div>
                 </div>
             </div>
         </div>
@@ -98,12 +131,12 @@
 
 <script setup>
 import { Link, usePage, useForm } from "@inertiajs/vue3";
-import { computed, ref, toValue } from "vue";
+import { computed, ref } from "vue";
 
 import Button from "primevue/button";
 import Dialog from "primevue/dialog";
 import Textarea from "primevue/textarea";
-import InputText from "primevue/inputtext";
+import Chip from "primevue/chip";
 
 const page = usePage();
 const employee = computed(() => page.props.employee);
@@ -146,13 +179,14 @@ const visible = ref(false);
     border-radius: 8px;
     background-color: #f9f9f9;
     padding: 0.5rem;
+    width: 25vw;
 }
 
 .subsection {
     display: flex;
     justify-content: space-between;
     align-items: baseline;
-    padding: 12px;
+    padding: 0.5rem;
 }
 
 .note-card {
@@ -176,6 +210,34 @@ const visible = ref(false);
         font-weight: 100;
         font-size: 1rem;
         flex-basis: 10%;
+    }
+}
+
+.interview-card {
+    border: 1px solid #ccc;
+    border-radius: 8px;
+    background-color: #f9f9f9;
+    padding: 0.5rem;
+    font-family: "Jura", sans-serif;
+    font-weight: 400;
+    font-size: 1.2rem;
+    display: flex;
+    flex-direction: column;
+
+    .feedback-header {
+        font-size: 1.5rem;
+        font-weight: 500;
+    }
+
+    .time-header {
+        color: var(--color-amber-600);
+        font-weight: 100;
+    }
+
+    .feedback-status {
+        text-align: center;
+        border-radius: 12px;
+        margin-top: 1rem;
     }
 }
 </style>
