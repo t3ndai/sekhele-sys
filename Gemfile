@@ -58,6 +58,7 @@ group :development do
   gem "web-console"
   # gem "hotwire-spark"
   gem "annotate"
+  gem "solargraph"
 end
 
 group :test do

@@ -82,6 +82,9 @@
     <div>
         <div class="subsection">
             <h3 class="heading belgrano-regular">Interviews</h3>
+            <div>
+                <NewInterview />
+            </div>
         </div>
         <div class="interview-card">
             <div v-for="interview in candidate.interviews" :key="interview.id">
@@ -136,16 +139,28 @@ import { computed, ref } from "vue";
 import Button from "primevue/button";
 import Dialog from "primevue/dialog";
 import Textarea from "primevue/textarea";
-import Chip from "primevue/chip";
+
+import NewInterview from "./NewInterview.vue";
 
 const page = usePage();
 const employee = computed(() => page.props.employee);
 
 const { candidate } = defineProps({
     candidate: Object,
+    interview_stages: Array,
 });
 
 const form = useForm({
+    note: "",
+});
+
+const interviewForm = useForm({
+    interview_stage_id: "",
+    interview_on: "",
+    intervie_at: "",
+    meeting_link: "",
+    room: "",
+    location: "",
     note: "",
 });
 
@@ -156,6 +171,7 @@ function saveNote() {
 }
 
 const visible = ref(false);
+const showInterviw = ref(false);
 </script>
 
 <style scoped>

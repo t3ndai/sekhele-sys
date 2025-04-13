@@ -70,6 +70,12 @@ class RecruitmentController < ApplicationController
       cv: rails_blob_url(@candidate.cv, only_path: true)
 
     }
+    interview_stages = @current_employee.organization.interview_stages.map do |interview_stage|
+      {
+        id: interview_stage.id,
+        name: interview_stage.name.humanize
+      }
+    end
     render inertia: "Recruitment/Candidate", props: { candidate: } if @candidate.is_org_candidate?(@current_employee)
   end
 
