@@ -101,6 +101,12 @@
                     </div>
                 </div>
                 <div>
+                    <div class="interviewer-header">Interviewer(s):</div>
+                    <div v-for="interviewer in interview.interviewers">
+                        {{ interviewer.name }}
+                    </div>
+                </div>
+                <div>
                     <div
                         class="feedback-header"
                         v-if="interview.feedbacks.length"
@@ -263,6 +269,11 @@ const visible = ref(false);
         text-align: center;
         border-radius: 12px;
         margin-top: 1rem;
+    }
+
+    .interviewer-header {
+        font-weight: lighter;
+        color: var(--color-slate-400);
     }
 }
 </style>

@@ -29,7 +29,7 @@ class RecruitmentController < ApplicationController
         stage: interview.interview_stage.name,
         candidate: interview.job_applicant.full_name,
         interview_on: interview.interview_on.strftime("%e %b %Y"),
-        interview_at: interview.interview_at.strftime("%l:%M %p")
+        interview_at: interview.interview_at.strftime("%l:%M %p"),
       }
     end
     render inertia: "Recruitment/Index", props: { listed_jobs:, job_applicants:, interviews: }
@@ -63,6 +63,11 @@ class RecruitmentController < ApplicationController
               id: feedback.id,
               notes: feedback.notes.to_s,
               status: feedback.status.humanize
+            }
+          end,
+          interviewers: interview.interviewers.map do |interviewer|
+            {
+              name: interviewer.employee.full_name
             }
           end
         }
