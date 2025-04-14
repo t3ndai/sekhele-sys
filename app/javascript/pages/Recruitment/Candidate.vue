@@ -83,10 +83,10 @@
         <div class="subsection">
             <h3 class="heading belgrano-regular">Interviews</h3>
             <div>
-                <NewInterview />
+                <NewInterview :interview_stages :candidate_id="candidate.id" />
             </div>
         </div>
-        <div class="interview-card">
+        <div class="interview-card" v-if="candidate.interviews.length">
             <div v-for="interview in candidate.interviews" :key="interview.id">
                 <div class="time-header">
                     {{ interview.interview_on }} | {{ interview.interview_at }}
@@ -154,16 +154,6 @@ const form = useForm({
     note: "",
 });
 
-const interviewForm = useForm({
-    interview_stage_id: "",
-    interview_on: "",
-    intervie_at: "",
-    meeting_link: "",
-    room: "",
-    location: "",
-    note: "",
-});
-
 function saveNote() {
     form.post(`/job_applicants/${candidate.id}/candidate_notes`);
     visible.value = false;
@@ -171,7 +161,6 @@ function saveNote() {
 }
 
 const visible = ref(false);
-const showInterviw = ref(false);
 </script>
 
 <style scoped>

@@ -27,7 +27,7 @@ class InterviewsController < ApplicationController
 
     respond_to do |format|
       if @interview.save
-        format.html { redirect_to @interview, notice: "Interview was successfully created." }
+        format.html { redirect_to employee_recruitment_candidate_path(@current_employee, @job_applicant), notice: "Interview was successfully created." }
         format.json { render :show, status: :created, location: @interview }
       else
         format.html { render :new, status: :unprocessable_entity }

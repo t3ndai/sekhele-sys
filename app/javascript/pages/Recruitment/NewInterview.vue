@@ -16,23 +16,26 @@
                 @update:visible="visible = $event"
             >
                 <div>
-                    <form>
-                        <div v-for="interview_stage in inteview_stages">
-                            <!--<RadioButton
-                                v-model="form.interview_stage_id"
-                                :inputId="interview_stage.id"
-                                name="dynamic"
-                                :value="inteview.id"
-                            />
-                            <label :for="interview_stage.id">{{
-                                interview_stage.name
-                            }}</label> -->
-                        </div>
-                        <div>
+                    <form @submit.prevent="submit">
+                        <fieldset class="radios">
+                            <legend>Interview Stage</legend>
+                            <div v-for="interview_stage in interview_stages">
+                                <RadioButton
+                                    v-model="form.interview_stage_id"
+                                    :inputId="interview_stage.id"
+                                    name="interview_stage"
+                                    :value="interview_stage.id"
+                                />
+                                <label :for="interview_stage.id">{{
+                                    interview_stage.name
+                                }}</label>
+                            </div>
+                        </fieldset>
+                        <div class="form-row">
                             <label for="interview_on">Interview On</label>
                             <DatePicker v-model="form.interview_on" />
                         </div>
-                        <div>
+                        <div class="form-row">
                             <label for="inteview_at">Interview At</label>
                             <DatePicker
                                 id="interview_at"
@@ -41,22 +44,22 @@
                                 fluid
                             />
                         </div>
-                        <div>
+                        <div class="form-row">
                             <label for="meeting_link">Meeting Link</label>
                             <InputText
                                 id="meeting_link"
                                 v-model="form.meeting_link"
                             />
                         </div>
-                        <div>
+                        <div class="form-row">
                             <label for="room">Room</label>
                             <InputText id="room" v-model="form.room" />
                         </div>
-                        <div>
+                        <div class="form-row">
                             <label for="location">Location</label>
                             <InputText id="location" v-model="form.location" />
                         </div>
-                        <div>
+                        <div class="form-row">
                             <label for="notes">Note</label>
                             <Textarea
                                 id="notes"
@@ -65,7 +68,7 @@
                                 cols="30"
                             />
                         </div>
-                        <div>
+                        <div class="mt-2">
                             <Button
                                 class="action-btn"
                                 label="Create Interview"
@@ -102,5 +105,35 @@ const form = useForm({
     note: "",
 });
 
+function submit() {
+    form.post(`/job_applicants/${candidate_id}/interviews`);
+    visible.value = false;
+    form.reset();
+}
+
 const visible = ref(false);
+
+const { candidate_id } = defineProps({
+    interview_stages: Array,
+    candidate_id: Number,
+});
 </script>
+
+<style scoped>
+.form-row {
+    display: flex;
+    flex-direction: column;
+    margin-bottom: 0.2rem;
+}
+
+.radios {
+    border: 1px solid var(--color-gray-200);
+    border-radius: 5px;
+    padding: 2px;
+}
+
+.action-btn {
+    background-color: orangered;
+    border: none;
+}
+</style>

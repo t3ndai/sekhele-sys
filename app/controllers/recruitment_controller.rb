@@ -76,7 +76,7 @@ class RecruitmentController < ApplicationController
         name: interview_stage.name.humanize
       }
     end
-    render inertia: "Recruitment/Candidate", props: { candidate: } if @candidate.is_org_candidate?(@current_employee)
+    render inertia: "Recruitment/Candidate", props: { candidate:, interview_stages: } if @candidate.is_org_candidate?(@current_employee)
   end
 
   private
