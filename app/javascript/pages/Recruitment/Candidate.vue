@@ -88,11 +88,25 @@
         </div>
         <div class="interview-card" v-if="candidate.interviews.length">
             <div v-for="interview in candidate.interviews" :key="interview.id">
-                <div class="time-header">
-                    {{ interview.interview_on }} | {{ interview.interview_at }}
+                <div class="interview-header">
+                    <div class="time-header">
+                        {{ interview.interview_on }} |
+                        {{ interview.interview_at }}
+                    </div>
+                    <div>
+                        <NewInterviewer
+                            :employees
+                            :interview_id="interview.id"
+                        />
+                    </div>
                 </div>
                 <div>
-                    <div class="feedback-header">Feedback</div>
+                    <div
+                        class="feedback-header"
+                        v-if="interview.feedbacks.length"
+                    >
+                        Feedback
+                    </div>
                     <div v-for="feedback in interview.feedbacks">
                         <div v-html="feedback.notes"></div>
                         <div
@@ -139,7 +153,7 @@ import { computed, ref } from "vue";
 import Button from "primevue/button";
 import Dialog from "primevue/dialog";
 import Textarea from "primevue/textarea";
-
+import NewInterviewer from "./NewInterviewer.vue";
 import NewInterview from "./NewInterview.vue";
 
 const page = usePage();
@@ -148,6 +162,7 @@ const employee = computed(() => page.props.employee);
 const { candidate } = defineProps({
     candidate: Object,
     interview_stages: Array,
+    employees: Array,
 });
 
 const form = useForm({
@@ -232,6 +247,11 @@ const visible = ref(false);
     .feedback-header {
         font-size: 1.5rem;
         font-weight: 500;
+    }
+
+    .interview-header {
+        display: flex;
+        justify-content: space-between;
     }
 
     .time-header {

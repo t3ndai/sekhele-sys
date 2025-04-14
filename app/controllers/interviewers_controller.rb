@@ -1,7 +1,5 @@
 class InterviewersController < ApplicationController
-  before_action :set_interviewer, only: %i[ show edit update destroy ]
   before_action :set_interview, only: %i[ index new create ]
-
 
   # GET /interviewers or /interviewers.json
   def index
@@ -23,13 +21,15 @@ class InterviewersController < ApplicationController
 
   # POST /interviewers or /interviewers.json
   def create
-    @interviewer = Interviewer.new(interviewer_params)
+    @interviewer = Interviewer.new
+    @interviewer.employee = Employee.find(params[:interviewer_id])
     @interviewer.interview = @interview
     @interviewer.assigned_on = Date.current
+    @job_applicant = @interview.job_applicant
 
     respond_to do |format|
       if @interviewer.save
-        format.html { redirect_to @interviewer, notice: "Interviewer was successfully created." }
+        format.html { redirect_to employee_recruitment_candidate_path(@current_employee, @job_applicant), notice: "Interviewer was successfully created." }
         format.json { render :show, status: :created, location: @interviewer }
       else
         format.html { render :new, status: :unprocessable_entity }
@@ -63,16 +63,12 @@ class InterviewersController < ApplicationController
 
   private
     # Use callbacks to share common setup or constraints between actions.
-    def set_interviewer
-      @interviewer = Interviewer.find(params.expect(:id))
-    end
-
     def set_interview
       @interview = Interview.find(params.expect(:interview_id))
     end
 
     # Only allow a list of trusted parameters through.
     def interviewer_params
-      params.expect(interviewer: [ :interview_id, :employee_id, :assigned_on ])
+      params.expect(interviewer: [ :interview_id, :interviewer_id ])
     end
 end
