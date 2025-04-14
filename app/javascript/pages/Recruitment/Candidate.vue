@@ -100,7 +100,7 @@
                         />
                     </div>
                 </div>
-                <div>
+                <div v-if="interview.interviewers.length">
                     <div class="interviewer-header">Interviewer(s):</div>
                     <div v-for="interviewer in interview.interviewers">
                         {{ interviewer.name }}
@@ -113,7 +113,7 @@
                     >
                         Feedback
                     </div>
-                    <div v-for="feedback in interview.feedbacks">
+                    <div v-for="feedback in interview.feedbacks" class="mb-2">
                         <div v-html="feedback.notes"></div>
                         <div
                             class="feedback-status bg-amber-500"
@@ -145,6 +145,7 @@
                         >
                             {{ feedback.status }}
                         </div>
+                        <Divider />
                     </div>
                 </div>
             </div>
@@ -156,9 +157,7 @@
 import { Link, usePage, useForm } from "@inertiajs/vue3";
 import { computed, ref } from "vue";
 
-import Button from "primevue/button";
-import Dialog from "primevue/dialog";
-import Textarea from "primevue/textarea";
+import { Divider, Textarea, Dialog, Button } from "primevue";
 import NewInterviewer from "./NewInterviewer.vue";
 import NewInterview from "./NewInterview.vue";
 
