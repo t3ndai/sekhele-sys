@@ -37,6 +37,18 @@ class JobApplicantsController < ApplicationController
     end
   end
 
+  def candidate_status
+    @job_applicant = JobApplicant.find(params[:job_applicant_id])
+    status = @job_applicant.build_candidate_status(candidate_status_params)
+    status.status_by = @current_employee
+
+    if status.save
+      redirect_to employee_recruitment_candidate_path(@current_employee, @job_applicant), notice: "Status saved successfully"
+    else
+      render inertia: "Recruitment/Candidate", status: :unprocessable_entity
+    end
+  end
+
   # PATCH/PUT /job_applicants/1 or /job_applicants/1.json
   def update
     respond_to do |format|
@@ -73,5 +85,9 @@ class JobApplicantsController < ApplicationController
     # Only allow a list of trusted parameters through.
     def job_applicant_params
       params.expect(job_applicant: [ :job_posting_id, :applied_on, :first_name, :last_name, :middle_name, :email, :phone, :cv, other_docs: [] ])
+    end
+
+    def candidate_status_params
+      params.expect(candidate_status: [:reason, :status])
     end
 end

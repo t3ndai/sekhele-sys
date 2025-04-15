@@ -47,6 +47,7 @@ class RecruitmentController < ApplicationController
       applied_on: @candidate.applied_on.strftime("%e %b %Y"),
       phone: @candidate.phone,
       email: @candidate.email,
+      position: @candidate.job_posting.title,
       notes: @candidate.candidate_notes.map do |note|
         {
           note: note.note,
@@ -72,7 +73,8 @@ class RecruitmentController < ApplicationController
           end
         }
       end,
-      cv: rails_blob_url(@candidate.cv, only_path: true)
+      cv: rails_blob_url(@candidate.cv, only_path: true),
+      status: @candidate.candidate_status&.status&.humanize
 
     }
     interview_stages = @current_employee.organization.interview_stages.map do |interview_stage|

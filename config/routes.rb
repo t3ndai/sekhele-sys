@@ -63,6 +63,7 @@ Rails.application.routes.draw do
     get "jobs/:job_posting_id/apply", to: "job_applicants#new", as: "job_apply"
     post "jobs/:job_posting_id/apply", to: "job_applicants#create"
     resources :job_applicants, only: %i[index show destroy] do
+      post "/status", to: "job_applicants#candidate_status"
       resources :interviews
       resources :candidate_notes, only: %i[index new show create destroy]
     end

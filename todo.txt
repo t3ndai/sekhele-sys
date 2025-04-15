@@ -1,293 +1,302 @@
-#TODO 
+#TODO
 
 - Add Employee to organization x
+    - Employee doesn't get deleted but set to status "inactive"
 - Add Department to organization x
 - Assign Employee as admin role to Department
 - Add Location x
-- Country Dropdown for Nationality x 
-- Loation dropdown for location 
+- Country Dropdown for Nationality x
+- Loation dropdown for location
 -- EmployeeLocation
-    - belongs_to Employee 
-    - belongs_to Location 
-    - date_from 
-    - date_to 
+    - belongs_to Employee
+    - belongs_to Location
+    - date_from
+    - date_to
 - Invite user to organization after creation x
 - Add gender to employee x
-- Link Compensation to employee 
-- Pay Grades 
+- Link Compensation to employee
+- Pay Grades
 - Assign manager to employee x
 - Add docs to employee x
-- Approve employee docs 
+- Approve employee docs
 - Add Emergency Contact employee x
-- Add Employee beneficiaries 
+- Add Employee beneficiaries
 - Add cost center x
-- Add Job Functions x 
-- Add Job levels x 
-- Add pay-bands to job-levels 
-- Use Cloudflare r2 with active storage x 
--- EmployeeJob 
-    - belongs to JobFunction 
-    - belongs to Employee 
-    - belongs to Job Level 
-    - assigned_on 
-    - retired_on 
-- Holidays 
-- Employee Profiles 
-- Employee Onboarding Forms 
-- Public Holidays 
-- Company Events 
+- Add Job Functions x
+- Add Job levels x
+- Add pay-bands to job-levels
+- Use Cloudflare r2 with active storage x
+-- EmployeeJob
+    - belongs to JobFunction
+    - belongs to Employee
+    - belongs to Job Level
+    - assigned_on
+    - retired_on
+- Holidays
+- Employee Profiles
+- Employee Onboarding Forms
+- Public Holidays
+- Company Events
 - Assign Manager role to employee by people admin x
 - Employee Assets (track assets given to employees) x
-    - date_given 
-    - date_returned 
-    - asset_name 
-    - asset_serial_number 
-- Authorize each route 
+    - date_given
+    - date_returned
+    - asset_name
+    - asset_serial_number
+- Authorize each route
 - Leave Policy
-    - Leave Categories 
+    - Leave Categories
     -- sick | vacation | personal (bereavment, child-sick)
-    - start_balance 
+    - start_balance
     - balance_expires (valid_from)
     - balance_starts (valid_to)
-    - approval_required -> boolean 
+    - approval_required -> boolean
 - Leave Request x
     - approver (manager)
-    - date_from 
-    - date_to 
-    - approved -> true | false 
+    - date_from
+    - date_to
+    - approved -> true | false
 - Leave Balance  x
-    - belongs to employee 
-    - time_taken 
+    - belongs to employee
+    - time_taken
     - time_remaining (calculated)
-- Mass Actions 
+- Mass Actions
     - assign employees leave balance_starts
-- Leave Request Approval Flow 
-    - notify approver 
-    - approve request 
-    - notify requester 
+- Leave Request Approval Flow
+    - notify approver
+    - approve request
+    - notify requester
 - validate leave request required if policy requires approves
 - TimeWorked x
-    - clock_in | clock_out 
-    - date 
-    - hours worked 
-    - active time tracking - use clock in/out method 
+    - clock_in | clock_out
+    - date
+    - hours worked
+    - active time tracking - use clock in/out method
     - retro time tracking - pick date, add hours worked x
-    - approvals 
-- show weekly hours for employee 
+    - approvals
+- show weekly hours for employee
 - Benefit x
-    - name 
-    - consider 
-        - benefit start_date 
+    - name
+    - consider
+        - benefit start_date
         - benefit effective_date  (immediately, 90 days, 60days etc)
-        - benefit end_date 
-        - approval flow 
-    - valuation_type 
-    - belongs_to org 
+        - benefit end_date
+        - approval flow
+    - valuation_type
+    - belongs_to org
     - docs attached (not done yet)
-    -- Benefit Plan 
-        - belongs_to Benefit 
-        - name 
-        - amount to employee 
-        - value 
+    -- Benefit Plan
+        - belongs_to Benefit
+        - name
+        - amount to employee
+        - value
     - BenefitType x
-        - name 
-    -- BenefitElection 
+        - name
+    -- BenefitElection
         - employee belongs_to
         - benefit_plan belongs_to
-        - election_date 
+        - election_date
         - documents (e.g contract)
-        - show on Employee Benefits Plans if selected 
-- Employment History 
-- convertkit (now kit) for design inspiration 
-- contextual data related to business events 
--- ATS 
+        - show on Employee Benefits Plans if selected
+- Employment History
+- convertkit (now kit) for design inspiration
+- contextual data related to business events
+-- ATS
     - JobPosting x
-        - positions_open 
-        - date_open 
-        - date_close 
-        - location ? 
+        - positions_open
+        - date_open
+        - date_close
+        - location ?
         - salary_range ?
         - link to JobRequisition ?
         - link to who posted Job (employee)
     - JobApplicant x
-        - first_name 
-        - last_name 
+        - first_name
+        - last_name
         - cv (required)
-        - other_docs 
+        - other_docs
         - belongs JobPosting
-        - status -> rejected | ongoing | offer . default ongoing 
     - Org Jobs (public) x
-        - link to JobPosting 
+        - link to JobPosting
         - link to JobApplicant
     - InterviewStage x
-        - name 
-        - mandatory -> yes | no 
-        - stage_type 
-        - links to Interview 
+        - name
+        - mandatory -> yes | no
+        - stage_type
+        - links to Interview
         - belongs_to organization
     - Interview x
-        - note 
-        - date 
-        - time 
-        - meeting link 
-        - room 
-        - links to InterView feedback 
-        - location -> onsite | virtual 
+        - note
+        - date
+        - time
+        - meeting link
+        - room
+        - links to InterView feedback
+        - location -> onsite | virtual
         - interviewee (links to applicatant)
         - interviewers (links to employees)
     - Inteviewer x
-        - belongs_to employee 
-        - belongs_to InterView 
-        - assigned_on 
+        - belongs_to employee
+        - belongs_to InterView
+        - assigned_on
     - InterviewFeedback  x
         - belongs_to Inteviewer (current user)
-        - links to Interview 
-        - notes 
-        - status -> strong no | no | yes | strong yes 
+        - links to Interview
+        - notes
+        - status -> strong no | no | yes | strong yes
         - give feedback if current_user is interviewer
     - CandidateNote  x
-        - added manually as simple notes 
-        - notes 
--- Performance 
+        - added manually as simple notes
+        - notes
+    - CandidateStatus
+        - belongs_to Candidate (JobApplicant)
+        - status -> rejected | offer
+        - reason
+        - by - who gave status
+    - disable setting Interview | Candidate Notes if CandidateStatus is rejected
+-- Performance
     - 1_1 Meetings
-        - has notes 
-        - belongs to manager | employee 
-        - has frequency 
-        - has meeting date 
-        - have tasks 
-    - Tasks (1-1) 
-        - belong to 1_1 Meetings 
-        - actionable items from meeting to be tracked 
+        - has notes
+        - belongs to manager | employee
+        - has frequency
+        - has meeting date
+        - have tasks
+    - Tasks (1-1)
+        - belong to 1_1 Meetings
+        - actionable items from meeting to be tracked
     - Reviews (Assessments)
-        - types DownwardReview | UpwardReview | SelfReview | PeerReview 
-        - has frequency 
-        - due_date 
-        - completion_date 
-        - linked to Review Question 
-    - Review Questions 
+        - types DownwardReview | UpwardReview | SelfReview | PeerReview
+        - has frequency
+        - due_date
+        - completion_date
+        - linked to Review Question
+    - Review Questions
         - set by hr professional (also can edit)
-    - ReviewResponse 
-        - created by background jobs after creating job 
-        - can be updated 
-        - have draft status 
-        - submitted only once - i.e status submitted 
-        - have a submission date 
-        - linked to PerformanceReview 
-        - Review Question based on type of PerformanceReview 
-        - add logic to prevent edits of submitted reviews 
-        - add logic to prevent edits of reviews after due date 
-    - Calibration 
-        - description 
-        - calibration_date 
-        - ranking -> below_expectatons| needs_improvement | meets_expectations | exceeds_expectations 
-        - calibrator 
-    - Performance_Rating 
-        - name 
-        - score 
-        - description 
+    - ReviewResponse
+        - created by background jobs after creating job
+        - can be updated
+        - have draft status
+        - submitted only once - i.e status submitted
+        - have a submission date
+        - linked to PerformanceReview
+        - Review Question based on type of PerformanceReview
+        - add logic to prevent edits of submitted reviews
+        - add logic to prevent edits of reviews after due date
+    - Calibration
+        - description
+        - calibration_date
+        - ranking -> below_expectatons| needs_improvement | meets_expectations | exceeds_expectations
+        - calibrator
+    - Performance_Rating
+        - name
+        - score
+        - description
     - Goals x
-        - have end Date 
-        - have name 
-        - description   
+        - have end Date
+        - have name
+        - description
         - have targets (OKRs)
-        - have end_date 
-        - belong to employee 
-        - can only be viewed by employee & their manager 
+        - have end_date
+        - belong to employee
+        - can only be viewed by employee & their manager
         -- Milestones x
-            - name 
-            - tied to goal 
-            - have evidence attached 
-            - end_date 
-            - have start_date 
+            - name
+            - tied to goal
+            - have evidence attached
+            - end_date
+            - have start_date
             - created by manager (same as targets)
-- Manager | Employee 
-    - record date when employee was assigned manager 
-    - record date when employee-manager relationship ended 
+- Manager | Employee
+    - record date when employee was assigned manager
+    - record date when employee-manager relationship ended
 - Employee | Job (Position)
-    - record date when employee was assigned to position 
+    - record date when employee was assigned to position
     - record date when employee ended position
 - Growth
-    - PersonalDevelopmentPlan 
-        - has name 
-        - belongs to employee 
-        - has Growth Areas 
-        - has Career Vision 
-        - has motivations 
-        - has Talents 
-        - accessible by employee & manager 
--- Engagement 
+    - PersonalDevelopmentPlan
+        - has name
+        - belongs to employee
+        - has Growth Areas
+        - has Career Vision
+        - has motivations
+        - has Talents
+        - accessible by employee & manager
+-- Engagement
     - Channels x
         - created when org is created default (All Company)
-        - channels contain Posts 
-        - have events 
-        - have members 
+        - channels contain Posts
+        - have events
+        - have members
         - have restrictions on who can post
     - Announcements x
         - post to whole Company
-        - has comments 
-        - has likes 
-        - belong to channel 
-    - Pulse Surveys 
-        - PulseSurvey 
+        - has comments
+        - has likes
+        - belong to channel
+    - Pulse Surveys
+        - PulseSurvey
             - date_open
-            - date_close 
-            - name 
-            - belongs_to org  
-        - PulseSurveyResponse 
-            - annon_id 
-            - has PulseAnswer 
-        - PulseAnswer 
+            - date_close
+            - name
+            - belongs_to org
+        - PulseSurveyResponse
+            - annon_id
+            - has PulseAnswer
+        - PulseAnswer
             - belongs to PulseSurveyResponse
-            - belongs to PulseQuestion 
-    - Q&A 
-    - Executive AMA 
+            - belongs to PulseQuestion
+    - Q&A
+    - Executive AMA
     - Praise Posts x
-        - praise colleugue 
-        - praise type 
-        - birthday celebrations | anniversary celebrations 
-        - belong to Channel 
--- Headcount Planning 
--- TaskBox 
-    - Task 
-        - assigned_by 
-        - assigned_on 
-        - due_on 
-        - status -> up_next | in_progress | done 
-        - notes 
-        - has_attachments 
-        - has comments 
-        - priority -> low | medium | high 
-        - has tags 
-    - TaskComment 
-        - by 
-        - belongs to Task 
+        - praise colleugue
+        - praise type
+        - birthday celebrations | anniversary celebrations
+        - belong to Channel
+-- Headcount Planning
+-- TaskBox
+    - Task
+        - assigned_by
+        - assigned_on
+        - due_on
+        - status -> up_next | in_progress | done
+        - notes
+        - has_attachments
+        - has comments
+        - priority -> low | medium | high
+        - has tags
+    - TaskComment
+        - by
+        - belongs to Task
 -- Payroll
     - Deductible
-        - type mandatory | optional 
--- Bookings 
-    - bookings should be already integrated with TimeOff 
-    - easy win to handle appointments 
--- CRM 
-    - Customer 
-    - Deal 
-        - 
--- Business Goals 
-    - link to individual goals 
-    - 
-- tenure might be limited to certain level 
+        - type mandatory | optional
+-- Bookings
+    - bookings should be already integrated with TimeOff
+    - easy win to handle appointments
+-- CRM
+    - Customer
+    - Deal
+        -
+-- Business Goals
+    - link to individual goals
+    -
+-- Contracts Management
 
--- Other Notes 
+
+- tenure might be limited to certain level
+
+-- Other Notes
 - Talk to Alan Choruma (office of the VP )
 
 
--- Color Palette --- 
+-- Color Palette ---
 
-background #f8f1ea 
+background #f8f1ea
 font color #1a202c
 other contrast background #f0e2d2
 
 navbar bg-color #f5e5d3
 
 
-# test user details 
+# test user details
 user1@testorg.com

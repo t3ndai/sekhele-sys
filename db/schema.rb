@@ -10,7 +10,7 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema[8.0].define(version: 2025_04_09_203321) do
+ActiveRecord::Schema[8.0].define(version: 2025_04_15_125432) do
   # These are extensions that must be enabled in order to support this database
   enable_extension "pg_catalog.plpgsql"
 
@@ -126,6 +126,17 @@ ActiveRecord::Schema[8.0].define(version: 2025_04_09_203321) do
     t.datetime "updated_at", null: false
     t.index ["employee_id"], name: "index_candidate_notes_on_employee_id"
     t.index ["job_applicant_id"], name: "index_candidate_notes_on_job_applicant_id"
+  end
+
+  create_table "candidate_statuses", force: :cascade do |t|
+    t.bigint "job_applicant_id", null: false
+    t.string "status"
+    t.text "reason"
+    t.bigint "status_by_id", null: false
+    t.datetime "created_at", null: false
+    t.datetime "updated_at", null: false
+    t.index ["job_applicant_id"], name: "index_candidate_statuses_on_job_applicant_id", unique: true
+    t.index ["status_by_id"], name: "index_candidate_statuses_on_status_by_id"
   end
 
   create_table "career_visions", force: :cascade do |t|
@@ -723,6 +734,8 @@ ActiveRecord::Schema[8.0].define(version: 2025_04_09_203321) do
   add_foreign_key "benefits", "organizations"
   add_foreign_key "candidate_notes", "employees"
   add_foreign_key "candidate_notes", "job_applicants"
+  add_foreign_key "candidate_statuses", "employees", column: "status_by_id"
+  add_foreign_key "candidate_statuses", "job_applicants"
   add_foreign_key "career_visions", "employees"
   add_foreign_key "channel_memberships", "channels"
   add_foreign_key "channel_memberships", "employees", column: "member_id"

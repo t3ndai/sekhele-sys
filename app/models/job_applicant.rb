@@ -25,6 +25,7 @@ class JobApplicant < ApplicationRecord
 
   has_many :candidate_notes, dependent: :destroy
   has_many :interviews, dependent: :destroy
+  has_one :candidate_status
 
 
   validates :first_name, :last_name, :email, :phone, :cv, presence: true

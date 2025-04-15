@@ -8,13 +8,34 @@
     </div>
 
     <div class="mt-2 mb-6">
-        <h3 class="heading belgrano-regular">Candidate Details</h3>
+        <div class="subsection">
+            <h3 class="heading belgrano-regular">Candidate Details</h3>
+            <div>
+                <AssignStatus
+                    v-if="!candidate.status"
+                    :job_applicant_id="candidate.id"
+                />
+                <div
+                    v-if="candidate.status"
+                    class="rounded-full text-center p-3 text-white"
+                    :class="{
+                        'bg-red-600': candidate.status === 'Rejected',
+                        'bg-green-600': candidate.status === 'Offer',
+                    }"
+                >
+                    {{ candidate.status }}
+                </div>
+            </div>
+        </div>
         <div class="details-card place-self-center">
             <div class="value">
                 <span class="label">Name:</span> {{ candidate.name }}
             </div>
             <div class="value">
                 <span class="label">Applied On:</span>{{ candidate.applied_on }}
+            </div>
+            <div class="value">
+                <span class="label">Position:</span>{{ candidate.position }}
             </div>
             <div class="value">
                 <span class="label">Email:</span>{{ candidate.email }}
@@ -83,7 +104,11 @@
         <div class="subsection">
             <h3 class="heading belgrano-regular">Interviews</h3>
             <div>
-                <NewInterview :interview_stages :candidate_id="candidate.id" />
+                <NewInterview
+                    :interview_stages
+                    :candidate_id="candidate.id"
+                    v-if="!candidate.status"
+                />
             </div>
         </div>
         <div class="interview-card" v-if="candidate.interviews.length">
@@ -160,6 +185,7 @@ import { computed, ref } from "vue";
 import { Divider, Textarea, Dialog, Button } from "primevue";
 import NewInterviewer from "./NewInterviewer.vue";
 import NewInterview from "./NewInterview.vue";
+import AssignStatus from "./AssignStatus.vue";
 
 const page = usePage();
 const employee = computed(() => page.props.employee);
