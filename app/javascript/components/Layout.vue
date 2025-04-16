@@ -125,9 +125,9 @@ const employee = computed(() => page.props.employee);
                     REPORTS
                 </Link>
             </div>
-            <div v-if="employee.is_manager">
+            <div>
                 <Link
-                    :href="`/employees/${employee.id}/hr_admin`"
+                    href="/hr_admin"
                     class="flex justify-center items-baseline"
                     as="button"
                     :class="{

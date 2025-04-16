@@ -1,7 +1,7 @@
 <template>
     <h2 class="page-heading">HR Admin</h2>
-    <Tabs value="0">
-        <Tablist>
+    <Tabs value="0" scrollable>
+        <TabList>
             <Tab value="0">Employees</Tab>
             <Tab value="1">Benefits</Tab>
             <Tab value="2">Assets</Tab>
@@ -11,11 +11,11 @@
             <Tab value="6">Recruiting</Tab>
             <Tab value="7">Performance</Tab>
             <Tab value="8">Engagement</Tab>
-        </Tablist>
+        </TabList>
 
         <TabPanels>
             <TabPanel value="0">
-                <Employees />
+                <Employees :employees />
             </TabPanel>
             <TabPanel value="1">
                 <Benefits />
@@ -61,6 +61,10 @@ import Documents from "./Documents.vue";
 import Recruiting from "./Recruiting.vue";
 import Performance from "./Performance.vue";
 import Engagement from "./Engagement.vue";
+
+defineProps({
+    employees: Array,
+});
 </script>
 
 <style scoped></style>
