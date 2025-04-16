@@ -20,7 +20,7 @@
 #  nationality     :string           not null
 #  passport_number :string
 #  hire_date       :date             not null
-#  employement_id  :string
+#  employment_id   :string
 #  preferred_name  :string
 #  organization_id :integer          not null
 #  created_at      :datetime         not null
