@@ -98,6 +98,40 @@ class HrAdminController < ApplicationController
       }
     end
 
-    render inertia: "HrAdmin/EmployeeView", props: { employee:, benefits:, assets:, jobs: }
+    past_leaves = @employee.leave_requests.past_leave.map do |leave|
+      {
+        leave_type: leave.leave_policy.leave_category.name.humanize,
+        date_from: leave.date_from,
+        date_to: leave.date_to,
+        reason: leave.reason,
+        duration: leave.time_requested,
+        status: leave.status.humanize
+      }
+    end
+
+    future_leaves = @employee.leave_requests.future_leave.map do |leave|
+      {
+        leave_type: leave.leave_policy.leave_category.name.humanize,
+        date_from: leave.date_from,
+        date_to: leave.date_to,
+        duration: leave.time_requested,
+        reason: leave.reason,
+        status: leave.status.humanize
+      }
+    end
+
+    leave_balances = @employee.leave_balances.map do |leave_balance|
+      {
+        id: leave_balance.id,
+        name: leave_balance.leave_policy.name,
+        valid_from: leave_balance.leave_policy.valid_from.strftime("%e %b %Y"),
+        valid_to: leave_balance.leave_policy.valid_to.strftime("%e %b %Y"),
+        balance: leave_balance.leave_remaining,
+        category: leave_balance.leave_policy.leave_category.name
+      }
+    end
+
+
+    render inertia: "HrAdmin/EmployeeView", props: { employee:, benefits:, assets:, jobs:, past_leaves:, future_leaves:, leave_balances: }
   end
 end

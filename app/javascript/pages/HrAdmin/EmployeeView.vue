@@ -30,7 +30,11 @@
                     <EmployeeJobView :jobs />
                 </TabPanel>
                 <TabPanel value="4">
-                    <EmployeeLeaveView />
+                    <EmployeeLeaveView
+                        :past_leaves
+                        :future_leaves
+                        :leave_balances
+                    />
                 </TabPanel>
                 <TabPanel value="5">
                     <EmployeeDocuments />
@@ -63,6 +67,9 @@ defineProps({
     benefits: Array,
     assets: Array,
     jobs: Array,
+    past_leaves: Array,
+    future_leaves: Array,
+    leave_balances: Array,
 });
 </script>
 
