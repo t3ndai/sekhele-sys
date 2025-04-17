@@ -21,7 +21,7 @@
                     <EmployeePersonalView :employee />
                 </TabPanel>
                 <TabPanel value="1">
-                    <EmployeeBenefitsView />
+                    <EmployeeBenefitsView :benefits />
                 </TabPanel>
                 <TabPanel value="2">
                     <EmployeeAssetsView />
@@ -60,6 +60,7 @@ import EmployeePersonalView from "./EmployeePersonalView.vue";
 
 defineProps({
     employee: Object,
+    benefits: Array,
 });
 </script>
 

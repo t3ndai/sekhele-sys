@@ -29,7 +29,7 @@ class HrAdminController < ApplicationController
       location: employee.employee_locations.current.first.location.name
     }
     end
-    render inertia: 'HrAdmin/Index', props: {employees: }
+    render inertia: "HrAdmin/Index", props: { employees: }
   end
 
   def detailed_view
@@ -64,6 +64,19 @@ class HrAdminController < ApplicationController
       location: @employee.employee_locations.current.first.location.name
     }
 
-    render inertia: 'HrAdmin/EmployeeView', props: {employee: }
+    benefits = @employee.benefit_elections.map do |benefit_election|
+      {
+        id: benefit_election.id,
+        benefit_plan: benefit_election.benefit_plan.name,
+        cover: benefit_election.benefit_plan.cover,
+        employee_contribution: benefit_election.benefit_plan.employee_contribution,
+        employer_contribution: benefit_election.benefit_plan.employer_contribution,
+        benefit: benefit_election.benefit_plan.benefit.name,
+        benefit_type: benefit_election.benefit_plan.benefit.benefit_type.name,
+        valuation: benefit_election.benefit_plan.benefit.valuation_type.humanize
+      }
+    end
+
+    render inertia: "HrAdmin/EmployeeView", props: { employee:, benefits: }
   end
 end
