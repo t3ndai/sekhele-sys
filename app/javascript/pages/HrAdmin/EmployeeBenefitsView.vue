@@ -1,35 +1,38 @@
 <template>
-    <div class="benefit-card">
-        <div v-for="benefit in benefits" class="flex flex-col gap-y-2">
+    <div class="">
+        <div
+            v-for="benefit in benefits"
+            class="benefit-card flex flex-col gap-y-2"
+        >
             <div class="header">
-                <div>
+                <div class="value">
                     <span class="label">Benefit:</span>
                     {{ benefit.benefit }}
                 </div>
-                <div>
+                <div class="value">
                     <span class="label">Benefit Plan:</span>
                     {{ benefit.benefit_plan }}
                 </div>
-                <div>
+                <div class="value">
                     <span class="label">Benefit Plan:</span>
                     {{ benefit.benefit_type }}
                 </div>
             </div>
-            <div>
+            <div class="value">
                 <span class="label">Cover:</span>
                 {{ benefit.cover }}
             </div>
             <div class="flex justify-between">
-                <div>
+                <div class="value">
                     <span class="label">Employee Contribution:</span>
                     {{ benefit.employee_contribution }}
                 </div>
-                <div>
+                <div class="value">
                     <span class="label">Employer Contribution:</span>
                     {{ benefit.employer_contribution }}
                 </div>
             </div>
-            <div>
+            <div class="value">
                 <span class="label">Benefit Plan:</span>
                 {{ benefit.valuation }}
             </div>
@@ -55,7 +58,6 @@ defineProps({
         display: flex;
         justify-content: space-between;
     }
-
     .label {
         color: var(--color-slate-400);
         font-weight: 100;

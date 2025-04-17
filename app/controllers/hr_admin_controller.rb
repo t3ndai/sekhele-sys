@@ -77,6 +77,27 @@ class HrAdminController < ApplicationController
       }
     end
 
-    render inertia: "HrAdmin/EmployeeView", props: { employee:, benefits: }
+    assets = @employee.org_assets.map do |asset|
+      {
+        id: asset.id,
+        category: asset.asset_category.name,
+        date_given: asset.date_given&.strftime("%e %b %Y"),
+        date_returned: asset.date_returned&.strftime("%e %b %Y"),
+        name: asset.asset_name,
+        serial_number: asset.asset_serial_number
+      }
+    end
+
+    jobs = @employee.employee_jobs.map do |job|
+      {
+       id: job.id,
+       title: job.job_function.title,
+       level: job.job_level.name,
+       started_on: job.started_on&.strftime("%e %b %Y"),
+       ended_on: job.ended_on&.strftime("%e %b %Y")
+      }
+    end
+
+    render inertia: "HrAdmin/EmployeeView", props: { employee:, benefits:, assets:, jobs: }
   end
 end
