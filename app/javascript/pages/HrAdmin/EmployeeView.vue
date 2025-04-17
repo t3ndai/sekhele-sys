@@ -37,7 +37,7 @@
                     />
                 </TabPanel>
                 <TabPanel value="5">
-                    <EmployeeDocuments />
+                    <EmployeeDocuments :documents />
                 </TabPanel>
                 <TabPanel value="6">
                     <EmployeePerformanceView />
@@ -70,6 +70,7 @@ defineProps({
     past_leaves: Array,
     future_leaves: Array,
     leave_balances: Array,
+    documents: Array,
 });
 </script>
 

@@ -131,7 +131,16 @@ class HrAdminController < ApplicationController
       }
     end
 
+    documents = @employee.employee_files.map do |doc|
+      {
+        id: doc.id,
+        name: doc.name,
+        type: doc.document.name,
+        url: rails_blob_url(doc.file, only_path: true)
+      }
+    end
 
-    render inertia: "HrAdmin/EmployeeView", props: { employee:, benefits:, assets:, jobs:, past_leaves:, future_leaves:, leave_balances: }
+
+    render inertia: "HrAdmin/EmployeeView", props: { employee:, benefits:, assets:, jobs:, past_leaves:, future_leaves:, leave_balances:, documents: }
   end
 end
