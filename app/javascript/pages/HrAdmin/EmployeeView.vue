@@ -40,7 +40,7 @@
                     <EmployeeDocuments :documents />
                 </TabPanel>
                 <TabPanel value="6">
-                    <EmployeePerformanceView />
+                    <EmployeePerformanceView :performance_reviews />
                 </TabPanel>
             </TabPanels>
         </Tabs>
@@ -71,6 +71,7 @@ defineProps({
     future_leaves: Array,
     leave_balances: Array,
     documents: Array,
+    performance_reviews: Array,
 });
 </script>
 

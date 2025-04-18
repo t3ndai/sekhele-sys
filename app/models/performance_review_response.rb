@@ -27,4 +27,6 @@ class PerformanceReviewResponse < ApplicationRecord
   accepts_nested_attributes_for :performance_review_answers, reject_if: :all_blank
 
   enum :status, { incomplete: "incomplete", draft: "draft", submitted: "submitted" }, default: :incomplete
+
+  scope :reviews, -> (reviewee) {where(reviewee: reviewee).where(status: :submitted)}
 end

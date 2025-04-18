@@ -140,7 +140,21 @@ class HrAdminController < ApplicationController
       }
     end
 
+    performance_reviews = PerformanceReviewResponse.reviews(@employee).map do |review|
+      {
+        id: review.id,
+        reviewer: review.reviewer.full_name,
+        type: review.performance_review.performance_review_type.name.humanize,
+        answers: review.performance_review_answers.map do |answer|
+          {
+            question: answer.performance_review_question.title,
+            answer: answer.answer
+          }
+        end
+      }
+    end
 
-    render inertia: "HrAdmin/EmployeeView", props: { employee:, benefits:, assets:, jobs:, past_leaves:, future_leaves:, leave_balances:, documents: }
+
+    render inertia: "HrAdmin/EmployeeView", props: { employee:, benefits:, assets:, jobs:, past_leaves:, future_leaves:, leave_balances:, documents:, performance_reviews: }
   end
 end
