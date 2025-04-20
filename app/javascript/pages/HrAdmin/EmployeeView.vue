@@ -1,8 +1,8 @@
 <template>
     <h2 class="page-heading">Employee View</h2>
     <div>
-        <div>{{ employee.full_name }}</div>
-        <div>{{ employee.job_title }}</div>
+        <div class="name">{{ employee.full_name }}</div>
+        <div class="title">{{ employee.job_title }}</div>
     </div>
     <div>
         <Tabs value="0">
@@ -75,4 +75,18 @@ defineProps({
 });
 </script>
 
-<style scoped></style>
+<style scoped>
+.name {
+    font-size: 1.5rem;
+    font-family: "Belgrano", serif;
+    color: #111509;
+    font-weight: 400;
+}
+
+.title {
+    font-size: 1.2rem;
+    font-family: "Belgrano", serif;
+    color: #111509;
+    font-weight: 200;
+}
+</style>

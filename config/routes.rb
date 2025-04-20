@@ -82,7 +82,7 @@ Rails.application.routes.draw do
     resources :pulse_surveys
   end
   get "hr_admin", to: "hr_admin#index"
-  get "hr_admin/employees/:employee_id", to: "hr_admin#detailed_view"
+  get "hr_admin/employees/:employee_id", to: "hr_admin#detailed_view", as: "hr_admin_employee"
   resources :tasks, only: %i[create update destroy]
   namespace :app_admin do
     resources :users

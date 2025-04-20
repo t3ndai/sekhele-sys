@@ -23,10 +23,10 @@ class HrAdminController < ApplicationController
       gender: employee.gender,
       tenure: distance_of_time_in_words_to_now(employee.hire_date, only: [ :years, :months, :days ]),
       manager: employee.manager&.full_name,
-      job_title: employee.employee_jobs.active_jobs.first.job_function.title,
-      job_level: employee.job_levels.first.name,
-      department: employee.employee_jobs.active_jobs.first.job_function.department&.name,
-      location: employee.employee_locations.current.first.location.name
+      job_title: employee.employee_jobs.active_jobs.first&.job_function&.title,
+      job_level: employee.job_levels.first&.name,
+      department: employee.employee_jobs.active_jobs.first&.job_function&.department&.name,
+      location: employee.employee_locations.current.first&.location&.name
     }
     end
     render inertia: "HrAdmin/Index", props: { employees: }
@@ -58,10 +58,10 @@ class HrAdminController < ApplicationController
       gender: @employee.gender.humanize,
       tenure: distance_of_time_in_words_to_now(@employee.hire_date, only: [ :years, :months, :days ]),
       manager: @employee.manager&.full_name,
-      job_title: @employee.employee_jobs.active_jobs.first.job_function.title,
-      job_level: @employee.job_levels.first.name,
-      department: @employee.employee_jobs.active_jobs.first.job_function.department&.name,
-      location: @employee.employee_locations.current.first.location.name
+      job_title: @employee.employee_jobs.active_jobs.first&.job_function&.title,
+      job_level: @employee.job_levels.first&.name,
+      department: @employee.employee_jobs.active_jobs.first&.job_function&.department&.name,
+      location: @employee.employee_locations.current.first&.location&.name
     }
 
     benefits = @employee.benefit_elections.map do |benefit_election|

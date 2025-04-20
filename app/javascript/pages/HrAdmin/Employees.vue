@@ -1,7 +1,17 @@
 <template>
     <h2 class="page-heading">Employees</h2>
 
-    <div></div>
+    <div>
+        <Button asChild v-slot="slotProps">
+            <Link
+                :href="`/organizations/${org_id}/employees/new`"
+                :class="slotProps.class"
+                class="action-btn"
+            >
+                New Employee
+            </Link>
+        </Button>
+    </div>
 
     <div>
         <DataTable
@@ -42,10 +52,16 @@ import Button from "primevue/button";
 
 const page = usePage();
 const employee = computed(() => page.props.employee);
+const org_id = computed(() => page.props.org_id)?.value;
 
 defineProps({
     employees: Array,
 });
 </script>
 
-<style scoped></style>
+<style scoped>
+.action-btn {
+    background-color: orangered;
+    border: none;
+}
+</style>

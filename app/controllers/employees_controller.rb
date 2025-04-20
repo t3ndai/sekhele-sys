@@ -16,6 +16,7 @@ class EmployeesController < ApplicationController
   # GET /employees/new
   def new
     @employee = Employee.new
+    render inertia: "HrAdmin/NewEmployee", props: {employee: serialize_employee(@employee)}
   end
 
   # GET /employees/1/edit
@@ -29,7 +30,7 @@ class EmployeesController < ApplicationController
 
     respond_to do |format|
       if @employee.save
-        format.html { redirect_to @employee, notice: "Employee was successfully created." }
+        format.html { redirect_to hr_admin_employee_path(@employee), notice: "Employee was successfully created." }
         format.json { render :show, status: :created, location: @employee }
       else
         format.html { render :new, status: :unprocessable_entity }
@@ -69,10 +70,16 @@ class EmployeesController < ApplicationController
 
     # Only allow a list of trusted parameters through.
     def employee_params
-      params.expect(employee: [ :first_name, :last_name, :dob, :gender, :addr_line1, :addr_line2, :addr_line3, :addr_postcode, :city, :country, :phone1, :phone2, :personal_email, :work_email, :id_number, :nationality, :passport_number, :hire_date, :employement_id, :preferred_name ])
+      params.expect(employee: [ :first_name, :last_name, :dob, :gender, :addr_line1, :addr_line2, :addr_line3, :addr_postcode, :city, :country, :phone1, :phone2, :personal_email, :work_email, :id_number, :nationality, :passport_number, :hire_date, :employment_id, :preferred_name ])
     end
 
     def set_organization
       @organization = Organization.find(params[:organization_id])
+    end
+
+    def serialize_employee(employee)
+      employee.as_json(only: [
+        :id, :first_name, :last_name, :dob, :gender, :addr_line1, :addr_line2, :addr_line3, :addr_postcode, :city, :country, :phone1, :phone2, :personal_email, :work_email, :id_number, :nationality, :passport_number, :hire_date, :employment_id, :preferred_name
+      ])
     end
 end
