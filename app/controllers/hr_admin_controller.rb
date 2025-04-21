@@ -42,6 +42,9 @@ class HrAdminController < ApplicationController
         name: benefit_type.name.humanize
       }
     end
+
+
+
     render inertia: "HrAdmin/Index", props: { employees:, benefits:, benefit_types: }
   end
 

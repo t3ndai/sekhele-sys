@@ -5,7 +5,7 @@
         <div class="subsection">
             <h3 class="heading belgrano-regular">Benefits</h3>
             <div>
-                <!--<RequestLeave :leave_policies />-->
+                <NewBenefit :benefit_types />
             </div>
         </div>
 
@@ -34,6 +34,7 @@ import Button from "primevue/button";
 import DataTable from "primevue/datatable";
 import Column from "primevue/column";
 import NewBenefitType from "./NewBenefitType.vue";
+import NewBenefit from "./NewBenefit.vue";
 
 defineProps({
     benefits: Array,
