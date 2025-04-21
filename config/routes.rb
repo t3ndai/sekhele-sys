@@ -42,9 +42,8 @@ Rails.application.routes.draw do
       get "recruitment/new_job", to: "recruitment#newjob"
       get "recruitment/candidate/:candidate_id", to: "recruitment#candidate", as: "recruitment_candidate"
       end
-    end
-    get "/organizations/:organization_id/hr_admin", to: "hr_admin#index"
-    get "/organizations/:organization_id/hr_admin/employees/:employee_id", to: "hr_admin#detailed_view", as: "hr_admin_employee"
+    get "/hr_admin", to: "hr_admin#index"
+    get "/hr_admin/employees/:employee_id", to: "hr_admin#detailed_view", as: "hr_admin_employee"
     resources :asset_categories
     resources :locations
     resources :cost_centers
@@ -83,6 +82,7 @@ Rails.application.routes.draw do
       resources :praise_posts
     end
     resources :pulse_surveys
+  end
 
   resources :tasks, only: %i[create update destroy]
   namespace :app_admin do

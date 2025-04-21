@@ -18,7 +18,7 @@
                 <Employees :employees />
             </TabPanel>
             <TabPanel value="1">
-                <Benefits />
+                <Benefits :benefits :benefit_types />
             </TabPanel>
             <TabPanel value="2">
                 <Assets />
@@ -64,6 +64,8 @@ import Engagement from "./Engagement.vue";
 
 defineProps({
     employees: Array,
+    benefits: Array,
+    benefit_types: Array,
 });
 </script>
 

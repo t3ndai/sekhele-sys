@@ -32,6 +32,8 @@ class Organization < ApplicationRecord
   has_many :interviewers, through: :employees
   has_many :leave_requests, through: :employees
   has_many :leave_balances, through: :employees
+  has_many :benefit_types
+  has_many :benefits
   has_many :benefit_elections, through: :employees
   has_many :benefit_plans, through: :benefit_elections
   has_many :performance_reviews

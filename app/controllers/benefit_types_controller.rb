@@ -27,7 +27,7 @@ class BenefitTypesController < ApplicationController
 
     respond_to do |format|
       if @benefit_type.save
-        format.html { redirect_to @benefit_type, notice: "Benefit type was successfully created." }
+        format.html { redirect_to organization_hr_admin_path(@current_employee), notice: "Benefit type was successfully created." }
         format.json { render :show, status: :created, location: @benefit_type }
       else
         format.html { render :new, status: :unprocessable_entity }

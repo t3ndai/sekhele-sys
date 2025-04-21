@@ -29,7 +29,20 @@ class HrAdminController < ApplicationController
       location: employee.employee_locations.current.first&.location&.name
     }
     end
-    render inertia: "HrAdmin/Index", props: { employees: }
+    benefits = @current_employee.organization.benefits.map do |benefit|
+      {
+        id: benefit.id,
+        name: benefit.name,
+        type: benefit.benefit_type.name.humanize
+      }
+    end
+    benefit_types = @current_employee.organization.benefit_types.map do |benefit_type|
+      {
+        id: benefit_type.id,
+        name: benefit_type.name.humanize
+      }
+    end
+    render inertia: "HrAdmin/Index", props: { employees:, benefits:, benefit_types: }
   end
 
   def detailed_view
