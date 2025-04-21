@@ -9,6 +9,32 @@ class BenefitsController < ApplicationController
 
   # GET /benefits/1 or /benefits/1.json
   def show
+    # TODO: Show Benefit details to user of same organization as Benefit
+
+    benefit = {
+      id: @benefit.id,
+      type: @benefit.benefit_type.name.humanize,
+      name: @benefit.name,
+      valuation_type: @benefit.valuation_type.humanize
+
+    }
+    benefit_plans = @benefit.benefit_plans.map do |plan|
+      {
+        id: plan.id,
+        name: plan.name,
+        employee_contribution: plan.employee_contribution,
+        employer_contribution: plan.employer_contribution,
+        cover: plan.cover.humanize
+      }
+    end
+    cover_types = BenefitPlan.covers.keys.map do |cover_type|
+      {
+        name: cover_type.humanize,
+        value: cover_type.to_s
+      }
+    end
+
+    render inertia: "HrAdmin/ShowBenefit", props: { benefit:, benefit_plans:, cover_types: }
   end
 
   # GET /benefits/new

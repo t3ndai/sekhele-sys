@@ -33,7 +33,8 @@ class HrAdminController < ApplicationController
       {
         id: benefit.id,
         name: benefit.name,
-        type: benefit.benefit_type.name.humanize
+        type: benefit.benefit_type.name.humanize,
+        valuation_type: benefit.valuation_type.humanize
       }
     end
     benefit_types = @current_employee.organization.benefit_types.map do |benefit_type|

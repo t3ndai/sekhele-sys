@@ -12,6 +12,14 @@
         <DataTable :value="benefits" tableStyle="min-width: 50rem">
             <Column field="name" header="Name"></Column>
             <Column field="type" header="Benefit Type"></Column>
+            <Column field="valuation_type" header="Valuation Type"></Column>
+            <Column>
+                <template #body="{ data }, empoloyee">
+                    <Link :href="`/benefits/${data.id}`">
+                        View Details & Plans
+                    </Link>
+                </template>
+            </Column>
         </DataTable>
     </div>
 
@@ -30,7 +38,7 @@
 </template>
 
 <script setup>
-import Button from "primevue/button";
+import { Link } from "@inertiajs/vue3";
 import DataTable from "primevue/datatable";
 import Column from "primevue/column";
 import NewBenefitType from "./NewBenefitType.vue";
