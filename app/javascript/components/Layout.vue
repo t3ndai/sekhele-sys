@@ -4,6 +4,7 @@ import { computed, ref } from "vue";
 
 const page = usePage();
 const employee = computed(() => page.props.employee);
+const org_id = computed(() => page.props.org_id).value;
 </script>
 
 <template>
@@ -127,7 +128,7 @@ const employee = computed(() => page.props.employee);
             </div>
             <div>
                 <Link
-                    href="/hr_admin"
+                    :href="`/organizations/${org_id}/hr_admin`"
                     class="flex justify-center items-baseline"
                     as="button"
                     :class="{
