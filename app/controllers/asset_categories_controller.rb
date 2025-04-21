@@ -27,7 +27,7 @@ class AssetCategoriesController < ApplicationController
 
     respond_to do |format|
       if @asset_category.save
-        format.html { redirect_to @asset_category, notice: "Asset category was successfully created." }
+        format.html { redirect_to organization_hr_admin_path(@organization), notice: "Asset category was successfully created." }
         format.json { render :show, status: :created, location: @asset_category }
       else
         format.html { render :new, status: :unprocessable_entity }
@@ -40,7 +40,7 @@ class AssetCategoriesController < ApplicationController
   def update
     respond_to do |format|
       if @asset_category.update(asset_category_params)
-        format.html { redirect_to @asset_category, notice: "Asset category was successfully updated." }
+        format.html { redirect_to organization_hr_admin_path(@organization), notice: "Asset category was successfully updated." }
         format.json { render :show, status: :ok, location: @asset_category }
       else
         format.html { render :edit, status: :unprocessable_entity }
