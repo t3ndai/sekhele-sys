@@ -21,7 +21,7 @@
                 <Benefits :benefits :benefit_types />
             </TabPanel>
             <TabPanel value="2">
-                <Assets :asset_categories />
+                <Assets :asset_categories :assets />
             </TabPanel>
             <TabPanel value="3">
                 <JobFunctions />
@@ -67,6 +67,7 @@ defineProps({
     benefits: Array,
     benefit_types: Array,
     asset_categories: Array,
+    assets: Array,
 });
 </script>
 

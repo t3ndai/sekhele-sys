@@ -48,11 +48,20 @@ class HrAdminController < ApplicationController
       {
         id: asset_category.id,
         name: asset_category.name
-
       }
     end
 
-    render inertia: "HrAdmin/Index", props: { employees:, benefits:, benefit_types:, asset_categories: }
+    assets = @current_employee.organization.assets.map do |asset|
+      {
+        id: asset.id,
+        name: asset.name,
+        category: asset.asset_category.name.humanize,
+        serial_number: asset.serial_number,
+        status: asset.status
+      }
+    end
+
+    render inertia: "HrAdmin/Index", props: { employees:, benefits:, benefit_types:, asset_categories:, assets: }
   end
 
   def detailed_view

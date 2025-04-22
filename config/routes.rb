@@ -82,6 +82,7 @@ Rails.application.routes.draw do
       resources :praise_posts
     end
     resources :pulse_surveys
+    resources :assets
   end
 
   resources :tasks, only: %i[create update destroy]

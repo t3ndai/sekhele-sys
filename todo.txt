@@ -43,6 +43,11 @@
     - date_returned
     - asset_name
     - asset_serial_number
+- Asset
+    - asset_name
+    - asset_category
+    - asset_serial_number (generate if not given) | unique
+    - asset_status -> active | inactive | lost | stolen (active if given to employee)
 - Authorize each route
 - Leave Policy
     - Leave Categories
