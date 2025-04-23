@@ -28,7 +28,7 @@
                 <Departments :departments :locations />
             </TabPanel>
             <TabPanel value="4">
-                <JobFunctions :job_levels :job_functions />
+                <JobFunctions :job_levels :job_functions :departments />
             </TabPanel>
             <TabPanel value="5">
                 <Leave />

@@ -5,7 +5,7 @@
         <div class="subsection">
             <h3 class="heading belgrano-regular">Job Functions</h3>
             <div>
-                <!--<NewAsset :asset_categories />-->
+                <NewJobFunction :departments />
             </div>
         </div>
 
@@ -23,7 +23,7 @@
 
     <div class="page-section">
         <div class="subsection">
-            <h3 class="heading belgrano-regular">Job Functions</h3>
+            <h3 class="heading belgrano-regular">Job Levels</h3>
             <div>
                 <!--<NewAsset :asset_categories />-->
             </div>
@@ -45,10 +45,12 @@
 <script setup>
 import DataTable from "primevue/datatable";
 import Column from "primevue/column";
+import NewJobFunction from "./NewJobFunction.vue";
 
 defineProps({
     job_functions: Array,
     job_levels: Array,
+    departments: Array,
 });
 </script>
 

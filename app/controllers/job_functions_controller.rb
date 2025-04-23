@@ -30,10 +30,12 @@ class JobFunctionsController < ApplicationController
     }
     @job_function = JobFunction.new(job_function_opts)
     @job_function.organization = @organization
+    department = Department.find(job_function_params[:department_id])
+    @job_function.department = department
 
     respond_to do |format|
       if @job_function.save
-        format.html { redirect_to @job_function, notice: "Job function was successfully created." }
+        format.html { redirect_to organization_hr_admin_path(@organization), notice: "Job function was successfully created." }
         format.json { render :show, status: :created, location: @job_function }
       else
         format.html { render :new, status: :unprocessable_entity }
@@ -46,7 +48,7 @@ class JobFunctionsController < ApplicationController
   def update
     respond_to do |format|
       if @job_function.update(job_function_params)
-        format.html { redirect_to @job_function, notice: "Job function was successfully updated." }
+        format.html { redirect_to organization_hr_admin_path(@organization), notice: "Job function was successfully updated." }
         format.json { render :show, status: :ok, location: @job_function }
       else
         format.html { render :edit, status: :unprocessable_entity }
@@ -77,6 +79,6 @@ class JobFunctionsController < ApplicationController
 
     # Only allow a list of trusted parameters through.
     def job_function_params
-      params.expect(job_function: [ :title, :salary_range_min, :salary_range_max ])
+      params.expect(job_function: [ :title, :department_id, :salary_range_min, :salary_range_max ])
     end
 end
