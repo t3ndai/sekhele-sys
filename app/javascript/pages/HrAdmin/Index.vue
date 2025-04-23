@@ -5,12 +5,13 @@
             <Tab value="0">Employees</Tab>
             <Tab value="1">Benefits</Tab>
             <Tab value="2">Assets</Tab>
-            <Tab value="3">Job Functions & Levels</Tab>
-            <Tab value="4">Leave</Tab>
-            <Tab value="5">Documents</Tab>
-            <Tab value="6">Recruiting</Tab>
-            <Tab value="7">Performance</Tab>
-            <Tab value="8">Engagement</Tab>
+            <Tab value="3">Departments & Locations</Tab>
+            <Tab value="4">Job Functions & Levels</Tab>
+            <Tab value="5">Leave</Tab>
+            <Tab value="6">Documents</Tab>
+            <Tab value="7">Recruiting</Tab>
+            <Tab value="8">Performance</Tab>
+            <Tab value="9">Engagement</Tab>
         </TabList>
 
         <TabPanels>
@@ -24,21 +25,24 @@
                 <Assets :asset_categories :assets />
             </TabPanel>
             <TabPanel value="3">
-                <JobFunctions />
+                <Departments :departments :locations />
             </TabPanel>
             <TabPanel value="4">
-                <Leave />
+                <JobFunctions />
             </TabPanel>
             <TabPanel value="5">
-                <Documents />
+                <Leave />
             </TabPanel>
             <TabPanel value="6">
-                <Recruiting />
+                <Documents />
             </TabPanel>
             <TabPanel value="7">
-                <Performance />
+                <Recruiting />
             </TabPanel>
             <TabPanel value="8">
+                <Performance />
+            </TabPanel>
+            <TabPanel value="9">
                 <Engagement />
             </TabPanel>
         </TabPanels>
@@ -61,6 +65,7 @@ import Documents from "./Documents.vue";
 import Recruiting from "./Recruiting.vue";
 import Performance from "./Performance.vue";
 import Engagement from "./Engagement.vue";
+import Departments from "./Departments.vue";
 
 defineProps({
     employees: Array,
@@ -68,6 +73,8 @@ defineProps({
     benefit_types: Array,
     asset_categories: Array,
     assets: Array,
+    departments: Array,
+    locations: Array,
 });
 </script>
 

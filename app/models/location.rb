@@ -18,6 +18,8 @@
 #  index_locations_on_organization_id  (organization_id)
 #
 
+# TODO: Need to add postcode
+
 class Location < ApplicationRecord
   belongs_to :organization
 

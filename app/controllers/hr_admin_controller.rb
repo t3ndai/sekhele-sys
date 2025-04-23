@@ -61,7 +61,24 @@ class HrAdminController < ApplicationController
       }
     end
 
-    render inertia: "HrAdmin/Index", props: { employees:, benefits:, benefit_types:, asset_categories:, assets: }
+    departments = @current_employee.organization.departments.map do |department|
+      {
+        id: department.id,
+        name: department.name
+      }
+    end
+
+    locations = @current_employee.organization.locations.map do |location|
+      {
+        id: location.id,
+        name: location.name,
+        address: "#{location.addr_line1}, #{location.addr_line2}, #{location.addr_line3}",
+        city: location.city,
+        country: location.country
+      }
+    end
+
+    render inertia: "HrAdmin/Index", props: { employees:, benefits:, benefit_types:, asset_categories:, assets:, locations:, departments: }
   end
 
   def detailed_view

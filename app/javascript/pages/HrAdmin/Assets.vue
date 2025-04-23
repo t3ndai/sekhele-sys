@@ -34,7 +34,6 @@
 <script setup>
 import NewAssetCategory from "./NewAssetCategory.vue";
 import NewAsset from "./NewAsset.vue";
-import { Link } from "@inertiajs/vue3";
 import DataTable from "primevue/datatable";
 import Column from "primevue/column";
 

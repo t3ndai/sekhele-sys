@@ -27,7 +27,7 @@ class DepartmentsController < ApplicationController
 
     respond_to do |format|
       if @department.save
-        format.html { redirect_to @department, notice: "Department was successfully created." }
+        format.html { redirect_to organization_hr_admin_path(@organization), notice: "Department was successfully created." }
         format.json { render :show, status: :created, location: @department }
       else
         format.html { render :new, status: :unprocessable_entity }
@@ -40,7 +40,7 @@ class DepartmentsController < ApplicationController
   def update
     respond_to do |format|
       if @department.update(department_params)
-        format.html { redirect_to @department, notice: "Department was successfully updated." }
+        format.html { redirect_to organization_hr_admin_path(@organization), notice: "Department was successfully updated." }
         format.json { render :show, status: :ok, location: @department }
       else
         format.html { render :edit, status: :unprocessable_entity }
