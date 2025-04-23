@@ -2,7 +2,7 @@
     <h2 class="page-heading">Departments & Locations Admin</h2>
 
     <div class="page-section">
-        <div>
+        <div class="subsection">
             <h3 class="heading belgrano-regular">Departments</h3>
             <NewDepartment />
         </div>
@@ -11,7 +11,7 @@
         </DataTable>
     </div>
     <div class="page-section">
-        <div>
+        <div class="subsection">
             <h3 class="heading belgrano-regular">Locations</h3>
             <NewLocation />
         </div>
