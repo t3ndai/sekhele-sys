@@ -13,6 +13,7 @@
     <div class="page-section">
         <div>
             <h3 class="heading belgrano-regular">Locations</h3>
+            <NewLocation />
         </div>
         <DataTable :value="locations">
             <Column field="name" header="Name"></Column>
@@ -26,6 +27,7 @@
 import DataTable from "primevue/datatable";
 import Column from "primevue/column";
 import NewDepartment from "./NewDepartment.vue";
+import NewLocation from "./NewLocation.vue";
 
 defineProps({
     departments: Array,
