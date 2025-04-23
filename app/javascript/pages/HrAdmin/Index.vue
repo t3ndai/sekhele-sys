@@ -28,7 +28,7 @@
                 <Departments :departments :locations />
             </TabPanel>
             <TabPanel value="4">
-                <JobFunctions />
+                <JobFunctions :job_levels :job_functions />
             </TabPanel>
             <TabPanel value="5">
                 <Leave />
@@ -75,6 +75,8 @@ defineProps({
     assets: Array,
     departments: Array,
     locations: Array,
+    job_functions: Array,
+    job_levels: Array,
 });
 </script>
 

@@ -78,7 +78,28 @@ class HrAdminController < ApplicationController
       }
     end
 
-    render inertia: "HrAdmin/Index", props: { employees:, benefits:, benefit_types:, asset_categories:, assets:, locations:, departments: }
+    job_functions = @current_employee.organization.job_functions.map do |job_function|
+      {
+       id: job_function.id,
+       title: job_function.title,
+       department: job_function.department&.name,
+       salary_range: job_function.salary_range
+      }
+    end
+
+    job_levels = @current_employee.organization.job_levels.map do |job_level|
+      {
+        name: job_level.name,
+        job_function: job_level.job_function.title,
+        salary_range: job_level.salary_range
+      }
+    end
+
+
+    render inertia: "HrAdmin/Index", props: { employees:, benefits:, benefit_types:,
+      asset_categories:, assets:, locations:, departments:,
+      job_levels:, job_functions:
+    }
   end
 
   def detailed_view
