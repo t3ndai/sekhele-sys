@@ -35,7 +35,7 @@ class JobLevelsController < ApplicationController
 
     respond_to do |format|
       if @job_level.save
-        format.html { redirect_to @job_level, notice: "Job level was successfully created." }
+        format.html { redirect_to organization_hr_admin_path(@job_function.organization), notice: "Job level was successfully created." }
         format.json { render :show, status: :created, location: @job_level }
       else
         format.html { render :new, status: :unprocessable_entity }
@@ -48,7 +48,7 @@ class JobLevelsController < ApplicationController
   def update
     respond_to do |format|
       if @job_level.update(job_level_params)
-        format.html { redirect_to @job_level, notice: "Job level was successfully updated." }
+        format.html { redirect_to organization_hr_admin_path(@job_function.organization), notice: "Job level was successfully updated." }
         format.json { render :show, status: :ok, location: @job_level }
       else
         format.html { render :edit, status: :unprocessable_entity }

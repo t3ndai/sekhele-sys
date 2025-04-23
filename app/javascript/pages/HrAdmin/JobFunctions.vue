@@ -25,7 +25,7 @@
         <div class="subsection">
             <h3 class="heading belgrano-regular">Job Levels</h3>
             <div>
-                <!--<NewAsset :asset_categories />-->
+                <NewJobLevel :job_functions />
             </div>
         </div>
 
@@ -46,6 +46,7 @@
 import DataTable from "primevue/datatable";
 import Column from "primevue/column";
 import NewJobFunction from "./NewJobFunction.vue";
+import NewJobLevel from "./NewJobLevel.vue";
 
 defineProps({
     job_functions: Array,

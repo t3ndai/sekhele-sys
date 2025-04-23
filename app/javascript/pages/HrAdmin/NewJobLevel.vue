@@ -2,36 +2,37 @@
     <div>
         <div>
             <Button
-                label="New Job Function"
+                label="New Job Level"
                 icon="pi pi-plus"
                 @click="visible = true"
-                class="jobfunction-btn"
+                class="joblevel-btn"
             />
         </div>
         <Dialog
             v-model="visible"
-            header="New Job Function"
+            header="New Job Level"
             :visible="visible"
             @update:visible="visible = $event"
         >
-            <form @submit.prevent="saveJobFunction">
+            <form @submit.prevent="saveJobLevel">
                 <div class="flex flex-col mb-2">
-                    <label class="label" for="title">Title</label>
-                    <InputText name="title" id="title" v-model="form.title" />
+                    <label class="label" for="name">Name</label>
+                    <InputText name="name" id="name" v-model="form.name" />
                     <div v-if="form.errors.name" class="error">
-                        {{ form.errors.title.join(", ") }}
+                        {{ form.errors.name.join(", ") }}
                     </div>
                 </div>
                 <div class="flex flex-col mb-2">
                     <Select
-                        placeholder="Select Department"
-                        :options="departments"
-                        optionLabel="name"
+                        placeholder="Select Job Function"
+                        :options="job_functions"
+                        optionLabel="title"
                         optionValue="id"
-                        v-model="form.department_id"
+                        v-model="form.job_function_id"
+                        @change="job_function_id = $event.value"
                     />
-                    <div v-if="form.errors.department_id" class="error">
-                        {{ form.errors.department_id.join(", ") }}
+                    <div v-if="form.errors.job_function_id" class="error">
+                        {{ form.errors.job_function_id.join(", ") }}
                     </div>
                 </div>
 
@@ -63,10 +64,10 @@
                 </div>
                 <div>
                     <Button
-                        class="jobfunction-btn"
+                        class="joblevel-btn"
                         type="submit"
                         :disabled="form.processing"
-                        label="Save Job Function"
+                        label="Save Job Level"
                         icon="pi pi-save"
                     />
                 </div>
@@ -84,21 +85,22 @@ const page = usePage();
 const org_id = computed(() => page.props.org_id).value;
 
 const form = useForm({
-    title: "",
+    name: "",
     salary_range_min: "",
     salary_range_max: "",
-    department_id: "",
+    job_function_id: "",
 });
 
 const visible = ref(false);
+const job_function_id = ref(null);
 
 defineProps({
-    departments: Array,
+    job_functions: Array,
 });
 
-function saveJobFunction() {
-    form.transform((data) => ({ job_function: data }));
-    form.post(`/organizations/${org_id}/job_functions`, {
+function saveJobLevel() {
+    form.transform((data) => ({ job_level: data }));
+    form.post(`/job_functions/${job_function_id.value}/job_levels`, {
         onSuccess: () => {
             form.reset();
             visible.value = false;
@@ -108,7 +110,7 @@ function saveJobFunction() {
 </script>
 
 <style scoped>
-.jobfunction-btn {
+.joblevel-btn {
     background-color: orangered;
     border: none;
 
