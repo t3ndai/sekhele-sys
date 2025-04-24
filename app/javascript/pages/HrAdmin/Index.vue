@@ -31,7 +31,7 @@
                 <JobFunctions :job_levels :job_functions :departments />
             </TabPanel>
             <TabPanel value="5">
-                <Leave />
+                <Leave :leave_categories :leave_policies />
             </TabPanel>
             <TabPanel value="6">
                 <Documents />
@@ -77,6 +77,8 @@ defineProps({
     locations: Array,
     job_functions: Array,
     job_levels: Array,
+    leave_categories: Array,
+    leave_policies: Array,
 });
 </script>
 

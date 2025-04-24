@@ -95,10 +95,29 @@ class HrAdminController < ApplicationController
       }
     end
 
+    leave_categories = @current_employee.organization.leave_categories.map do |leave_category|
+      {
+        id: leave_category.id,
+        name: leave_category.name.humanize,
+
+      }
+    end
+
+    leave_policies = @current_employee.organization.leave_policies.map do |leave_policy|
+      {
+        id: leave_policy.id,
+        name: leave_policy.name,
+        start_balance: leave_policy.start_balance,
+        category: leave_policy.leave_category.name.humanize,
+        valid_from: leave_policy.valid_from.strftime('%e-%b-%Y'),
+        valid_to: leave_policy.valid_to.strftime("%e-%b-%Y")
+      }
+    end
+
 
     render inertia: "HrAdmin/Index", props: { employees:, benefits:, benefit_types:,
       asset_categories:, assets:, locations:, departments:,
-      job_levels:, job_functions:
+      job_levels:, job_functions:, leave_categories:, leave_policies:
     }
   end
 
