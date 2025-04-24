@@ -17,7 +17,8 @@
 
 class Document < ApplicationRecord
   belongs_to :organization
-  has_one :employee_file
+  has_many :employee_files
+  has_many :company_files
 
   enum :document_type, { personal: "personal", company: "company" }, validate: { allow_nil: false }
 
