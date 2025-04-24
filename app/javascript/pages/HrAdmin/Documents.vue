@@ -14,6 +14,24 @@
             <Column field="type" header="Type"></Column>
         </DataTable>
     </div>
+
+    <div class="page-section">
+        <div class="subsection">
+            <h3 class="heading belgrano-regular">Company Files</h3>
+            <div>
+                <NewDocument />
+            </div>
+        </div>
+
+        <DataTable :value="company_files" tableStyle="min-width: 50rem">
+            <Column field="name" header="Name"></Column>
+            <Column>
+                <template #body="slotProps">
+                    <a :href="slotProps.data.url" target="_blank">View</a>
+                </template>
+            </Column>
+        </DataTable>
+    </div>
 </template>
 
 <script setup>
@@ -23,6 +41,7 @@ import NewDocument from "./NewDocument.vue";
 
 defineProps({
     documents: Array,
+    company_files: Array,
 });
 </script>
 

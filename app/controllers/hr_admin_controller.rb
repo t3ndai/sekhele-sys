@@ -122,11 +122,19 @@ class HrAdminController < ApplicationController
       }
     end
 
+    company_files = @current_employee.organization.company_files.map do |company_file|
+      {
+        id: company_file.id,
+        name: company_file.name,
+        url: rails_blob_url(company_file.file, only_path: true)
+      }
+    end
+
 
     render inertia: "HrAdmin/Index", props: { employees:, benefits:, benefit_types:,
       asset_categories:, assets:, locations:, departments:,
       job_levels:, job_functions:, leave_categories:, leave_policies:,
-      documents:
+      documents:, company_files:,
     }
   end
 

@@ -34,7 +34,7 @@
                 <Leave :leave_categories :leave_policies />
             </TabPanel>
             <TabPanel value="6">
-                <Documents :documents />
+                <Documents :documents :company_files />
             </TabPanel>
             <TabPanel value="7">
                 <Recruiting />
@@ -80,6 +80,7 @@ defineProps({
     leave_categories: Array,
     leave_policies: Array,
     documents: Array,
+    company_files: Array,
 });
 </script>
 
