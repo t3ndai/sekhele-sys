@@ -5,7 +5,7 @@
                 label="New Document Type"
                 icon="pi pi-plus"
                 @click="visible = true"
-                class="benefit-btn"
+                class="document-btn"
             />
         </div>
         <Dialog
@@ -52,7 +52,7 @@
 
                 <div class="mt-2">
                     <Button
-                        class="benefit-btn"
+                        class="document-btn"
                         label="Save"
                         icon="pi pi-save"
                         type="submit"
@@ -95,7 +95,7 @@ function saveDocumentType() {
 </script>
 
 <style scoped>
-.benefit-btn {
+.document-btn {
     background-color: orangered;
     border: none;
 
