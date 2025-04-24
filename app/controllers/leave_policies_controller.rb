@@ -27,7 +27,7 @@ class LeavePoliciesController < ApplicationController
 
     respond_to do |format|
       if @leave_policy.save
-        format.html { redirect_to @leave_policy, notice: "Leave policy was successfully created." }
+        format.html { redirect_to organization_hr_admin_path(@organization), notice: "Leave policy was successfully created." }
         format.json { render :show, status: :created, location: @leave_policy }
       else
         format.html { render :new, status: :unprocessable_entity }
@@ -40,7 +40,7 @@ class LeavePoliciesController < ApplicationController
   def update
     respond_to do |format|
       if @leave_policy.update(leave_policy_params)
-        format.html { redirect_to @leave_policy, notice: "Leave policy was successfully updated." }
+        format.html { redirect_to organization_hr_admin_path(@organization), notice: "Leave policy was successfully updated." }
         format.json { render :show, status: :ok, location: @leave_policy }
       else
         format.html { render :edit, status: :unprocessable_entity }

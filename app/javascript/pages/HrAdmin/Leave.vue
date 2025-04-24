@@ -5,7 +5,7 @@
         <div class="subsection">
             <h3 class="heading belgrano-regular">Leave Policies</h3>
             <div>
-                <!--<NewAsset :asset_categories />-->
+                <NewLeavePolicy :leave_categories />
             </div>
         </div>
 
@@ -36,6 +36,7 @@
 import DataTable from "primevue/datatable";
 import Column from "primevue/column";
 import NewLeaveCategory from "./NewLeaveCategory.vue";
+import NewLeavePolicy from "./NewLeavePolicy.vue";
 
 defineProps({
     leave_categories: Array,
