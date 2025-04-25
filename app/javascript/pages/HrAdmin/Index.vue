@@ -37,7 +37,7 @@
                 <Documents :documents :company_files :company_docs />
             </TabPanel>
             <TabPanel value="7">
-                <Recruiting />
+                <Recruiting :interview_stages :stage_types />
             </TabPanel>
             <TabPanel value="8">
                 <Performance />
@@ -82,6 +82,8 @@ defineProps({
     documents: Array,
     company_files: Array,
     company_docs: Array,
+    interview_stages: Array,
+    stage_types: Array,
 });
 </script>
 

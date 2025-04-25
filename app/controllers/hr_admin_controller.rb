@@ -137,11 +137,28 @@ class HrAdminController < ApplicationController
       }
     end
 
+    interview_stages = @current_employee.organization.interview_stages.map do |interview_stage|
+      {
+        id: interview_stage.id,
+        name: interview_stage.name,
+        stage_type: interview_stage.stage_type.humanize,
+        mandatory: interview_stage.mandatory.humanize
+      }
+    end
+
+    stage_types = InterviewStage.stage_types.keys.map do |stage_type|
+      {
+        name: stage_type.humanize,
+        value: stage_type
+      }
+    end
+
 
     render inertia: "HrAdmin/Index", props: { employees:, benefits:, benefit_types:,
       asset_categories:, assets:, locations:, departments:,
       job_levels:, job_functions:, leave_categories:, leave_policies:,
-      documents:, company_files:, company_docs:
+      documents:, company_files:, company_docs:, interview_stages:,
+      stage_types:,
     }
   end
 

@@ -27,7 +27,7 @@ class InterviewStagesController < ApplicationController
 
     respond_to do |format|
       if @interview_stage.save
-        format.html { redirect_to @interview_stage, notice: "Interview stage was successfully created." }
+        format.html { redirect_to organization_hr_admin_path(@organization), notice: "Interview stage was successfully created." }
         format.json { render :show, status: :created, location: @interview_stage }
       else
         format.html { render :new, status: :unprocessable_entity }
@@ -40,7 +40,7 @@ class InterviewStagesController < ApplicationController
   def update
     respond_to do |format|
       if @interview_stage.update(interview_stage_params)
-        format.html { redirect_to @interview_stage, notice: "Interview stage was successfully updated." }
+        format.html { redirect_to organization_hr_admin_path(@organization), notice: "Interview stage was successfully updated." }
         format.json { render :show, status: :ok, location: @interview_stage }
       else
         format.html { render :edit, status: :unprocessable_entity }
