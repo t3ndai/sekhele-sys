@@ -5,7 +5,7 @@
                 label="New Company File"
                 icon="pi pi-plus"
                 @click="visible = true"
-                class="leave-btn"
+                class="btn"
             />
         </div>
         <Dialog
@@ -28,15 +28,16 @@
                     </div>
                 </div>
                 <div class="flex flex-col mb-2 field">
-                    <label for="employee_contribution">File</label>
+                    <label for="file">File</label>
                     <input
+                        name="file"
                         type="file"
                         @change="form.file = $event.target.files[0]"
                     />
                 </div>
                 <div>
                     <Button
-                        class="leave-btn"
+                        class="btn"
                         type="submit"
                         :disabled="form.processing"
                         label="Save Company File"
@@ -79,7 +80,7 @@ function saveCompanyFile() {
 </script>
 
 <style scoped>
-.leave-btn {
+.btn {
     background-color: orangered;
     border: none;
 
