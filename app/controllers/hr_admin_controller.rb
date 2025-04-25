@@ -130,11 +130,18 @@ class HrAdminController < ApplicationController
       }
     end
 
+    company_docs = @current_employee.organization.documents.company_docs.map do |doc|
+      {
+        id: doc.id,
+        name: doc.name,
+      }
+    end
+
 
     render inertia: "HrAdmin/Index", props: { employees:, benefits:, benefit_types:,
       asset_categories:, assets:, locations:, departments:,
       job_levels:, job_functions:, leave_categories:, leave_policies:,
-      documents:, company_files:,
+      documents:, company_files:, company_docs:
     }
   end
 
@@ -259,7 +266,6 @@ class HrAdminController < ApplicationController
         end
       }
     end
-
 
     render inertia: "HrAdmin/EmployeeView", props: { employee:, benefits:, assets:, jobs:, past_leaves:, future_leaves:, leave_balances:, documents:, performance_reviews: }
   end

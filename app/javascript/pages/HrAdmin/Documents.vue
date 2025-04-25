@@ -19,7 +19,7 @@
         <div class="subsection">
             <h3 class="heading belgrano-regular">Company Files</h3>
             <div>
-                <NewDocument />
+                <NewCompanyFile :company_docs />
             </div>
         </div>
 
@@ -38,10 +38,12 @@
 import DataTable from "primevue/datatable";
 import Column from "primevue/column";
 import NewDocument from "./NewDocument.vue";
+import NewCompanyFile from "./NewCompanyFile.vue";
 
 defineProps({
     documents: Array,
     company_files: Array,
+    company_docs: Array,
 });
 </script>
 

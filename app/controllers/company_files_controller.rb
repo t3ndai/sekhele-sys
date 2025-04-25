@@ -29,7 +29,7 @@ class CompanyFilesController < ApplicationController
 
     respond_to do |format|
       if @company_file.save
-        format.html { redirect_to @company_file, notice: "Company file was successfully created." }
+        format.html { redirect_to organization_hr_admin_path(@organization), notice: "Company file was successfully created." }
         format.json { render :show, status: :created, location: @company_file }
       else
         format.html { render :new, status: :unprocessable_entity }
@@ -42,7 +42,7 @@ class CompanyFilesController < ApplicationController
   def update
     respond_to do |format|
       if @company_file.update(company_file_params)
-        format.html { redirect_to @company_file, notice: "Company file was successfully updated." }
+        format.html { redirect_to organization_hr_admin_path(@organization), notice: "Company file was successfully updated." }
         format.json { render :show, status: :ok, location: @company_file }
       else
         format.html { render :edit, status: :unprocessable_entity }
