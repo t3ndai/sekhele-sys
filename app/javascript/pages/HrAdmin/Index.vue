@@ -40,7 +40,7 @@
                 <Recruiting :interview_stages :stage_types />
             </TabPanel>
             <TabPanel value="8">
-                <Performance />
+                <Performance :performance_reviews :performance_review_types />
             </TabPanel>
             <TabPanel value="9">
                 <Engagement />
@@ -84,6 +84,8 @@ defineProps({
     company_docs: Array,
     interview_stages: Array,
     stage_types: Array,
+    performance_reviews: Array,
+    performance_review_types: Array,
 });
 </script>
 

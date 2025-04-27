@@ -27,7 +27,7 @@ class PerformanceReviewsController < ApplicationController
 
     respond_to do |format|
       if @performance_review.save
-        format.html { redirect_to @performance_review, notice: "Performance review was successfully created." }
+        format.html { redirect_to organization_hr_admin_path(@organization), notice: "Performance review was successfully created." }
         format.json { render :show, status: :created, location: @performance_review }
       else
         format.html { render :new, status: :unprocessable_entity }
@@ -40,7 +40,7 @@ class PerformanceReviewsController < ApplicationController
   def update
     respond_to do |format|
       if @performance_review.update(performance_review_params)
-        format.html { redirect_to @performance_review, notice: "Performance review was successfully updated." }
+        format.html { redirect_to organization_hr_admin_path(@organization), notice: "Performance review was successfully updated." }
         format.json { render :show, status: :ok, location: @performance_review }
       else
         format.html { render :edit, status: :unprocessable_entity }

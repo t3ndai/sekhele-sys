@@ -153,12 +153,29 @@ class HrAdminController < ApplicationController
       }
     end
 
+    performance_reviews = @current_employee.organization.performance_reviews.map do |performance_review|
+      {
+        id: performance_review.id,
+        name: performance_review.name,
+        type: performance_review.performance_review_type.name.humanize,
+        opens_on: performance_review.opens_on.strftime("%e-%b-%Y"),
+        closes_on: performance_review.closes_on.strftime("%e-%b-%Y")
+      }
+    end
+
+    performance_review_types = PerformanceReviewType.all.map do |review_type|
+      {
+        id: review_type.id,
+        name: review_type.name.humanize
+      }
+    end
+
 
     render inertia: "HrAdmin/Index", props: { employees:, benefits:, benefit_types:,
       asset_categories:, assets:, locations:, departments:,
       job_levels:, job_functions:, leave_categories:, leave_policies:,
       documents:, company_files:, company_docs:, interview_stages:,
-      stage_types:,
+      stage_types:, performance_reviews:, performance_review_types:
     }
   end
 
