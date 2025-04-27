@@ -43,7 +43,7 @@
                 <Performance :performance_reviews :performance_review_types />
             </TabPanel>
             <TabPanel value="9">
-                <Engagement />
+                <Engagement :pulse_surveys />
             </TabPanel>
         </TabPanels>
     </Tabs>
@@ -86,6 +86,7 @@ defineProps({
     stage_types: Array,
     performance_reviews: Array,
     performance_review_types: Array,
+    pulse_surveys: Array,
 });
 </script>
 

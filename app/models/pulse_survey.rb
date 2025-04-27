@@ -26,6 +26,7 @@ class PulseSurvey < ApplicationRecord
 
   private
 
+  # TODO: Do in background job
   def create_pulse_survey_responses
     self.organization.employees.find_each do |employee|
       PulseSurveyResponse.create!(responder: employee, pulse_survey: self)

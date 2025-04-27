@@ -170,14 +170,24 @@ class HrAdminController < ApplicationController
       }
     end
 
+    pulse_surveys = @current_employee.organization.pulse_surveys.map do |pulse_survey|
+      {
+        id: pulse_survey.id,
+        name: pulse_survey.name,
+        date_open: pulse_survey.date_open,
+        date_close: pulse_survey.date_close
+      }
+    end
 
     render inertia: "HrAdmin/Index", props: { employees:, benefits:, benefit_types:,
       asset_categories:, assets:, locations:, departments:,
       job_levels:, job_functions:, leave_categories:, leave_policies:,
       documents:, company_files:, company_docs:, interview_stages:,
-      stage_types:, performance_reviews:, performance_review_types:
+      stage_types:, performance_reviews:, performance_review_types:,
+      pulse_surveys:,
     }
   end
+
 
   def detailed_view
     @employee = Employee.find(params[:employee_id])
