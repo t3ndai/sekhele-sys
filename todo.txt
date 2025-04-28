@@ -275,21 +275,24 @@
 -- Payroll
     - Deductible
         - type mandatory | optional
-        - on gross pay | base pay |
+        - on gross pay | base pay | net_pay
+        - fixed | percentage
     - Payroll run
         - on date
         - frequency | weekly | monthly | biweekly
         - start_date
         - payroll period | weekly | monthly | biweekly
         - end_date
-    - EmployeePay 
-        - start_date 
+    - EmployeePay
+        - start_date
         - end_date
         - amount
-        - type salary | wage 
+        - type salary | wage
         - currency
-        - belongs_to Employee 
+        - belongs_to Employee
         - frequency -> hourly |daily | weekly | monthly | yearly
+    - Allowance
+
 
 -- Bookings
     - bookings should be already integrated with TimeOff

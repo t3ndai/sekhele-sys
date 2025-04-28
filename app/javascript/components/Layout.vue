@@ -8,9 +8,9 @@ const org_id = computed(() => page.props.org_id).value;
 </script>
 
 <template>
-    <div class="flex gap-x-4">
+    <div class="flex gap-x-4 w-screen">
         <nav
-            class="flex flex-col insert-y-0 left-0 gap-y-4 items-center bg-gray-100 w-20 min-h-screen"
+            class="flex flex-col insert-y-0 left-0 gap-y-4 items-center bg-gray-100 min-h-screen"
         >
             <div>
                 <Link
@@ -152,7 +152,7 @@ const org_id = computed(() => page.props.org_id).value;
                 </Link>
                 </div>-->
         </nav>
-        <main>
+        <main class="flex flex-col p-4 basis-[95%] w-full max-w-9/10">
             <slot></slot>
         </main>
     </div>
