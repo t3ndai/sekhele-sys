@@ -1,4 +1,5 @@
 Rails.application.routes.draw do
+  resources :employee_pays
   get "inertia-example", to: "inertia_example#index"
   resources :organizations, shallow: true do
     resources :departments
@@ -83,6 +84,7 @@ Rails.application.routes.draw do
     end
     resources :pulse_surveys
     resources :assets
+    get "/announcements", to: "announcements#index"
   end
 
   resources :tasks, only: %i[create update destroy]

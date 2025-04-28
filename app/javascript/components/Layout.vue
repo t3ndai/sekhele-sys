@@ -138,6 +138,19 @@ const org_id = computed(() => page.props.org_id).value;
                     HR ADMIN
                 </Link>
             </div>
+            <!--<div>
+                <Link
+                    :href="`/organizations/${org_id}/announcements`"
+                    class="flex justify-center items-baseline"
+                    as="button"
+                    :class="{
+                        'text-orange-500':
+                            $page.component === 'Announcements/Index',
+                    }"
+                >
+                    ANNOUNCEMENTS
+                </Link>
+                </div>-->
         </nav>
         <main>
             <slot></slot>

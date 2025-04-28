@@ -10,7 +10,7 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema[8.0].define(version: 2025_04_22_125445) do
+ActiveRecord::Schema[8.0].define(version: 2025_04_28_194632) do
   # These are extensions that must be enabled in order to support this database
   enable_extension "pg_catalog.plpgsql"
 
@@ -275,6 +275,19 @@ ActiveRecord::Schema[8.0].define(version: 2025_04_22_125445) do
     t.datetime "updated_at", null: false
     t.index ["employee_id"], name: "index_employee_locations_on_employee_id"
     t.index ["location_id"], name: "index_employee_locations_on_location_id"
+  end
+
+  create_table "employee_pays", force: :cascade do |t|
+    t.bigint "employee_id", null: false
+    t.date "start_date"
+    t.date "end_date"
+    t.decimal "amount"
+    t.string "pay_type"
+    t.string "currency"
+    t.string "frequency"
+    t.datetime "created_at", null: false
+    t.datetime "updated_at", null: false
+    t.index ["employee_id"], name: "index_employee_pays_on_employee_id"
   end
 
   create_table "employees", force: :cascade do |t|
@@ -769,6 +782,7 @@ ActiveRecord::Schema[8.0].define(version: 2025_04_22_125445) do
   add_foreign_key "employee_jobs", "job_levels"
   add_foreign_key "employee_locations", "employees"
   add_foreign_key "employee_locations", "locations"
+  add_foreign_key "employee_pays", "employees"
   add_foreign_key "employees", "employees", column: "manager_id"
   add_foreign_key "employees", "organizations"
   add_foreign_key "events", "users"
