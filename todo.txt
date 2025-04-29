@@ -291,6 +291,13 @@
         - currency
         - belongs_to Employee
         - frequency -> hourly |daily | weekly | monthly | yearly
+    - TaxTable
+        - default for every organization based on tax laws
+    - Tax Credits
+        - belong to organization
+    - Statutory Contributions
+        - belong to organization
+
     - Allowance
 
 
@@ -300,32 +307,44 @@
 -- CRM
     - Customer
     - Deal
-        -
--- Business Goals
-    - link to individual goals
-    -
--- Contracts Management
-
-Application Performance
-    - Cache Responses (people taking 12sec)
-    - Explore either Memcache or Solidcache
-
-
-
-- tenure might be limited to certain level
-
--- Other Notes
-- Talk to Alan Choruma (office of the VP )
+        - customer
+        - amount
+        - status -> pending | won | lost
+        - notes
+        - has_attachments
+        - has comments
+        - priority -> low | medium | high
+        - has tags
+    - DealComment
+        - by
+        - belongs to Deal
+        - belongs to Customer
 
 
--- Color Palette ---
-
-background #f8f1ea
-font color #1a202c
-other contrast background #f0e2d2
-
-navbar bg-color #f5e5d3
-
-
-# test user details
-user1@testorg.com
+HomeScreen
+    - Unified Payroll
+    - Automatic Payroll & Backups
+    - Cloud backed / accessible from any computer / mobile / tablet device. Hell even your tv
+    - Employee Directory
+    - Manage Employee Info
+        - Benefits
+        - Emergency Contacts
+        - Leave
+        - Performance
+        - Career
+        - Employee Goals
+        - Employee Objectives
+    - Application Tracking
+        - Online Job Applications
+        - Create Talent Pools
+        - Candidate Experience
+        - Interview Scheduling
+        - Interview Feedback
+    - Engagement
+        - Employee Engagement
+        - Employee Feedback
+        - Employee Recognition
+        - Employee Training
+        - Employee Wellness
+        - Company Posts
+        - Company Events

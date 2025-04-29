@@ -20,4 +20,11 @@
 
 class EmployeePay < ApplicationRecord
   belongs_to :employee
+
+  validates :amount, presence: true, numericality: { greater_than_or_equal_to: 0 }
+  validates :currency, :pay_type, :frequency, :start_date, presence: true
+
+  enum :currency, { usd: "USD", zwg: "ZWD", zar: "ZAR", zmw: "ZMW", bwp: "BWP"  }
+  enum :pay_type, { wage: "Wage", salary: "Salary"  }
+  enum :frequency, { hourly: "Hourly", daily: "Daily", weekly: "Weekly", monthly: "Monthly", yearly: "Yearly" }
 end

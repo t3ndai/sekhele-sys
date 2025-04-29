@@ -1,6 +1,6 @@
 <template>
     <h2 class="page-heading">Employee View</h2>
-    <div>
+    <div class="flex flex-col gap-2 mb-4">
         <div class="name">{{ employee.full_name }}</div>
         <div class="title">{{ employee.job_title }}</div>
     </div>
@@ -8,12 +8,13 @@
         <Tabs value="0">
             <TabList>
                 <Tab value="0">Personal</Tab>
-                <Tab value="1">Benefits</Tab>
-                <Tab value="2">Assets</Tab>
-                <Tab value="3">Job</Tab>
-                <Tab value="4">Leave</Tab>
-                <Tab value="5">Documents</Tab>
-                <Tab value="6">Performance</Tab>
+                <Tab value="1">Pay</Tab>
+                <Tab value="2">Benefits</Tab>
+                <Tab value="3">Assets</Tab>
+                <Tab value="4">Job</Tab>
+                <Tab value="5">Leave</Tab>
+                <Tab value="6">Documents</Tab>
+                <Tab value="7">Performance</Tab>
             </TabList>
 
             <TabPanels>
@@ -21,25 +22,28 @@
                     <EmployeePersonalView :employee />
                 </TabPanel>
                 <TabPanel value="1">
-                    <EmployeeBenefitsView :benefits />
+                    <EmployeePayView :pay />
                 </TabPanel>
                 <TabPanel value="2">
-                    <EmployeeAssetsView :assets />
+                    <EmployeeBenefitsView :benefits />
                 </TabPanel>
                 <TabPanel value="3">
-                    <EmployeeJobView :jobs />
+                    <EmployeeAssetsView :assets />
                 </TabPanel>
                 <TabPanel value="4">
+                    <EmployeeJobView :jobs />
+                </TabPanel>
+                <TabPanel value="5">
                     <EmployeeLeaveView
                         :past_leaves
                         :future_leaves
                         :leave_balances
                     />
                 </TabPanel>
-                <TabPanel value="5">
+                <TabPanel value="6">
                     <EmployeeDocuments :documents />
                 </TabPanel>
-                <TabPanel value="6">
+                <TabPanel value="7">
                     <EmployeePerformanceView :performance_reviews />
                 </TabPanel>
             </TabPanels>
