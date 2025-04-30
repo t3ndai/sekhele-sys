@@ -30,7 +30,7 @@
             <p>Big Picture Thinking. Big Results.</p>
         </div>
         <div>
-            <img src="/images/arrows.jpg" />
+            <img :src="arrows" />
         </div>
     </div>
 
@@ -42,7 +42,7 @@
             Compensation Bands, Benefits Management, Leave Management & Booking
             and Recognition tools.
         </p>
-        <img src="/images/seedling.png" />
+        <img :src="seedling" />
     </div>
 
     <div>
@@ -53,11 +53,14 @@
             Reviews
         </div>
         <div>
-            <img src="/images/target.png" />
+            <img :src="target" />
         </div>
     </div>
 </template>
 
 <script setup>
 import { Head } from "@inertiajs/vue3";
+import arrows from "~/assets/images/arrows.jpg";
+import seedling from "~/assets/images/seedling.jpg";
+import target from "~/assets/images/target.jpg";
 </script>
