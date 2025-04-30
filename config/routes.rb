@@ -122,6 +122,7 @@ Rails.application.routes.draw do
   resources :performance_review_questions
   resources :performance_review_types
   root "home#index"
+  get "landing", to: "home#landing"
   # Define your application routes per the DSL in https://guides.rubyonrails.org/routing.html
 
   # Reveal health status on /up that returns 200 if the app boots with no exceptions, otherwise 500.

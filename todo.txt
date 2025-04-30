@@ -348,3 +348,65 @@ HomeScreen
         - Employee Wellness
         - Company Posts
         - Company Events
+
+---- Value Driven ------
+
+- HR Strategy Vision
+    - Company Goals
+      - employee competencies & behaviours needed to achieve company goals
+    - Tie value to Human Resource Functions
+
+- Conducting Job Analyses | Planning Labour Needs | Recruiting Canditates | Selecting Candidates
+    - Which features cover those
+
+- Orienting New Employees | Training New Employees | Mentoring Employees | Employee Retention
+    - Which features cover those
+
+- Managing Salaries | Providing Incentives & Benefits
+    - Which features cover those
+
+- Appraising Performance
+    - Which features cover thoe
+
+- Communication (interviewing | counselling |  disciplining)
+    - Which features cover those
+
+ - Training & Developing Managers
+    - Which features cover those
+
+ - Building Employee Commitment
+    - Which features cover those
+
+- How are you delivering transational HR services e.g Benefits management
+- Big picture thinking in enabling organization reach its goals via employees
+- Financial budgeting for departments
+
+
+-------------------
+Werk By Sekhele
+
+Werk is Organization (Work) Operating system
+we start with your most valuable resource / asset
+which is your employees
+
+Werk enables you align your employees with your company's goals
+through tools such as Tasks, Employee Goals,Milestones with deadlines. Big Picture Thinking.
+
+Werk enables you to properly incentivize your employees to achieve your company's goals
+through Compensation (Payroll), Benefits Management, Leave Managment & Booking and Recognition tools.
+
+Werk enables you to grow your company through your employees
+by empowering your employees career growth & development
+through tools such as 1-1s, Career Development Plans, and Performance Reviews
+
+Werk enables you to attact Talent
+through tools such as online Job Posts, online Job Applications
+better Candidate experience and Recruitment tools such as Interview Scheduling,
+Interview stages, Candidate notes, Interview Feedback. Which enables efficent
+tracking of candidates through your pipeline so you can hire the right people for the right roles at the right time.
+
+Werk enables you to keep your employees happy and engaged
+through tools such as Employee (Anonymous) Feedback, Pulse Surveys, and Employee Recognition
+& Company Posts and Communities.
+
+
