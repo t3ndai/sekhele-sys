@@ -1,12 +1,20 @@
-@import "primeicons/primeicons.css";
+@import url("https://fonts.googleapis.com/css2?family=Belgrano&display=swap")
+    @import
+    url("https://fonts.googleapis.com/css2?family=Jura:wght@300..700&display=swap")
+    @import "primeicons/primeicons.css";
 @import "tailwindcss";
 @import "trix";
 
 @plugin "@tailwindcss/typography";
 @plugin "@tailwindcss/forms";
 
+@theme {
+    --font-belgrano: "Belgrano", serif;
+    --font-jura: "Jura", sans-serif;
+}
+
 body {
-    background-color: #f2efe9;
+    background-color: #f4f4fd;
 }
 
 .belgrano-regular {

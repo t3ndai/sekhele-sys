@@ -69,7 +69,7 @@ end
 
 gem "dartsass-rails", "~> 0.5.1"
 
-gem "bootstrap", "~> 5.3"
+# gem "bootstrap", "~> 5.3"
 
 gem "authentication-zero", "~> 4.0"
 # Use Pwned to check if a password has been found in any of the huge data breaches [https://github.com/philnash/pwned]

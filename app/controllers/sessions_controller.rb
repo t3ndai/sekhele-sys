@@ -3,6 +3,19 @@ class SessionsController < ApplicationController
 
   before_action :set_session, only: :destroy
 
+  inertia_share do
+    {
+      employee: @current_employee&.as_json(only: %i[id work_email]).merge(
+        is_manager: @current_employee&.is_manager?,
+        # is_admin: @current_employee&.is_admin?,
+        # is_super_admin: @current_employee&.is_super_admin?,
+        full_name: @current_employee&.full_name,
+      ),
+      org_id: @current_employee.organization.id
+    } if @current_employee
+  end
+
+
   def index
     @sessions = Current.user.sessions.order(created_at: :desc)
   end
@@ -19,7 +32,13 @@ class SessionsController < ApplicationController
         @session = user.sessions.create!
         cookies.signed.permanent[:session_token] = { value: @session.id, httponly: true }
 
-        redirect_to root_path, notice: "Signed in successfully"
+        @current_employee ||= user&.employee
+
+        if @current_employee
+          redirect_to employee_home_path(@current_employee), notice: "Signed in successfully"
+        else
+          redirect_to root_path, notice: "Signed in successfully"
+        end
       end
     else
       redirect_to sign_in_path(email_hint: params[:email]), alert: "That email or password is incorrect"
