@@ -8,7 +8,8 @@
     </Head>
 
     <div class="flex justify-end">
-        <SignIn />
+        <!--<SignIn />-->
+        <a href="/sign_in" v-if="!employee">Sign In</a>
     </div>
 
     <div>
@@ -140,13 +141,17 @@
 </template>
 
 <script setup>
-import { Head } from "@inertiajs/vue3";
+import { Head, usePage } from "@inertiajs/vue3";
+import { computed } from "vue";
 import SignIn from "./SignIn.vue";
 import packages from "~/assets/images/packages.jpg";
 import seedling from "~/assets/images/seedling.jpg";
 import target from "~/assets/images/target.jpg";
 import magnet from "~/assets/images/magnet.jpg";
 import chain from "~/assets/images/chain.jpg";
+
+const page = usePage();
+const employee = computed(() => page.props.employee);
 </script>
 
 <style scoped>
