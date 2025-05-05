@@ -11,6 +11,8 @@
 ARG RUBY_VERSION=3.3.5
 FROM docker.io/library/ruby:$RUBY_VERSION-slim AS base
 
+LABEL maintainer="ptdzonga@gmail.com"
+
 # Rails app lives here
 WORKDIR /rails
 
