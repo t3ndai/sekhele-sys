@@ -1,0 +1,4 @@
+https://localhost:8002 {
+    reverse_proxy localhost:8000
+    tls internal
+}

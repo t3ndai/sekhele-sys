@@ -13,10 +13,10 @@ p "Creating 50 employees"
     country: Faker::Address.country_by_code(code: "ZW"),
     phone1: Faker::PhoneNumber.cell_phone_in_e164,
     personal_email: Faker::Internet.email,
-    work_email: Faker::Internet.email(domain: "cut.ac.zw"),
+    work_email: Faker::Internet.email(domain: "bigbank.co.zw"),
     id_number: Faker::IdNumber.chilean_id,
     nationality: Faker::Address.country_by_code(code: "ZW"),
-    employement_id: Faker::Number.number(digits: 5),
+    employment_id: Faker::Number.number(digits: 5),
     hire_date: Faker::Date.between(from: 5.years.ago, to: Date.today),
     organization_id: 1,
     gender: Faker::Number.between(from: 0, to: 1)
