@@ -2,7 +2,7 @@ services:
   web:
     build: .
     ports:
-      - "3000:3000"
+      - "8000:3000"
     depends_on:
       postgresDB:
         condition: service_started
