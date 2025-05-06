@@ -1,0 +1,21 @@
+services:
+  web:
+    build: .
+    ports:
+      - "3000:3000"
+    depends_on:
+      postgresDB:
+        condition: service_started
+        restart: true
+    env_file:
+      - production.env
+
+  postgresDB:
+    image: postgres:17
+    env_file:
+      - production.env
+    volumes:
+      - db_data:/var/lib/postgresql/data
+
+volumes:
+  db_data: {}

@@ -9,6 +9,11 @@
 
 # Ignore all environment files.
 /.env*
+/production.env
+
+# Ignore database volume
+data/
+
 
 # Ignore all logfiles and tempfiles.
 /log/*

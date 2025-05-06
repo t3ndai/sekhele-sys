@@ -32,13 +32,13 @@ production:
     database: sekhele_sys_prod
   cache:
     <<: *default
-    database: sekhele_sys_prod
+    database: sekhele_sys_prod_cache
     migrations_paths: db/cache_migrate
   queue:
     <<: *default
-    database: sekhele_sys_prod
+    database: sekhele_sys_prod_queue
     migrations_paths: db/queue_migrate
   cable:
     <<: *default
-    database: sekhele_sys_prod
+    database: sekhele_sys_prod_cable
     migrations_paths: db/cable_migrate
