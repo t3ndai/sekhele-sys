@@ -21,6 +21,7 @@ class SessionsController < ApplicationController
   end
 
   def new
+    render inertia: "Home/SignIn"
   end
 
   def create

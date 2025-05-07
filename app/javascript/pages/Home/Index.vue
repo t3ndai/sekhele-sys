@@ -9,14 +9,16 @@
 
     <div class="flex justify-end">
         <!--<SignIn />-->
-        <a href="/sign_in" v-if="!employee">Sign In</a>
+        <Button as="a" class="signIn-btn" href="/sign_in" v-if="!employee">
+            Sign In
+        </Button>
     </div>
 
-    <div>
-        <h1 class="font-belgrano header text-6xl">Werk by Sekhele</h1>
+    <div class="flex flex-col gap-y-10 mt-48 mb-48">
+        <p class="font-belgrano header text-9xl">Werk by Sekhele</p>
         <p class="text-center text-3xl font-jura text-gray-600 font-medium">
-            Werk is your organization's Operating System to run your HR &
-            Finance Operations
+            Werk is your Organization's Bespoke Operating System to run your HR,
+            Finance & Entire Operations*
         </p>
         <p class="text-center text-2xl font-jura text-gray-600 font-medium">
             We start with your most crucial asset which is your employees. Your
@@ -25,51 +27,38 @@
         </p>
     </div>
 
-    <div class="mt-4 mb-4">
-        <div class="sm:flex flex-col">
-            <div class="flex gap-x-4 w-full">
-                <div class="basis-1/3">
-                    <img
-                        :src="target"
-                        class="rounded-lg aspect-square @sm:aspect-3/2 h-64 w-64"
-                    />
-                </div>
-                <div class="basis-2/3">
-                    <h2 class="font-belgrano text-center minor-header">
-                        Strategic Alignment
-                    </h2>
-                    <p
-                        class="text-center text-2xl font-jura text-gray-600 font-medium"
-                    >
-                        Align your employees with your company's goals through
-                        tools such as Tasks, Employee Goals,Milestones with
-                        deadlines. <br />
-                        Streamline HR & Finance Operations by having a
-                        centralized platform for all HR and Finance related
-                        tasks. Automate repetitive tasks and reduce manual
-                        errors.
-                    </p>
-                    <p
-                        class="text-center text-2xl font-jura text-sky-500 font-medium"
-                    >
-                        Big Picture Thinking. Big Results.
-                    </p>
-                </div>
-            </div>
+    <div class="flex gap-x-4 space-y-48">
+        <div class="basis-1/3">
+            <img :src="target" class="rounded-lg aspect-square h-96 w-96" />
+        </div>
+        <div class="basis-2/3 self-baseline">
+            <p class="font-belgrano text-center text-4xl minor-header">
+                Strategic Alignment
+            </p>
+            <p class="text-center text-2xl font-jura text-gray-600 font-medium">
+                Align your employees with your company's goals through tools
+                such as Tasks, Employee Goals,Milestones with deadlines. <br />
+                Streamline HR & Finance Operations by having a centralized
+                platform for all HR and Finance related tasks. Automate
+                repetitive tasks and reduce manual errors.
+            </p>
+            <p class="text-center text-2xl font-jura text-sky-500 font-medium">
+                Big Picture Thinking. Big Results.
+            </p>
         </div>
     </div>
 
-    <div class="flex gap-x-4 mt-4 mb-4">
+    <div class="flex gap-x-4 space-y-48 items-center">
         <div class="basis-1/3">
             <img
                 :src="packages"
-                class="rounded-lg h-64 w-64 aspect-square @sm:aspect-3/2"
+                class="rounded-lg h-96 w-96 aspect-square @sm:aspect-3/2"
             />
         </div>
-        <div class="basis-2/3">
-            <h2 class="font-belgrano text-center minor-header">
+        <div class="basis-2/3 self-baseline">
+            <p class="font-belgrano text-center text-4xl minor-header">
                 Incentives & Compensation (Payroll)
-            </h2>
+            </p>
             <p class="font-jura text-center text-2xl text-gray-600 font-medium">
                 Incentivize your employees to achieve your company's goals
                 through Compensation (Payroll) - Job Levels, Compensation Bands,
@@ -79,16 +68,18 @@
         </div>
     </div>
 
-    <div class="flex gap-x-4 mt-4 mb-4 items-center">
+    <div class="flex space-y-48 items-center">
         <div class="basis-1/3">
             <img
                 :src="seedling"
-                class="rounded-lg h-64 w-64 aspect-square @sm:aspect-3/2"
+                class="rounded-lg h-96 w-96 aspect-square @sm:aspect-3/2"
             />
         </div>
 
-        <div class="basis-2/3">
-            <h2 class="font-belgrano text-center minor-header">Growth</h2>
+        <div class="basis-2/3 self-baseline">
+            <p class="font-belgrano text-center text-4xl minor-header">
+                Growth
+            </p>
             <p class="font-jura text-center text-2xl text-gray-600 font-medium">
                 Grow your company through your employees by empowering your
                 employees Career Growth & development through tools such as
@@ -97,16 +88,18 @@
         </div>
     </div>
 
-    <div class="flex gap-x-4 mt-4 mb-4 items-center">
+    <div class="flex gap-x-4 space-y-48 items-center">
         <div class="basis-1/3">
             <img
                 :src="magnet"
-                class="rounded-lg h-64 w-64 aspect-square @sm:aspect-3/2"
+                class="rounded-lg h-96 w-96 aspect-square @sm:aspect-3/2"
             />
         </div>
 
-        <div class="basis-2/3">
-            <h2 class="font-belgrano text-center minor-header">Attract</h2>
+        <div class="basis-2/3 self-baseline">
+            <p class="font-belgrano text-center text-4xl minor-header">
+                Attract
+            </p>
             <p class="font-jura text-center text-2xl text-gray-600 font-medium">
                 Attact Talent through tools such as Online Job Posts, Online Job
                 applications. <br />
@@ -120,17 +113,17 @@
         </div>
     </div>
 
-    <div class="flex gap-x-4 mt-4 mb-4 items-center">
+    <div class="flex gap-x-4 space-y-48 items-center">
         <div class="basis-1/3">
             <img
                 :src="chain"
-                class="rounded-lg h-64 w-64 aspect-square @sm:aspect-3/2"
+                class="rounded-lg h-96 w-96 aspect-square @sm:aspect-3/2"
             />
         </div>
-        <div class="basis-2/3">
-            <h2 class="font-belgrano text-center minor-header">
+        <div class="basis-2/3 self-baseline">
+            <p class="font-belgrano text-center text-4xl minor-header">
                 Connect & Engage
-            </h2>
+            </p>
             <p class="font-jura text-center text-2xl text-gray-600 font-medium">
                 Keep your employees Happy and Engaged through tools such as
                 Employee (Anonymous) Feedback, Pulse Surveys, and Employee
@@ -142,6 +135,7 @@
 
 <script setup>
 import { Head, usePage } from "@inertiajs/vue3";
+import { Button } from "primevue";
 import { computed } from "vue";
 import SignIn from "./SignIn.vue";
 import packages from "~/assets/images/packages.jpg";
@@ -156,12 +150,16 @@ const employee = computed(() => page.props.employee);
 
 <style scoped>
 .header {
-    color: var(--color-rose-500);
+    color: var(--color-rose-800);
     text-align: center;
-    font-size: 3rem;
 }
 
 .minor-header {
-    color: var(--color-rose-400);
+    color: var(--color-rose-600);
+}
+
+.signIn-btn {
+    border: none;
+    background-color: var(--color-indigo-500);
 }
 </style>

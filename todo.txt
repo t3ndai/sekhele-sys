@@ -320,6 +320,7 @@
         - by
         - belongs to Deal
         - belongs to Customer
+    - Company
 
 
 HomeScreen
@@ -413,7 +414,9 @@ through tools such as Employee (Anonymous) Feedback, Pulse Surveys, and Employee
 Our Difference
 
 We embed ourselves in your organization to fully understand your business, processes & culture.
-Then we provide a bespoke product tailored to your needs.
+Then we provide a bespoke product tailored to your needs, starting from a common foundation to ensure fast delivery.
+
+
 
 We are local and available to provide support & able to adapt to whatever custom needs you may
 have.

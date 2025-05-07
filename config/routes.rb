@@ -121,7 +121,7 @@ Rails.application.routes.draw do
   end
   resources :performance_review_questions
   resources :performance_review_types
-  root "home#index"
+  root "home#landing"
   get "landing", to: "home#landing"
   # Define your application routes per the DSL in https://guides.rubyonrails.org/routing.html
 

@@ -1,35 +1,26 @@
 <template>
-    <div>
-        <Button label="Sign In" @click="visible = true" class="login-btn" />
-    </div>
-    <div>
-        <Dialog
-            v-model:visible="visible"
-            header="Sign In"
-            @update:visible="visible = $event"
-        >
-            <form @submit.prevent="handleSubmit">
-                <div class="flex flex-col gap-y-1">
-                    <label for="email">Email</label>
-                    <InputText
-                        type="email"
-                        id="email"
-                        v-model="form.email"
-                        required
-                    />
-                </div>
-                <div class="flex mt-2 flex-col gap-y-1">
-                    <label for="password">Password</label>
-                    <InputText
-                        type="password"
-                        id="password"
-                        v-model="form.password"
-                        required
-                    />
-                </div>
-                <Button type="submit" class="mt-2 action-btn">Sign In</Button>
-            </form>
-        </Dialog>
+    <div class="items-center">
+        <form @submit.prevent="handleSubmit">
+            <div class="flex flex-col gap-y-1">
+                <label for="email">Email</label>
+                <InputText
+                    type="email"
+                    id="email"
+                    v-model="form.email"
+                    required
+                />
+            </div>
+            <div class="flex mt-2 flex-col gap-y-1">
+                <label for="password">Password</label>
+                <InputText
+                    type="password"
+                    id="password"
+                    v-model="form.password"
+                    required
+                />
+            </div>
+            <Button type="submit" class="mt-2 action-btn">Sign In</Button>
+        </form>
     </div>
 </template>
 
