@@ -1,13 +1,19 @@
 <template>
     <h2 class="heading belgrano-regular page-heading">Recruitment</h2>
 
-    <div class="page-section">
-        <div class="subsection">
+    <div class="page-section mb-24">
+        <div class="flex subsection justify-between">
             <h3 class="heading belgrano-regular">Listed Jobs</h3>
-            <div>
-                <Link :href="`/employees/${employee.id}/recruitment/new_job`">
-                New Job Post
-                </Link>
+            <div class="justify-self-end">
+                <Button class="btn no-underline" v-slot="slotProps">
+                    <Link
+                        :href="`/employees/${employee.id}/recruitment/new_job`"
+                        class="text-white no-underline"
+                        style="text-decoration: none !important"
+                    >
+                        New Job Post
+                    </Link>
+                </Button>
             </div>
         </div>
 
@@ -20,16 +26,20 @@
                 <Column field="created" header="Created on" />
                 <Column>
                     <template #body="{ data }">
-
-                        <Link :href="`/job_postings/${data.id}`">Details</Link>
-
+                        <Button asChild severity="secondary" v-slot="slotProps">
+                            <Link
+                                :href="`/job_postings/${data.id}`"
+                                :class="slotProps.class"
+                                >Details</Link
+                            >
+                        </Button>
                     </template>
                 </Column>
             </DataTable>
         </div>
     </div>
 
-    <div class="page-section">
+    <div class="page-section mb-24">
         <div class="subsection">
             <h3 class="heading belgrano-regular">Job Applicants</h3>
         </div>
@@ -40,13 +50,18 @@
                 <Column field="applied_on" header="Applied On" />
                 <Column>
                     <template #body="{ data }">
-                        <Link :href="`/employees/${employee.id}/recruitment/candidate/${data.id}`">Details</Link>
+                        <Button severity="secondary" asChild v-slot="slotProps">
+                            <Link
+                                :href="`/employees/${employee.id}/recruitment/candidate/${data.id}`"
+                                :class="slotProps.class"
+                                >Details</Link
+                            >
+                        </Button>
                     </template>
                 </Column>
             </DataTable>
         </div>
     </div>
-
 
     <div class="page-section">
         <div class="subsection">
@@ -64,27 +79,27 @@
 </template>
 
 <script setup>
+import { Link } from "@inertiajs/vue3";
+import { computed } from "vue";
+import { usePage } from "@inertiajs/vue3";
 
-import { Link } from '@inertiajs/vue3'
-import { computed } from 'vue'
-import { usePage } from '@inertiajs/vue3'
+import DataTable from "primevue/datatable";
+import Column from "primevue/column";
+import Button from "primevue/button";
 
-import DataTable from 'primevue/datatable';
-import Column from 'primevue/column';
-import ColumnGroup from 'primevue/columngroup';
-import Row from 'primevue/row';
-import Button from 'primevue/button'
-
-const page = usePage()
-const employee = computed(() => page.props.employee)
+const page = usePage();
+const employee = computed(() => page.props.employee);
 
 defineProps({
     listed_jobs: Array,
     job_applicants: Array,
     interviews: Array,
-})
-
-
+});
 </script>
 
-<style scoped></style>
+<style scoped>
+.btn {
+    background-color: orangered;
+    border: none;
+}
+</style>

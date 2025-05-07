@@ -16,11 +16,11 @@
             @update:visible="visible = $event"
         >
             <form class="space-y-4" @submit.prevent="saveTalent">
-                <div>
+                <div class="flex flex-col mb-4 gap-y-0.5">
                     <label for="title">Name</label>
                     <InputText id="title" v-model="form.name" />
                 </div>
-                <div>
+                <div class="flex flex-col gap-y-0.5">
                     <label for="notes">Description</label>
                     <Textarea
                         id="notes"
@@ -34,6 +34,7 @@
                         label="Save"
                         icon="pi pi-save"
                         type="submit"
+                        class="new-btn"
                         :disabled="form.processing"
                     />
                 </div>

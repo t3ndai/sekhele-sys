@@ -1,7 +1,7 @@
 <template>
     <h2 class="page-heading">Benefits</h2>
     <div class="page-section">
-        <h3 class="heading belgrano-regular">Current Benefits Selected </h3>
+        <h3 class="heading belgrano-regular">Current Benefits Selected</h3>
         <div>
             <DataTable :value="benefit_elections" tableStyle="min-width: 50rem">
                 <Column field="benefit" header="Benefit"></Column>
@@ -20,9 +20,14 @@
                 <Column field="valuation_type" header="Valuation Type"></Column>
                 <Column>
                     <template #body="{ data }, empoloyee">
-                        <Link :href="`/employees/${employee.id}/benefits/${data.id}`">
-                        View Plans
-                        </Link>
+                        <Button severity="secondary" asChild v-slot="slotProps">
+                            <Link
+                                :href="`/employees/${employee.id}/benefits/${data.id}`"
+                                :class="slotProps.class"
+                            >
+                                View Plans
+                            </Link>
+                        </Button>
                     </template>
                 </Column>
             </DataTable>
@@ -31,31 +36,29 @@
 </template>
 
 <script setup>
-import { Link } from '@inertiajs/vue3'
-import { computed } from 'vue'
-import { usePage } from '@inertiajs/vue3'
+import { Link } from "@inertiajs/vue3";
+import { computed } from "vue";
+import { usePage } from "@inertiajs/vue3";
 
-import DataTable from 'primevue/datatable';
-import Column from 'primevue/column';
-import ColumnGroup from 'primevue/columngroup';
-import Row from 'primevue/row';
-import Button from 'primevue/button'
+import DataTable from "primevue/datatable";
+import Column from "primevue/column";
+import ColumnGroup from "primevue/columngroup";
+import Row from "primevue/row";
+import Button from "primevue/button";
 
-const page = usePage()
-const employee = computed(() => page.props.employee)
+const page = usePage();
+const employee = computed(() => page.props.employee);
 
 defineProps({
     employee_benefits: Array,
-    benefit_elections: Array
-})
-
-
+    benefit_elections: Array,
+});
 </script>
 
 <style scoped>
 .heading {
     font-size: 2rem;
     font-weight: 400;
-    color: #111509
+    color: #111509;
 }
 </style>

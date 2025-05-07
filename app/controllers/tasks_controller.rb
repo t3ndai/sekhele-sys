@@ -30,7 +30,7 @@ class TasksController < ApplicationController
 
     respond_to do |format|
       if @task.save
-        format.html { redirect_to employee_employee_dashboard_show_path(@current_employee), notice: "Task was successfully created." }
+        format.html { redirect_to employee_home_path(@current_employee), notice: "Task was successfully created." }
         format.json { render :show, status: :created, location: @task }
       else
         format.html { render :new, status: :unprocessable_entity }

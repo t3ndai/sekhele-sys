@@ -13,10 +13,10 @@
             header="New Task"
             :visible="visible"
             @update:visible="visible = $event"
+            :style="{ width: '25vw' }"
         >
-            <form class="space-y-4" @submit.prevent="saveTask">
-                <h4>Task Details</h4>
-                <div>
+            <form class="flex flex-col space-y-4" @submit.prevent="saveTask">
+                <div class="flex flex-col gap-y-0.5 mb-2">
                     <label for="title">Title</label>
                     <InputText id="title" v-model="form.title" />
                     <Message
@@ -27,15 +27,17 @@
                         >{{ form.errors.title }}</Message
                     >
                 </div>
-                <div>
-                    <DatePicker
+                <div class="flex flex-col gap-y-0.5 mb-2">
+                    <label for="due_on">Due On</label>
+                    <input
+                        type="date"
+                        class="form-control"
                         v-model="form.due_on"
                         inputId="due_on"
                         showIcon
                         iconDisplay="input"
                         variant="filled"
                     />
-                    <label for="due_on">Due On</label>
                 </div>
                 <div>
                     <label for="notes">Notes</label>
@@ -58,14 +60,14 @@
                         class="w-full md:w-56"
                     />
                 </div>
-                <div>
-                    <Button
-                        label="Save"
-                        icon="pi pi-save"
-                        type="submit"
-                        :disabled="form.processing"
-                    />
-                </div>
+
+                <Button
+                    label="Save"
+                    icon="pi pi-save"
+                    type="submit"
+                    class="task-btn"
+                    :disabled="form.processing"
+                />
             </form>
         </Dialog>
     </div>
@@ -74,8 +76,6 @@
 <script setup>
 import Button from "primevue/button";
 import Dialog from "primevue/dialog";
-import DatePicker from "primevue/datepicker";
-import FloatLabel from "primevue/floatlabel";
 import Textarea from "primevue/textarea";
 import InputText from "primevue/inputtext";
 import Select from "primevue/select";
@@ -99,9 +99,12 @@ const form = useForm({
 });
 
 function saveTask() {
-    form.post("/tasks");
-    visible.value = false;
-    form.reset();
+    form.post("/tasks", {
+        onSuccess: () => {
+            visible.value = false;
+            form.reset();
+        },
+    });
 }
 
 const visible = ref(false);

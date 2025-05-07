@@ -2,12 +2,12 @@
     <h2 class="page-heading">Candidate</h2>
 
     <div>
-        <Link :href="`/employees/${employee.id}/recruitment`">
+        <Link :href="`/employees/${employee.id}/recruitment`" class="btn">
             Back To Recruitment
         </Link>
     </div>
 
-    <div class="mt-2 mb-6">
+    <div class="mt-2 mb-24">
         <div class="subsection">
             <h3 class="heading belgrano-regular">Candidate Details</h3>
             <div>
@@ -27,7 +27,7 @@
                 </div>
             </div>
         </div>
-        <div class="details-card place-self-center">
+        <div class="details-card">
             <div class="value">
                 <span class="label">Name:</span> {{ candidate.name }}
             </div>
@@ -49,7 +49,7 @@
             </div>
         </div>
     </div>
-    <div class="mb-6">
+    <div class="mb-24">
         <div class="subsection">
             <h3 class="heading belgrano-regular">Candidate Notes</h3>
             <Button
@@ -111,7 +111,7 @@
                 />
             </div>
         </div>
-        <div class="interview-card" v-if="candidate.interviews.length">
+        <div class="interview-card gap-y-4" v-if="candidate.interviews.length">
             <div v-for="interview in candidate.interviews" :key="interview.id">
                 <div class="interview-header">
                     <div class="time-header">
@@ -300,5 +300,11 @@ const visible = ref(false);
         font-weight: lighter;
         color: var(--color-slate-400);
     }
+}
+
+.btn {
+    text-decoration: none;
+    background-color: lightgray;
+    border: none;
 }
 </style>

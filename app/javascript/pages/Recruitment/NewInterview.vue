@@ -14,10 +14,11 @@
                 v-model:visible="visible"
                 header="New Interview"
                 @update:visible="visible = $event"
+                :style="{ width: '25vw' }"
             >
                 <div>
-                    <form @submit.prevent="submit">
-                        <fieldset class="radios">
+                    <form @submit.prevent="submit" class="gap-y-5">
+                        <fieldset class="radios mb-7">
                             <legend>Interview Stage</legend>
                             <div v-for="interview_stage in interview_stages">
                                 <RadioButton
@@ -31,17 +32,21 @@
                                 }}</label>
                             </div>
                         </fieldset>
-                        <div class="form-row">
+                        <div class="form-row mb-2 gap-y-0.5">
                             <label for="interview_on">Interview On</label>
-                            <DatePicker v-model="form.interview_on" />
+                            <input
+                                type="date"
+                                class="form-control"
+                                v-model="form.interview_on"
+                            />
                         </div>
                         <div class="form-row">
                             <label for="inteview_at">Interview At</label>
-                            <DatePicker
+                            <input
+                                type="time"
                                 id="interview_at"
                                 v-model="form.interview_at"
-                                timeOnly
-                                fluid
+                                class="form-control"
                             />
                         </div>
                         <div class="form-row">
@@ -91,7 +96,6 @@ import { computed, ref } from "vue";
 import Button from "primevue/button";
 import Dialog from "primevue/dialog";
 import Textarea from "primevue/textarea";
-import DatePicker from "primevue/datepicker";
 import RadioButton from "primevue/radiobutton";
 import InputText from "primevue/inputtext";
 
@@ -123,13 +127,14 @@ const { candidate_id } = defineProps({
 .form-row {
     display: flex;
     flex-direction: column;
-    margin-bottom: 0.2rem;
+    margin-bottom: 1rem;
 }
 
 .radios {
     border: 1px solid var(--color-gray-200);
     border-radius: 5px;
     padding: 2px;
+    margin-bottom: 1rem;
 }
 
 .action-btn {

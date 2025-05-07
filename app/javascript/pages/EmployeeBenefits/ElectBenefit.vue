@@ -1,11 +1,15 @@
 <template>
     <div>
-        <Button @click="showPlanDetails">
-            Select Plan
-        </Button>
-        <Dialog v-model:visible="visible" :modal="true" :header="`Benefit Plan`" :style="{ width: '50vw' }">
-
-            <h2 class="belgrano-regular"> Confirm {{ benefit.name }} Selection </h2>
+        <Button @click="showPlanDetails" class="btn"> Select Plan </Button>
+        <Dialog
+            v-model:visible="visible"
+            :modal="true"
+            :header="`Benefit Plan`"
+            :style="{ width: '50vw' }"
+        >
+            <h2 class="belgrano-regular">
+                Confirm {{ benefit.name }} Selection
+            </h2>
 
             <div>
                 <p>Selected Plan: {{ plan.name }}</p>
@@ -13,64 +17,72 @@
                 <p>Plan Cost: {{ plan.employee_contribution }}</p>
             </div>
 
-            <div>
-                <Button label="Confirm" severity="success" @click="confirmSelection">
+            <div class="flex gap-x-4">
+                <Button label="Confirm" class="btn" @click="confirmSelection">
                     Confirm
                 </Button>
-                <Button label="Cancel" severity="danger" @click="cancelSelection">
+                <Button
+                    label="Cancel"
+                    severity="secondary"
+                    @click="cancelSelection"
+                >
                     Cancel
                 </Button>
             </div>
         </Dialog>
     </div>
-
 </template>
 
 <script setup>
+import { usePage } from "@inertiajs/vue3";
+import { computed } from "vue";
 
-import { usePage } from '@inertiajs/vue3'
-import { computed } from 'vue'
+import Dialog from "primevue/dialog";
+import Button from "primevue/button";
+import { router } from "@inertiajs/vue3";
 
-import Dialog from 'primevue/dialog';
-import Button from 'primevue/button'
-import { router } from '@inertiajs/vue3'
-
-const page = usePage()
-const employee = computed(() => page.props.employee)
+const page = usePage();
+const employee = computed(() => page.props.employee);
 
 const props = defineProps({
     benefit: {
         type: Object,
-        required: true
+        required: true,
     },
     plan: {
         type: Object,
-        required: true
-    }
-})
+        required: true,
+    },
+});
 const visible = defineModel({
     type: Boolean,
-    default: false
-})
-
+    default: false,
+});
 
 function showPlanDetails() {
-    visible.value = true
+    visible.value = true;
 }
 function confirmSelection() {
     // Logic to confirm the selection
 
-    const { benefit, plan } = props
+    const { benefit, plan } = props;
 
-    const employee_id = employee.value.id
+    const employee_id = employee.value.id;
 
-    router.post(`/employees/${employee_id}/benefits/${benefit.id}/benefit_plans/${plan.id}`)
-    visible.value = false
+    router.post(
+        `/employees/${employee_id}/benefits/${benefit.id}/benefit_plans/${plan.id}`,
+    );
+    visible.value = false;
 }
 function cancelSelection() {
     // Logic to cancel the selection
-    visible.value = false
+    visible.value = false;
 }
-
-
 </script>
+
+<style scoped>
+.btn {
+    background-color: orangered;
+    border: none;
+}
+</style>

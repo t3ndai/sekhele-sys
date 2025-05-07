@@ -1,5 +1,5 @@
 <script setup>
-import { Link, usePage } from "@inertiajs/vue3";
+import { Link, usePage, Head } from "@inertiajs/vue3";
 import { computed, ref } from "vue";
 
 const page = usePage();
@@ -8,6 +8,9 @@ const org_id = computed(() => page.props.org_id).value;
 </script>
 
 <template>
+    <Head>
+        <title>Werk by Sekhele</title>
+    </Head>
     <div class="flex gap-x-4 w-screen">
         <nav
             class="flex flex-col insert-y-0 left-0 gap-y-4 items-center bg-gray-100 min-h-screen"

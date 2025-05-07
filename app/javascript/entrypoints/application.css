@@ -13,6 +13,13 @@
     --font-jura: "Jura", sans-serif;
 }
 
+@layer base {
+    ul,
+    ol {
+        list-style: revert;
+    }
+}
+
 body {
     background-color: #f4f4fd;
 }
