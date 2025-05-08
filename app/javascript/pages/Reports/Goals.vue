@@ -1,7 +1,12 @@
 <template>
-    <h2 class="heading belgrano-regular">{{ report.name }}'s Goals</h2>
+    <div class="flex justify-between mb-5">
+        <h2 class="heading belgrano-regular">{{ report.name }}'s Goals</h2>
+        <div>
+            <NewGoal :report />
+        </div>
+    </div>
 
-    <Goals :goals="goals" />
+    <Goal :goals="goals" />
 
     <Button
         label="Back to Reports"
@@ -13,7 +18,9 @@
 
 <script setup>
 import Goals from "../../components/Goals.vue";
+import Goal from "./Goal.vue";
 import Button from "primevue/button";
+import NewGoal from "./NewGoal.vue";
 
 defineProps({
     goals: Array,

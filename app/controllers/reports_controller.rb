@@ -42,7 +42,14 @@ class ReportsController < ApplicationController
 
   def career
     report = Employee.find(params[:report_id])
-    career_vision = report.career_vision
+    career_visions = report.career_visions.map do |vision|
+      {
+        id: vision.id,
+        name: vision.name,
+        description: vision.description,
+        outline: vision.outline.humanize
+      }
+    end
     motivations = report.motivations.map do |motivation|
       {
         id: motivation.id,
@@ -56,10 +63,7 @@ class ReportsController < ApplicationController
         id: report.id,
         name: report.full_name
       },
-      career_vision: {
-        id: career_vision.id,
-        vision: career_vision.vision.body.to_plain_text
-      },
+      career_visions:,
       motivations:
     }
   end

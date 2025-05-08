@@ -35,7 +35,7 @@ Rails.application.routes.draw do
       get "my_career", to: "my_career#index"
       get "leave", to: "leave#index"
       get "reports", to: "reports#index"
-      get "reports/:report_id/goals", to: "reports#goals"
+      get "reports/:report_id/goals", to: "reports#goals", as: "report_goals"
       get "reports/:report_id/career", to: "reports#career"
       get "people", to: "people#index"
       resources :employee_jobs
@@ -122,7 +122,7 @@ Rails.application.routes.draw do
   resources :performance_review_questions
   resources :performance_review_types
   root "home#landing"
-  get "landing", to: "home#landing"
+  get "app_index", to: "home#index"
   # Define your application routes per the DSL in https://guides.rubyonrails.org/routing.html
 
   # Reveal health status on /up that returns 200 if the app boots with no exceptions, otherwise 500.

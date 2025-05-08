@@ -24,10 +24,11 @@ class MilestonesController < ApplicationController
   def create
     @milestone = Milestone.new(milestone_params)
     @milestone.goal = @goal
+    @employee = @goal.employee
 
     respond_to do |format|
       if @milestone.save
-        format.html { redirect_to @milestone, notice: "Milestone was successfully created." }
+        format.html { redirect_to employee_report_goals_path(@current_employee, @employee), notice: "Milestone was successfully created." }
         format.json { render :show, status: :created, location: @milestone }
       else
         format.html { render :new, status: :unprocessable_entity }
