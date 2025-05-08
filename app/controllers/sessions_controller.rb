@@ -38,7 +38,7 @@ class SessionsController < ApplicationController
         if @current_employee
           redirect_to employee_home_path(@current_employee), notice: "Signed in successfully"
         else
-          redirect_to root_path, notice: "Signed in successfully"
+          redirect_to app_index_path, notice: "Signed in successfully"
         end
       end
     else
