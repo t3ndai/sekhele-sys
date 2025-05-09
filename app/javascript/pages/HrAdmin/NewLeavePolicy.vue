@@ -49,9 +49,11 @@
                 </div>
                 <div class="flex flex-col mb-2">
                     <label class="label" for="serial_number">Valid From</label>
-                    <DatePicker
+                    <input
+                        type="date"
                         name="valid_from"
                         id="valid_from"
+                        class="form-control"
                         v-model="form.valid_from"
                     />
                     <div v-if="form.errors.valid_from" class="error">
@@ -60,9 +62,11 @@
                 </div>
                 <div class="flex flex-col mb-2">
                     <label class="label" for="serial_number">Valid To</label>
-                    <DatePicker
+                    <input
+                        type="date"
                         name="valid_to"
                         id="valid_to"
+                        class="form-control"
                         v-model="form.valid_to"
                     />
                     <div v-if="form.errors.valid_to" class="error">
