@@ -15,9 +15,14 @@
             <Column field="valuation_type" header="Valuation Type"></Column>
             <Column>
                 <template #body="{ data }, empoloyee">
-                    <Link :href="`/benefits/${data.id}`">
-                        View Details & Plans
-                    </Link>
+                    <Button severity="secondary" asChild v-slot="slotProps">
+                        <Link
+                            :href="`/benefits/${data.id}`"
+                            :class="slotProps.class"
+                        >
+                            View Details & Plans
+                        </Link>
+                    </Button>
                 </template>
             </Column>
         </DataTable>
@@ -41,6 +46,7 @@
 import { Link } from "@inertiajs/vue3";
 import DataTable from "primevue/datatable";
 import Column from "primevue/column";
+import Button from "primevue/button";
 import NewBenefitType from "./NewBenefitType.vue";
 import NewBenefit from "./NewBenefit.vue";
 

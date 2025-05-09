@@ -120,6 +120,7 @@ const form = useForm({
 
 function saveBenefitPlan() {
     const { benefit } = props;
+    form.transform((data) => ({ benefit_plan: data }));
     form.post(`/benefits/${benefit.id}/benefit_plans`, {
         onSuccess: () => {
             form.reset();
