@@ -67,4 +67,35 @@ class ReportsController < ApplicationController
       motivations:
     }
   end
+
+  def new_downward_performance_review
+    report = Employee.find(params[:report_id])
+    puts report.id
+    performance_review_response = PerformanceReviewResponse.incomplete(report).active.first
+
+    review_response =
+      {
+        id: performance_review_response.id,
+        title: performance_review_response.performance_review.name,
+        response: performance_review_response.response
+      } if performance_review_response
+
+    puts review_response.inspect
+    questions = PerformanceReviewType.downward.first.performance_review_questions
+    response = review_response[:response] || questions.map do |question|
+      {
+        question: question.title,
+        answer: ""
+      }
+
+    end
+    render inertia: "Reports/NewPerformanceReview", props: {
+      report: {
+        id: report.id,
+        name: report.full_name,
+      },
+      response:,
+      review_response:,
+    }
+  end
 end

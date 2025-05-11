@@ -385,9 +385,11 @@ HomeScreen
 
 ---- Staging Log In -------
 
-lana@bigbank.co.zw
+lana@bigbank.co.zw | ivory@bigbank.co.zw
 bigsecrets1234
 
+--
+curl http://localhost:2019/config/ to check caddy status
 
 -------------------
 Werk By Sekhele

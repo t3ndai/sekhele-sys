@@ -20,5 +20,5 @@ class EmployeeFile < ApplicationRecord
   belongs_to :employee
   has_one_attached :file
 
-  validates :name, uniqueness: { scope: :document_id }
+  validates :name, uniqueness: { scope: [ :document_id, :employee_id ] }
 end

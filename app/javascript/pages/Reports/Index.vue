@@ -39,6 +39,14 @@
                             Career
                         </Link>
                     </div>
+                    <div>
+                        <Link
+                            :href="`/employees/${employee.id}/reports/${report.id}/new_performance_review`"
+                            class="new-review-btn"
+                        >
+                            New Perfomance Review
+                        </Link>
+                    </div>
                 </div>
             </div>
         </div>
@@ -102,6 +110,14 @@ defineProps({
     padding: 12px;
     border-radius: 6px;
     background-color: brown;
+    text-decoration: none;
+    color: white;
+}
+
+.new-review-btn {
+    padding: 12px;
+    border-radius: 6px;
+    background-color: skyblue;
     text-decoration: none;
     color: white;
 }

@@ -29,4 +29,11 @@ class PerformanceReviewResponse < ApplicationRecord
   enum :status, { incomplete: "incomplete", draft: "draft", submitted: "submitted" }, default: :incomplete
 
   scope :reviews, -> (reviewee) {where(reviewee: reviewee).where(status: :submitted)}
+
+  scope :incomplete, -> (reviewee) {where(reviewee: reviewee).where(status: :incomplete) }
+
+  scope :active, -> {
+    joins(:performance_review)
+      .where('performance_reviews.opens_on <= ? AND performance_reviews.closes_on >= ?', Date.current, Date.current)
+  }
 end

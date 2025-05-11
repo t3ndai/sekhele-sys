@@ -40,7 +40,9 @@
                 </div>
                 <div class="flex flex-col mb-2">
                     <label class="label" for="opens_on">Opens On</label>
-                    <DatePicker
+                    <input
+                        type="date"
+                        class="form-control"
                         name="opens_on"
                         id="opens_on"
                         v-model="form.opens_on"
@@ -51,7 +53,9 @@
                 </div>
                 <div class="flex flex-col mb-2">
                     <label class="label" for="serial_number">Closes On</label>
-                    <DatePicker
+                    <input
+                        type="date"
+                        class="form-control"
                         name="closes_on"
                         id="closes_on"
                         v-model="form.closes_on"

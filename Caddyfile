@@ -1,4 +1,4 @@
 https://localhost:8002 {
-    reverse_proxy localhost:8000
+    reverse_proxy http://localhost:8931
     tls internal
 }
