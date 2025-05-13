@@ -38,9 +38,12 @@ class EmployeePaysController < ApplicationController
   # POST /employee_pays
   def create
     @employee_pay = EmployeePay.new(employee_pay_params)
+    @employee = Employee.find(params[:employee_id])
+    @employee_pay.employee = @employee
+    @organization = @employee.organization
 
     if @employee_pay.save
-      redirect_to @employee_pay, notice: "Employee pay was successfully created."
+      redirect_to organization_hr_admin_employee_path(@organization, @employee_pay.employee), notice: "Employee pay was successfully created."
     else
       redirect_to new_employee_pay_url, inertia: { errors: @employee_pay.errors }
     end

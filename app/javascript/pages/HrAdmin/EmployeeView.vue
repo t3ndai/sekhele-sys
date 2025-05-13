@@ -22,7 +22,11 @@
                     <EmployeePersonalView :employee />
                 </TabPanel>
                 <TabPanel value="1">
-                    <EmployeePayView :pay />
+                    <EmployeePayView
+                        :currency_options
+                        :pay_type_options
+                        :frequency_options
+                    />
                 </TabPanel>
                 <TabPanel value="2">
                     <EmployeeBenefitsView :benefits />
@@ -65,6 +69,7 @@ import EmployeeLeaveView from "./EmployeeLeaveView.vue";
 import EmployeeDocuments from "./EmployeeDocuments.vue";
 import EmployeePerformanceView from "./EmployeePerformanceView.vue";
 import EmployeePersonalView from "./EmployeePersonalView.vue";
+import EmployeePayView from "./EmployeePayView.vue";
 
 defineProps({
     employee: Object,
@@ -76,6 +81,9 @@ defineProps({
     leave_balances: Array,
     documents: Array,
     performance_reviews: Array,
+    currency_options: Array,
+    pay_type_options: Array,
+    frequency_options: Array,
 });
 </script>
 

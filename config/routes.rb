@@ -42,6 +42,7 @@ Rails.application.routes.draw do
       get "recruitment", to: "recruitment#index"
       get "recruitment/new_job", to: "recruitment#newjob"
       get "recruitment/candidate/:candidate_id", to: "recruitment#candidate", as: "recruitment_candidate"
+      resources :employee_pays
       end
     get "/hr_admin", to: "hr_admin#index"
     get "/hr_admin/employees/:employee_id", to: "hr_admin#detailed_view", as: "hr_admin_employee"
@@ -59,7 +60,6 @@ Rails.application.routes.draw do
     resources :benefits do
       resources :benefit_plans
     end
-    resources :employee_pays
     resources :job_postings
     get "jobs/", to: "jobs#index"
     get "jobs/:job_posting_id", to: "jobs#show", as: "job"

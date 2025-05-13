@@ -311,6 +311,31 @@ class HrAdminController < ApplicationController
       }
     end
 
-    render inertia: "HrAdmin/EmployeeView", props: { employee:, benefits:, assets:, jobs:, past_leaves:, future_leaves:, leave_balances:, documents:, performance_reviews: }
+    currency_options = EmployeePay.currencies.keys.map do |currency|
+      {
+        name: currency.humanize,
+        value: currency.to_s
+      }
+    end
+
+    pay_type_options = EmployeePay.pay_types.keys.map do |pay_type|
+      {
+        name: pay_type.humanize,
+        value: pay_type.to_s
+      }
+    end
+
+    frequency_options = EmployeePay.frequencies.keys.map do |frequency|
+      {
+        name: frequency.humanize,
+        value: frequency.to_s
+      }
+    end
+
+    render inertia: "HrAdmin/EmployeeView", props: { employee:, benefits:, assets:,
+      jobs:, past_leaves:, future_leaves:,
+      leave_balances:, documents:, performance_reviews:,
+      currency_options:, pay_type_options:, frequency_options:,
+    }
   end
 end
