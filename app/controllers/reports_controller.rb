@@ -82,7 +82,7 @@ class ReportsController < ApplicationController
 
     puts review_response.inspect
     questions = PerformanceReviewType.downward.first.performance_review_questions
-    response = review_response[:response] || questions.map do |question|
+    response = review_response&.dig(:response) || questions.map do |question|
       {
         question: question.title,
         answer: ""

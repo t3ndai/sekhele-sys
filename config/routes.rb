@@ -21,8 +21,7 @@ Rails.application.routes.draw do
         resources :milestones
       end
       resources :one_to_ones do
-            end
-      resources :performance_review_responses
+      end
       resources :motivations
       resources :career_visions
       resources :talents
@@ -89,6 +88,8 @@ Rails.application.routes.draw do
   end
 
   resources :tasks, only: %i[create update destroy]
+  resources :performance_review_responses, only: %i[ create update destroy]
+  post "performance_review_responses/downward_review", to: "performance_review_responses#downward_review"
   namespace :app_admin do
     resources :users
   end

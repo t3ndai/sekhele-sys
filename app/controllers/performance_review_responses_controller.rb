@@ -23,7 +23,7 @@ class PerformanceReviewResponsesController < ApplicationController
 
   # POST /performance_review_responses or /performance_review_responses.json
   def create
-    @performance_review_response = PerformanceReviewResponse.new(performance_review_response_params)
+    @performance_review_response = PerformanceReviewResponse.new(performance_review_response_params.merge(status: "submitted", submitted_on: Date.current))
 
     respond_to do |format|
       if @performance_review_response.save
@@ -54,6 +54,24 @@ class PerformanceReviewResponsesController < ApplicationController
     end
   end
 
+  def downward_review
+    @performance_review_response = PerformanceReviewResponse.find(performance_review_response_params[:performance_review_response_id])
+    review_params = performance_review_response_params.except(:performance_review_response_id)
+    response = params.dig(:performance_review_response, :response)
+
+    respond_to do |format|
+      if @performance_review_response.update(review_params.merge(status: "submitted", submitted_on: Date.current))
+        format.html { redirect_to employee_reports_path(@current_employee), notice: "Performance review response was successfully created." }
+        format.json { render :show, status: :created, location: @performance_review_response }
+      else
+        format.html { render :new, status: :unprocessable_entity }
+        format.json { render json: @performance_review_response.errors, status: :unprocessable_entity }
+      end
+    end
+
+
+  end
+
   # DELETE /performance_review_responses/1 or /performance_review_responses/1.json
   def destroy
     @performance_review_response.destroy!
@@ -77,6 +95,7 @@ class PerformanceReviewResponsesController < ApplicationController
     # Only allow a list of trusted parameters through.
     def performance_review_response_params
       params.expect(performance_review_response: [ :reviewer_id, :reviewee_id, :status, :response, :submitted_on, :performance_review_id,
+        :performance_review_response_id,
         performance_review_answers_attributes: [ [ :id, :answer ] ]
     ])
     end

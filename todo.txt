@@ -1,5 +1,10 @@
 #TODO
 
+Always Answer - How does it Help ?
+Purpose of Software to "Help People"
+i.e make things easier to do
+Guiding Principle - "How can we help"
+
 - Add Employee to organization x
     - Employee doesn't get deleted but set to status "inactive"
 - Add Department to organization x
@@ -423,7 +428,7 @@ Our Difference
 We embed ourselves in your organization to fully understand your business, processes & culture.
 Then we provide a bespoke product tailored to your needs, starting from a common foundation to ensure fast delivery.
 
-
+Who's responsible for What, When & delivery to Whom
 
 We are local and available to provide support & able to adapt to whatever custom needs you may
 have.

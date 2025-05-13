@@ -5,7 +5,7 @@
         </p>
     </div>
     <div>
-        <form>
+        <form @submit.prevent="submit">
             <div v-for="question in response" class="flex flex-col mb-5">
                 <label :for="question">{{ question.question }}</label>
                 <TextArea
@@ -16,8 +16,7 @@
                 />
             </div>
             <div class="flex gap-x-4">
-                <Button class="draft-btn"> Submit as Draft </Button>
-                <Button class="submit-btn"> Submit </Button>
+                <button class="submit-btn" type="submit">Submit</button>
             </div>
         </form>
     </div>
@@ -26,23 +25,42 @@
 <script setup>
 import TextArea from "primevue/textarea";
 import Button from "primevue/button";
-import { useForm } from "@inertiajs/vue3";
+import { useForm, usePage } from "@inertiajs/vue3";
+import { computed } from "vue";
+
+const page = usePage();
+const employee = computed(() => page.props.employee).value;
 
 const form = useForm({
     response: {},
 });
 
-defineProps({
+const { report, review_response } = defineProps({
     report: Object,
     response: Object,
     review_response: Object,
 });
+
+function submit() {
+    form.transform((data) => ({
+        performance_review_response: {
+            ...data,
+            performance_review_response_id: `${review_response.id}`,
+            reviewer_id: `${employee.id}`,
+            reviewee_id: `${report.id}`,
+        },
+    }));
+    form.post(`/performance_review_responses/downward_review`);
+}
 </script>
 
 <style scope>
 .submit-btn {
-    background-color: orangered;
+    background: orangered;
     border: none;
+    color: white;
+    padding: 12px;
+    border-radius: 6px;
 }
 
 .draft-btn {
