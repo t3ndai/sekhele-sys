@@ -36,6 +36,7 @@ Rails.application.routes.draw do
       get "reports/:report_id/goals", to: "reports#goals", as: "report_goals"
       get "reports/:report_id/career", to: "reports#career"
       get "reports/:report_id/new_performance_review", to: "reports#new_downward_performance_review"
+      get "reports/:report_id/past_reviews", to: "reports#past_reviews"
       get "people", to: "people#index"
       resources :employee_jobs
       get "recruitment", to: "recruitment#index"

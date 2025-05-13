@@ -47,6 +47,14 @@
                             New Perfomance Review
                         </Link>
                     </div>
+                    <div>
+                        <Link
+                            :href="`/employees/${employee.id}/reports/${report.id}/past_reviews`"
+                            class="past-review-btn"
+                        >
+                            Past Reviews
+                        </Link>
+                    </div>
                 </div>
             </div>
         </div>
@@ -118,6 +126,14 @@ defineProps({
     padding: 12px;
     border-radius: 6px;
     background-color: skyblue;
+    text-decoration: none;
+    color: white;
+}
+
+.past-review-btn {
+    padding: 12px;
+    border-radius: 6px;
+    background-color: lightsteelblue;
     text-decoration: none;
     color: white;
 }

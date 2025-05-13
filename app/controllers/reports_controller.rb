@@ -98,4 +98,24 @@ class ReportsController < ApplicationController
       review_response:,
     }
   end
+
+  def past_reviews
+    report = Employee.find(params[:report_id])
+    reviews = PerformanceReviewResponse.reviews(report).order(submitted_on: :desc).map do |review|
+      {
+        id: review.id,
+        reviewer: review.reviewer.full_name,
+        name: review.performance_review.name.humanize,
+        type: review.performance_review.performance_review_type.name.humanize,
+        response: review.response
+      }
+    end
+
+    render inertia: "Reports/PastReviews", props: {
+      report: {
+        id: report.id,
+        name: report.full_name,
+      },
+      reviews:}
+  end
 end
