@@ -73,6 +73,7 @@ class Employee < ApplicationRecord
   has_many :locations, through: :employee_locations
   has_many :performance_review_responses, inverse_of: "reviewee"
   has_many :performance_review_responses, inverse_of: "reviewer"
+  has_many :employee_pays
 
   after_create :create_user
 

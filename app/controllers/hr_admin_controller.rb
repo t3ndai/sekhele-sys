@@ -332,10 +332,22 @@ class HrAdminController < ApplicationController
       }
     end
 
+    employee_pays = @employee.employee_pays.map do |employee_pay|
+      {
+        amount: employee_pay.amount,
+        start_date: employee_pay.start_date,
+        end_date: employee_pay.end_date,
+        currency: employee_pay.currency.humanize,
+        frequency: employee_pay.frequency.humanize,
+        pay_type: employee_pay.pay_type.humanize
+      }
+    end
+
     render inertia: "HrAdmin/EmployeeView", props: { employee:, benefits:, assets:,
       jobs:, past_leaves:, future_leaves:,
       leave_balances:, documents:, performance_reviews:,
       currency_options:, pay_type_options:, frequency_options:,
+      employee_pays:,
     }
   end
 end

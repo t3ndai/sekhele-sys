@@ -5,7 +5,7 @@
                 label="New Employee Pay"
                 icon="pi pi-plus"
                 @click="visible = true"
-                class="leave-btn"
+                class="pay-btn"
             />
         </div>
         <Dialog

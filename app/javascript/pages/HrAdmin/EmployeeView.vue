@@ -26,6 +26,7 @@
                         :currency_options
                         :pay_type_options
                         :frequency_options
+                        :employee_pays
                     />
                 </TabPanel>
                 <TabPanel value="2">
@@ -84,6 +85,7 @@ defineProps({
     currency_options: Array,
     pay_type_options: Array,
     frequency_options: Array,
+    employee_pays: Array,
 });
 </script>
 
