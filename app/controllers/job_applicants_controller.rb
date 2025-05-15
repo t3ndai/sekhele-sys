@@ -28,7 +28,7 @@ class JobApplicantsController < ApplicationController
 
     respond_to do |format|
       if @job_applicant.save
-        format.html { redirect_to organization_job_path(@job_posting), notice: "Job application submitted succesfully" }
+        format.html { redirect_to organization_job_path(@job_posting.organization, @job_posting), notice: "Job application submitted succesfully" }
         format.json { render :show, status: :created, location: @job_applicant }
       else
         format.html { render :new, status: :unprocessable_entity }
