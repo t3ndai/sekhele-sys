@@ -54,7 +54,7 @@ class ReportsController < ApplicationController
       {
         id: motivation.id,
         name: motivation.name,
-        description: motivation.description.body.to_plain_text
+        description: motivation.description
       }
     end
 
@@ -70,7 +70,6 @@ class ReportsController < ApplicationController
 
   def new_downward_performance_review
     report = Employee.find(params[:report_id])
-    puts report.id
     performance_review_response = PerformanceReviewResponse.incomplete(report).active.first
 
     review_response =
@@ -80,7 +79,6 @@ class ReportsController < ApplicationController
         response: performance_review_response.response
       } if performance_review_response
 
-    puts review_response.inspect
     questions = PerformanceReviewType.downward.first.performance_review_questions
     response = review_response&.dig(:response) || questions.map do |question|
       {
