@@ -1,5 +1,6 @@
 class JobsController < ApplicationController
   before_action :set_organization, only: %i[ index show ]
+  skip_before_action :authenticate
 
   def index
     @job_postings = JobPosting.active.org_jobs(@organization)
