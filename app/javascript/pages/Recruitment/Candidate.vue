@@ -118,11 +118,20 @@
                         {{ interview.interview_on }} |
                         {{ interview.interview_at }}
                     </div>
-                    <div>
-                        <NewInterviewer
-                            :employees
-                            :interview_id="interview.id"
-                        />
+                    <div class="flex gap-x-4">
+                        <div>
+                            <NewInterviewFeedback
+                                :interview_id="interview.id"
+                                :feedback_statuses
+                            />
+                        </div>
+
+                        <div>
+                            <NewInterviewer
+                                :employees
+                                :interview_id="interview.id"
+                            />
+                        </div>
                     </div>
                 </div>
                 <div v-if="interview.interviewers.length">
@@ -186,6 +195,7 @@ import { Divider, Textarea, Dialog, Button } from "primevue";
 import NewInterviewer from "./NewInterviewer.vue";
 import NewInterview from "./NewInterview.vue";
 import AssignStatus from "./AssignStatus.vue";
+import NewInterviewFeedback from "./NewInterviewFeedback.vue";
 
 const page = usePage();
 const employee = computed(() => page.props.employee);
@@ -194,6 +204,7 @@ const { candidate } = defineProps({
     candidate: Object,
     interview_stages: Array,
     employees: Array,
+    feedback_statuses: Array,
 });
 
 const form = useForm({

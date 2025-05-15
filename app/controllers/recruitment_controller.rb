@@ -83,11 +83,17 @@ class RecruitmentController < ApplicationController
         name: interview_stage.name.humanize
       }
     end
+    feedback_statuses = InterviewFeedback.statuses.keys.map do |status|
+      {
+        name: status.humanize,
+        value: status.to_s
+      }
+    end
     employees = current_employee.organization.employees
     employees = employees.map do |employee|
       { name: employee.full_name, id: employee.id }
     end
-    render inertia: "Recruitment/Candidate", props: { candidate:, interview_stages:, employees: } if @candidate.is_org_candidate?(@current_employee)
+    render inertia: "Recruitment/Candidate", props: { candidate:, interview_stages:, employees:, feedback_statuses:  } if @candidate.is_org_candidate?(@current_employee)
   end
 
   private

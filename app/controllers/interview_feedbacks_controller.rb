@@ -27,10 +27,11 @@ class InterviewFeedbacksController < ApplicationController
     @employee = Employee.find_by(user: Current.user)
     @interviewer = Interviewer.find_by(employee: @employee, interview: @interview)
     @interview_feedback.interviewer = @interviewer
+    @job_applicant = @interview.job_applicant
 
     respond_to do |format|
       if @interview_feedback.save
-        format.html { redirect_to @interview_feedback, notice: "Interview feedback was successfully created." }
+        format.html { redirect_to employee_recruitment_candidate_path(@current_employee, @job_applicant), notice: "Interview feedback was successfully created." }
         format.json { render :show, status: :created, location: @interview_feedback }
       else
         format.html { render :new, status: :unprocessable_entity }
