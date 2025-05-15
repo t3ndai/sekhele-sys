@@ -10,11 +10,11 @@
         </div>
         <div class="form-field">
             <label for="date_open">Date Open</label>
-            <DatePicker id="date_open" v-model="form.date_open" />
+            <input type="date" id="date_open" v-model="form.date_open" />
         </div>
         <div class="form-field">
             <label for="date_close">Date Close</label>
-            <DatePicker id="date_close" v-model="form.date_close" />
+            <input type="date" id="date_close" v-model="form.date_close" />
         </div>
         <div>
             <label for="description">Description</label>
