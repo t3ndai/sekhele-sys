@@ -1,58 +1,35 @@
 <template>
     <div>
-        <Button
-            label="Assign Status"
-            @click="visible = true"
-            class="status-btn"
-        />
+        <Button label="Assign Status" @click="visible = true" class="status-btn" />
     </div>
     <div>
-        <Dialog
-            v-model:visible="visible"
-            header="Assign Status"
-            @update:visble="visible = $event"
-        >
+        <Dialog v-model:visible="visible" header="Assign Status" @update:visble="visible = $event">
             <form @submit.prevent="submit">
                 <fieldset class="radios">
                     <legend>Status</legend>
                     <div class="flex gap-x-2">
                         <div class="flex">
-                            <RadioButton
-                                v-model="form.status"
-                                inputId="status"
-                                name="status"
-                                value="rejected"
-                            />
+                            <RadioButton v-model="form.status" inputId="status" name="status" value="rejected" />
                             <label for="status">Rejected </label>
                         </div>
                         <div class="flex">
-                            <RadioButton
-                                v-model="form.status"
-                                inputId="status"
-                                name="status"
-                                value="offer"
-                            />
+                            <RadioButton v-model="form.status" inputId="status" name="status" value="offer" />
                             <label for="status">Offer </label>
                         </div>
                     </div>
                 </fieldset>
                 <div class="flex flex-col mt-2">
                     <label for="reason">Reason</label>
-                    <Textarea
-                        id="notes"
-                        v-model="form.reason"
-                        rows="5"
-                        cols="30"
-                    />
+                    <Textarea id="notes" v-model="form.reason" rows="5" cols="30" />
+                </div>
+                <div class="flex flex-col mt-2">
+                    <label for="notes">Reason Document</label>
+                    <input type="file" id="reason_notes" @change="form.reason_doc = $event.target.files[0]" />
+
                 </div>
                 <div class="mt-4">
-                    <Button
-                        class="action-btn"
-                        label="Submit Status"
-                        icon="pi pi-save"
-                        type="submit"
-                        :disabled="form.processing"
-                    />
+                    <Button class="action-btn" label="Submit Status" icon="pi pi-save" type="submit"
+                        :disabled="form.processing" />
                 </div>
             </form>
         </Dialog>
@@ -73,6 +50,7 @@ const visible = ref(false);
 const form = useForm({
     status: "",
     reason: "",
+    reason_doc: null,
 });
 
 function submit() {

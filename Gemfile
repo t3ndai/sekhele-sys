@@ -98,3 +98,9 @@ gem "vite_rails", "~> 3.0"
 
 # better distance in time
 gem "dotiw"
+
+# Use Active Storage validations
+gem "active_storage_validations"
+
+# Mailjet
+gem "mailjet"

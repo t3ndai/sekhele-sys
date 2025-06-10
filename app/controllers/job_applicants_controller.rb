@@ -88,6 +88,6 @@ class JobApplicantsController < ApplicationController
     end
 
     def candidate_status_params
-      params.expect(candidate_status: [:reason, :status])
+      params.expect(candidate_status: [ :reason, :status, :reason_doc ])
     end
 end

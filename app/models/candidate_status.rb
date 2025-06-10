@@ -19,8 +19,15 @@
 class CandidateStatus < ApplicationRecord
   belongs_to :job_applicant
   belongs_to :status_by, class_name: "Employee"
+  has_one_attached :reason_doc
 
-  enum :status, {rejected: "rejected", offer: "offer"}, allo_nil: false
+  enum :status, { rejected: "rejected", offer: "offer" }, allo_nil: false
 
-  validates :reason, presence: true
+  validates :reason, presence: true if :reason_doc.blank?
+  validates :status, presence: true
+  validates :reason_doc, content_type: [ :pdf ], size: { less_than: 5.megabytes }, allow_blank: true
+
+  def status_by_name
+    status_by.full_name
+  end
 end
