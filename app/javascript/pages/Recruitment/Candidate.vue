@@ -3,87 +3,64 @@
 
     <div>
         <Link :href="`/employees/${employee.id}/recruitment`" class="btn">
-            Back To Recruitment
+        Back To Recruitment
         </Link>
     </div>
 
     <div class="mt-2 mb-24">
-        <div class="subsection">
-            <h3 class="heading belgrano-regular">Candidate Details</h3>
-            <div>
-                <AssignStatus
-                    v-if="!candidate.status"
-                    :job_applicant_id="candidate.id"
-                />
-                <div
-                    v-if="candidate.status"
-                    class="rounded-full text-center p-3 text-white"
-                    :class="{
-                        'bg-red-600': candidate.status === 'Rejected',
-                        'bg-green-600': candidate.status === 'Offer',
-                    }"
-                >
-                    {{ candidate.status }}
+        <h3 class="heading belgrano-regular">Candidate Details</h3>
+        <div class="flex justify-between">
+            <div class="details-card">
+                <div class="value">
+                    <span class="label">Name:</span> {{ candidate.name }}
+                </div>
+                <div class="value">
+                    <span class="label">Applied On:</span>{{ candidate.applied_on }}
+                </div>
+                <div class="value">
+                    <span class="label">Position:</span>{{ candidate.position }}
+                </div>
+                <div class="value">
+                    <span class="label">Email:</span>{{ candidate.email }}
+                </div>
+                <div class="value">
+                    <span class="label">Phone:</span>{{ candidate.phone }}
+                </div>
+                <div class="value">
+                    <span class="label">CV</span><a :href="candidate.cv" target="_blank"> View CV </a>
                 </div>
             </div>
+            <div>
+                <AssignStatus v-if="!candidate.status" :job_applicant_id="candidate.id" />
+                <div v-if="candidate.status" class="rounded-full text-center p-3 text-white" :class="{
+                    'bg-red-600': candidate.status === 'Rejected',
+                    'bg-green-600': candidate.status === 'Offer',
+                }">
+                    {{ candidate.status }}
+                </div>
+                <CandidateStatus v-if="candidate.status === 'Offer'" :candidate="candidate"
+                    :offerDetails="candidate.offer_details" />
+            </div>
+
         </div>
-        <div class="details-card">
-            <div class="value">
-                <span class="label">Name:</span> {{ candidate.name }}
-            </div>
-            <div class="value">
-                <span class="label">Applied On:</span>{{ candidate.applied_on }}
-            </div>
-            <div class="value">
-                <span class="label">Position:</span>{{ candidate.position }}
-            </div>
-            <div class="value">
-                <span class="label">Email:</span>{{ candidate.email }}
-            </div>
-            <div class="value">
-                <span class="label">Phone:</span>{{ candidate.phone }}
-            </div>
-            <div class="value">
-                <span class="label">CV</span
-                ><a :href="candidate.cv" target="_blank"> View CV </a>
-            </div>
-        </div>
+
     </div>
+
     <div class="mb-24">
         <div class="subsection">
             <h3 class="heading belgrano-regular">Candidate Notes</h3>
-            <Button
-                class="action-btn hover:bg-[#ffb59a]"
-                @click="visible = true"
-                icon="pi pi-plus"
-                label="Add Note"
-            />
+            <Button class="action-btn hover:bg-[#ffb59a]" @click="visible = true" icon="pi pi-plus" label="Add Note" />
         </div>
         <div>
-            <Dialog
-                v-model="visible"
-                :visible="visible"
-                header="New Note"
-                @update:visible="visible = $event"
-            >
+            <Dialog v-model="visible" :visible="visible" header="New Note" @update:visible="visible = $event">
                 <form class="space-y-4" @submit.prevent="saveNote">
                     <div class="flex flex-col">
                         <label for="notes">Note</label>
-                        <Textarea
-                            id="notes"
-                            v-model="form.note"
-                            rows="5"
-                            cols="30"
-                        />
+                        <Textarea id="notes" v-model="form.note" rows="5" cols="30" />
                     </div>
                     <div>
-                        <Button
-                            class="action-btn"
-                            label="Save"
-                            icon="pi pi-save"
-                            type="submit"
-                            :disabled="form.processing"
-                        />
+                        <Button class="action-btn" label="Save" icon="pi pi-save" type="submit"
+                            :disabled="form.processing" />
                     </div>
                 </form>
             </Dialog>
@@ -104,11 +81,7 @@
         <div class="subsection">
             <h3 class="heading belgrano-regular">Interviews</h3>
             <div>
-                <NewInterview
-                    :interview_stages
-                    :candidate_id="candidate.id"
-                    v-if="!candidate.status"
-                />
+                <NewInterview :interview_stages :candidate_id="candidate.id" v-if="!candidate.status" />
             </div>
         </div>
         <div class="interview-card gap-y-4" v-if="candidate.interviews.length">
@@ -120,17 +93,11 @@
                     </div>
                     <div class="flex gap-x-4">
                         <div>
-                            <NewInterviewFeedback
-                                :interview_id="interview.id"
-                                :feedback_statuses
-                            />
+                            <NewInterviewFeedback :interview_id="interview.id" :feedback_statuses />
                         </div>
 
                         <div>
-                            <NewInterviewer
-                                :employees
-                                :interview_id="interview.id"
-                            />
+                            <NewInterviewer :employees :interview_id="interview.id" />
                         </div>
                     </div>
                 </div>
@@ -141,42 +108,24 @@
                     </div>
                 </div>
                 <div>
-                    <div
-                        class="feedback-header"
-                        v-if="interview.feedbacks.length"
-                    >
+                    <div class="feedback-header" v-if="interview.feedbacks.length">
                         Feedback
                     </div>
                     <div v-for="feedback in interview.feedbacks" class="mb-2">
                         <div v-html="feedback.notes"></div>
-                        <div
-                            class="feedback-status bg-amber-500"
-                            v-if="feedback.status === 'Maybe'"
-                        >
+                        <div class="feedback-status bg-amber-500" v-if="feedback.status === 'Maybe'">
                             {{ feedback.status }}
                         </div>
-                        <div
-                            class="feedback-status bg-red-600"
-                            v-if="feedback.status === 'Strong No'"
-                        >
+                        <div class="feedback-status bg-red-600" v-if="feedback.status === 'Strong No'">
                             {{ feedback.status }}
                         </div>
-                        <div
-                            class="feedback-status bg-red-400"
-                            v-if="feedback.status === 'No'"
-                        >
+                        <div class="feedback-status bg-red-400" v-if="feedback.status === 'No'">
                             {{ feedback.status }}
                         </div>
-                        <div
-                            class="feedback-status bg-green-400"
-                            v-if="feedback.status === 'Yes'"
-                        >
+                        <div class="feedback-status bg-green-400" v-if="feedback.status === 'Yes'">
                             {{ feedback.status }}
                         </div>
-                        <div
-                            class="feedback-status bg-green-600"
-                            v-if="feedback.status === 'Strong Yes'"
-                        >
+                        <div class="feedback-status bg-green-600" v-if="feedback.status === 'Strong Yes'">
                             {{ feedback.status }}
                         </div>
                         <Divider />
@@ -196,6 +145,7 @@ import NewInterviewer from "./NewInterviewer.vue";
 import NewInterview from "./NewInterview.vue";
 import AssignStatus from "./AssignStatus.vue";
 import NewInterviewFeedback from "./NewInterviewFeedback.vue";
+import CandidateStatus from "./CandidateStatus.vue";
 
 const page = usePage();
 const employee = computed(() => page.props.employee);

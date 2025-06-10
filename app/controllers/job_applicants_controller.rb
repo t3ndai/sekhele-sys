@@ -2,6 +2,8 @@ class JobApplicantsController < ApplicationController
   before_action :set_job_applicant, only: %i[ show edit update destroy ]
   before_action :set_job_posting, only: %i[ new create ]
 
+  inertia_share flash: -> { flash.to_hash }
+
   # GET /job_applicants or /job_applicants.json
   def index
     @job_applicants = JobApplicant.all
@@ -42,10 +44,32 @@ class JobApplicantsController < ApplicationController
     status = @job_applicant.build_candidate_status(candidate_status_params)
     status.status_by = @current_employee
 
+    status.reason_doc.attach(params[:candidate_status][:reason_doc]) if params[:candidate_status][:reason_doc].present?
+
     if status.save
+      if status.status == "rejected"
+        send_rejection_email(@job_applicant, @job_applicant.job_posting)
+      end
       redirect_to employee_recruitment_candidate_path(@current_employee, @job_applicant), notice: "Status saved successfully"
     else
-      render inertia: "Recruitment/Candidate", status: :unprocessable_entity
+      puts status.errors.full_messages
+      render inertia: "Recruitment/Candidate", status: :unprocessable_entity, errors: status.errors
+    end
+  end
+
+  def send_offer
+    @job_applicant = JobApplicant.find(params[:job_applicant_id])
+    status = @job_applicant.candidate_status
+    status.status = :offer_sent
+
+    status.offer_letter.attach(params[:candidate_status][:offer_letter]) if params[:candidate_status][:offer_letter].present?
+
+    if status.save
+      send_offer_email(@job_applicant, @job_applicant.job_posting)
+      redirect_to employee_recruitment_candidate_path(@current_employee, @job_applicant), notice: "Offer letter sent successfully"
+    else
+      puts status.errors.full_messages
+      render inertia: "Recruitment/Candidate", status: :unprocessable_entity, errors: status.errors
     end
   end
 
@@ -88,6 +112,14 @@ class JobApplicantsController < ApplicationController
     end
 
     def candidate_status_params
-      params.expect(candidate_status: [ :reason, :status, :reason_doc ])
+      params.expect(candidate_status: [ :reason, :status, :reason_doc, :offer_letter ])
+    end
+
+    def send_rejection_email(job_applicant, job_posting)
+      CandidateMailer.rejected(job_applicant, job_posting).deliver_later
+    end
+
+    def send_offer_email(job_applicant, job_posting)
+      CandidateMailer.offer(job_applicant, job_posting).deliver_later
     end
 end

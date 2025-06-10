@@ -67,6 +67,7 @@ Rails.application.routes.draw do
     post "jobs/:job_posting_id/apply", to: "job_applicants#create"
     resources :job_applicants, only: %i[index show destroy] do
       post "/status", to: "job_applicants#candidate_status"
+      post "/send_offer", to: "job_applicants#send_offer"
       resources :interviews
       resources :candidate_notes, only: %i[index new show create destroy]
     end
@@ -88,6 +89,7 @@ Rails.application.routes.draw do
     get "/announcements", to: "announcements#index"
   end
 
+  get "/offer_acceptance", to: "job_applicants#offer_acceptance", as: "offer_acceptance"
   resources :tasks, only: %i[create update destroy]
   resources :performance_review_responses, only: %i[ create update destroy]
   post "performance_review_responses/downward_review", to: "performance_review_responses#downward_review"

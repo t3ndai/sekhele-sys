@@ -55,11 +55,9 @@ const form = useForm({
 
 function submit() {
     form.transform((data) => ({
-        candidate_status: {
-            status: data.status,
-            reason: data.reason,
-        },
-    })).post(`/job_applicants/${job_applicant_id}/status`);
+        candidate_status: data
+    }))
+        .post(`/job_applicants/${job_applicant_id}/status`);
     visible.value = false;
     form.reset();
 }

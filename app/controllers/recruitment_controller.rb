@@ -29,7 +29,7 @@ class RecruitmentController < ApplicationController
         stage: interview.interview_stage.name,
         candidate: interview.job_applicant.full_name,
         interview_on: interview.interview_on.strftime("%e %b %Y"),
-        interview_at: interview.interview_at.strftime("%l:%M %p"),
+        interview_at: interview.interview_at.strftime("%l:%M %p")
       }
     end
     render inertia: "Recruitment/Index", props: { listed_jobs:, job_applicants:, interviews: }
@@ -74,7 +74,12 @@ class RecruitmentController < ApplicationController
         }
       end,
       cv: rails_blob_url(@candidate.cv, only_path: true),
-      status: @candidate.candidate_status&.status&.humanize
+      status: @candidate.candidate_status&.status&.humanize,
+      offer_details: {
+        reason_file: (rails_blob_url(@candidate.candidate_status&.reason_doc, only_path: true) if @candidate.candidate_status&.reason_doc&.attached?),
+        offer_on: @candidate.candidate_status&.created_at&.strftime("%e %b %Y"),
+        offer_by: @candidate.candidate_status&.status_by_name
+      }
 
     }
     interview_stages = @current_employee.organization.interview_stages.map do |interview_stage|

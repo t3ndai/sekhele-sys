@@ -5,141 +5,97 @@ import { computed, ref } from "vue";
 const page = usePage();
 const employee = computed(() => page.props.employee);
 const org_id = computed(() => page.props.org_id).value;
+const flash = page.props.flash || {};
 </script>
 
 <template>
+
     <Head>
         <title>Werk by Sekhele</title>
     </Head>
     <div class="flex gap-x-4 w-screen">
-        <nav
-            class="flex flex-col insert-y-0 left-0 gap-y-4 items-center bg-gray-100 min-h-screen"
-            v-if="employee"
-        >
+        <nav class="flex flex-col insert-y-0 left-0 gap-y-4 items-center bg-gray-100 min-h-screen" v-if="employee">
             <div>
-                <Link
-                    :href="`/employees/${employee.id}/home`"
-                    class="mt-4 flex items-baseline justify-center"
-                    :class="{
-                        'text-orange-500':
-                            $page.component === 'EmployeeDashboard/Show',
-                    }"
-                    as="button"
-                >
-                    HOME
+                <Link :href="`/employees/${employee.id}/home`" class="mt-4 flex items-baseline justify-center" :class="{
+                    'text-orange-500':
+                        $page.component === 'EmployeeDashboard/Show',
+                }" as="button">
+                HOME
                 </Link>
             </div>
             <div>
-                <Link
-                    :href="`/employees/${employee.id}/people`"
-                    class="flex justify-center items-baseline"
-                    :class="{
-                        'text-orange-500': $page.component === 'People/Index',
-                    }"
-                    as="button"
-                >
-                    DIRECTORY
+                <Link :href="`/employees/${employee.id}/people`" class="flex justify-center items-baseline" :class="{
+                    'text-orange-500': $page.component === 'People/Index',
+                }" as="button">
+                DIRECTORY
                 </Link>
             </div>
             <div>
-                <Link
-                    :href="`/employees/${employee.id}/my_stuff`"
-                    class="flex justify-center items-baseline"
-                    as="button"
-                    :class="{
+                <Link :href="`/employees/${employee.id}/my_stuff`" class="flex justify-center items-baseline"
+                    as="button" :class="{
                         'text-orange-500': $page.component === 'MyStuff/Index',
-                    }"
-                >
-                    MY STUFF
+                    }">
+                MY STUFF
                 </Link>
             </div>
             <div>
-                <Link
-                    :href="`/employees/${employee.id}/benefits`"
-                    class="flex justify-center items-center align-text-bottom"
-                    :class="{
+                <Link :href="`/employees/${employee.id}/benefits`"
+                    class="flex justify-center items-center align-text-bottom" :class="{
                         'text-orange-500':
                             $page.component === 'EmployeeBenefits/Index',
-                    }"
-                    as="button"
-                >
-                    BENEFITS
+                    }" as="button">
+                BENEFITS
                 </Link>
             </div>
             <div>
-                <Link
-                    :href="`/employees/${employee.id}/one_to_ones`"
-                    class="flex justify-center items-baseline"
-                    :class="{
-                        'text-orange-500':
-                            $page.component === 'OneToOnes/Index',
-                    }"
-                    as="button"
-                >
-                    1-1s
+                <Link :href="`/employees/${employee.id}/one_to_ones`" class="flex justify-center items-baseline" :class="{
+                    'text-orange-500':
+                        $page.component === 'OneToOnes/Index',
+                }" as="button">
+                1-1s
                 </Link>
             </div>
             <div>
-                <Link
-                    :href="`/employees/${employee.id}/recruitment`"
-                    class="flex justify-center items-baseline"
-                    as="button"
-                    :class="{
+                <Link :href="`/employees/${employee.id}/recruitment`" class="flex justify-center items-baseline"
+                    as="button" :class="{
                         'text-orange-500':
                             $page.component === 'Recruitment/Index',
-                    }"
-                >
-                    RECRUITMENT
+                    }">
+                RECRUITMENT
                 </Link>
             </div>
             <div>
-                <Link
-                    :href="`/employees/${employee.id}/leave`"
-                    class="flex justify-center items-baseline"
-                    as="button"
+                <Link :href="`/employees/${employee.id}/leave`" class="flex justify-center items-baseline" as="button"
                     :class="{
                         'text-orange-500': $page.component === 'Leave/Index',
-                    }"
-                >
-                    LEAVE
+                    }">
+                LEAVE
                 </Link>
             </div>
 
             <div>
-                <Link
-                    :href="`/employees/${employee.id}/my_career`"
-                    class="flex justify-center items-baseline"
-                    as="button"
-                    :class="{
+                <Link :href="`/employees/${employee.id}/my_career`" class="flex justify-center items-baseline"
+                    as="button" :class="{
                         'text-orange-500': $page.component === 'MyCareer/Index',
-                    }"
-                >
-                    MY CAREER
+                    }">
+                MY CAREER
                 </Link>
             </div>
 
             <div v-if="employee.is_manager">
-                <Link
-                    :href="`/employees/${employee.id}/reports`"
-                    class="flex justify-center items-baseline"
-                    as="button"
+                <Link :href="`/employees/${employee.id}/reports`" class="flex justify-center items-baseline" as="button"
                     :class="{
                         'text-orange-500': $page.component === 'Reports/Index',
-                    }"
-                >
-                    REPORTS
+                    }">
+                REPORTS
                 </Link>
             </div>
             <div>
-                <Link
-                    :href="`/organizations/${org_id}/hr_admin`"
-                    class="flex justify-center items-baseline"
-                    as="button"
+                <Link :href="`/organizations/${org_id}/hr_admin`" class="flex justify-center items-baseline" as="button"
                     :class="{
                         'text-orange-500': $page.component === 'HrAdmin/Index',
-                    }"
-                >
-                    HR ADMIN
+                    }">
+                HR ADMIN
                 </Link>
             </div>
             <!--<div>
@@ -157,6 +113,10 @@ const org_id = computed(() => page.props.org_id).value;
                 </div>-->
         </nav>
         <main class="flex flex-col p-4 basis-[95%] w-full max-w-9/10">
+            <p v-if="flash.notice"
+                class="py-2 px-3 bg-green-50 mb-5 text-green-500 font-medium rounded-lg inline-block">
+                {{ flash.notice }}
+            </p>
             <slot></slot>
         </main>
     </div>
