@@ -68,6 +68,7 @@ Rails.application.routes.draw do
     resources :job_applicants, only: %i[index show destroy] do
       post "/status", to: "job_applicants#candidate_status"
       post "/send_offer", to: "job_applicants#send_offer"
+      post "/accept_offer", to: "job_applicants#accept_offer"
       resources :interviews
       resources :candidate_notes, only: %i[index new show create destroy]
     end

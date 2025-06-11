@@ -21,6 +21,7 @@ class CandidateStatus < ApplicationRecord
   belongs_to :status_by, class_name: "Employee"
   has_one_attached :reason_doc
   has_one_attached :offer_letter
+  has_one_attached :offer_letter_signed
 
   enum :status, { rejected: "rejected", offer: "offer", offer_sent: "offer_sent", offer_accepted: "offer_accepted", offer_rejected: "offer_rejected" }, allow_nil: false
 

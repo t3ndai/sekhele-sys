@@ -1,6 +1,7 @@
 class JobApplicantsController < ApplicationController
   before_action :set_job_applicant, only: %i[ show edit update destroy ]
   before_action :set_job_posting, only: %i[ new create ]
+  skip_before_action :authenticate, only: %i[ offer_acceptance ]
 
   inertia_share flash: -> { flash.to_hash }
 
@@ -73,6 +74,39 @@ class JobApplicantsController < ApplicationController
     end
   end
 
+  def offer_acceptance
+    @job_applicant = JobApplicant.find_by_token_for(:offer_acceptance, params[:sid])
+
+    if @job_applicant.nil?
+      redirect_to root_path, alert: "That offer acceptance link is invalid or has expired"
+    else
+      render inertia: "Recruitment/OfferAcceptance", props: {
+        candidate: {
+          id: @job_applicant.id,
+          name: @job_applicant.full_name
+        },
+        job: @job_applicant.job_posting.title
+      }
+    end
+  end
+
+  def accept_offer
+    @job_applicant = JobApplicant.find(params[:job_applicant_id])
+    status = @job_applicant.candidate_status
+    status.status = :offer_accepted
+    status.offer_accepted_on = Date.current
+
+    status.offer_letter_signed.attach(params[:candidate_status][:offer_letter_signed]) if params[:candidate_status][:offer_letter_signed].present?
+
+    if status.save
+      flash.now[:notice] = "Offer accepted successfully"
+      redirect_to root_path
+    else
+      puts status.errors.full_messages
+      render inertia: "Recruitment/OfferAcceptance", status: :unprocessable_entity, errors: status.errors
+    end
+  end
+
   # PATCH/PUT /job_applicants/1 or /job_applicants/1.json
   def update
     respond_to do |format|
@@ -112,7 +146,7 @@ class JobApplicantsController < ApplicationController
     end
 
     def candidate_status_params
-      params.expect(candidate_status: [ :reason, :status, :reason_doc, :offer_letter ])
+      params.expect(candidate_status: [ :reason, :status, :reason_doc, :offer_letter, :offer_letter_signed ])
     end
 
     def send_rejection_email(job_applicant, job_posting)

@@ -36,9 +36,7 @@ class JobApplicant < ApplicationRecord
     true if employee.organization == job_posting.organization
   end
 
-  generates_token_for :offer_acceptance, expires_in: 5.days do
-    "#{id}-#{SecureRandom.hex(10)}"
-  end
+  generates_token_for :offer_acceptance, expires_in: 5.days
 
   def full_name
     "#{first_name} #{last_name}"

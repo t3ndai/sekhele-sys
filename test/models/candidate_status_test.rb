@@ -2,13 +2,15 @@
 #
 # Table name: candidate_statuses
 #
-#  id               :integer          not null, primary key
-#  job_applicant_id :integer          not null
-#  status           :string
-#  reason           :text
-#  status_by_id     :integer          not null
-#  created_at       :datetime         not null
-#  updated_at       :datetime         not null
+#  id                :integer          not null, primary key
+#  job_applicant_id  :integer          not null
+#  status            :string
+#  reason            :text
+#  status_by_id      :integer          not null
+#  created_at        :datetime         not null
+#  updated_at        :datetime         not null
+#  offer_accepted_on :date
+#  offer_rejected_on :date
 #
 # Indexes
 #
