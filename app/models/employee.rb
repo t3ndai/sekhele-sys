@@ -90,6 +90,9 @@ class Employee < ApplicationRecord
   scope :same_organization, ->(organization) { where(organization: organization) }
   # scope :tasks, -> { Task.where(assignee: self) }
 
+  # TODO: ideally have a role for employee i.e role: :manager
+  # and then check for that role in the controller
+  # since a new manager might not have reports yet
   def is_manager?
     self.reports.any?
   end

@@ -30,16 +30,22 @@
                     <span class="label">CV</span><a :href="candidate.cv" target="_blank"> View CV </a>
                 </div>
             </div>
-            <div>
+            <div class="flex flex-col gap-y-4">
                 <AssignStatus v-if="!candidate.status" :job_applicant_id="candidate.id" />
                 <div v-if="candidate.status" class="rounded-full text-center p-3 text-white" :class="{
                     'bg-red-600': candidate.status === 'Rejected',
                     'bg-green-600': candidate.status === 'Offer',
+                    'bg-amber-500': candidate.status === 'Offer sent',
+                    'bg-green-900': candidate.status === 'Offer accepted',
                 }">
                     {{ candidate.status }}
                 </div>
                 <CandidateStatus v-if="candidate.status === 'Offer'" :candidate="candidate"
                     :offerDetails="candidate.offer_details" />
+                <div>
+                    <Link :href="`/job_applicants/${candidate.id}/onboard`"
+                        class="bg-indigo-600 hover:bg-indigo-700 text-white rounded p-2">Onboard</Link>
+                </div>
             </div>
 
         </div>

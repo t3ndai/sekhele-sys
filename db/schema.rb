@@ -10,7 +10,7 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema[8.0].define(version: 2025_06_11_171439) do
+ActiveRecord::Schema[8.0].define(version: 2025_06_11_203007) do
   # These are extensions that must be enabled in order to support this database
   enable_extension "pg_catalog.plpgsql"
 
@@ -518,6 +518,16 @@ ActiveRecord::Schema[8.0].define(version: 2025_06_11_171439) do
     t.index ["employee_id"], name: "index_motivations_on_employee_id"
   end
 
+  create_table "new_joiners", force: :cascade do |t|
+    t.date "start_date"
+    t.bigint "manager_id"
+    t.bigint "job_applicant_id", null: false
+    t.datetime "created_at", null: false
+    t.datetime "updated_at", null: false
+    t.index ["job_applicant_id"], name: "index_new_joiners_on_job_applicant_id"
+    t.index ["manager_id"], name: "index_new_joiners_on_manager_id"
+  end
+
   create_table "one_to_ones", force: :cascade do |t|
     t.bigint "employee_id", null: false
     t.bigint "manager_id", null: false
@@ -813,6 +823,8 @@ ActiveRecord::Schema[8.0].define(version: 2025_06_11_171439) do
   add_foreign_key "locations", "organizations"
   add_foreign_key "milestones", "goals"
   add_foreign_key "motivations", "employees"
+  add_foreign_key "new_joiners", "employees", column: "manager_id"
+  add_foreign_key "new_joiners", "job_applicants"
   add_foreign_key "one_to_ones", "employees"
   add_foreign_key "one_to_ones", "employees", column: "manager_id"
   add_foreign_key "org_assets", "asset_categories"

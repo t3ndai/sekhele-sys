@@ -107,6 +107,24 @@ class JobApplicantsController < ApplicationController
     end
   end
 
+  def onboard
+    @job_applicant = JobApplicant.find(params[:job_applicant_id])
+    new_joiner = @job_applicant.build_new_joiner
+    managers = @job_applicant.job_posting.organization.employees.map { |e| { id: e.id, name: e.full_name } }
+    render inertia: "NewJoiner/New", props: { new_joiner:, managers:, name: @job_applicant.full_name }
+  end
+
+  def onboard_save
+    @job_applicant = JobApplicant.find(params[:job_applicant_id])
+    new_joiner = @job_applicant.build_new_joiner(new_joiner_params)
+
+    if new_joiner.save
+      redirect_to employee_recruitment_candidate_path(@current_employee, @job_applicant), notice: "Onboarding details saved successfully"
+    else
+      render inertia: "NewJoiner/New", props: { new_joiner:, managers:, name: @job_applicant.full_name, errors: new_joiner.errors }, status: :unprocessable_entity
+    end
+  end
+
   # PATCH/PUT /job_applicants/1 or /job_applicants/1.json
   def update
     respond_to do |format|
