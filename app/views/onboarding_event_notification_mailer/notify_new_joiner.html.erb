@@ -1,0 +1,12 @@
+<p>Hi <%= @new_joiner.job_applicant.full_name %> </p>
+<p> Here are the details for your onboarding </p>
+<p> Location: <%= @onboarding_event.location %> </p>
+<p> On: <%= @onboarding_event.on.strftime("%e %b %Y") %> </p>
+<p> At: <%= @onboarding_event.at.strftime("%l:%M %p") %> </p>
+<p> You can contact your manager: <%= @new_joiner.manager.full_name %> for any questions at <%= @new_joiner.manager.work_email %> </p>
+<p> Your contact is also <%= @onboarding_event.contact.full_name %> who can be reached at <%= @onboarding_event.contact.work_email %> </p>
+<p> Other Relevant Instructions:
+  <br>
+  <%= @onboarding_event.instructions %>
+</p>
+<p> Thank You, </p>

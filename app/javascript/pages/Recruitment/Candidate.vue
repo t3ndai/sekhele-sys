@@ -42,9 +42,15 @@
                 </div>
                 <CandidateStatus v-if="candidate.status === 'Offer'" :candidate="candidate"
                     :offerDetails="candidate.offer_details" />
-                <div>
+                <div v-if="candidate.to_onboard">
                     <Link :href="`/job_applicants/${candidate.id}/onboard`"
                         class="bg-indigo-600 hover:bg-indigo-700 text-white rounded p-2">Onboard</Link>
+                </div>
+                <div v-if="candidate.is_onboarding">
+                    <Link :href="`/new_joiners/${candidate?.new_joiner?.id}`"
+                        class="bg-sky-500 hover:bg-sky-600 text-white rounded p-2">
+                    Continue Onboarding
+                    </Link>
                 </div>
             </div>
 

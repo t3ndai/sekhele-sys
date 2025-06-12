@@ -79,8 +79,12 @@ class RecruitmentController < ApplicationController
         reason_file: (rails_blob_url(@candidate.candidate_status&.reason_doc, only_path: true) if @candidate.candidate_status&.reason_doc&.attached?),
         offer_on: @candidate.candidate_status&.created_at&.strftime("%e %b %Y"),
         offer_by: @candidate.candidate_status&.status_by_name
-      }
-
+      },
+      to_onboard: @candidate.candidate_status.offer_accepted? && !@candidate.new_joiner.present?,
+      is_onboarding: @candidate.new_joiner.present?,
+      new_joiner: @candidate.new_joiner.present? ? {
+        id: @candidate.new_joiner.id
+      } : nil
     }
     interview_stages = @current_employee.organization.interview_stages.map do |interview_stage|
       {
