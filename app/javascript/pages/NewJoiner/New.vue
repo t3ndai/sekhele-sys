@@ -4,7 +4,7 @@
 
   <h1 class="font-belgrano">Onboard {{ name }}</h1>
 
-  <Form :new_joiner="new_joiner" :managers submitText="Create New joiner" @onSubmit="handleSubmit" />
+  <Form :new_joiner="new_joiner" :managers submitText="Start Onboarding" @onSubmit="handleSubmit" />
 
   <br />
 
@@ -17,10 +17,10 @@
 import { Head, Link } from '@inertiajs/vue3'
 import Form from './Form.vue'
 
-const { new_joiner, managers, name } = defineProps(['new_joiner', 'managers', 'name'])
+const { new_joiner, managers, name, job_applicant_id } = defineProps(['new_joiner', 'managers', 'name', 'job_applicant_id'])
 
 const handleSubmit = (form) => {
   form.transform((data) => ({ new_joiner: data }))
-  form.post('/new_joiners')
+  form.post(`/job_applicants/${job_applicant_id}/onboard_save`)
 }
 </script>

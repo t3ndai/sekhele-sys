@@ -16,6 +16,8 @@
 #
 
 class NewJoiner < ApplicationRecord
-  belongs_to :manager
+  belongs_to :manager, class_name: "Employee"
   belongs_to :job_applicant
+
+  validates :start_date, presence: true
 end

@@ -111,14 +111,19 @@ class JobApplicantsController < ApplicationController
     @job_applicant = JobApplicant.find(params[:job_applicant_id])
     new_joiner = @job_applicant.build_new_joiner
     managers = @job_applicant.job_posting.organization.employees.map { |e| { id: e.id, name: e.full_name } }
-    render inertia: "NewJoiner/New", props: { new_joiner:, managers:, name: @job_applicant.full_name }
+    render inertia: "NewJoiner/New", props: { new_joiner:, managers:, name: @job_applicant.full_name, job_applicant_id: @job_applicant.id }
   end
 
   def onboard_save
     @job_applicant = JobApplicant.find(params[:job_applicant_id])
     new_joiner = @job_applicant.build_new_joiner(new_joiner_params)
+    manager = Employee.find(params[:new_joiner][:manager_id])
+    new_joiner.manager = manager
 
     if new_joiner.save
+      organization = @job_applicant.job_posting.organization.name
+      send_manager_welcome_email(new_joiner)
+      send_welcome_email(new_joiner, organization)
       redirect_to employee_recruitment_candidate_path(@current_employee, @job_applicant), notice: "Onboarding details saved successfully"
     else
       render inertia: "NewJoiner/New", props: { new_joiner:, managers:, name: @job_applicant.full_name, errors: new_joiner.errors }, status: :unprocessable_entity
@@ -167,11 +172,23 @@ class JobApplicantsController < ApplicationController
       params.expect(candidate_status: [ :reason, :status, :reason_doc, :offer_letter, :offer_letter_signed ])
     end
 
+    def new_joiner_params
+      params.expect(new_joiner: [ :manager_id, :start_date ])
+    end
+
     def send_rejection_email(job_applicant, job_posting)
       CandidateMailer.rejected(job_applicant, job_posting).deliver_later
     end
 
     def send_offer_email(job_applicant, job_posting)
       CandidateMailer.offer(job_applicant, job_posting).deliver_later
+    end
+
+    def send_welcome_email(new_joiner, organization)
+      OnboardingMailer.welcome(new_joiner, organization).deliver_later
+    end
+
+    def send_manager_welcome_email(new_joiner)
+      OnboardingMailer.manager_welcome(new_joiner).deliver_later
     end
 end
