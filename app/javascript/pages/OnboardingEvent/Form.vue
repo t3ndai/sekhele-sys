@@ -45,8 +45,9 @@
 </template>
 
 <script setup>
-import { useForm, computed } from '@inertiajs/vue3'
+import { useForm } from '@inertiajs/vue3'
 import Select from 'primevue/select'
+import { computed } from 'vue'
 
 const { onboarding_event, submitText, contacts } = defineProps(['onboarding_event', 'submitText', 'contacts'])
 const emit = defineEmits(['onSubmit'])

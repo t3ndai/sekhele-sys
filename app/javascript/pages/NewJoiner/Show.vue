@@ -8,11 +8,20 @@
 
   <NewJoiner :new_joiner="new_joiner" />
 
-  <div>
-    <Link :href="`/new_joiners/${new_joiner.id}/onboarding_events/new`"
-      class="bg-sky-600 hover:bg-sky-700 text-white p-2 rounded">
-    New Onboarding event
-    </Link>
+  <div class="flex gap-x-4">
+    <div>
+      <Link :href="`/new_joiners/${new_joiner.id}/onboarding_events/new`"
+        class="bg-sky-600 hover:bg-sky-700 text-white p-2 rounded">
+      New Onboarding event
+      </Link>
+    </div>
+
+    <div>
+      <Link :href="`/new_joiners/${new_joiner.id}/onboard_checklists/new`"
+        class="bg-sky-600 hover:bg-sky-700 text-white p-2 rounded">
+      New Onboard Checklist
+      </Link>
+    </div>
   </div>
 
   <div>

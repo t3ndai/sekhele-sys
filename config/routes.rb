@@ -93,6 +93,7 @@ Rails.application.routes.draw do
   end
   resources :new_joiners, only:  %i[show] do
     resources :onboarding_events
+    resources :onboard_checklists
   end
   get "/offer_acceptance", to: "job_applicants#offer_acceptance", as: "offer_acceptance"
   resources :tasks, only: %i[create update destroy]

@@ -1,10 +1,9 @@
 <template>
+
     <Head>
         <title>Werk by Sekhele</title>
-        <meta
-            name="description"
-            content="Werk by Sekhele is a platform to support HR & Finance Operations in the SADC Market i.e Zimbabwe, South Africa, Zambia, Mozambique, Malawi, Botswana, Namibia, Lesotho, Swaziland, Eswatini, and other countries in the region"
-        />
+        <meta name="description"
+            content="Werk by Sekhele is a platform to support HR & Finance Operations in the SADC Market i.e Zimbabwe, South Africa, Zambia, Mozambique, Malawi, Botswana, Namibia, Lesotho, Swaziland, Eswatini, and other countries in the region" />
     </Head>
 
     <div class="flex justify-end">
@@ -50,10 +49,7 @@
 
     <div class="flex gap-x-4 space-y-48 items-center">
         <div class="basis-1/3">
-            <img
-                :src="packages"
-                class="rounded-lg h-96 w-96 aspect-square @sm:aspect-3/2"
-            />
+            <img :src="packages" class="rounded-lg h-96 w-96 aspect-square @sm:aspect-3/2" />
         </div>
         <div class="basis-2/3 self-baseline">
             <p class="font-belgrano text-center text-4xl minor-header">
@@ -70,10 +66,7 @@
 
     <div class="flex space-y-48 items-center">
         <div class="basis-1/3">
-            <img
-                :src="seedling"
-                class="rounded-lg h-96 w-96 aspect-square @sm:aspect-3/2"
-            />
+            <img :src="seedling" class="rounded-lg h-96 w-96 aspect-square @sm:aspect-3/2" />
         </div>
 
         <div class="basis-2/3 self-baseline">
@@ -90,10 +83,7 @@
 
     <div class="flex gap-x-4 space-y-48 items-center">
         <div class="basis-1/3">
-            <img
-                :src="magnet"
-                class="rounded-lg h-96 w-96 aspect-square @sm:aspect-3/2"
-            />
+            <img :src="magnet" class="rounded-lg h-96 w-96 aspect-square @sm:aspect-3/2" />
         </div>
 
         <div class="basis-2/3 self-baseline">
@@ -101,12 +91,12 @@
                 Attract
             </p>
             <p class="font-jura text-center text-2xl text-gray-600 font-medium">
-                Attact Talent through tools such as Online Job Posts, Online Job
+                Attract Talent through tools such as Online Job Posts, Online Job
                 applications. <br />
                 Offer a better Candidate experience and Recruitment tools such
                 as Interview Scheduling, Interview stages, Candidate notes &
                 Interview Feedback. <br />
-                Which enables efficent tracking of candidates through your
+                Which enables efficient tracking of candidates through your
                 pipeline so you can hire the right people for the right roles at
                 the right time.
             </p>
@@ -115,10 +105,7 @@
 
     <div class="flex gap-x-4 space-y-48 items-center">
         <div class="basis-1/3">
-            <img
-                :src="chain"
-                class="rounded-lg h-96 w-96 aspect-square @sm:aspect-3/2"
-            />
+            <img :src="chain" class="rounded-lg h-96 w-96 aspect-square @sm:aspect-3/2" />
         </div>
         <div class="basis-2/3 self-baseline">
             <p class="font-belgrano text-center text-4xl minor-header">
