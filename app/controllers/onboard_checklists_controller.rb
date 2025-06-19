@@ -16,8 +16,30 @@ class OnboardChecklistsController < ApplicationController
 
   # GET /onboard_checklists/1
   def show
+    onboard_task = OnboardTask.new
+    assignees = @current_employee.organization.employees.map do |employee|
+      {
+        id: employee.id,
+        name: employee.full_name
+      }
+    end
+    onboard_tasks = @onboard_checklist.onboard_tasks.map do |onboard_task|
+      {
+        id: onboard_task.id,
+        name: onboard_task.name,
+        complete: onboard_task.complete,
+        assignee: {
+          id: onboard_task.assignee.id,
+          name: onboard_task.assignee.full_name
+        },
+        due_on: onboard_task.due_on
+      }
+    end
     render inertia: "OnboardChecklist/Show", props: {
-      onboard_checklist: serialize_onboard_checklist(@onboard_checklist)
+      onboard_checklist: serialize_onboard_checklist(@onboard_checklist),
+      onboard_task:,
+      assignees:,
+      onboard_tasks:
     }
   end
 

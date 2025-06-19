@@ -19,5 +19,14 @@ class NewJoiner < ApplicationRecord
   belongs_to :manager, class_name: "Employee"
   belongs_to :job_applicant
 
+  has_many :onboarding_events
+  has_many :onboard_checklists
+
   validates :start_date, presence: true
+
+  def as_json(options = {})
+    super(options).tap do |hash|
+      hash["name"] = job_applicant.full_name
+    end
+  end
 end

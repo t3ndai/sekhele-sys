@@ -6,7 +6,7 @@ class NewJoinersController < ApplicationController
   # GET /new_joiners
   def index
     @new_joiners = NewJoiner.all
-    render inertia: 'NewJoiner/Index', props: {
+    render inertia: "NewJoiner/Index", props: {
       new_joiners: @new_joiners.map do |new_joiner|
         serialize_new_joiner(new_joiner)
       end
@@ -15,22 +15,47 @@ class NewJoinersController < ApplicationController
 
   # GET /new_joiners/1
   def show
-    render inertia: 'NewJoiner/Show', props: {
-      new_joiner: serialize_new_joiner(@new_joiner)
+    onboarding_events = @new_joiner.onboarding_events.includes(:contact, :manager).map do |event|
+      {
+        id: event.id,
+        contact: {
+          id: event.contact.id,
+          name: event.contact.full_name
+        },
+        manager: {
+          id: event.manager.id,
+          name: event.manager.full_name
+        },
+        on: event.on.strftime("%B %d, %Y"),
+        at: event.at.strftime("%I:%M %p"),
+        instructions: event.instructions,
+        location: event.location
+      }
+    end
+    onboard_checklists = @new_joiner.onboard_checklists.map do |checklist|
+      {
+        id: checklist.id,
+        name: checklist.name
+      }
+    end
+    render inertia: "NewJoiner/Show", props: {
+      new_joiner: serialize_new_joiner(@new_joiner),
+      onboarding_events:,
+      onboard_checklists:
     }
   end
 
   # GET /new_joiners/new
   def new
     @new_joiner = NewJoiner.new
-    render inertia: 'NewJoiner/New', props: {
+    render inertia: "NewJoiner/New", props: {
       new_joiner: serialize_new_joiner(@new_joiner)
     }
   end
 
   # GET /new_joiners/1/edit
   def edit
-    render inertia: 'NewJoiner/Edit', props: {
+    render inertia: "NewJoiner/Edit", props: {
       new_joiner: serialize_new_joiner(@new_joiner)
     }
   end
@@ -74,7 +99,7 @@ class NewJoinersController < ApplicationController
 
     def serialize_new_joiner(new_joiner)
       new_joiner.as_json(only: [
-        :id, :start_date, :manager_id, :job_applicant_id
+        :id, :start_date, :manager_id, :job_applicant_id, :name
       ])
     end
 end

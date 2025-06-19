@@ -91,9 +91,11 @@ Rails.application.routes.draw do
     resources :assets
     get "/announcements", to: "announcements#index"
   end
-  resources :new_joiners, only:  %i[show] do
+  resources :new_joiners, shallow: true, only:  %i[show] do
     resources :onboarding_events
-    resources :onboard_checklists
+    resources :onboard_checklists do
+      resources :onboard_tasks
+    end
   end
   get "/offer_acceptance", to: "job_applicants#offer_acceptance", as: "offer_acceptance"
   resources :tasks, only: %i[create update destroy]

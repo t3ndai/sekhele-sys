@@ -10,7 +10,7 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema[8.0].define(version: 2025_06_13_192648) do
+ActiveRecord::Schema[8.0].define(version: 2025_06_19_151136) do
   # These are extensions that must be enabled in order to support this database
   enable_extension "pg_catalog.plpgsql"
 
@@ -536,6 +536,20 @@ ActiveRecord::Schema[8.0].define(version: 2025_06_13_192648) do
     t.index ["new_joiner_id"], name: "index_onboard_checklists_on_new_joiner_id"
   end
 
+  create_table "onboard_tasks", force: :cascade do |t|
+    t.string "name"
+    t.bigint "assignee_id", null: false
+    t.string "tags", default: [], array: true
+    t.date "due_on"
+    t.datetime "created_at", null: false
+    t.datetime "updated_at", null: false
+    t.boolean "complete"
+    t.bigint "onboard_checklist_id", null: false
+    t.index ["assignee_id"], name: "index_onboard_tasks_on_assignee_id"
+    t.index ["onboard_checklist_id"], name: "index_onboard_tasks_on_onboard_checklist_id"
+    t.index ["tags"], name: "index_onboard_tasks_on_tags", using: :gin
+  end
+
   create_table "onboarding_events", force: :cascade do |t|
     t.bigint "new_joiner_id", null: false
     t.bigint "contact_id", null: false
@@ -849,6 +863,8 @@ ActiveRecord::Schema[8.0].define(version: 2025_06_13_192648) do
   add_foreign_key "new_joiners", "employees", column: "manager_id"
   add_foreign_key "new_joiners", "job_applicants"
   add_foreign_key "onboard_checklists", "new_joiners"
+  add_foreign_key "onboard_tasks", "employees", column: "assignee_id"
+  add_foreign_key "onboard_tasks", "onboard_checklists"
   add_foreign_key "onboarding_events", "employees", column: "contact_id"
   add_foreign_key "onboarding_events", "employees", column: "manager_id"
   add_foreign_key "onboarding_events", "new_joiners"

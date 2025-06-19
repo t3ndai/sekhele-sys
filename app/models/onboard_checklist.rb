@@ -16,5 +16,7 @@
 class OnboardChecklist < ApplicationRecord
   belongs_to :new_joiner
 
+  has_many :onboard_tasks
+
   validates :name, presence: true, uniqueness: { scope: :new_joiner }
 end
